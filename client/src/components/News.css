@@ -1,0 +1,26 @@
+
+.news-main{
+    display: flex;
+    justify-content: center;
+    width: 100vh;
+    height: 20vh;
+    border: 1px solid #000;
+}
+
+.news-box{
+    text-align: center;
+    margin-top: 2em;
+}
+
+.news-title{
+    font-size: 40px;
+    margin-bottom: 1em;
+}
+
+
+.news-holder{
+    margin-bottom: 2em;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
