@@ -1,0 +1,4 @@
+blue : #517cbe
+purple : #17093f
+light-blue : #4ebdec
+white : #fefffe
