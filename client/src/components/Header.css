@@ -1,0 +1,13 @@
+
+.Navbar{
+    background: #1C0C3C;
+    color: #DAE4F2;
+}
+
+.Navbar img{
+    width: 250px;
+    height: 100px;
+    margin-right: 150px;
+    /* margin-left: 39%; */
+}
+

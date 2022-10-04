@@ -2,3 +2,6 @@ blue : #517cbe
 purple : #17093f
 light-blue : #4ebdec
 white : #fefffe
+
+footer-bg:#1C0C3C
+footer-text:#DAE4F2

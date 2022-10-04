@@ -1,6 +1,68 @@
 
 .main-footer {
-    background-color: brown;
+    background-color: #1C0C3C;
     padding: 10px;
-    color: wheat;
+    color: #DAE4F2;
+    text-align: center;
+}
+
+.main-footer img{
+    height: 40px;
+    width: 40px;
+    margin-top: 20px;
+    margin-right: 20px;
+    border-radius: 10px;
+    transition: transform 330ms ease-in-out;
+}
+
+.main-footer h4 {
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+li {
+    margin-top: 10px;
+}
+
+.navigation li:hover{
+    opacity: 0.8;
+}
+
+.main-footer #facebook:hover{
+    background-color: #4267B2;
+    transform: scale(1.2);
+}
+
+.main-footer #instagram:hover{
+    background-color: #F77737;
+    transform: scale(1.2);
+}
+
+.main-footer #linkedin:hover{
+    background-color: #0A66C2;
+    transform: scale(1.2);
+}	
+.main-footer #youtube:hover{
+    background-color: #FF0000;
+    transform: scale(1.2);
+}
+
+.main-footer #CSRL{ 
+    width: 150px;
+    height: 80px;
+    transition: transform 330ms ease-in-out;
+}
+
+.main-footer #CSRL:hover{ 
+    transform: scale(1.2);
+}
+
+.main-footer #HMU{
+    width: 100px;
+    height: 100px;
+    transition: transform 330ms ease-in-out;
+}
+
+.main-footer #HMU:hover{
+    transform: scale(1.2);
 }

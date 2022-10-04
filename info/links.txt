@@ -1,0 +1,4 @@
+facebook = https://www.facebook.com/profile.php?id=100075598827639
+youtube = https://www.youtube.com/channel/UChI8Sm95Zt7CYUcYc63ac-w
+instagram = https://www.instagram.com/hmuroboticsclub/
+linkedIn = https://www.linkedin.com/in/robotics-club-330165227/
