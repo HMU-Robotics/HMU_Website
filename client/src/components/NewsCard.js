@@ -8,6 +8,7 @@ function NewsCard() {
     <Card.Img className='card-img' variant="top" src="Logos/Logo.png" />
     <Card.Body>
       <Card.Title>Card Title</Card.Title>
+      <p className='card-date'>03/02/1999</p>
       <Card.Text>
         Some quick example text to build on the card title and make up the
         bulk of the card's content.

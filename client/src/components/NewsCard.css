@@ -2,6 +2,13 @@
 
 .card-news{
     margin-left: 2em;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+    align-self: flex-start;
+    position: relative;
+    width: 325px;
+    min-width: 275px;
+    margin: 1.25rem 0.75rem;
+    background: white;
 }
 
 .card-img{

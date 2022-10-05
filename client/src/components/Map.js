@@ -1,3 +1,5 @@
+import "./Map.css"
+
 function Map(){
     return(
         <div className="Map">

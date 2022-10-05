@@ -1,0 +1,86 @@
+
+
+.spliter-container{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    overflow: hidden;
+    border: 1px solid #000;
+}
+
+
+.split{
+    text-align: center;
+    width: 50%;
+    height: 30em;
+    transition: all 1000ms ease-in-out;
+    border: solid 1px #000;
+}
+
+.split.left{
+    background-image:url("../../public/Media/projects.jpg");
+    background-size: cover;
+}
+
+.split.right{
+    background-image:url("../../public/Media/about.jpg");
+    background-size:cover
+}
+
+.hover {
+    width: 75%;
+}
+
+.sll{
+    width: 25%;
+    opacity: 0.2;
+}
+
+.sll .slit-title{
+    opacity: 0;
+}
+
+.sll .slit-btn{
+    opacity: 0;
+}
+
+.slit-title{
+    font-size: 4rem;
+    color: #fff;
+    white-space: nowrap;
+    margin-top: 3em;
+    text-shadow: 1px 1px 8px rgba(0,0,0,0.6);
+  }
+
+  .slit-btn{
+    font-size: 1.5rem;
+    color: #fff;
+    white-space: nowrap;
+    background: none;
+    border: 1px solid #000;
+    width: 5em;
+    height: 2em;
+    color: #fff;
+    border-radius: 10px;
+    transition: transform 330ms ease-in-out;
+    margin-top: 0.5em;
+  }
+
+
+  .slit-btn:hover{
+    background-color: #1C0C3C;
+    border:none;
+    transform: scale(1.2);
+  }
+
+  @media (max-width: 800px) {
+    .slit-title {
+      font-size: 2rem;
+      margin-top: 10em;
+    }
+  
+    .slit-btn {
+      width: 8rem;
+    }
+  }
