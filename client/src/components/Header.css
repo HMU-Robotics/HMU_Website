@@ -11,3 +11,9 @@
     /* margin-left: 39%; */
 }
 
+@media screen and (max-width: 500px) {
+    body .Navbar img{
+        margin: auto;
+        /* Margin auto for mobiles so hamburger is visible */
+    }
+}
