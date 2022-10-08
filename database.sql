@@ -41,8 +41,10 @@ create table user(
     Newsletter int default 1,
     created_at timestamp default current_timestamp,
     updated_at timestamp default current_timestamp on update current_timestamp,
+    profile_img_id int not null,
     primary key (id),
-    foreign key (role_id) references role(id)
+    foreign key (role_id) references role(id),
+    foreign key (profile_img_id) references images(id)
 );
 
 create table reservation(

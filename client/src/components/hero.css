@@ -23,6 +23,12 @@
     
 }
 
+@media screen and (max-width: 600px) {
+  body .hero-box{
+    width: fit-content;
+  }
+}
+
  video {
     object-fit: cover;
     position: absolute;
