@@ -7,7 +7,7 @@ const mysql = require("mysql2")
   const db =  mysql.createPool({
     host:process.env.DB_HOST || "localhost",
     user:process.env.DB_USER || "HMU",
-    password:process.env.DB_PASSWORD || 'password',
+    password:process.env.DB_PASSWORD || 'hmuroboticsclub123',
     database:process.env.DATABASE || 'HMU_ROBOTICS_CLUB',
     waitForConnections: true,
     connectionLimit: 10,
@@ -31,7 +31,7 @@ exports.user_signup = async(req,res,next) =>{
                 } 
                 try{
                 
-                    db.execute('INSERT INTO `user`(email,password,first_name,last_name,discord_id,role_id) VALUES(?,?,?,?,?,?)',[req.body.email,hash,req.body.first_name,req.body.last_name,req.body.discord_id,req.body.role_id],(err,result)=>{
+                    db.execute('INSERT INTO `user`(email,password,first_name,last_name,role_id,academic_id,subscription) VALUES(?,?,?,?,?,?,?)',[req.body.email,hash,req.body.first_name,req.body.last_name,req.body.role_id,req.body.academic_id,req.body.subscription],(err,result)=>{
                         if(err) throw err;
                         console.log(result)
                         res.status(200).json({
@@ -73,7 +73,7 @@ exports.user_login = async(req,res,next) =>{
                         userId:user[0].id,
                         roles:user[0].role_id,
                     },
-                        process.env.JWT_SECRET_KEY,
+                        "superS",
                         {
                             expiresIn:"1h"
                         }

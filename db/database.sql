@@ -1,3 +1,4 @@
+drop database HMU_ROBOTICS_CLUB;
 create database HMU_ROBOTICS_CLUB;
 use HMU_ROBOTICS_CLUB;
 
@@ -11,10 +12,11 @@ create table post(
     id int not null auto_increment,
     title varchar(80),
     content varchar(254),
+    history bit default 0,
     created_at timestamp default current_timestamp,
     updated_at timestamp default current_timestamp on update current_timestamp,
-    primary (id)
-)
+    primary key(id)
+);
 
 create table images(
     id int not null auto_increment,
@@ -23,7 +25,7 @@ create table images(
     caption varchar(80),
     primary key (id),
     foreign key (post_id) references post(id)
-)
+);
 
 create table user(
     id int not null auto_increment,
@@ -31,20 +33,15 @@ create table user(
     first_name text not null ,
     last_name text not null,
     confirmed_at timestamp,
-    discord_id text,
     password varchar(80),
     academic_id int not null,
     subscription Boolean not null,
     subscription_date timestamp,
     role_id int not null,
-    role_category text not null,
-    Newsletter int default 1,
     created_at timestamp default current_timestamp,
     updated_at timestamp default current_timestamp on update current_timestamp,
-    profile_img_id int not null,
     primary key (id),
-    foreign key (role_id) references role(id),
-    foreign key (profile_img_id) references images(id)
+    foreign key (role_id) references role(id)
 );
 
 create table reservation(

@@ -19,6 +19,10 @@ app.get('*',(req,res) =>{
     res.sendFile(path.resolve(__dirname,'client','build','index.html'))
 })
 
+// app.get('*',(req,res)=>{
+//     res.sendFile(path.resolve(__dirname,'api','public','html','Error.html'))
+// })
+
 app.use((req,res,next)=>{
     const error = new Error("Not Found")
     error.status = 404

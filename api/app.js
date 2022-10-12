@@ -6,21 +6,21 @@ const api_storage = require("./routes/api_storage")
 const api_users = require("./routes/api_user")
 const helmet = require("helmet")
 
-// const db = mysql.createConnection({
-//     host:process.env.DB_HOST || "localhost",
-//     user:process.env.DB_USER || "HMU",
-//     password:process.env.DB_PASSWORD || '',
-//     database:process.env.DATABASE || 'HMU_ROBOTICS_CLUB',
-//     waitForConnections: true,
-//     connectionLimit: 10,
-//     queueLimit: 0
-// });
+const db = mysql.createConnection({
+    host:process.env.DB_HOST || "localhost",
+    user:process.env.DB_USER || "HMU",
+    password:process.env.DB_PASSWORD || 'hmuroboticsclub123',
+    database:process.env.DATABASE || 'HMU_ROBOTICS_CLUB',
+    waitForConnections: true,
+    connectionLimit: 10,
+    queueLimit: 0
+});
 
 
-// db.connect((err)=>{
-//     if(err) throw err;
-//     console.log("Database ready...")
-// })
+db.connect((err)=>{
+    if(err) throw err;
+    console.log("Database ready...")
+})
 
 
 const app = express()
@@ -30,8 +30,7 @@ app.disable('x-powered-by')
 app.use(morgan("dev"))
 app.use(express.json())
 app.use(express.urlencoded({extended:false}))
-
-
+app.use(express.static(__dirname + '/public'));
 
 
 app.use((req,res,next)=>{

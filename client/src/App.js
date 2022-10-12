@@ -21,6 +21,7 @@ function App() {
         <Route exact path="/OnBoarding" element={<OnBoarding/>}></Route>
         <Route exact path="/Projects" element={<Projects/>}></Route>
         <Route exact path="/Supporters" element={<Supporters/>}></Route>
+        <Route exact path="*" element={<Landing/>}></Route>
       </Routes>
       <Footer/>
     </Router>

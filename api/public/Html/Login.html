@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/css/index.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="con">
+        <form action="/api/auth/adminLogin" method="post" class="form">
+            <img src="/media/SmallLogo.png">
+            <div class="form_field">
+                <label for="login_email">Email</label>
+                <input id="login_email" type="email" name="email" class="form_input" placeholder="example@gmail.com">
+            </div>
+            <div class="form_field">
+                <label for="login_password">Password</label>
+                <input id="login_password" type="password" name="password" class="form_input">
+            </div>
+            <div class="form_field">
+                <input type="submit" value="Log In" id="login_btn">
+            </div>
+        </form>
+    </div>
+</body>
+</html>
