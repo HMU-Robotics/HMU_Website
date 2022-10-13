@@ -1,14 +1,15 @@
 const jwt = require("jsonwebtoken")
-const cookieParser = require('cookie-parser')
 
 module.exports = (req,res,next) =>{
     try{
-        const token = req.cookies["id_ref"]
+        const token = req.headers.authorization.split(" ")[1]
         const decoded = jwt.verify(token,"superS")
         req.userData = decoded
         next()
     }
     catch(err){
-        return res.redirect("/auth/adminLogin")
+        return res.status(401).json({
+            message:"Auth failed"
+        })
     }
 }

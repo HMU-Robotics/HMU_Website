@@ -4,7 +4,13 @@ const mysql = require('mysql2')
 const api_auth = require("./routes/api_auth")
 const api_storage = require("./routes/api_storage")
 const api_users = require("./routes/api_user")
+const auth = require("./routes/auth")
+const dashboard = require("./routes/dashboard")
 const helmet = require("helmet")
+const cookieParser = require('cookie-parser');
+
+const TWO_HOURS = 1000 * 60 * 60 * 2
+
 
 const db = mysql.createConnection({
     host:process.env.DB_HOST || "localhost",
@@ -15,6 +21,7 @@ const db = mysql.createConnection({
     connectionLimit: 10,
     queueLimit: 0
 });
+
 
 
 db.connect((err)=>{
@@ -31,6 +38,9 @@ app.use(morgan("dev"))
 app.use(express.json())
 app.use(express.urlencoded({extended:false}))
 app.use(express.static(__dirname + '/public'));
+app.use(cookieParser());
+
+
 
 
 app.use((req,res,next)=>{
@@ -46,7 +56,8 @@ app.use((req,res,next)=>{
 app.use('/api/auth',api_auth)
 app.use('/api/storage',api_storage)
 app.use('/api/members',api_users)
-
+app.use('/auth',auth)
+app.use('/dashboard',dashboard)
 
 
 

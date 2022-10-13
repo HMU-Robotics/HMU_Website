@@ -82,3 +82,13 @@ create table item_reservation(
     foreign key (item_id) references item(id),
     foreign key (reservation_id) references reservation(id)
 );
+
+
+create table session(
+    session_id int not null auto_increment,
+    member_id int not null auto_increment,
+    expires unsigned int not null,
+    data varchar(254),
+    primary key (session_id),
+    foreign key (member_id) references user(id) 
+)

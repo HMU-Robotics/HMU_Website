@@ -2,6 +2,8 @@ const path = require("path")
 const jwt = require('jsonwebtoken')
 const bcrypt = require('bcrypt')
 const mysql = require("mysql2")
+const cookieParser = require('cookie-parser')
+const express = require("express")
 
 
   const db =  mysql.createPool({
@@ -14,7 +16,10 @@ const mysql = require("mysql2")
     queueLimit: 0
 });
 
+
+
 exports.login_path = async(req,res,next)=>{
+    res.cookie('Test','value')
     return res.sendFile(path.join(__dirname,'../public/Html/Login.html'))
 }   
 
@@ -24,11 +29,11 @@ exports.user_login = async(req,res,next) =>{
         if(err) throw err;
         console.log(user);
         if(user.length == 0){
-            return res.sendFile(path.join(__dirname,'../public/Html/Login.html'))
+            return res.redirect("/auth/adminLogin")
         }else{
             bcrypt.compare(req.body.password , user[0].password , (err,result)=>{
                 if(!result){
-                    return res.sendFile(path.join(__dirname,'../public/Html/Login.html'))
+                    return res.redirect("/auth/adminLogin")
                 }
                 if(result){
                     const token = jwt.sign({
@@ -41,7 +46,21 @@ exports.user_login = async(req,res,next) =>{
                             expiresIn:"1h"
                         }
                     )
-                    return res.sendFile(path.join(__dirname,'../public/Html/Dashboard.html'))
+                    let date = new Date()
+                    db.execute('DELETE FROM `session` WHERE `member_id` = ?',[user[0].id],(err,user)=>{
+                        if(err) {
+                            throw err;
+                            console.log(err)
+                        }
+                    })
+                    db.execute('INSERT into `session`(member_id,expires,data) VALUES (?,?,?)',[user[0].id,date.getTime(),token],(err,user)=>{
+                        if(err) {
+                            throw err;
+                            console.log(err)
+                        }
+                    })
+                    res.cookie('id_ref',token)
+                    return res.redirect("/dashboard")
                 }
             })
         }

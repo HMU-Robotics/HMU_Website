@@ -1,8 +1,8 @@
 const express = require('express')
 const router = express.Router()
 const StorageController = require('../controllers/api_storage')
-const AuthMiddleware = require("../middleware/auth")
-const {admin,viewer,editor} = require("../middleware/roles")
+const AuthMiddleware = require("../middleware/api_auth")
+const {admin,viewer,editor} = require("../middleware/api_roles")
 
 router.get("/item/all",AuthMiddleware,StorageController.get_all)
 router.get("/item/id/:item_id",AuthMiddleware,StorageController.get_by_id)
