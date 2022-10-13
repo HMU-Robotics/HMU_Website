@@ -2,6 +2,7 @@
 .Navbar{
     background: #1C0C3C;
     color: #DAE4F2;
+    justify-content: space-between;
 }
 
 .Navbar img{
@@ -11,9 +12,70 @@
     /* margin-left: 39%; */
 }
 
+Nav{
+    display: flex;
+    flex-direction: row;
+}
+
+.nav_links{
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    justify-content: space-between;
+    margin-left: 5.5em;
+}
+
+.social{
+    display: flex;
+    flex-direction: row;
+    margin-left: 15em;
+}
+
+.social a svg{
+    fill: #DAE4F2;
+    margin-right: 1.5em;
+    width: 30px;
+    height: 30px;
+    transition: ease-in-out 0.2s;
+}
+
+#facebook:hover{
+    fill: #4267B2;
+    transform: scale(1.2);
+}
+#youtube:hover{
+    fill: #FF0000;
+    transform: scale(1.2);
+}
+#instagram:hover{
+    fill: #F77737;
+    transform: scale(1.2);
+}
+#linkedin:hover{
+    fill: #0A66C2;
+    transform: scale(1.2);
+}
+
+
+
 @media screen and (max-width: 500px) {
     body .Navbar img{
         margin: auto;
         /* Margin auto for mobiles so hamburger is visible */
+    }
+    .nav_links{
+        flex-direction: column; 
+        text-align: center;
+        margin-right: 5.1em;
+    }
+    .social{
+        margin: auto;
+    }
+}
+
+
+@media screen and (max-width: 1024px) {
+    .nav_links{
+        margin-left: 5em;
     }
 }

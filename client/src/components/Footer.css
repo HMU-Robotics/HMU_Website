@@ -28,23 +28,13 @@ li {
     opacity: 0.8;
 }
 
-.main-footer #facebook:hover{
-    background-color: #4267B2;
-    transform: scale(1.2);
-}
-
-.main-footer #instagram:hover{
-    background-color: #F77737;
-    transform: scale(1.2);
-}
-
-.main-footer #linkedin:hover{
-    background-color: #0A66C2;
-    transform: scale(1.2);
-}	
-.main-footer #youtube:hover{
-    background-color: #FF0000;
-    transform: scale(1.2);
+.social_footer a svg{
+    fill: #DAE4F2;
+    margin-right: 1.5em;
+    margin-top: 2em;
+    width: 30px;
+    height: 30px;
+    transition: ease-in-out 0.2s;
 }
 
 .main-footer #CSRL{ 
@@ -65,4 +55,15 @@ li {
 
 .main-footer #HMU:hover{
     transform: scale(1.2);
+}
+
+.footer_links a{
+    text-decoration-line: none;
+    color: #DAE4F2;
+}
+
+
+.footer_links li{
+    margin-top: 1.4em;
+    text-align: center;
 }
