@@ -1,0 +1,9 @@
+.Time-box{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.Time_title{
+    margin-top: 1em;
+}
