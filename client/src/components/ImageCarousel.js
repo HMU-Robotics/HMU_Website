@@ -9,13 +9,16 @@ const ProjectCard = React.lazy(() => import('./ProjectCard'));
 
 function ImageCarousel(props) {
 
-    const cardType = "Project"; // this value will be passed from page to
-                                // image carousel through props when functional
+    const cardType = props?.cardCat; // this value will be passed from page to
+                                     // image carousel through props
 
     let card;
     
     if(cardType === "Project") {
-       card = <ProjectCard/>;
+      card = <ProjectCard/>;
+    }
+    else if(cardType === "News") {
+      
     }
 
     const responsive = {

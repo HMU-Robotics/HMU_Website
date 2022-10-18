@@ -7,11 +7,11 @@ class Projects extends Component{
     render(){
         return(
         <div>
-            <h1>Projects Page</h1>
-            <ImageCarousel/>
+            <h1 className="title">Projects Page</h1>
+            <ImageCarousel cardCat="Project"/>
             <div className="divider"/>
-            <h1>Seminars / Workshops</h1>
-            <ImageCarousel/>
+            <h1 className="title">Seminars / Workshops</h1>
+            <ImageCarousel cardCat="Project"/>
         </div>
         )
     }
