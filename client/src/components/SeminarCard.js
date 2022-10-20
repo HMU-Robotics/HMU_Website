@@ -1,8 +1,8 @@
 import Card from 'react-bootstrap/Card';
-import "./ProjectCard.css"
+import "./SeminarCard.css"
 
 
-function ProjectCard(props) {
+function SeminarCard(props) {
 
   const id = props.children.id;
   const title = props.children.title;
@@ -23,4 +23,4 @@ function ProjectCard(props) {
     );
   }
 
-  export default ProjectCard;
+  export default SeminarCard;

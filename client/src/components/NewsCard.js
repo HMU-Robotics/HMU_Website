@@ -2,18 +2,22 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import "./NewsCard.css"
 
-function NewsCard() {
+function NewsCard(props) {
+
+  const id = props.children.id;
+  const title = props.children.title;
+  const desc = props.children.desc;
+  const date = props.children.date;
+  const img = props.children.img;
+
   return (
     <Card className='card-news' style={{ width: '18rem' }}>
-    <Card.Img className='card-img' variant="top" src="Logos/Logo.png" />
+    <Card.Img className='card-img' variant="top" src={img} />
     <Card.Body>
-      <Card.Title>Card Title</Card.Title>
-      <p className='card-date'>03/02/1999</p>
-      <Card.Text>
-        Some quick example text to build on the card title and make up the
-        bulk of the card's content.
-      </Card.Text>
-      <Button variant="primary">Read More</Button>
+      <Card.Title>{title}</Card.Title>
+      <p className='card-date'>{date}</p>
+      <Card.Text>{desc}</Card.Text>
+      <Button variant="primary" onClick={() => window.open(`/test/path/${id}`)}>Read More</Button>
     </Card.Body>
   </Card>
   );

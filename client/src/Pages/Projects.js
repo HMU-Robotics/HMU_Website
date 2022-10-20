@@ -8,10 +8,10 @@ class Projects extends Component{
         return(
         <div>
             <h1 className="title">Projects Page</h1>
-            <ImageCarousel cardCat="Project"/>
+            <ImageCarousel className="project-carousel">Projects</ImageCarousel>
             <div className="divider"/>
             <h1 className="title">Seminars / Workshops</h1>
-            <ImageCarousel cardCat="Project"/>
+            <ImageCarousel className="seminar-carousel">Seminars</ImageCarousel>
         </div>
         )
     }
