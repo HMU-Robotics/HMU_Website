@@ -11,23 +11,20 @@ const db =  mysql.createPool({
     queueLimit: 0
 });
 
-const time_to_expire = 60000
+const time_to_expire = 1000 * 60 * 60 * 2 //2 hours
 
 module.exports = async(req,res,next)=> {
     if(req.cookies["id_ref"]){
-        db.execute('SELECT * from `session` WHERE `data` = ?',[req.cookies["id_ref"]],(err,session)=>{
-            if(err) {
-                throw err;
-                console.log(session)
-            }
+        await db.execute('SELECT * from `session` WHERE `data` = ?',[req.cookies["id_ref"]],(err,session)=>{
             let date = new Date()
             if(session.length == 0 ){
                 return res.redirect("/auth/adminLogin")
             }else if(+session[0].expires + time_to_expire < +date.getTime()){
-                // res.clearCookie("id_ref")
+                res.clearCookie("id_ref")
                 return res.redirect("/auth/adminLogin")
+            }else{
+                next()
             }
         })
     }
-    next()
 } 

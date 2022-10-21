@@ -18,13 +18,22 @@ create table post(
     primary key(id)
 );
 
-create table images(
+create table postImages(
     id int not null auto_increment,
     post_id int not null,
     img longblob not null,
     caption varchar(80),
     primary key (id),
     foreign key (post_id) references post(id)
+);
+
+create table userImages(
+    id int not null auto_increment,
+    user_id int not null,
+    img longblob not null,
+    caption varchar(80),
+    primary key (id),
+    foreign key (user_id) references user(id)
 );
 
 create table user(
@@ -86,8 +95,8 @@ create table item_reservation(
 
 create table session(
     session_id int not null auto_increment,
-    member_id int not null auto_increment,
-    expires unsigned int not null,
+    member_id int not null,
+    expires long not null,
     data varchar(254),
     primary key (session_id),
     foreign key (member_id) references user(id) 

@@ -9,7 +9,6 @@ const dashboard = require("./routes/dashboard")
 const helmet = require("helmet")
 const cookieParser = require('cookie-parser');
 
-const TWO_HOURS = 1000 * 60 * 60 * 2
 
 
 const db = mysql.createConnection({
@@ -30,13 +29,15 @@ db.connect((err)=>{
 })
 
 
+
+
 const app = express()
 
 app.use(helmet());
 app.disable('x-powered-by')
 app.use(morgan("dev"))
 app.use(express.json())
-app.use(express.urlencoded({extended:false}))
+app.use(express.urlencoded({extended:true}))
 app.use(express.static(__dirname + '/public'));
 app.use(cookieParser());
 

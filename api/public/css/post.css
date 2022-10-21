@@ -1,0 +1,74 @@
+body {
+    overflow-x: hidden;
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+      'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+      sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+body{
+  background-color: #1C0C3C;
+}
+
+img{
+  width: 150px;
+  height: 150px;
+}
+
+.form{
+    margin: auto;
+    margin-top: 17em;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: #fff;
+    width: 500px;
+    height: 600px;
+    border: 1px solid #000;
+    border-radius: 20px;
+    box-shadow: rgba(0, 0, 0, 4) 3px 3px 6px 6px, rgba(0, 0, 0, 4) 6px 6px 6px;
+}
+
+.form_field{
+  margin-top: 20px;
+}
+label {
+  position: relative;
+  left:-20px
+}
+
+.form_input{
+  border: none;
+  background-color: #dcdcdc;
+  border-radius: 20px;
+  color: #000;
+}
+
+#login_email{
+  position:relative;
+  left: 1.1em;
+}
+
+#login_btn{
+  background-color: #fff;
+  margin-top: 10px;
+  height: 3em;
+  width: 10em;
+  border-radius: 20px;
+}
+
+#login_btn:hover{
+  background-color: #1C0C3C;
+  transition: ease-in-out 0.1s;
+  transform: scale(1.2);
+  color: #fff;
+}
+
+#login_btn:active{
+  transition: ease-in-out 0.1s;
+  transform: scale(0.8);
+}
