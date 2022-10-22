@@ -201,7 +201,7 @@ className='seminar-carousel'
 {Array(seminarData.length).fill(seminars.map((seminar, i) => <Suspense fallback={<div>Loading . . .</div>}><SeminarCard key={i}>{seminar}</SeminarCard></Suspense>))}
 </Carousel>;
 
-carouselItems = props.children === "Projects" ? projectCar : seminarCar;
+carouselItems = props.children === "News" ? newsCar : (props.children === "Projects" ? projectCar : seminarCar);
 
     return(
       <div>{carouselItems}</div>

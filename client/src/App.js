@@ -5,6 +5,7 @@ import Landing from './Pages/Landing'
 import Members from './Pages/Members'
 import Projects from './Pages/Projects'
 import Supporters from './Pages/Supporters'
+import Posts from './Pages/Posts';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route exact path="/Projects" element={<Projects/>}></Route>
         <Route exact path="/Supporters" element={<Supporters/>}></Route>
         <Route exact path="*" element={<Landing/>}></Route>
+        <Route path="/test/path/:postid" element={<Posts/>}></Route>
       </Routes>
       <Footer/>
     </Router>

@@ -4,6 +4,8 @@ import "./MemberCard.css"
 
 function MemberCard(props) {
 
+    // description will be automatic from admin panel TODO
+
     const id = props.children[1].id;
     const name = props.children[1].name;
     const desc = props.children[1].desc;
@@ -11,7 +13,6 @@ function MemberCard(props) {
     const dateAdded = props.children[1].dateAdded;
     const dateRemoved = props.children[1].dateRemoved;
 
-    console.log(props.children);
 
     return (
         <Card className='card' style={{width: '18rem' }}>

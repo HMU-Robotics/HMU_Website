@@ -11,13 +11,12 @@ function NewsCard(props) {
   const img = props.children.img;
 
   return (
-    <Card className='card-news' style={{ width: '18rem' }}>
+    <Card className='card-news' onClick={() => window.open(`/test/path/${id}`)} style={{ width: '22rem', height: '25em'}}>
     <Card.Img className='card-img' variant="top" src={img} />
     <Card.Body>
-      <Card.Title>{title}</Card.Title>
+      <Card.Title className='card-title'>{title}</Card.Title>
       <p className='card-date'>{date}</p>
-      <Card.Text>{desc}</Card.Text>
-      <Button variant="primary" onClick={() => window.open(`/test/path/${id}`)}>Read More</Button>
+      <Card.Text className='card-desc'>{desc}lorem ipsum bla bla kdjfghlskdjfh ,jkdfhkjahsdjj</Card.Text>
     </Card.Body>
   </Card>
   );

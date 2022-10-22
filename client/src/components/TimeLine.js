@@ -78,7 +78,7 @@ function TimeLine(){
         <div className="Time-box">
             <h1 className="Time_title">TimeLine</h1>
                 <div style={{ width: "100%", height: "800px" }}>
-                    <Chrono items={items} titlePosition="BOTTOM"  mode="VERTICAL_ALTERNATING" flipLayout showAllCardsHorizontal slideShow/>
+                    <Chrono items={items} titlePosition="BOTTOM"  mode="VERTICAL_ALTERNATING" flipLayout showAllCardsHorizontal slideShow hideControls/>
                 </div>
         </div>
     )
