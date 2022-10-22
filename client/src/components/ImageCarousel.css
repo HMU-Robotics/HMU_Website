@@ -1,5 +1,14 @@
+ .news-carousel {
+    margin-block-start: 5em;
+    margin-block-end: 2em; 
+}
 
-.carousel {
-    margin-top: 2em;
-    margin-bottom: 3em;
+.project-carousel {
+    margin-block-start: 5em;
+    margin-block-end: 2em;
+}
+
+.seminar-carousel {
+    margin-block-start: 5em;
+    margin-block-end: 2em;
 }

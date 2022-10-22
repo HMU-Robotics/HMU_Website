@@ -4,26 +4,23 @@ import "./ProjectCard.css"
 
 function ProjectCard(props) {
 
-  // data received from db
-  const title = "Card Title";
-  const desc = "Some quick example text to build on the card title and make up thebulk of the card's content.";
-  const date = "01/01/2000";
-  const id = "12345" 
+  const id = props.children.id;
+  const title = props.children.title;
+  const desc = props.children.desc;
+  const date = props.children.date;
+  const img = props.children.img;
 
 
     return (
-      <Card className='card' onClick={() => window.open(`/test/path/${id}`)} style={{ width: '18rem' }}>
-        <Card.Img variant="top" src="Media/testimage.png" />
+      <Card className='project-card' onClick={() => window.open(`/test/path/${id}`)} style={{ width: '22rem', height: '25em' }}>
+        <Card.Img variant="top" src={img} />
         <Card.Body>
-          <Card.Title className='title'>{title}</Card.Title>
-          <Card.Text className='date'>{date}</Card.Text>
-          <Card.Text className='desc'>
-            {desc}
-          </Card.Text>
+          <Card.Title className='project-title'>{title}</Card.Title>
+          <Card.Text className='project-date'>{date}</Card.Text>
+          <Card.Text className='project-desc'>{desc}</Card.Text>
         </Card.Body>
       </Card>
     );
   }
 
   export default ProjectCard;
-  

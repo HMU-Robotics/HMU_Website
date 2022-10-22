@@ -1,13 +1,13 @@
 
 
-h1 {
+.project-page-title {
     padding-top: 1em;
     margin-inline-start: 3em;
     color: rgb(0, 33, 83);
 }
 
 @media screen and (max-width: 1024px) {
-    body h1 {
+    body .project-page-title {
         margin: auto;
         text-align: center;
     }
