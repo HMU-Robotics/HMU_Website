@@ -1,9 +1,7 @@
 import React, { Suspense } from 'react'
-import Container from 'react-bootstrap/Container'
-import Row from 'react-bootstrap/Row'
-import Col from 'react-bootstrap/Col'
+import Grid2 from '@mui/material/Unstable_Grid2/Grid2';
 import './MemberGrid.css'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 
 const MemberCard = React.lazy(() => import('./MemberCard'));
@@ -13,7 +11,7 @@ const cardData = [
         id: 1,
         name:  "name1",
         desc:  "test1",
-        image: "Media/testimage.png",
+        img: "Media/testimage.png",
         dateAdded: "2021",
         dateRemoved: "Current"
     },
@@ -21,7 +19,7 @@ const cardData = [
         id: 2,
         name:  "name2",
         desc:  "test2",
-        image: "Media/testimage.png",
+        img: "Media/testimage.png",
         dateAdded: "2021",
         dateRemoved: "2022"
     },
@@ -29,7 +27,7 @@ const cardData = [
         id: 3,
         name:  "name3",
         desc:  "test3",
-        image: "Media/testimage.png",
+        img: "Media/testimage.png",
         dateAdded: "2020",
         dateRemoved: "2021"
     }
@@ -38,25 +36,38 @@ const cardData = [
 
 function MemberGrid(props) {
 
-    const [cards, setCards] = useState(cardData);
+    const [memberCards, setMemberCards] = useState(cardData);
 
+    const [memberData, setMemberData] = useState();
 
-    const fetchData = (data) => {
-        setCards({
-            cards: cards.concat(data)
-        })
+        // useEffect(() => {
+    //     fetch(`api/page/for/post`, {})
+    //       .then((res) => res.json())
+    //       .then((response) => {
+    //         setMemberData(response);
+    //         console.log(`api/page/for/post`);
+    //       })
+    //       .catch((error) => console.log(error));
+    //   }, []);
+
+    function sortMembers() {
+        
     }
 
 
-    let memberNum = cardData.length;
 
-    console.log(cards);
-
-    return (
-        <Container fluid>
-            {Array(Math.floor(memberNum/4)+1).fill(<Row>{Array(4).fill(<Col> <Suspense fallback={<div>Loading...</div>}> {cards.map((card, i) => <MemberCard key={i}> {card} </MemberCard> )} </Suspense> </Col>)}</Row>)}
-        </Container>
+    return(
+        <div className="member-grid">
+            <Grid2 container spacing={4} columns={16} display="flex" alignItems="center">
+                {Array(5).fill(memberCards.map((member, i) => (
+                    <Grid2 md={4} key={i}>
+                        <Suspense fallback={<div>Loading...</div>}><MemberCard key={i}>{member}</MemberCard></Suspense>
+                    </Grid2>
+                )))}
+            </Grid2>
+        </div>
     );
+
 }
 
 
