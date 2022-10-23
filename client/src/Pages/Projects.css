@@ -1,9 +1,15 @@
 
+.project-page {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    background-image: url("../../public/background/1259290.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
 
 .project-page-title {
     padding-top: 1em;
     margin-inline-start: 3em;
-    color: rgb(0, 33, 83);
+    color: rgb(255, 255, 255);
 }
 
 @media screen and (max-width: 1024px) {
@@ -14,6 +20,6 @@
 }
 
 .divider {
-    background-color: white;
+    opacity: 0%;
     box-shadow: none;
 }

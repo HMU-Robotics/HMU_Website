@@ -21,7 +21,6 @@ function Posts(props, {match} ) {
     //       .catch((error) => console.log(error));
     //   }, []);
 
-      console.log("im inside post now");
 
     return(  // needs to be sanitized vs xss scripts
         <div>
