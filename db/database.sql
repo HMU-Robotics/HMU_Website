@@ -11,9 +11,9 @@ create table role(
 create table post(
     id int not null auto_increment,
     title varchar(80),
-    content varchar(254),
+    content varchar(1500),
     history bit default 0,
-    created_at timestamp default current_timestamp,
+    created_at varchar (24),
     updated_at timestamp default current_timestamp on update current_timestamp,
     primary key(id)
 );
@@ -21,20 +21,12 @@ create table post(
 create table postImages(
     id int not null auto_increment,
     post_id int not null,
-    img longblob not null,
-    caption varchar(80),
+    img varchar(80) not null,
     primary key (id),
     foreign key (post_id) references post(id)
 );
 
-create table userImages(
-    id int not null auto_increment,
-    user_id int not null,
-    img longblob not null,
-    caption varchar(80),
-    primary key (id),
-    foreign key (user_id) references user(id)
-);
+
 
 create table user(
     id int not null auto_increment,
@@ -44,13 +36,24 @@ create table user(
     confirmed_at timestamp,
     password varchar(80),
     academic_id int not null,
+    school text not null,
     subscription Boolean not null,
     subscription_date timestamp,
     role_id int not null,
+    end_date timestamp,
     created_at timestamp default current_timestamp,
     updated_at timestamp default current_timestamp on update current_timestamp,
     primary key (id),
     foreign key (role_id) references role(id)
+);
+
+create table userImages(
+    id int not null auto_increment,
+    user_id int not null,
+    img varchar(80) not null,
+    caption varchar(80),
+    primary key (id),
+    foreign key (user_id) references user(id)
 );
 
 create table reservation(

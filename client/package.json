@@ -25,6 +25,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
+  "homepage": "https://localhost/",
   "eslintConfig": {
     "extends": [
       "react-app",

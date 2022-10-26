@@ -4,8 +4,7 @@ const mysql = require('mysql2')
 const api_auth = require("./routes/api_auth")
 const api_storage = require("./routes/api_storage")
 const api_users = require("./routes/api_user")
-const auth = require("./routes/auth")
-const dashboard = require("./routes/dashboard")
+const api_dashboard = require("./routes/api_dashboard")
 const helmet = require("helmet")
 const cookieParser = require('cookie-parser');
 
@@ -38,7 +37,6 @@ app.disable('x-powered-by')
 app.use(morgan("dev"))
 app.use(express.json())
 app.use(express.urlencoded({extended:true}))
-app.use(express.static(__dirname + '/public'));
 app.use(cookieParser());
 
 
@@ -57,8 +55,7 @@ app.use((req,res,next)=>{
 app.use('/api/auth',api_auth)
 app.use('/api/storage',api_storage)
 app.use('/api/members',api_users)
-app.use('/auth',auth)
-app.use('/dashboard',dashboard)
+app.use('/api/dashboard',api_dashboard)
 
 
 

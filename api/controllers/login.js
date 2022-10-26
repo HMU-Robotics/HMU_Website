@@ -18,22 +18,18 @@ const express = require("express")
 
 
 
-exports.login_path = async(req,res,next)=>{
-    res.cookie('Test','value')
-    return res.sendFile(path.join(__dirname,'../public/Html/Login.html'))
-}   
-
-
 exports.user_login = async(req,res,next) =>{
     db.execute('SELECT * FROM `user` WHERE `email` = ?',[req.body.email],(err,user)=>{
         if(err) throw err;
         console.log(user);
         if(user.length == 0){
-            return res.redirect("/auth/adminLogin")
+            res.status(409).json("Invalid input")
         }else{
             bcrypt.compare(req.body.password , user[0].password , (err,result)=>{
                 if(!result){
-                    return res.redirect("/auth/adminLogin")
+                    return res.status(405).json({
+                        message:"Auth failed"
+                    })
                 }
                 if(result){
                     const token = jwt.sign({
@@ -60,7 +56,10 @@ exports.user_login = async(req,res,next) =>{
                         }
                     })
                     res.cookie('id_ref',token)
-                    return res.redirect("/dashboard")
+                    return res.status(200).json({
+                        message:"Auth successful",
+                        token:token
+                    })
                 }
             })
         }
