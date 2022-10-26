@@ -73,12 +73,16 @@ function TimeLine(){
         }
       }
     ];
+    
+    function test() {
+      console.log("hey")
+    }
 
     return(
         <div className="Time-box">
             <h1 className="Time_title">TimeLine</h1>
                 <div style={{ width: "100%", height: "800px" }}>
-                    <Chrono items={items} titlePosition="BOTTOM"  mode="VERTICAL_ALTERNATING" flipLayout showAllCardsHorizontal slideShow hideControls/>
+                    <Chrono items={items} titlePosition="BOTTOM"  mode="VERTICAL_ALTERNATING" scrollable={{scrollbar: false}} onScrollEnd={() => test()} flipLayout showAllCardsHorizontal slideShow hideControls/>
                 </div>
         </div>
     )
