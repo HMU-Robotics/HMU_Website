@@ -37,7 +37,7 @@ exports.user_login = async(req,res,next) =>{
                         userId:user[0].id,
                         roles:user[0].role_id,
                     },
-                        "superS",
+                        "superS", //secret MUST change
                         {
                             expiresIn:"1h"
                         }
@@ -48,6 +48,7 @@ exports.user_login = async(req,res,next) =>{
                             throw err;
                             console.log(err)
                         }
+                        
                     })
                     db.execute('INSERT into `session`(member_id,expires,data) VALUES (?,?,?)',[user[0].id,date.getTime(),token],(err,user)=>{
                         if(err) {
@@ -56,8 +57,10 @@ exports.user_login = async(req,res,next) =>{
                         }
                     })
                     res.cookie('id_ref',token)
+                    res.cookie('id',user[0].id)
                     return res.status(200).json({
                         message:"Auth successful",
+                        id:user[0].id,
                         token:token
                     })
                 }

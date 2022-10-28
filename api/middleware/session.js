@@ -14,7 +14,6 @@ const db =  mysql.createPool({
 const time_to_expire = 1000 * 60 * 60 * 2 //2 hours
 module.exports = async(req,res,next)=> {
     if(req.cookies["id_ref"]){
-        console.log("outside")
         await db.execute('SELECT * from `session` WHERE `data` = ?',[req.cookies["id_ref"]],(err,session)=>{
             let date = new Date()
             console.log(session)
@@ -22,6 +21,7 @@ module.exports = async(req,res,next)=> {
                 return res.status(404)
             }else if(+session[0].expires + time_to_expire < + date.getTime()){
                 res.clearCookie("id_ref")
+                res.clearCookie("id")
                 return res.status(404)
             }else{
                 return res.status(200)
