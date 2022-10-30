@@ -1,21 +1,20 @@
 import './App.css';
 import { BrowserRouter as Router,Routes ,Route } from 'react-router-dom';
-import { UserProvider } from './hooks/UserContext';
 import PrivateRoute from './pages/PrivateRoute';
 import Login from './pages/Login';
 import NotFound from './pages/NotFound';
-import useFindUser from './hooks/useFindUser';
 import Dashboard from './pages/Dashboard';
 import CreatePost from './pages/CreatePost';
 import EditPost from './pages/EditPost';
 import EditUser from './pages/EditUser';
 import CreateUser from './pages/CreateUser';
+import {UserProvider} from './hooks/UserContext';
 
 function App() {
-const { user, setUser } = useFindUser(null);
+
 return (
  <Router basename='/api/'>
- <UserProvider value={{ user, setUser}}>
+ <UserProvider>
    <Routes>
      <Route index element={<Login />}/>
      <Route element={<PrivateRoute/>}>

@@ -1,16 +1,14 @@
 import React, { useContext } from 'react';
 import { Outlet, Navigate } from 'react-router-dom';
-import { UserConsumer } from './../hooks/UserContext';
+import { UserContext } from '../hooks/UserContext';
 
 export default function PrivateRoutes() {
 
+   const [user , setUser] = useContext(UserContext)
    return(
       <div>
-         <UserConsumer>
-            {(props)=>{
-               return props.user ? <Outlet/> : <Navigate to={"/"}/>
-            }}
-         </UserConsumer>
+            {console.log(user)}
+            {user ? <Outlet/> : <Navigate to={"/"}/>}
       </div>
    )
 }

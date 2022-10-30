@@ -10,6 +10,7 @@ useEffect(() => {
      await axios.post(api_login)
         .then(res => {
         setUser(res.data.member_id);
+        console.log(res.data.member_id)
      }). catch(err => {
       console.log(err)
     });

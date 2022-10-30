@@ -1,9 +1,8 @@
 import axios from "axios";
 import React , { Component, useState ,useContext } from "react"
-import { Navigate } from 'react-router-dom';
+import { Navigate  } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import { UserConsumer } from "../hooks/UserContext";
 
 
 
@@ -24,7 +23,7 @@ function Login (){
             else return true
         }
 
-        const handleSubmit= async (e) => {
+        const handleSubmit=(e) => {
             e.preventDefault()
             axios.post(api_login,{
                 'email':email,
@@ -32,11 +31,6 @@ function Login (){
             })
             .then((res)=>{
                 console.log(res)
-                if(res.data.token){
-                    setUser(res.data.id)
-                    console.log(user)
-                }
-                <Navigate to={"/"}/>
             })
             .catch((err)=>{
                 console.log(err)
