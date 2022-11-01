@@ -5,7 +5,7 @@ function Hero(){
     return(
             <div className="video-wrapper">
                     <video autoPlay={true} muted={true} loop>
-                        <source src="/Media/Site_teliko.mp4" type="video/mp4"/>
+                        <source src="/Media/hero_video.mp4" type="video/mp4"/>
                         Your browser does not support the video tag.
                     </video>
 
