@@ -1,0 +1,12 @@
+
+
+.table_members{
+    display: flex;
+    flex-direction:column;
+}
+
+@media only screen and (min-width: 800px) {
+    .table_members{
+      flex-direction: row;
+    }
+  }

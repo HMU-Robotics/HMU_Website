@@ -1,0 +1,18 @@
+
+.table_card{
+    width: 250px;
+    height: 250px;
+    margin: auto;
+    color: #000;
+    border-radius: 1px #000 solid;
+    text-align: center;
+    background: #fff;
+    border-radius: 20px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    margin-top: 2em;
+    margin-bottom: 2em;
+}
+
+.table_title{
+    margin-top: 0.4em;
+}

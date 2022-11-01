@@ -3,9 +3,60 @@
 .member-page {
     color: whitesmoke;
     font-family: Georgia, 'Times New Roman', Times, serif;
-    background-image: url("../../public/background/blurred3.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
+    background: linear-gradient(90deg, #3a588a 0%, #252d53 100%);
+}
+
+.member_con{
+    display: flex;
+    flex-direction: column;
+    background-color: whitesmoke;
+    color: #000;
+    border-radius: 20px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    height: 10em;
+    width: 70%;
+    margin: auto;
+}
+.member_social{
+    text-align: center;
+}
+
+.member_img{
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    color: #000;
+    margin-top: 2em;
+    margin-bottom: 2em;
+    justify-content: center;
+}
+
+#member_img{
+    width: 100px;
+    height: 100px;
+}
+
+.member_img_1{
+    margin-right: 3em;
+}
+.member_img a{
+    text-decoration: none;
+    color: whitesmoke;
+    transition: ease-in-out 0.1s;
+}
+
+.member_img a:hover{
+    transform: scale(1.2);
+}
+
+.member_img a:active{
+    transform: scale(0.8);
+}
+
+
+
+.member_img_2{
+    margin-left: 3em;
 }
 
 .start {
@@ -20,20 +71,24 @@
     font-size: 1.5em;
 }
 
-.spacer {
-    margin-top: 2em;
-    background-color: white;
-    box-shadow: none;
-}
-
 .teams {
-    font-size: 1.5em;
-    margin-left: 2em;
-    margin-right: 1.5em;
+    font-size: 1.1em;
+    margin-left: 0.5em;
+    margin-right: 0.5em;
 }
-
 
 #images {
-    display: flexbox;
+    display: flex;
     justify-content: center;
 }
+
+@media only screen and (min-width: 800px) {
+    .table_members{
+      flex-direction: row;
+    }
+    .teams{
+        font-size: 1.3em;
+        margin-left: 2em;
+        margin-right: 1.5em;
+    }
+  }

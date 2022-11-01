@@ -1,9 +1,7 @@
 
 .project-page {
     font-family: Georgia, 'Times New Roman', Times, serif;
-    background-image: url("../../public/background/blurred3.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
+    background: linear-gradient(90deg, #3a588a 0%, #252d53 100%);
 }
 
 .project-page-title {

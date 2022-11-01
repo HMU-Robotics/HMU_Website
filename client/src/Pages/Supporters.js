@@ -1,4 +1,5 @@
 import React , { Component } from "react"
+import './Supporters.css'
 
 
 class Supporters extends Component{
