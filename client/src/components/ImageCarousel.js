@@ -4,20 +4,16 @@ import "react-multi-carousel/lib/styles.css";
 import "./ImageCarousel.css"
 
 
-const ProjectCard = React.lazy(() => import('./ProjectCard'));
-
-const NewsCard = React.lazy(() => import('./NewsCard'));
-
-const SeminarCard = React.lazy(() => import('./SeminarCard'));
+const Card = React.lazy(() => import('./Card'));
 
 const responsive = {
   desktop: {
     breakpoint: { max: 3000, min: 1024 },
-    items: 3
+    items: 5
   },
   tablet: {
     breakpoint: { max: 1024, min: 464 },
-    items: 2
+    items: 3
   },
   mobile: {
     breakpoint: { max: 464, min: 0 },
@@ -28,9 +24,9 @@ const responsive = {
 const projectData = [
   {
     id: 1,
-    title: "Ptitle1",
-    desc: "desc1",
-    date: "date1",
+    title: "Test title",
+    desc: "This is a very long and useless text that is ment only as a very long and long text to see and test",
+    date: "11/2/2012",
     img: "Media/testimage.png"
   },
   {
@@ -64,18 +60,12 @@ const projectData = [
 ];
 
 const seminarData = [
-  {
-    id: 6,
-    title: "Stitle1",
-    desc: "desc1",
-    date: "date1",
-    img: "Media/testimage.png"
-  },
+
   {
     id: 7,
-    title: "Stitle2",
-    desc: "desc2",
-    date: "date2",
+    title: "Test title",
+    desc: "This is a very long and useless text that is ment only as a very long and long text to see and test",
+    date: "11/2/2012",
     img: "Media/testimage.png"
   },
   {
@@ -104,9 +94,9 @@ const seminarData = [
 const newsData = [
   {
     id: 11,
-    title: "title1",
-    desc: "desc1",
-    date: "date1",
+    title: "Test title",
+    desc: "This is a very long and useless text that is ment only as a very long and long text to see and test",
+    date: "11/2/2012",
     img: "Media/testimage.png"
   },
   {
@@ -173,7 +163,7 @@ function ImageCarousel(props) {
   infinite={true}
   className='project-carousel'
   >
-    {Array(projectData.length).fill(projects.map((project, i) => <Suspense fallback={<div>Loading . . .</div>}><ProjectCard key={i}>{project}</ProjectCard></Suspense>))}
+    {Array(projectData.length).fill(projects.map((project, i) => <Suspense fallback={<div>Loading . . .</div>}><Card key={i}>{project}</Card></Suspense>))}
   </Carousel>;
 
 const newsCar =     <Carousel
@@ -185,7 +175,7 @@ autoPlaySpeed={5000}
 infinite={true}
 className='news-carousel'
 >
-{Array(newsData.length).fill(news.map((newsArticle, i) => <Suspense fallback={<div>Loading . . .</div>}><NewsCard key={i}>{newsArticle}</NewsCard></Suspense>))}
+{Array(newsData.length).fill(news.map((newsArticle, i) => <Suspense fallback={<div>Loading . . .</div>}><Card key={i}>{newsArticle}</Card></Suspense>))}
 </Carousel>;
 
 
@@ -198,7 +188,7 @@ autoPlaySpeed={5000}
 infinite={true}
 className='seminar-carousel'
 >
-{Array(seminarData.length).fill(seminars.map((seminar, i) => <Suspense fallback={<div>Loading . . .</div>}><SeminarCard key={i}>{seminar}</SeminarCard></Suspense>))}
+{Array(seminarData.length).fill(seminars.map((seminar, i) => <Suspense fallback={<div>Loading . . .</div>}><Card key={i}>{seminar}</Card></Suspense>))}
 </Carousel>;
 
 carouselItems = props.children === "News" ? newsCar : (props.children === "Projects" ? projectCar : seminarCar);

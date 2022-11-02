@@ -1,37 +1,57 @@
-
-.member-card {
-    text-align: center;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 1.5em;
-}
-
 @media screen and (max-width: 1024px) {
-    body .member-card {
+    .members-con {
         margin-left: auto;
         margin-right: auto;
     }
 }
 
-.member-name {
-    color: rgb(7, 92, 219);
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    font-size: 2em;
+.members-con{
+    height: 30em;
+    width: 20em;
+    background: whitesmoke;
+    margin: auto;
+    text-align: center;
+    border-radius: 2px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    transition: ease-in-out 0.2s;
 }
 
-.member-date {
-    color: black;
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    font-size: 1.5em;
+.members-con:hover{
+    transform: scale(1.05);
+    background: #ffe;
 }
 
-.member-desc {
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    color: rgba(0, 0, 0, 0.753);
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    font-size: 1.5em;
+#members-img{
+    height: 13em;
+    width: 13em;
+    border-radius: 50%;
+    margin-top: 1em;
+}
+
+.members-title{
+    color: #000;
+    margin-top: 1em;
+    font-weight:500;
+}
+
+.members-desc{
+    color: #000;
+    margin-top: 1em;
+    font-size: 1.2em;
+    font-weight:500;
+}
+
+.members-date{
+    color: #000;
+    font-size: 1.2em;
+    opacity: 0.7;
+    font-weight:400;
+}
+
+.members-role{
+    color: #000;
+    margin-top: 1.8em;
+    font-size: 1.2em;
+    font-weight:500;
+    opacity: 0.7;
 }

@@ -6,4 +6,15 @@
 
 .Time_title{
     margin-top: 1em;
+    margin-bottom: 1em;
+    color: #fff;
+}
+
+.time-title{
+    color: whitesmoke;
+    margin: auto;
+    text-align: center;
+    margin-top: 20px;
+    font-size: 3em;
+    margin-bottom: 0.6em;
 }

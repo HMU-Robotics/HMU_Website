@@ -1,0 +1,16 @@
+.member-grid{
+    margin-left: 20px;
+    margin-right: 20px;
+    text-align: center;
+}
+
+.members-box-title{
+    margin-top: 2em;
+    margin-bottom: 2em;
+}
+
+@media screen and (max-width: 900px) {
+    .member-grid{
+        margin-left: 5.4em;
+    }
+}

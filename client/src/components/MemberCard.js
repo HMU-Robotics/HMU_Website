@@ -1,4 +1,3 @@
-import Card from 'react-bootstrap/Card'
 import "./MemberCard.css"
 
 
@@ -15,14 +14,15 @@ function MemberCard(props) {
 
 
     return (
-        <Card className='member-card' style={{width: '18rem', height: '18em' }}>
-            <Card.Img variant='top' src={img} />
-            <Card.Body>
-                <Card.Title className='member-name'>{name}</Card.Title>
-                <Card.Text className='member-desc'>{desc}</Card.Text>
-                <Card.Text className='member-date'>{dateAdded} - {dateRemoved}</Card.Text>
-            </Card.Body>
-        </Card>
+        <div className='members-con'>
+            <img id='members-img' src={img}/>
+            <div className='members-body'>
+                <h3 className='members-title'>{name}</h3>
+                <p className='members-desc'>{desc}</p>
+                <p className='members-role'>title</p>
+                <p className='members-date'>{dateAdded} - {dateRemoved}</p>
+        </div>
+      </div>
     );
 }
 

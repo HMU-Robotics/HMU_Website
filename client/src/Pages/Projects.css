@@ -10,14 +10,18 @@
     color: rgb(255, 255, 255);
 }
 
+.project-cont{
+    height: 600px;
+    width: 100%;
+}
+.seminars-cont{
+    height: 600px;
+    width: 100%;
+}
+
 @media screen and (max-width: 1024px) {
     body .project-page-title {
         margin: auto;
         text-align: center;
     }
-}
-
-.divider {
-    opacity: 0%;
-    box-shadow: none;
 }
