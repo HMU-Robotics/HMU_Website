@@ -1,0 +1,14 @@
+.support-cont{
+    background: linear-gradient(90deg, #3a588a 0%, #252d53 100%);
+}
+
+.support-title{
+    text-align: center;
+    color: whitesmoke;
+}
+
+.support-thanks{
+    font-size: 32px;
+    text-align: center;
+    color: whitesmoke;
+}
