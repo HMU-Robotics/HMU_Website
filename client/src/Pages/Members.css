@@ -2,8 +2,8 @@
 
 .member-page {
     color: whitesmoke;
-    font-family: Georgia, 'Times New Roman', Times, serif;
     background: linear-gradient(90deg, #3a588a 0%, #252d53 100%);
+    padding-top: 2em;
 }
 
 .member_con{
@@ -29,6 +29,14 @@
     margin-top: 2em;
     margin-bottom: 2em;
     justify-content: center;
+}
+
+.member-start{
+    margin-left: 5em;
+    margin-right: 5em;
+    margin-bottom: 1em;
+    font-size: 2em;
+    text-align: center;
 }
 
 #member_img{
