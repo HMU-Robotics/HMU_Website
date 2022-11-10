@@ -13,16 +13,16 @@ import {UserProvider} from './hooks/UserContext';
 function App() {
 
 return (
- <Router basename='/api/'>
+ <Router basename='/api'>
  <UserProvider>
    <Routes>
      <Route index element={<Login />}/>
      <Route element={<PrivateRoute/>}>
-      <Route element={<Dashboard/>} path="dashboard"  exact/>
-      <Route element={<CreateUser/>} path="createuser"  exact/>
-      <Route element={<EditUser/>} path="edituser" exact/>
-      <Route element={<CreatePost/>} path="createpost" exact/>
-      <Route element={<EditPost/>} path="editpost" exact/>
+        <Route element={<Dashboard/>} path="/dashboard"  exact/>
+        <Route element={<CreateUser/>} path="/createuser"  exact/>
+        <Route element={<EditUser/>} path="/edituser" exact/>
+        <Route element={<CreatePost/>} path="/createpost" exact/>
+        <Route element={<EditPost/>} path="/editpost" exact/>
      </Route>
      <Route element={<NotFound/>}/>
   </Routes>

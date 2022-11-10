@@ -14,7 +14,7 @@ router.post('/login',authController.user_login)
 router.post('/checkSession',check_session)
 
 // sets up cookies too
-router.post('/adminLogin',loginController.user_login)
+router.post('/AdminLogin',loginController.user_login)
 
 
 

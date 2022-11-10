@@ -4,11 +4,19 @@ import { UserContext } from '../hooks/UserContext';
 
 export default function PrivateRoutes() {
 
-   const [user , setUser] = useContext(UserContext)
+   const user  =useContext(UserContext)
+
+   const passRender = ()=>{
+      if(user === 9999){
+         return <Navigate to={"/"}/>
+      }else{
+         return <Outlet/>
+      }
+   }
    return(
       <div>
             {console.log(user)}
-            {user ? <Outlet/> : <Navigate to={"/"}/>}
+            {passRender()}
       </div>
    )
 }

@@ -23,14 +23,18 @@ function Login (){
             else return true
         }
 
-        const handleSubmit=(e) => {
+        const handleSubmit= async (e) => {
             e.preventDefault()
-            axios.post(api_login,{
+            await axios.post(api_login,{
                 'email':email,
                 'password':password
             })
             .then((res)=>{
                 console.log(res)
+                console.log(res.status)
+                if(res.status === 200) {
+                <Navigate to={"/api/dashboard"}/>
+                }
             })
             .catch((err)=>{
                 console.log(err)
@@ -38,21 +42,21 @@ function Login (){
           }
 
         return(
-                <Form onSubmit={handleSubmit}>
+            <Form onSubmit={handleSubmit}>
                 <h3>Login</h3>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
-                <Form.Label>Email address</Form.Label>
-                <Form.Control type="email" placeholder="Enter email" onChange={handleEmail}/>
-                <Form.Text className="text-muted">
+                    <Form.Label>Email address</Form.Label>
+                    <Form.Control type="email" placeholder="Enter email" onChange={handleEmail}/>
+                    <Form.Text className="text-muted">
                     We'll never share your email with anyone else.
-                </Form.Text>
+                    </Form.Text>
                 </Form.Group>
         
                 <Form.Group className="mb-3" controlId="formBasicPassword">
-                <Form.Label>Password</Form.Label>
-                <Form.Control type="password" placeholder="Password" onChange={handlePassword}/>
+                    <Form.Label>Password</Form.Label>
+                    <Form.Control type="password" placeholder="Password" onChange={handlePassword}/>
                 </Form.Group>
-                <Button variant="primary" type="submit" disabled={validateForm} >
+                <Button variant="primary" type="submit" disabled={validateForm()} >
                 Submit
                 </Button>
             </Form>
