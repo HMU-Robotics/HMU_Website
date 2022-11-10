@@ -1,13 +1,12 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { Outlet, Navigate } from 'react-router-dom';
-import { UserContext } from '../hooks/UserContext';
 
-export default function PrivateRoutes() {
+export default function PrivateRoutes(props) {
 
-   const user  =useContext(UserContext)
+   const user = props.user
 
    const passRender = ()=>{
-      if(user === 9999){
+      if(user === null){
          return <Navigate to={"/"}/>
       }else{
          return <Outlet/>

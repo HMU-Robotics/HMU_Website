@@ -9,15 +9,18 @@ import EditPost from './pages/EditPost';
 import EditUser from './pages/EditUser';
 import CreateUser from './pages/CreateUser';
 import {UserProvider} from './hooks/UserContext';
+import { useState } from 'react';
 
 function App() {
 
+   const [user , setUser] = useState(null)
+
 return (
  <Router basename='/api'>
- <UserProvider>
+ <UserProvider user={user} setUser={setUser}>
    <Routes>
      <Route index element={<Login />}/>
-     <Route element={<PrivateRoute/>}>
+     <Route element={<PrivateRoute user={user}/>}>
         <Route element={<Dashboard/>} path="/dashboard"  exact/>
         <Route element={<CreateUser/>} path="/createuser"  exact/>
         <Route element={<EditUser/>} path="/edituser" exact/>

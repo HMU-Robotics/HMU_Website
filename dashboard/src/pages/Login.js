@@ -32,9 +32,7 @@ function Login (){
             .then((res)=>{
                 console.log(res)
                 console.log(res.status)
-                if(res.status === 200) {
-                <Navigate to={"/api/dashboard"}/>
-                }
+                return <Navigate to={"/dashboard"}/>
             })
             .catch((err)=>{
                 console.log(err)

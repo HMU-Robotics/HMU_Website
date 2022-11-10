@@ -1,11 +1,11 @@
-import React,{createContext, useState, useEffect} from 'react'
+import React,{createContext, useEffect} from 'react'
 import axios from 'axios'
 import { Navigate } from 'react-router-dom'
 
  const UserContext = createContext()
 
  const UserProvider = (props)=>{
-    const [user , setUser] = useState(9999)
+    const {user , setUser} = props
    
    const api_login = 'http://localhost:4000/api/auth/checkSession'
 
@@ -24,9 +24,9 @@ useEffect(() => {
 }, []);
 
     return (
-        <UserContext.Provider value={user} >
+        <div >
           {props.children}
-        </UserContext.Provider>
+        </div>
       )
 }
 
