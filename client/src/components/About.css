@@ -3,14 +3,32 @@
     flex-direction: column;
     width: 100vw;
     height: 100vh;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    min-width: 0;
 }
 
-@media only screen and (min-width: 800px) {
-    .about-first-right{
+@media only screen and (max-width: 700px) {
+    #about_top{
         flex-direction: column;
+        align-items: center;
     }
-    .about-second-left{
+    #about_bottom{
         flex-direction: column;
+        align-items: center;
+    }
+    #about-img-1{
+        align-self: stretch;
+        width: auto !important;
+        background-size: cover !important;
+        background-position: center;
+    }
+    #about-img-2{
+        align-self: center;
+        background-position: center top;
+    }
+    .about-text-cont{
+        width: 80% !important;
     }
   }
 
@@ -26,12 +44,63 @@
     height: 50vh;
     width: 50vw;
 }
+
 .about-text{
     color: whitesmoke;
     text-align: center;
+    font-size: 1.25vw;
     margin-top: 3em;
     padding-right: 5em;
     padding-left: 5em;
+}
+
+ /* needs scss to make it look cleaner , so repeating code for now */
+@media only screen and (max-width: 1600px){
+    .about-text {
+        font-size: 1.3vw;
+    }
+}
+
+@media only screen and (max-width: 1300px){
+    .about-text {
+        font-size: 1.4vw;
+    }
+}
+
+@media only screen and (max-width: 1050px){
+    .about-text {
+        font-size: 1.5vw;
+    }
+}
+
+@media only screen and (max-width: 850px){
+    .about-text {
+        font-size: 1.7vw;
+    }
+}
+
+@media only screen and (max-width: 650px){
+    .about-text {
+        font-size: 1.9vw;
+    }
+}
+
+@media only screen and (max-width: 500px){
+    .about-text {
+        font-size: 2.1vw;
+    }
+}
+
+@media only screen and (max-width: 450px){
+    .about-text {
+        font-size: 2.3vw;
+    }
+}
+
+@media only screen and (max-width: 380px){
+    .about-text {
+        font-size: 2.5vw;
+    }
 }
 
 #about-img-1{

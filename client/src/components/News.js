@@ -9,8 +9,6 @@ function News(){
 
     const [newsList , setnewsList] = useState([])
 
-    const { width, height } = useWindowDimensions();
-
     useEffect(()=>{
 
     },[newsList])
