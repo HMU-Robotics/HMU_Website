@@ -19,9 +19,27 @@
     width: 100%;
 }
 
+.project-carousel{
+    margin-top: 25px;
+}
+
+.seminar-carousel{
+    margin-top: 25px;
+}
+
 @media screen and (max-width: 1024px) {
     body .project-page-title {
         margin: auto;
         text-align: center;
+    }
+}
+
+@media only screen and (min-width: 1200px){
+    .project-carousel{
+        overflow: visible;
+    }
+    
+    .seminar-carousel{
+        overflow: visible;
     }
 }
