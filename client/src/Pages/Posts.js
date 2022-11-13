@@ -1,13 +1,18 @@
 import React, { useState, useEffect } from "react";
 import './Posts.css'
 
+const exampleData = {
+    title: "Post Title",
+    imageList: ["./Media/testimage.png"],
+    header1: "Lezanta?",
+    text: "dfhfgfghfgh"
+}
 
-function Posts(props, {match} ) {
 
-    console.log(props.match);
+function Posts() {
 
     const [isLoading, setIsLoading] = useState(true);
-    const [data, setData] = useState();
+    const [data, setData] = useState(exampleData);
 
 
     // useEffect(() => {
