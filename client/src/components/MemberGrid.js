@@ -59,9 +59,9 @@ function MemberGrid(props) {
     return(
         <div className="member-grid">
             <h2 className='members-box-title'>Members</h2>
-            <Grid2 container spacing={4} columns={16} display="flex" alignItems="center">
+            <Grid2 container spacing={4} columns={12} display="flex" alignItems="center">
                 {Array(5).fill(memberCards.map((member, i) => (
-                    <Grid2 md={4} key={i}>
+                    <Grid2 xs={12} sm={6} md={4} lg={3} key={i}>
                         <Suspense fallback={<div>Loading...</div>}><MemberCard key={i}>{member}</MemberCard></Suspense>
                     </Grid2>
                 )))}
