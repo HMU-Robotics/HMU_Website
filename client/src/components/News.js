@@ -1,6 +1,4 @@
 import React, { useState , useEffect } from "react";
-import NewsCard from "./Card";
-import useWindowDimensions from "../hooks/UseWindowDimensions";
 import "./News.css"
 import ImageCarousel from "./ImageCarousel";
 
