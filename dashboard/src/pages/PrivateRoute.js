@@ -3,37 +3,37 @@ import { Outlet, Navigate } from 'react-router-dom';
 
 export default function PrivateRoutes(props) {
 
-   const user = props.user
+   const [user, setUser] = useState(props.user);
+   const [loading, setLoading] = useState(<div>Loading ...</div>);
 
-   const [isLoading, setIsLoading] = useState(true);
-   const [component, setComponent] = useState(null);
-
-   const passRender = ()=>{
+   const passRender = () =>{
       if(user === null){
          return <Navigate to={"/"}/>
       }else{
-         return <Outlet/>
+         return <Outlet/>;
       }
    }
 
    useEffect(() => {
-      if(isLoading) {
-         const loadedComponent = () => {
-            setComponent(<div>Loading ...</div>)
-         }
-         setIsLoading(false);
+      if(user === undefined || user === null){
+         setUser(props.user);
       }
-      else if(!isLoading) {
-         const loadedComponent = () => {
-            setComponent(passRender);
-         }
+      if(user != undefined) {
+         console.log("if");
+         setLoading(passRender());
       }
-   }, [isLoading]);
+      else {
+         console.log("else");
+         setLoading(<div>Error</div>)
+      }
+   }, [props, user]);
 
       return(
          <div>
+               {console.log(props)}
                {console.log(user)}
-               {component}
+               {console.log(loading)}
+               {loading}
          </div>
       )
 }

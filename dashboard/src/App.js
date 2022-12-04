@@ -18,6 +18,7 @@ function App() {
 return (
  <Router basename='/api'>
  <UserProvider user={user} setUser={setUser}>
+   {console.log(user)}
    <Routes>
      <Route index element={<Login />}/>
      <Route element={<PrivateRoute user={user}/>}>
