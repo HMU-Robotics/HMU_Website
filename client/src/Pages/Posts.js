@@ -3,7 +3,7 @@ import './Posts.css'
 
 const exampleData = {
     title: "Post Title",
-    imageList: ["Media/testimage.png", "Media/testimage.png", "Media/testimage.png"],
+    imageList: ["Media/about.jpg", "Media/about.jpg", "Media/about.jpg"],
     image_header: "Lezanta?",
     text: "dfhfgfghfgh"
 }
@@ -15,6 +15,8 @@ function Posts() {
     const [data, setData] = useState(exampleData);
 
 
+    // need route to api for getAllPosts
+
     // useEffect(() => {
     //     fetch(`api/page/for/post`, {})
     //       .then((res) => res.json())
@@ -23,7 +25,10 @@ function Posts() {
     //         setIsLoading(false);
     //         console.log(`api/page/for/post`);
     //       })
-    //       .catch((error) => console.log(error));
+    //       .catch((error) =>{
+    //            console.log(error);
+    //            setIsLoading(true);
+    //            });
     //   }, []);
 
 
