@@ -11,7 +11,7 @@ const cardData = [
         id: 1,
         name:  "name1",
         desc:  "test1",
-        img: "Media/testimage.png",
+        img: "Media/about.jpg",
         dateAdded: "2021",
         dateRemoved: "Current"
     },
@@ -19,7 +19,7 @@ const cardData = [
         id: 2,
         name:  "name2",
         desc:  "test2",
-        img: "Media/testimage.png",
+        img: "Media/about.jpg",
         dateAdded: "2021",
         dateRemoved: "2022"
     },
@@ -27,7 +27,7 @@ const cardData = [
         id: 3,
         name:  "name3",
         desc:  "test3",
-        img: "Media/testimage.png",
+        img: "Media/about.jpg",
         dateAdded: "2020",
         dateRemoved: "2021"
     }
@@ -37,21 +37,51 @@ const cardData = [
 function MemberGrid(props) {
 
     const [memberCards, setMemberCards] = useState(cardData);
+    const [memberData, setMemberData] = useState(null);
+    const [isLoading, setIsLoading] = useState(true);
 
-    const [memberData, setMemberData] = useState();
+     useEffect(() => {
+     fetch(`http://localhost:4000/api/find/all`, {})
+       .then((res) => res.json())
+       .then((response) => {
+         setIsLoading(false);
+         sortMembers(response);
+         console.log(`http://localhost:4000/api/find/all`);
+       })
+       .catch((error) => {
+         console.log(error);
+         setIsLoading(true);
+     })
+   }, []);
 
-        // useEffect(() => {
-    //     fetch(`api/page/for/post`, {})
-    //       .then((res) => res.json())
-    //       .then((response) => {
-    //         setMemberData(response);
-    //         console.log(`api/page/for/post`);
-    //       })
-    //       .catch((error) => console.log(error));
-    //   }, []);
+    function sortMembers(response) {
+        var currentMembers = [];
+        var previousMembers = [];
+        var sortedMembers = [];
 
-    function sortMembers() {
-        
+        for(const member in sortedMembers) {
+            if(member.subscription === true) {
+                currentMembers.push(member);
+            }
+            else if(member.subscription === false) {
+                previousMembers.push(member);
+            }
+        }
+
+        // sort alphabetically based on last name
+        currentMembers.sort(function(a, b) {
+            let x = a.last_name.toLowerCase();
+            let y = b.last_name.toLowerCase();
+            if(x < y) {return -1;}
+            if(x > y) {return 1;}
+            return 0;
+        });
+
+        // sort based on year finished
+        previousMembers.sort(function(a, b) {return a.end_date - b.end_date});
+
+        sortedMembers = currentMembers.concat(previousMembers);
+        setMemberData(sortedMembers);
     }
 
 

@@ -10,7 +10,7 @@ function NewsCard(props) {
   const img = props.children.img;
 
   return (
-    <div className='card-con' onClick={()=>window.open(`/test/path/${id}`)}>
+    <div className='card-con' onClick={()=>window.open(`/Post/${id}`)}>
       <img id='card-img' src={img}/>
       <div className='card-body'>
         <p className='card-title'>{title}</p>

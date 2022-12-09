@@ -31,35 +31,35 @@ const projectData = [
     title: "Test title",
     desc: "This is a very long and useless text that is ment only as a very long and long text to see and test",
     date: "11/2/2012",
-    img: "Media/testimage.png"
+    img: "Media/about.jpg"
   },
   {
     id: 2,
     title: "Ptitle2",
     desc: "desc2",
     date: "date2",
-    img: "Media/testimage.png"
+    img: "Media/about.jpg"
   },
   {
     id: 3,
     title: "Ptitle3",
     desc: "desc3",
     date: "date3",
-    img: "Media/testimage.png"
+    img: "Media/about.jpg"
   },
   {
     id: 4,
     title: "Ptitle4",
     desc: "desc4",
     date: "date4",
-    img: "Media/testimage.png"
+    img: "Media/about.jpg"
   },
   {
     id: 5,
     title: "Ptitle5",
     desc: "desc5",
     date: "date5",
-    img: "Media/testimage.png"
+    img: "Media/about.jpg"
   }
 ];
 
@@ -70,28 +70,28 @@ const seminarData = [
     title: "Test title",
     desc: "This is a very long and useless text that is ment only as a very long and long text to see and test",
     date: "11/2/2012",
-    img: "Media/testimage.png"
+    img: "Media/about.jpg"
   },
   {
     id: 8,
     title: "Stitle3",
     desc: "desc3",
     date: "date3",
-    img: "Media/testimage.png"
+    img: "Media/about.jpg"
   },
   {
     id: 9,
     title: "Stitle4",
     desc: "desc4",
     date: "date4",
-    img: "Media/testimage.png"
+    img: "Media/about.jpg"
   },
   {
     id: 10,
     title: "Stitle5",
     desc: "desc5",
     date: "date5",
-    img: "Media/testimage.png"
+    img: "Media/about.jpg"
   }
 ];
 
@@ -101,35 +101,35 @@ const newsData = [
     title: "Test title",
     desc: "This is a very long and useless text that is ment only as a very long and long text to see and test",
     date: "11/2/2012",
-    img: "Media/testimage.png"
+    img: "Media/about.jpg"
   },
   {
     id: 12,
     title: "title2",
     desc: "desc2",
     date: "date2",
-    img: "Media/testimage.png"
+    img: "Media/about.jpg"
   },
   {
     id: 13,
     title: "title3",
     desc: "desc3",
     date: "date3",
-    img: "Media/testimage.png"
+    img: "Media/about.jpg"
   },
   {
     id: 14,
     title: "title4",
     desc: "desc4",
     date: "date4",
-    img: "Media/testimage.png"
+    img: "Media/about.jpg"
   },
   {
     id: 15,
     title: "title5",
     desc: "desc5",
     date: "date5",
-    img: "Media/testimage.png"
+    img: "Media/about.jpg"
   }
 ];
 
@@ -137,10 +137,29 @@ const newsData = [
 function ImageCarousel(props) {
 
   const [projects, setProjects] = useState(projectData);
-
   const [news, setNews] = useState(newsData);
-
   const [seminars, setSeminars] = useState(seminarData);
+  const [isLoading, setIsLoading] = useState(true);
+
+
+  // need route from api to fetch data
+
+  // useEffect(() => {
+  //   fetch(`http://localhost:4000/api/find/all`, {})
+  //     .then((res) => res.json())
+  //     .then((response) => {
+  //       setIsLoading(false);
+  //       sortMembers(response);
+  //       console.log(`http://localhost:4000/api/find/all`);
+  //     })
+  //     .catch((error) => {
+  //       console.log(error);
+  //       setIsLoading(true);
+  //   })
+  // }, []);
+
+
+
 
   let carouselItems;
 
