@@ -1,36 +1,32 @@
-
 .Navbar{
-    background: #1C0C3C;
-    color: #DAE4F2;
-}
-
-.Navbar img{
-    width: 250px;
-    height: 100px;
-}
-
-Nav{
-    display: flex;
-    flex-direction: row;
-}
-
-.nav_links{
-    display: flex;
-    flex-direction: row;
+    background-color: #1C0C3C;
     text-align: center;
-    justify-content: space-between;
-    margin-left: 5.5em;
+    display: flex;
+}
+
+.HeaderLogo{
+    max-width: 25%;
+    max-height: 25%;
+}
+
+.img-tag #Logo{
+    position:relative;
+    max-width:100%;
+    max-height:100%;
+    margin-left: 150%;
 }
 
 .social{
     display: flex;
     flex-direction: row;
-    margin-left: 15em;
+    justify-content: space-between;
+    margin-right: 5em;
+    margin-left: 5em;
+    margin-top: 1em;
 }
 
 .social a svg{
     fill: #DAE4F2;
-    margin-right: 1.5em;
     width: 30px;
     height: 30px;
     transition: ease-in-out 0.2s;
@@ -55,24 +51,75 @@ Nav{
 
 
 
-@media screen and (max-width: 500px) {
-    body .Navbar img{
-        margin: auto;
-        /* Margin auto for mobiles so hamburger is visible */
+ /* Extra small devices (phones, 600px and down) */
+ @media only screen and (max-width: 600px) {}
+
+ /* Small devices (portrait tablets and large phones, 600px and up) */
+ @media only screen and (min-width: 600px) {}
+ 
+ /* Medium devices (landscape tablets, 768px and up) */
+ @media only screen and (min-width: 768px) {}
+ 
+ /* Large devices (laptops/desktops, 992px and up) */
+ @media only screen and (min-width: 992px) {
+
+    .HeaderLogo{
+        max-width: 20%;
+        max-height: 20%;
     }
-    .nav_links{
-        flex-direction: column; 
-        text-align: center;
-        margin-right: 5.1em;
+
+    .img-tag #Logo{
+        position:relative;
+        max-width:100%;
+        max-height:100%;
+        margin-left: 2em;
     }
-    .social{
-        margin: auto;
+
+    .social a{
+        display: flex;
+        flex-direction: row;
+        margin-right: 1em;
     }
-}
+    .nav-links{
+        display: flex;
+        flex-direction: row;
+        margin-left: 8em;
+        font-size: large;
+    }
+ }
+ 
+ /* Extra large devices (large laptops and desktops, 1200px and up) */
+ @media only screen and (min-width: 1200px) {
+
+    .HeaderLogo{
+        max-width: 20%;
+        max-height: 20%;
+    }
+
+    .img-tag #Logo{
+        position:relative;
+        max-width:100%;
+        max-height:100%;
+        margin-left: 2em;
+    }
+
+    .social {
+        margin-left: 12em;
+    }
+    .social a{
+        display: flex;
+        flex-direction: row;
+        margin-right: 1em;
+    }
+
+    .nav-links{
+        display: flex;
+        justify-content: space-around;
+        font-size: large;
+        margin-left: 15em;
+    }
+    
 
 
-@media screen and (max-width: 1024px) {
-    .nav_links{
-        margin-left: 5em;
-    }
-}
+
+ } 

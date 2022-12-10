@@ -6,16 +6,17 @@ import "./Header.css"
 function Header() {
   return (
     <Navbar className='Navbar' collapseOnSelect expand="lg" variant="dark">
-      <Container>
-        <Navbar.Brand href="/"><img id='Logo' src='Logos/Logo2.png' alt='Logo'></img></Navbar.Brand>
+          <div className='HeaderLogo'>          
+            <a href='/Home' className='img-tag'><img id='Logo' src='Logos/Logo2.png' alt='Logo'/></a>
+          </div>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="nav">
-            <div className='nav_links'>
-              <Nav.Link eventKey={1} href="/">Home</Nav.Link>
-              <Nav.Link eventKey={3} href="/Projects">Projects</Nav.Link>
-              <Nav.Link eventKey={2} href="/Members">Members</Nav.Link>
-              <Nav.Link eventKey={4} href="/Supporters">Supporters</Nav.Link>
+            <div className='nav-links'>
+              <Nav.Link className='nav-link' eventKey={1} href="/">Home</Nav.Link>
+              <Nav.Link className='nav-link' eventKey={3} href="/Projects">Projects</Nav.Link>
+              <Nav.Link className='nav-link' eventKey={2} href="/Members">Members</Nav.Link>
+              <Nav.Link className='nav-link' eventKey={4} href="/Supporters">Supporters</Nav.Link>
             </div>
             <div className='social'>
               <a href="https://www.facebook.com/profile.php?id=100075598827639" target="_blank" rel="noopener noreferrer"><svg id='facebook' fill="#000000" xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 16 16" width="32px" height="32px"><path d="M 7.5 1 C 3.9160714 1 1 3.9160714 1 7.5 C 1 11.083929 3.9160714 14 7.5 14 C 11.083929 14 14 11.083929 14 7.5 C 14 3.9160714 11.083929 1 7.5 1 z M 7.5 2 C 10.543488 2 13 4.4565116 13 7.5 C 13 10.266333 10.967571 12.541024 8.3125 12.933594 L 8.3125 9.0898438 L 9.8652344 9.0898438 L 10.109375 7.5136719 L 8.3125 7.5136719 L 8.3125 6.6503906 C 8.3125 5.9953906 8.5256719 5.4140625 9.1386719 5.4140625 L 10.123047 5.4140625 L 10.123047 4.0371094 C 9.9500469 4.0141094 9.5845781 3.9628906 8.8925781 3.9628906 C 7.4485781 3.9628906 6.6015625 4.7258906 6.6015625 6.4628906 L 6.6015625 7.5117188 L 5.1171875 7.5117188 L 5.1171875 9.0898438 L 6.6035156 9.0898438 L 6.6035156 12.919922 C 3.9897868 12.492118 2 10.237066 2 7.5 C 2 4.4565116 4.4565116 2 7.5 2 z"/></svg></a>
@@ -25,7 +26,6 @@ function Header() {
             </div>
           </Nav>
         </Navbar.Collapse>
-      </Container>
     </Navbar>
   );
 }
