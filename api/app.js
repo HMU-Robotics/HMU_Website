@@ -6,16 +6,17 @@ const api_storage = require("./routes/api_storage")
 const api_users = require("./routes/api_user")
 const api_dashboard = require("./routes/api_dashboard")
 const helmet = require("helmet")
+const path = require("path")
 const cookieParser = require('cookie-parser');
-require('dotenv').config()
+require('dotenv').config({path: path.resolve(__dirname, '../.env')})
 
 
 
 const db = mysql.createConnection({
-    host:process.env.DB_HOST || "localhost",
-    user:process.env.DB_USER || "HMU",
-    password:process.env.DB_PASSWORD || 'hmuroboticsclub123',
-    database:process.env.DATABASE || 'HMU_ROBOTICS_CLUB',
+    host:process.env.DB_HOST,
+    user:process.env.DB_USER,
+    password:process.env.DB_PASSWORD,
+    database:process.env.DATABASE,
     waitForConnections: true,
     connectionLimit: 10,
     queueLimit: 0
