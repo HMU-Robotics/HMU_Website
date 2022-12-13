@@ -7,7 +7,7 @@ function Header() {
   return (
     <Navbar className='Navbar' collapseOnSelect expand="lg" variant="dark">
           <div className='HeaderLogo'>          
-            <a href='/Home' className='img-tag'><img id='Logo' src='Logos/Logo2.png' alt='Logo'/></a>
+            <a href='/' className='img-tag'><img id='Logo' src='Logos/Logo2.png' alt='Logo'/></a>
           </div>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
