@@ -18,7 +18,7 @@ export default function PrivateRoutes(props) {
       if(user === undefined || user === null){
          setUser(props.user);
       }
-      if(user != undefined) {
+      if(user !== undefined) {
          console.log("if");
          setLoading(passRender());
       }
