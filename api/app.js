@@ -5,6 +5,7 @@ const api_auth = require("./routes/api_auth")
 const api_storage = require("./routes/api_storage")
 const api_users = require("./routes/api_user")
 const api_dashboard = require("./routes/api_dashboard")
+const api_posts = require("./routes/api_posts")
 const helmet = require("helmet")
 const path = require("path")
 const cookieParser = require('cookie-parser');
@@ -59,6 +60,7 @@ app.use('/api/auth',api_auth)
 app.use('/api/storage',api_storage)
 app.use('/api/members',api_users)
 app.use('/api/dashboard',api_dashboard)
+app.use('/api/posts', api_posts)
 
 
 

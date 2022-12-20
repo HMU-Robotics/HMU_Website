@@ -14,11 +14,11 @@ import { useState } from 'react';
 function App() {
 
    const [user , setUser] = useState(null);
+   console.log("test")
 
 return (
  <Router basename='/api'>
  <UserProvider user={user} setUser={setUser}>
-   {console.log(user)}
    <Routes>
      <Route index element={<Login />}/>
      <Route element={<PrivateRoute user={user}/>}>

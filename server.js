@@ -11,6 +11,7 @@ app.use(express.static('dashboard/build'))
 
 
 app.get('/api/*',(req,res) =>{
+    console.log("dashboard sendfile")
     res.sendFile(path.resolve(__dirname,'dashboard','build','index.html'))
 })
 
