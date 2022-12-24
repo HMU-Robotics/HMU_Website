@@ -25,7 +25,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
-  "homepage": ".",
+  "homepage": "https://robotics-club.hmu.gr",
   "eslintConfig": {
     "extends": [
       "react-app",
