@@ -47,6 +47,7 @@ app.use(helmet());
 
 
 app.use((req,res,next)=>{
+    res.header('Content-Security-Policy', "connect-src 'self'");
     res.header('Access-Control-Allow-Origin','*');
     res.header('Access-Control-Allow-Headers','Oring, X-Requested-With, Content-Type, Accept, Authorization')
     if(req.method === "OPTIONS"){
