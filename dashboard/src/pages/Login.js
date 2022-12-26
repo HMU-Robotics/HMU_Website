@@ -1,9 +1,14 @@
 import axios from "axios";
+import https from "https"
 import React , { Component, useState ,useContext } from "react"
 import { Navigate  } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 
+
+const httpsAgent = new https.Agent({
+    rejectUnauthorized: false
+})
 
 
 function Login (){
@@ -28,7 +33,7 @@ function Login (){
             await axios.post(api_login,{
                 'email':email,
                 'password':password
-            })
+            }, httpsAgent)
             .then((res)=>{
                 console.log(res)
                 console.log(res.status)
