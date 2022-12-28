@@ -36,5 +36,5 @@ app.use((error,req,res,next)=>{
 
 
 const PORT = process.env.PORT
-app.listen(443)
-console.log("Listening at 443 port")
+app.listen(PORT)
+console.log("Listening at 4000 port")
