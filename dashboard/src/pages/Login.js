@@ -5,10 +5,6 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 
 
-const httpsAgent = new https.Agent({
-    rejectUnauthorized: false
-})
-
 
 function Login (){
         const api_login = "https://robotics-club.hmu.gr:443/api/auth/AdminLogin"
