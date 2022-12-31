@@ -3,7 +3,7 @@ import axios from 'axios';
 export default function useFindUser() {
    const [user, setUser] = useState(null);
    
-   const api_login = 'https://robotics-club.hmu.gr:4000/api/auth/checkSession'
+   const api_login = 'https://robotics-club.hmu.gr:443/api/auth/checkSession'
 
 useEffect(() => {
    async function findUser() {
