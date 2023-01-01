@@ -16,15 +16,11 @@ export default function PrivateRoutes(props) {
    }
 
    useEffect(() => {
-      if(user === undefined || user === null){
-         setUser(props.user);
-      }
-      if(user !== undefined) {
-         console.log("if");
-         setLoading(passRender());
+      if(props.user) {
+         setUser(props.user)
+         setLoading(passRender())
       }
       else {
-         console.log("else");
          setLoading(<div>Error</div>)
       }
    }, [props, user]);
@@ -33,7 +29,6 @@ export default function PrivateRoutes(props) {
          <div>
                {console.log(props)}
                {console.log(user)}
-               {console.log(loading)}
                {loading}
          </div>
       )

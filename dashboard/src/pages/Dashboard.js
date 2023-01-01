@@ -11,19 +11,19 @@ function Dashboard () {
             <h1>Dashboard</h1>
             <div className="wraper">
                 <h3>Create Post</h3>
-                <Button variant="primary"/>
+                <Button variant="primary">Button</Button>
             </div>
             <div className="wrapper">
                 <h3>Edit Post</h3>
-                <Button variant="primary"/>
+                <Button variant="primary">Button</Button>
             </div>
             <div className="wrapper">
                 <h3>Create User</h3>
-                <Button variant="primary"/>
+                <Button variant="primary">Button</Button>
             </div>
             <div className="wrapper">
                 <h3>Edit User</h3>
-                <Button variant="primary"/>
+                <Button variant="primary">Button</Button>
             </div>
         </div>
     )

@@ -14,10 +14,9 @@ import { useState } from 'react';
 function App() {
 
    const [user , setUser] = useState(null);
-   console.log("test")
 
 return (
- <Router basename='/api'>
+ <Router basename='/api/'>
  <UserProvider user={user} setUser={setUser}>
    <Routes>
      <Route index element={<Login />}/>

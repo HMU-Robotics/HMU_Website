@@ -5,9 +5,9 @@ import { Navigate } from 'react-router-dom'
  const UserContext = createContext()
 
  const UserProvider = (props)=>{
-    const {user , setUser} = props
+  const {user , setUser} = props
    
-   const api_login = 'https://robotics-club.hmu.gr:443/api/auth/checkSession'
+  const api_login = 'https://robotics-club.hmu.gr:443/api/auth/checkSession'
 
 useEffect(() => {
   async function findUser() {
