@@ -8,7 +8,7 @@ export default function PrivateRoutes(props) {
    const [loading, setLoading] = useState(<div>Loading ...</div>);
 
    const passRender = () =>{
-      if(user === null){
+      if(props.user === null){
          return <Navigate to={"/"}/>
       }else{
          return <Outlet/>;
