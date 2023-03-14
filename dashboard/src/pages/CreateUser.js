@@ -43,22 +43,22 @@ function CreateUser (){
 
     return(
         <>
-            <h1>CreatePost Page</h1>
+            <h1>CreateUser Page</h1>
             
             <Form onSubmit={handleSubmit}>
-                <Form.Group className="title" onChange={handleTitle()}>
+                <Form.Group className="title" onChange={(e) => handleTitle(e)}>
                     <Form.Label>Title</Form.Label>
                 </Form.Group>
                 {/* <Form.Select>        later will be radio or select for department
                     <option value="1"></option>
                 </Form.Select> */}
-                <Form.Group onChange={handleContent()}>
+                <Form.Group onChange={(e) => handleContent(e)}>
                     <Form.Label>Add description</Form.Label>
                 </Form.Group>
-                {/* <Form.Group onChange={handleImage()}>
+                <Form.Group onChange={(e) => handleImage(e)}>
                     <Form.Label>Add Image</Form.Label>
                     <Form.Control type="file"/>
-                </Form.Group> */}
+                </Form.Group>
                 <Button variant="primary" type="submit">
                     Submit
                 </Button>
