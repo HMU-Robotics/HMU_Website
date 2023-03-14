@@ -48,12 +48,14 @@ function CreateUser (){
             <Form onSubmit={handleSubmit}>
                 <Form.Group className="title" onChange={handleTitle}>
                     <Form.Label>Title</Form.Label>
+                    <Form.Control type="text"/>
                 </Form.Group>
                 {/* <Form.Select>        later will be radio or select for department
                     <option value="1"></option>
                 </Form.Select> */}
                 <Form.Group onChange={handleContent}>
                     <Form.Label>Add description</Form.Label>
+                    <Form.Control as="textarea"/>
                 </Form.Group>
                 <Form.Group onChange={handleImage}>
                     <Form.Label>Add Image</Form.Label>
