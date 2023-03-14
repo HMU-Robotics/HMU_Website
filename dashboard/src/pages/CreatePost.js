@@ -53,10 +53,10 @@ function CreatePost (){
                     <Form.Label>Main Content</Form.Label>
                     <Form.Control as="textarea"/>
                 </Form.Group>
-                <Form.Group onChange={handleImageList()}>
+                {/* <Form.Group onChange={handleImageList()}>
                     <Form.Label>Add Images</Form.Label>
                     <Form.Control type="file" multiple/>
-                </Form.Group>
+                </Form.Group> */}
                 <Button variant="primary" type="submit">
                     Submit
                 </Button>

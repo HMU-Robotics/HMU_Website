@@ -55,10 +55,10 @@ function CreateUser (){
                 <Form.Group onChange={handleContent()}>
                     <Form.Label>Add description</Form.Label>
                 </Form.Group>
-                <Form.Group onChange={handleImage()}>
+                {/* <Form.Group onChange={handleImage()}>
                     <Form.Label>Add Image</Form.Label>
                     <Form.Control type="file"/>
-                </Form.Group>
+                </Form.Group> */}
                 <Button variant="primary" type="submit">
                     Submit
                 </Button>
