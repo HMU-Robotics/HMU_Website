@@ -4,15 +4,14 @@ use HMU_ROBOTICS_CLUB;
 
 create table role(
     id int not null auto_increment,
-    name text,
+    name varchar(25) not null,
     primary key (id)
 );
 
 create table post(
     id int not null auto_increment,
-    title varchar(80),
-    content varchar(1500),
-    history bit default 0,
+    title varchar(80) not null,
+    content varchar(1500) not null,
     created_at varchar (24),
     updated_at timestamp default current_timestamp on update current_timestamp,
     primary key(id)
@@ -31,12 +30,12 @@ create table postImages(
 create table user(
     id int not null auto_increment,
     email varchar(254) not null,
-    first_name text not null ,
-    last_name text not null,
+    first_name varchar(50) not null ,
+    last_name varchar(50) not null,
     confirmed_at timestamp,
     password varchar(80),
     academic_id int not null,
-    school text not null,
+    school varchar(120) not null,
     subscription Boolean not null,
     subscription_date timestamp,
     role_id int not null,
@@ -69,7 +68,7 @@ create table reservation(
 create table category
 (
     id int not null auto_increment,
-    name text not null,
+    name varchar(80) not null,
     primary key (id)
 );
 
@@ -78,7 +77,7 @@ create table item(
     name text not null ,
     image longblob,
     category_id int not null,
-    description text,
+    description varchar(250),
     code varchar(36) not null,
     status enum('available', 'unavailable'),
     created_at timestamp default current_timestamp,

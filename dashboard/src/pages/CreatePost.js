@@ -10,6 +10,7 @@ function CreatePost (){
     const api_url = "https://robotics-club.hmu.gr:443/api/dashboard/addPost"
     const [title, setTitle] = useState("")
     const [content, setContent] = useState("")
+    const [date, setDate] = useState("2023")
     const [imageList, setImageList] = useState(null)
 
     const handleTitle = (e) => {
@@ -20,6 +21,10 @@ function CreatePost (){
         setContent(e.target.value)
     }
 
+    const handleDate = (e) => {
+        setDate(e.target.value)
+    }
+
     const handleImageList = (e) => {
         setImageList(e.target.value)
     }
@@ -27,9 +32,9 @@ function CreatePost (){
 
     const handleSubmit = async () => {
         await axios.post(api_url, {
-            'title': title,
-            'content': content,
-            'img': imageList
+            title: title,
+            content: content,
+            created_at: date
         })
         .then((res) => {
             console.log(res)
@@ -43,7 +48,7 @@ function CreatePost (){
 
     return(
         <>
-            <h1>CreatePost Page</h1>
+            <h1>Create New Post</h1>
             
             <Form onSubmit={handleSubmit}>
                 <Form.Group className="title" onChange={handleTitle}>
@@ -53,6 +58,10 @@ function CreatePost (){
                 <Form.Group className="content" onChange={handleContent}>
                     <Form.Label>Main Content</Form.Label>
                     <Form.Control as="textarea"/>
+                </Form.Group>
+                <Form.Group className="date" onChange={handleDate}>
+                    <Form.Label>Date</Form.Label>
+                    <Form.Control type="text"/>
                 </Form.Group>
                 <Form.Group onChange={handleImageList}>
                     <Form.Label>Add Images</Form.Label>

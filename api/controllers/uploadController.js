@@ -64,8 +64,7 @@ const resizeImages = async(req,res,next)=>{
 
 const makePost = async(req,res,next)=>{
     const path = "./api/public/storage/uploads/posts"
-    const history = () => {if(req.body.timeline == 'on') return true; else return false}
-    db.execute("INSERT INTO `post`(title,content,history,created_at) VALUES(?,?,?,?)",[req.body.title,req.body.data,history(),req.body.post_date],(err,user)=>{
+    db.execute("INSERT INTO `post`(title,content,created_at) VALUES(?,?,?)",[req.body.title,req.body.content,req.body.date],(err,user)=>{
         if(err) {
             throw err;
             console.log(err)
@@ -97,15 +96,13 @@ const makePost = async(req,res,next)=>{
 const makeMember = async(req,res,next)=>{
   const path = "./api/public/storage/uploads/members"
   // TO DO FIX VALUE NAMES
-  db.execute("INSERT INTO `user`(title,content,history,created_at) VALUES(?,?,?,?)",[req.body.title,req.body.data,history(),req.body.post_date],(err,user)=>{
+  db.execute("INSERT INTO `user`(email,first_name,last_name,academic_id,school,subscription,subscription_date,role_id) VALUES(?,?,?,?,?,?,?,?)",[req.body.email,req.body.first_name,req.body.last_name,req.body.academic_id,req.body.school,req.body.subscription,req.body.subscription_date,req.body.role_id],(err,user)=>{
       if(err) {
           throw err;
-          console.log(err)
       }
       db.execute("SELECT `id` FROM user WHERE `name` = ?" , [req.body.name],(err,result)=>{
         if(err){
           throw err;
-          console.log(err)
         }
         let id = result[0].id
         console.log(req.body.images)
