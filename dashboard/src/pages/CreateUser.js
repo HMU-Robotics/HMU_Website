@@ -6,30 +6,54 @@ import axios from "axios"
 
 function CreateUser (){
 
+    // temporary data
+    const subscription = true
+    const subscriptionDate = 2023-01-01
+
 
     const api_url = "https://robotics-club.hmu.gr:443/api/dashboard/addMember"
-    const [title, setTitle] = useState("")
-    const [content, setContent] = useState("")
-    const [image, setImage] = useState(null)
+    const [email, setEmail] = useState("")
+    const [firstname, setFirstName] = useState("")
+    const [lastname, setLastName] = useState("")
+    const [academic_id, setAcademicID] = useState()
+    const [course, setCourse] = useState("ECE")
+    const [role, setRole] = useState(3)
 
-    const handleTitle = (e) => {
-        setTitle(e.target.value)
+    const handleEmail = (e) => {
+        setEmail(e.target.value)
     }
 
-    const handleContent = (e) => {
-        setContent(e.target.value)
+    const handleFirstName = (e) => {
+        setFirstName(e.target.value)
     }
 
-    const handleImage = (e) => {
-        setImage(e.target.value)
+    const handleLastName = (e) => {
+        setLastName(e.target.value)
     }
 
+    const handleAcademicID = (e) => {
+        setAcademicID(e.target.value)
+    }
 
-    const handleSubmit = async () => {
+    const handleCourse = (e) => {
+        setCourse(e.target.value)
+    }
+
+    const handleRole = (e) => {
+        setRole(e.target.value)
+    }
+
+    const handleSubmit = async (e) => {
+
         await axios.post(api_url, {
-            'title': title,
-            'content': content,
-            'img': image
+            email: email,
+            first_name: firstname,
+            last_name: lastname,
+            academic_id: academic_id,
+            school: course,
+            role_id: role,
+            subscription: subscription,
+            subscription_date: subscriptionDate
         })
         .then((res) => {
             console.log(res)
@@ -43,20 +67,40 @@ function CreateUser (){
 
     return(
         <>
-            <h1>CreateUser Page</h1>
+            <h1>Create New User</h1>
             
             <Form onSubmit={handleSubmit}>
-                <Form.Group className="title" onChange={handleTitle}>
-                    <Form.Label>Title</Form.Label>
+                <Label>Create New User</Label>
+                <Form.Group className="email" onChange={handleEmail}>
+                    <Form.Label>Email</Form.Label>
                     <Form.Control type="text"/>
                 </Form.Group>
-                {/* <Form.Select>        later will be radio or select for department
-                    <option value="1"></option>
-                </Form.Select> */}
-                <Form.Group onChange={handleContent}>
-                    <Form.Label>Add description</Form.Label>
-                    <Form.Control as="textarea"/>
+                <Form.Group className="firstname" onChange={handleFirstName}>
+                    <Form.Label>First Name</Form.Label>
+                    <Form.Control type="text"/>
                 </Form.Group>
+                <Form.Group className="lastname" onChange={handleLastName}>
+                    <Form.Label>Last Name</Form.Label>
+                    <Form.Control type="text"/>
+                </Form.Group>
+                <Form.Group className="academic_id" onChange={handleAcademicID}>
+                    <Form.Label>Academic ID</Form.Label>
+                    <Form.Control type="text"/>
+                </Form.Group>
+                <Form.Select className="course" onChange={handleCourse}>
+                    <Form.Label>University Course</Form.Label>
+                    <option value="ECE">Ηλεκτρολόγων Μηχ. Μηχ. Υπολογιστών</option>
+                    <option value="MECH">Μηχανολόγων Μηχανικών</option>
+                    <option value="EE">Ηλεκτρολόγων Μηχανικών</option>
+                    <option value="CE">Μηχανικοί Υπολογιστών</option>
+                    <option value="other">Εξωτερικοί Συνεργάτες</option>
+                </Form.Select>
+                <Form.Select className="role" defaultValue={3} onChange={handleRole}>
+                    <Form.Label>Role</Form.Label>
+                    <option value={1}>Admin</option>
+                    <option value={2}>Editor</option>
+                    <option value={3}>Viewer</option>
+                </Form.Select>
                 <Form.Group onChange={handleImage}>
                     <Form.Label>Add Image</Form.Label>
                     <Form.Control type="file"/>
