@@ -70,7 +70,7 @@ function CreateUser (){
             <h1>Create New User</h1>
             
             <Form onSubmit={handleSubmit}>
-                <Label>Create New User</Label>
+                <Form.Label>Create New User</Form.Label>
                 <Form.Group className="email" onChange={handleEmail}>
                     <Form.Label>Email</Form.Label>
                     <Form.Control type="text"/>
@@ -101,10 +101,10 @@ function CreateUser (){
                     <option value={2}>Editor</option>
                     <option value={3}>Viewer</option>
                 </Form.Select>
-                <Form.Group onChange={handleImage}>
+                {/* <Form.Group onChange={handleImage}>
                     <Form.Label>Add Image</Form.Label>
                     <Form.Control type="file"/>
-                </Form.Group>
+                </Form.Group> */}
                 <Button variant="primary" type="submit">
                     Submit
                 </Button>
