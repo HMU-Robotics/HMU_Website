@@ -8,7 +8,7 @@ function CreateUser (){
 
     // temporary data
     const subscription = true
-    const subscriptionDate = 2023-01-01
+    const subscriptionDate = "2023-01-01"
 
 
     const api_url = "https://robotics-club.hmu.gr:443/api/dashboard/addMember"
