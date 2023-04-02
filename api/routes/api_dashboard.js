@@ -9,7 +9,7 @@ const { uploadImages , resizeImages  ,makePost ,makeMember} = require("../contro
 
 ////////////////// Posts //////////////////////////////
 
-router.post('/addPost',AuthMiddleware,viewer,check_session,uploadImages,resizeImages,makePost)
+router.post('/addPost',AuthMiddleware,viewer,check_session,makePost)
 router.put('/editPost',AuthMiddleware,viewer,check_session,dashboard_controller.post_post)
 
 /////////////////// Members //////////////////////////
