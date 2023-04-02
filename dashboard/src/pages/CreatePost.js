@@ -31,6 +31,8 @@ function CreatePost (){
 
 
     const handleSubmit = async () => {
+        e.preventDefault()
+
         await axios.post(api_url, {
             title: title,
             content: content,

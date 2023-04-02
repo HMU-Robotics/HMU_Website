@@ -44,6 +44,7 @@ function CreateUser (){
     }
 
     const handleSubmit = async (e) => {
+        e.preventDefault()
 
         await axios.post(api_url, {
             email: email,
