@@ -30,7 +30,7 @@ function CreatePost (){
     }
 
 
-    const handleSubmit = async () => {
+    const handleSubmit = async (e) => {
         e.preventDefault()
 
         await axios.post(api_url, {
