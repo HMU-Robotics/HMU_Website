@@ -67,27 +67,42 @@ const makePost = async(req,res,next)=>{
     db.execute("INSERT INTO `post`(title,content,created_at) VALUES(?,?,?)",[req.body.title,req.body.content,req.body.date],(err,user)=>{
         if(err) {
             throw err;
-            console.log(err)
         }
-        db.execute("SELECT `id` FROM post WHERE `title` = ?" , [req.body.title],(err,result)=>{
-          if(err){
-            throw err;
-            console.log(err)
-          }
-          let id = result[0].id
-          console.log(req.body.images)
-          for(const image in req.body.images){
-            db.execute("INSERT INTO `postImages`(post_id,img) VALUES(?,?)",[id,req.body.images[image]],(err,result)=>{
-              if(err){
-                throw err;
-                console.log(err)
-              }
-          })
-        }
-    })
+  //       db.execute("SELECT `id` FROM post WHERE `title` = ?" , [req.body.title],(err,result)=>{
+  //         if(err){
+  //           throw err;
+  //           console.log(err)
+  //         }
+  //         let id = result[0].id
+  //         console.log(req.body.images)
+  //         for(const image in req.body.images){
+  //           db.execute("INSERT INTO `postImages`(post_id,img) VALUES(?,?)",[id,req.body.images[image]],(err,result)=>{
+  //             if(err){
+  //               throw err; //       db.execute("SELECT `id` FROM post WHERE `title` = ?" , [req.body.title],(err,result)=>{
+  //         if(err){
+  //           throw err;
+  //           console.log(err)
+  //         }
+  //         let id = result[0].id
+  //         console.log(req.body.images)
+  //         for(const image in req.body.images){
+  //           db.execute("INSERT INTO `postImages`(post_id,img) VALUES(?,?)",[id,req.body.images[image]],(err,result)=>{
+  //             if(err){
+  //               throw err;
+  //             }
+  //         })
+  //       }
+  //   })
 
 
-  })
+  // })
+  //             }
+  //         })
+  //       }
+  //   })
+
+
+   })
   
   res.send("created post")
 }
@@ -100,25 +115,24 @@ const makeMember = async(req,res,next)=>{
       if(err) {
           throw err;
       }
-      db.execute("SELECT `id` FROM user WHERE `name` = ?" , [req.body.name],(err,result)=>{
-        if(err){
-          throw err;
-        }
-        let id = result[0].id
-        console.log(req.body.images)
-        for(const image in req.body.images){
-          // TO DO FIX VALUE NAMES
-          db.execute("INSERT INTO `memberImages`(post_id,img) VALUES(?,?)",[id,req.body.images[image]],(err,result)=>{
-            if(err){
-              throw err;
-              console.log(err)
-            }
-        })
-      }
+      // db.execute("SELECT `id` FROM user WHERE `name` = ?" , [req.body.name],(err,result)=>{
+      //   if(err){
+      //     throw err;
+      //   }
+      //   let id = result[0].id
+      //   console.log(req.body.images)
+      //   for(const image in req.body.images){
+      //     // TO DO FIX VALUE NAMES
+      //     db.execute("INSERT INTO `memberImages`(post_id,img) VALUES(?,?)",[id,req.body.images[image]],(err,result)=>{
+      //       if(err){
+      //         throw err;
+      //       }
+      //   })
+      // }
   })
 
 
-})
+// })
 
 res.send("created member")
 }
