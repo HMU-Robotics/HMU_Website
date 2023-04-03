@@ -12,7 +12,7 @@ create table post(
     id int not null auto_increment,
     title varchar(80) not null,
     content varchar(1500) not null,
-    created_at varchar (24),
+    created_at varchar(24),
     updated_at timestamp default current_timestamp on update current_timestamp,
     primary key(id)
 );
@@ -34,10 +34,11 @@ create table user(
     last_name varchar(50) not null,
     confirmed_at timestamp,
     password varchar(80),
-    academic_id int not null,
+    academic_id varchar(25) not null,
     school varchar(120) not null,
     subscription Boolean not null,
-    subscription_date timestamp,
+    /*subscription_date timestamp,*/
+    subscription_date varchar(150)
     role_id int not null,
     end_date timestamp,
     created_at timestamp default current_timestamp,

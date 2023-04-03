@@ -15,7 +15,7 @@ function CreateUser (){
     const [email, setEmail] = useState("")
     const [firstname, setFirstName] = useState("")
     const [lastname, setLastName] = useState("")
-    const [academic_id, setAcademicID] = useState()
+    const [academic_id, setAcademicID] = useState("")
     const [course, setCourse] = useState("ECE")
     const [role, setRole] = useState(3)
 
