@@ -10,7 +10,7 @@ const uploadController = require('../controllers/uploadController')
 
 ////////////////// Posts //////////////////////////////
 
-router.post('/addPost',AuthMiddleware,viewer,check_session,uploadController.makePost)
+router.post('/addPost',AuthMiddleware,viewer,check_session,uploadImages,resizeImages,uploadController.makePost)
 router.put('/editPost',AuthMiddleware,viewer,check_session,dashboard_controller.post_post)
 
 /////////////////// Members //////////////////////////
