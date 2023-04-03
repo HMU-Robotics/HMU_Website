@@ -38,7 +38,7 @@ create table user(
     school varchar(120) not null,
     subscription Boolean not null,
     /*subscription_date timestamp,*/
-    subscription_date varchar(150)
+    subscription_date varchar(150),
     role_id int not null,
     end_date timestamp,
     created_at timestamp default current_timestamp,
