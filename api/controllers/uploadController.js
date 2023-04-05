@@ -2,7 +2,6 @@ const multer = require("multer")
 const sharp = require("sharp")
 const mysql = require("mysql2");
 const path = require("path");
-const { error } = require("console");
 require('dotenv').config({path: path.resolve(__dirname, '../../.env')})
 
 
@@ -138,20 +137,6 @@ const makeMember = async(req,res,next)=>{
 // })
 
 res.send("created member")
-}
-
-// just a test needs to be deleted after testing
-const test = async(req,res,next) => {
-  console.log('Request body:', req.body);
-  console.log('Email:', req.body.email);
-
-  db.execute("INSERT INTO `test`(email) VALUES (?)",req.body.email,(err,user)=>{
-    console.log("test successful")
-    console.log(req.body)
-    if(err) {
-      throw err;
-    }
-  })
 }
 
 
