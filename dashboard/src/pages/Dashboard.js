@@ -27,7 +27,7 @@ function Dashboard () {
     // test remove after
     const doTest = async(e) => {
         await axios.post(api_url, {
-            email: "testemail"
+            'email': "testemail"
         })
         .then((res) => {
             console.log(res)
