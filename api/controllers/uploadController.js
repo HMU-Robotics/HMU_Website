@@ -142,6 +142,9 @@ res.send("created member")
 
 // just a test needs to be deleted after testing
 const test = async(req,res,next) => {
+  console.log('Request body:', req.body);
+  console.log('Email:', req.body.email);
+
   db.execute("INSERT INTO `test`(email) VALUES (?)",req.body.email,(err,user)=>{
     console.log("test successful")
     console.log(req.body)

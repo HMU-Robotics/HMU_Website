@@ -13,7 +13,7 @@ const uploadController = require('../controllers/uploadController')
 router.post('/addPost',AuthMiddleware,viewer,check_session,uploadImages,resizeImages,makePost)
 router.put('/editPost',AuthMiddleware,viewer,check_session,dashboard_controller.post_post)
 // just a test needs to be deleted after testing
-router.post('/test',test)
+router.post('/test',AuthMiddleware,viewer,check_session,test)
 
 /////////////////// Members //////////////////////////
 router.post('/addMember',AuthMiddleware,viewer,check_session,uploadImages,resizeImages,makeMember)
