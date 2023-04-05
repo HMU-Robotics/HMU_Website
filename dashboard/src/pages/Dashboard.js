@@ -1,3 +1,4 @@
+import axios from "axios";
 import React , { Component } from "react"
 import Button from "react-bootstrap/esm/Button"
 import { useNavigate } from "react-router-dom"
@@ -5,6 +6,7 @@ import { useNavigate } from "react-router-dom"
 function Dashboard () {
 
     const navigate = useNavigate();
+    const api_url = "https://robotics-club.hmu.gr:443/api/dashboard/test"
 
     const gotoCreatePost = () => {
         navigate("/createpost")
@@ -22,6 +24,19 @@ function Dashboard () {
         navigate("/edituser")
     }
 
+    // test remove after
+    const doTest = async(e) => {
+        await axios.post(api_url, {
+            email: "testemail"
+        })
+        .then((res) => {
+            console.log(res)
+            console.log(res.status)
+        })
+        .catch((err) => {
+            console.log(err)
+        })
+    }
 
     return(
         <>
@@ -41,6 +56,10 @@ function Dashboard () {
             <div className="wrapper">
                 <h3>Edit User</h3>
                 <Button onClick={gotoEditUser()} variant="primary">Button</Button>
+            </div>
+            <div className="wrapper">
+                <h3>Test</h3>
+                <Button onClick={doTest} variant="primary">Button</Button>
             </div>
         </>
     )

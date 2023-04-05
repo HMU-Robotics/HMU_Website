@@ -1,7 +1,8 @@
 const multer = require("multer")
 const sharp = require("sharp")
 const mysql = require("mysql2");
-const path = require("path")
+const path = require("path");
+const { error } = require("console");
 require('dotenv').config({path: path.resolve(__dirname, '../../.env')})
 
 
@@ -113,9 +114,10 @@ const makeMember = async(req,res,next)=>{
   const path = "./api/public/storage/uploads/members"
   // TO DO FIX VALUE NAMES
   db.execute("INSERT INTO `user`(email,first_name,last_name,academic_id,school,subscription,subscription_date,role_id) VALUES(?,?,?,?,?,?,?,?)",[req.body.email,req.body.first_name,req.body.last_name,req.body.academic_id,req.body.school,req.body.subscription,req.body.subscription_date,req.body.role_id],(err,user)=>{
-      if(err) {
-          throw err;
-      }
+    console.log(req.body)
+    if(err) {
+        throw err;
+    }
       // db.execute("SELECT `id` FROM user WHERE `name` = ?" , [req.body.name],(err,result)=>{
       //   if(err){
       //     throw err;
@@ -136,6 +138,17 @@ const makeMember = async(req,res,next)=>{
 // })
 
 res.send("created member")
+}
+
+// just a test needs to be deleted after testing
+const test = async(req,res,next) => {
+  db.execute("INSERT INTO `test`(email) VALUES (?)",req.body.email,(err,user)=>{
+    console.log("test successful")
+    console.log(req.body)
+    if(err) {
+      throw err;
+    }
+  })
 }
 
 
@@ -164,5 +177,6 @@ const getResult = async (req, res) => {
     uploadImages: uploadImages,
     resizeImages: resizeImages,
     getResult: getResult,
-    makeMember : makeMember
+    makeMember : makeMember,
+    test: test
   }
