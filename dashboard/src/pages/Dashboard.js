@@ -43,19 +43,19 @@ function Dashboard () {
             <h1>Dashboard</h1>
             <div className="wraper">
                 <h3>Create Post</h3>
-                <Button onClick={gotoCreatePost()} variant="primary">Button</Button>
+                <Button onClick={gotoCreatePost} variant="primary">Button</Button>
             </div>
             <div className="wrapper">
                 <h3>Edit Post</h3>
-                <Button onClick={gotoEditPost()} variant="primary">Button</Button>
+                <Button onClick={gotoEditPost} variant="primary">Button</Button>
             </div>
             <div className="wrapper">
                 <h3>Create User</h3>
-                <Button onClick={gotoCreateUser()} variant="primary">Button</Button>
+                <Button onClick={gotoCreateUser} variant="primary">Button</Button>
             </div>
             <div className="wrapper">
                 <h3>Edit User</h3>
-                <Button onClick={gotoEditUser()} variant="primary">Button</Button>
+                <Button onClick={gotoEditUser} variant="primary">Button</Button>
             </div>
             <div className="wrapper">
                 <h3>Test</h3>
