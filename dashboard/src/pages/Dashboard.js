@@ -26,6 +26,7 @@ function Dashboard () {
         navigate("/edituser")
     }
 
+    // this is for testing purposes will get deleted
     const gotoTest = async(e) => {
         await axios.post(api_url, {
             "email": emailTest

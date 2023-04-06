@@ -139,6 +139,8 @@ const makeMember = async(req,res,next)=>{
 res.send("created member")
 }
 
+
+// this is a test will get deleted
 const test = async (req,res,next)=>{
   db.execute("INSERT INTO `test`(email) VALUES(?)",[req.body.email],(err,user)=>{
     console.log(req.body)
