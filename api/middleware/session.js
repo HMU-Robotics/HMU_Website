@@ -27,7 +27,6 @@ module.exports = async(req,res,next)=> {
                 res.clearCookie("id")
                 return res.status(404)
             }else{
-                next()
                 return res.status(200).json({
                     member_id: session[0].member_id
                 })
