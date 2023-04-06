@@ -9,13 +9,13 @@ const { uploadImages , resizeImages  ,makePost ,makeMember, test} = require("../
 
 ////////////////// Posts //////////////////////////////
 
-router.post('/addPost',AuthMiddleware,viewer,check_session,uploadImages,resizeImages,makePost)
-router.put('/editPost',AuthMiddleware,viewer,check_session,dashboard_controller.post_post)
+router.post('/addPost',AuthMiddleware,viewer,makePost)
+router.put('/editPost',AuthMiddleware,viewer,dashboard_controller.post_post)
 // this is a test will get deleted
 router.post('/test',AuthMiddleware,viewer,test)
 
 /////////////////// Members //////////////////////////
-router.post('/addMember',AuthMiddleware,viewer,check_session,uploadImages,resizeImages,makeMember)
-router.put('/editMember',AuthMiddleware,viewer,check_session,dashboard_controller.post_member)
+router.post('/addMember',AuthMiddleware,viewer,makeMember)
+router.put('/editMember',AuthMiddleware,viewer,dashboard_controller.post_member)
 
 module.exports = router;
