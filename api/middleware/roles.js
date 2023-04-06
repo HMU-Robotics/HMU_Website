@@ -12,7 +12,7 @@ function editor(req, res, next) {
     const token = req.cookies["id_ref"]
     const decoded = jwt.verify(token,"superS")
     req.userData = decoded
-    if (req.userData.roles == "2") return resres.redirect("/auth/AdminLogin")
+    if (req.userData.roles == "2") return res.redirect("/auth/AdminLogin")
 
     next();
 }
