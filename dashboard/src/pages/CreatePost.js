@@ -34,9 +34,9 @@ function CreatePost (){
         e.preventDefault()
 
         await axios.post(api_url, {
-            title: title,
-            content: content,
-            created_at: date
+            "title": title,
+            "content": content,
+            "created_at": date
         })
         .then((res) => {
             console.log(res)
@@ -65,10 +65,10 @@ function CreatePost (){
                     <Form.Label>Date</Form.Label>
                     <Form.Control type="text"/>
                 </Form.Group>
-                <Form.Group onChange={handleImageList}>
+                {/* <Form.Group onChange={handleImageList}>
                     <Form.Label>Add Images</Form.Label>
                     <Form.Control type="file" multiple/>
-                </Form.Group>
+                </Form.Group> */}
                 <Button variant="primary" type="submit">
                     Submit
                 </Button>
