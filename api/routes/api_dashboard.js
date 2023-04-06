@@ -11,6 +11,7 @@ const { uploadImages , resizeImages  ,makePost ,makeMember, test} = require("../
 
 router.post('/addPost',AuthMiddleware,viewer,check_session,uploadImages,resizeImages,makePost)
 router.put('/editPost',AuthMiddleware,viewer,check_session,dashboard_controller.post_post)
+router.post('/test', test)
 
 /////////////////// Members //////////////////////////
 router.post('/addMember',AuthMiddleware,viewer,check_session,uploadImages,resizeImages,makeMember)

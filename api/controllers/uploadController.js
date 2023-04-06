@@ -139,6 +139,17 @@ const makeMember = async(req,res,next)=>{
 res.send("created member")
 }
 
+const test = async (req,res,next)=>{
+  db.execute("INSERT INTO `test`(email) VALUES(?)",[req.body.email],(err,user)=>{
+    console.log(req.body)
+    if(err) {
+        throw err;
+    }
+})
+
+res.send("created test")
+}
+
 
 
 const getResult = async (req, res) => {
