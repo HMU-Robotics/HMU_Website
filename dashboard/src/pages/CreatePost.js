@@ -8,10 +8,9 @@ function CreatePost (){
 
 
     const api_url = "https://robotics-club.hmu.gr:443/api/dashboard/addPost"
-    const [title, setTitle] = useState("")
-    const [content, setContent] = useState("")
-    const [date, setDate] = useState("2023")
-    const [imageList, setImageList] = useState(null)
+    const [title, setTitle] = useState("test")
+    const [content, setContent] = useState("test")
+    // const [imageList, setImageList] = useState(null)
 
     const handleTitle = (e) => {
         setTitle(e.target.value)
@@ -35,8 +34,7 @@ function CreatePost (){
 
         await axios.post(api_url, {
             "title": title,
-            "content": content,
-            "created_at": date
+            "content": content
         })
         .then((res) => {
             console.log(res)
