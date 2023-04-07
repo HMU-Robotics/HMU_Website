@@ -20,9 +20,6 @@ function CreatePost (){
         setContent(e.target.value)
     }
 
-    const handleDate = (e) => {
-        setDate(e.target.value)
-    }
 
     // const handleImageList = (e) => {
     //     setImageList(e.target.value)
