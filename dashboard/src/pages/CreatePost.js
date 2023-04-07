@@ -24,9 +24,9 @@ function CreatePost (){
         setDate(e.target.value)
     }
 
-    const handleImageList = (e) => {
-        setImageList(e.target.value)
-    }
+    // const handleImageList = (e) => {
+    //     setImageList(e.target.value)
+    // }
 
 
     const handleSubmit = async (e) => {
