@@ -56,10 +56,10 @@ function CreatePost (){
                     <Form.Label>Main Content</Form.Label>
                     <Form.Control as="textarea"/>
                 </Form.Group>
-                <Form.Group className="date" onChange={handleDate}>
+                {/* <Form.Group className="date" onChange={handleDate}>
                     <Form.Label>Date</Form.Label>
                     <Form.Control type="text"/>
-                </Form.Group>
+                </Form.Group> */}
                 {/* <Form.Group onChange={handleImageList}>
                     <Form.Label>Add Images</Form.Label>
                     <Form.Control type="file" multiple/>
