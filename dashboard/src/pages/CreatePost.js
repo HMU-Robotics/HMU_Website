@@ -14,10 +14,12 @@ function CreatePost (){
 
     const handleTitle = (e) => {
         setTitle(e.target.value)
+        console.log(title)
     }
 
     const handleContent = (e) => {
         setContent(e.target.value)
+        console.log(content)
     }
 
 
