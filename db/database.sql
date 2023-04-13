@@ -11,7 +11,7 @@ create table role(
 create table post(
     id int not null auto_increment,
     title varchar(80) not null,
-    desc varchar(80) not null,
+    post_desc varchar(80) not null,
     content varchar(1500) not null,
     created_at varchar(24),
     updated_at timestamp default current_timestamp on update current_timestamp,

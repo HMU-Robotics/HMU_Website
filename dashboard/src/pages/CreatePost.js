@@ -9,7 +9,7 @@ function CreatePost (){
 
     const api_url = "https://robotics-club.hmu.gr:443/api/dashboard/addPost"
     const [title, setTitle] = useState()
-    const [desc, setDesc] = useState()
+    const [postDesc, setPostDesc] = useState()
     const [content, setContent] = useState()
     const [date, setDate] = useState()
     // const [imageList, setImageList] = useState(null)
@@ -22,8 +22,8 @@ function CreatePost (){
         setContent(e.target.value)
     }
 
-    const handleDesc = (e) => {
-        setDesc(e.target.value)
+    const handlePostDesc = (e) => {
+        setPostDesc(e.target.value)
     }
 
     const handleDate = (e) => {
@@ -36,11 +36,10 @@ function CreatePost (){
 
 
     const handleSubmit = async (e) => {
-        e.preventDefault()
 
         await axios.post(api_url, {
             "title": title,
-            "desc": desc,
+            "post_desc": postDesc,
             "created_at": date,
             "content": content
         })
@@ -63,7 +62,7 @@ function CreatePost (){
                     <Form.Label>Title</Form.Label>
                     <Form.Control type="text"/>
                 </Form.Group>
-                <Form.Group className="desc" onChange={handleDesc}>
+                <Form.Group className="post-desc" onChange={handlePostDesc}>
                     <Form.Label>Post Description</Form.Label>
                     <Form.Control type="text"/>
                 </Form.Group>

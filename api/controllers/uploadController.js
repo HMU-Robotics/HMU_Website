@@ -64,7 +64,7 @@ const resizeImages = async(req,res,next)=>{
 
 const makePost = async(req,res,next)=>{
     const path = "./api/public/storage/uploads/posts"
-    db.execute("INSERT INTO `post`(title,content) VALUES(?,?)",[req.body.title,req.body.content],(err,user)=>{
+    db.execute("INSERT INTO `post`(title,content,post_desc,created_at) VALUES(?,?,?,?)",[req.body.title,req.body.content,req.body.post_desc,req.body.date],(err,user)=>{
       console.log(req.body)
         if(err) {
             throw err;
