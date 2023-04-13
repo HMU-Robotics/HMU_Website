@@ -39,9 +39,9 @@ function CreatePost (){
 
         await axios.post(api_url, {
             "title": title,
+            "content": content,
             "post_desc": postDesc,
-            "created_at": date,
-            "content": content
+            "created_at": date
         })
         .then((res) => {
             console.log(res)
