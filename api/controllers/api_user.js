@@ -35,7 +35,7 @@ exports.find_user = async(req,res,next)=>{
         }
         else{
             res.status(200).json({
-                message:"Item found",
+                message:"User found",
                 Item:result[0]
             })
         }
@@ -52,7 +52,7 @@ exports.find_all_users = async(req,res,next)=>{
         }
         else{
             res.status(200).json({
-                Message:"Item found",
+                Message:"Users found",
                 User: result
             })
         }

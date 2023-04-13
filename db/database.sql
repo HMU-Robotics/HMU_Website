@@ -11,6 +11,7 @@ create table role(
 create table post(
     id int not null auto_increment,
     title varchar(80) not null,
+    desc varchar(80) not null,
     content varchar(1500) not null,
     created_at varchar(24),
     updated_at timestamp default current_timestamp on update current_timestamp,
@@ -37,7 +38,6 @@ create table user(
     academic_id varchar(25) not null,
     school varchar(120) not null,
     subscription Boolean not null,
-    /*subscription_date timestamp,*/
     subscription_date varchar(150),
     role_id int not null,
     end_date timestamp,

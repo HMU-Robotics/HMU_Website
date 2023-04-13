@@ -30,3 +30,19 @@ exports.find_post = async(req,res,next) => {
         }
     })
 }
+
+exports.get_latest_posts = async(req,res,next) => {
+    db.execute('SELECT * FROM `post` ORDER BY `id` DESC LIMIT 5', (err,result) => {
+        if(err) throw err
+        console.log(result)
+        if(result.length == 0){
+            res.status(409).json("Invalid input")
+        }
+        else {
+            res.status(200).json({
+                message: "Latest Posts found",
+                Item: result
+            })
+        }
+    })
+}

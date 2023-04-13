@@ -96,8 +96,8 @@ function CreateUser (){
                     <option value="CE">Μηχανικοί Υπολογιστών</option>
                     <option value="other">Εξωτερικοί Συνεργάτες</option>
                 </Form.Select>
+                <Form.Label>Role</Form.Label>
                 <Form.Select className="role" defaultValue={3} onChange={handleRole}>
-                    <Form.Label>Role</Form.Label>
                     <option value={1}>Admin</option>
                     <option value={2}>Editor</option>
                     <option value={3}>Viewer</option>

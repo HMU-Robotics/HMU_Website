@@ -136,42 +136,34 @@ const newsData = [
 
 function ImageCarousel(props) {
 
-  const [projects, setProjects] = useState(projectData);
-  const [news, setNews] = useState(newsData);
-  const [seminars, setSeminars] = useState(seminarData);
+  const [data, setData] = useState();
+  const [carouselData, setCarouselData] = useState(projectCar)
   const [isLoading, setIsLoading] = useState(true);
 
 
-  // need route from api to fetch data
-
-  // useEffect(() => {
-  //   fetch(`http://localhost:4000/api/find/all`, {})
-  //     .then((res) => res.json())
-  //     .then((response) => {
-  //       setIsLoading(false);
-  //       sortMembers(response);
-  //       console.log(`http://localhost:4000/api/find/all`);
-  //     })
-  //     .catch((error) => {
-  //       console.log(error);
-  //       setIsLoading(true);
-  //   })
-  // }, []);
-
-
-
-
-  let carouselItems;
-
   useEffect(() => {
     if(props.children === "Projects") {
-       carouselItems = projectCar;
+      //  carouselItems = projectCar;
+      fetch(`http://localhost:4000/api/posts/latest`, {})
+      .then((res) => res.json())
+      .then((response) => {
+        setIsLoading(false);
+        setData(response)
+        setCarouselData(projectCar)
+        console.log(`http://localhost:4000/api/posts/latest`);
+      })
+      .catch((error) => {
+        console.log(error);
+        setIsLoading(true);
+    })
     }
     else if(props.children === "Seminars") {
-       carouselItems = seminarCar;
+      setData(seminarData)
+      setCarouselData(seminarCar)
     }
     else if(props.children === "News") {
-       carouselItems = newsCar;
+      setData(newsData)
+      setCarouselData(newsCar)
     }
   }, []);
 
@@ -184,7 +176,7 @@ function ImageCarousel(props) {
   infinite={true}
   className='project-carousel'
   >
-    {Array(projectData.length).fill(projects.map((project, i) => <Suspense fallback={<div>Loading . . .</div>}><Card key={i}>{project}</Card></Suspense>))}
+    {Array(data.length).fill(data.map((project, i) => <Suspense fallback={<div>Loading . . .</div>}><Card key={i}>{project}</Card></Suspense>))}
   </Carousel>;
 
 const newsCar =     <Carousel
@@ -196,7 +188,7 @@ autoPlaySpeed={5000}
 infinite={true}
 className='news-carousel'
 >
-{Array(newsData.length).fill(news.map((newsArticle, i) => <Suspense fallback={<div>Loading . . .</div>}><Card key={i}>{newsArticle}</Card></Suspense>))}
+{Array(data.length).fill(data.map((newsArticle, i) => <Suspense fallback={<div>Loading . . .</div>}><Card key={i}>{newsArticle}</Card></Suspense>))}
 </Carousel>;
 
 
@@ -209,13 +201,12 @@ autoPlaySpeed={5000}
 infinite={true}
 className='seminar-carousel'
 >
-{Array(seminarData.length).fill(seminars.map((seminar, i) => <Suspense fallback={<div>Loading . . .</div>}><Card key={i}>{seminar}</Card></Suspense>))}
+{Array(data.length).fill(data.map((seminar, i) => <Suspense fallback={<div>Loading . . .</div>}><Card key={i}>{seminar}</Card></Suspense>))}
 </Carousel>;
 
-carouselItems = props.children === "News" ? newsCar : (props.children === "Projects" ? projectCar : seminarCar);
 
     return(
-      <div>{carouselItems}</div>
+      <div>{carouselData}</div>
     );
 }
 
