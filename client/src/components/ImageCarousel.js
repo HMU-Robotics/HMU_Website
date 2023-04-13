@@ -136,14 +136,13 @@ const newsData = [
 
 function ImageCarousel(props) {
 
-  const [data, setData] = useState();
+  const [data, setData] = useState(projectData);
   const [carouselData, setCarouselData] = useState(projectCar)
   const [isLoading, setIsLoading] = useState(true);
 
 
   useEffect(() => {
     if(props.children === "Projects") {
-      //  carouselItems = projectCar;
       fetch(`http://localhost:4000/api/posts/latest`, {})
       .then((res) => res.json())
       .then((response) => {
