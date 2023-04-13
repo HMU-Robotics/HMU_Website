@@ -8,20 +8,27 @@ function CreatePost (){
 
 
     const api_url = "https://robotics-club.hmu.gr:443/api/dashboard/addPost"
-    const [title, setTitle] = useState("test")
-    const [content, setContent] = useState("test")
+    const [title, setTitle] = useState()
+    const [desc, setDesc] = useState()
+    const [content, setContent] = useState()
+    const [date, setDate] = useState()
     // const [imageList, setImageList] = useState(null)
 
     const handleTitle = (e) => {
         setTitle(e.target.value)
-        console.log(title)
     }
 
     const handleContent = (e) => {
         setContent(e.target.value)
-        console.log(content)
     }
 
+    const handleDesc = (e) => {
+        setDesc(e.target.value)
+    }
+
+    const handleDate = (e) => {
+        setDate(e.target.value)
+    }
 
     // const handleImageList = (e) => {
     //     setImageList(e.target.value)
@@ -33,6 +40,8 @@ function CreatePost (){
 
         await axios.post(api_url, {
             "title": title,
+            "desc": desc,
+            "created_at": date,
             "content": content
         })
         .then((res) => {
@@ -54,14 +63,18 @@ function CreatePost (){
                     <Form.Label>Title</Form.Label>
                     <Form.Control type="text"/>
                 </Form.Group>
+                <Form.Group className="desc" onChange={handleDesc}>
+                    <Form.Label>Post Description</Form.Label>
+                    <Form.Control type="text"/>
+                </Form.Group>
                 <Form.Group className="content" onChange={handleContent}>
                     <Form.Label>Main Content</Form.Label>
                     <Form.Control as="textarea"/>
                 </Form.Group>
-                {/* <Form.Group className="date" onChange={handleDate}>
+                <Form.Group className="date" onChange={handleDate}>
                     <Form.Label>Date</Form.Label>
                     <Form.Control type="text"/>
-                </Form.Group> */}
+                </Form.Group>
                 {/* <Form.Group onChange={handleImageList}>
                     <Form.Label>Add Images</Form.Label>
                     <Form.Control type="file" multiple/>
