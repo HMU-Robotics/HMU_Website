@@ -96,7 +96,7 @@ const makeMember = async(req,res,next)=>{
     if(err) {
         throw err;
     }
-      db.execute("SELECT `id` FROM user WHERE `last_name` = ?" , [req.body.last_name],(err,result)=>{
+      db.execute("SELECT `id` FROM `user` WHERE `last_name` = ?" , [req.body.last_name],(err,result)=>{
         if(err){
           throw err;
         }

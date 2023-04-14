@@ -47,6 +47,7 @@ function MemberGrid(props) {
          setIsLoading(false);
          sortMembers(response);
          console.log(`https://robotics-club.hmu.gr:443/api/members/find/all`);
+         console.log(response)
        })
        .catch((error) => {
          console.log(error);

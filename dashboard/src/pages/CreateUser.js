@@ -12,9 +12,9 @@ function CreateUser (){
     const [firstname, setFirstName] = useState("")
     const [lastname, setLastName] = useState("")
     const [academic_id, setAcademicID] = useState("")
-    const [course, setCourse] = useState("ECE")
+    const [school, setSchool] = useState("ECE")
     const [role, setRole] = useState(3)
-    const [image, setImage] = useState()
+    const [image, setImage] = useState([])
 
     const handleEmail = (e) => {
         setEmail(e.target.value)
@@ -32,8 +32,8 @@ function CreateUser (){
         setAcademicID(e.target.value)
     }
 
-    const handleCourse = (e) => {
-        setCourse(e.target.value)
+    const handleSchool = (e) => {
+        setSchool(e.target.value)
     }
 
     const handleRole = (e) => {
@@ -53,14 +53,14 @@ function CreateUser (){
         formData.append("first_name",firstname)
         formData.append("last_name",lastname)
         formData.append("academic_id",academic_id)
-        formData.append("school",course)
+        formData.append("school",school)
         formData.append("role_id",role)
         formData.append("upload_img",image)
 
 
         await axios.post(api_url, formData, {
             headers: {
-                "Content-Type": "multiform/form-data"
+                "Content-Type": "multipart/form-data"
             }
         })
         .then((res) => {
@@ -95,7 +95,7 @@ function CreateUser (){
                     <Form.Label>Academic ID</Form.Label>
                     <Form.Control type="text"/>
                 </Form.Group>
-                <Form.Select className="course" onChange={handleCourse}>
+                <Form.Select className="school" onChange={handleSchool}>
                     <Form.Label>University Course</Form.Label>
                     <option value="ECE">Ηλεκτρολόγων Μηχ. Μηχ. Υπολογιστών</option>
                     <option value="MECH">Μηχανολόγων Μηχανικών</option>

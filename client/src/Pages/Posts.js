@@ -19,6 +19,7 @@ function Posts() {
             setData(response);
             setIsLoading(false);
             console.log(`http://localhost:4000/api/posts/${id}`);
+            console.log(response)
           })
           .catch((error) =>{
                console.log(error);

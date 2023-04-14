@@ -150,6 +150,7 @@ function ImageCarousel(props) {
         setData(response)
         setCarouselData(projectCar)
         console.log(`https://robotics-club.hmu.gr:443/api/posts/latest`);
+        console.log(response)
       })
       .catch((error) => {
         console.log(error);
