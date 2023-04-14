@@ -37,6 +37,7 @@ function CreatePost (){
 
 
     const handleSubmit = async (e) => {
+        e.preventDefault()
 
         const formData = new FormData()
         formData.append("title",title)
