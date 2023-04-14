@@ -37,7 +37,7 @@ create table user(
     password varchar(80),
     academic_id varchar(25) not null,
     school varchar(120) not null,
-    subscription Boolean not null,
+    subscription Boolean not null default true,
     subscription_date varchar(150),
     role_id int not null,
     end_date timestamp,
