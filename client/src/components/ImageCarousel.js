@@ -143,13 +143,13 @@ function ImageCarousel(props) {
 
   useEffect(() => {
     if(props.children === "Projects") {
-      fetch(`http://localhost:4000/api/posts/latest`, {})
+      fetch(`https://robotics-club.hmu.gr:443/api/posts/latest`, {})
       .then((res) => res.json())
       .then((response) => {
         setIsLoading(false);
         setData(response)
         setCarouselData(projectCar)
-        console.log(`http://localhost:4000/api/posts/latest`);
+        console.log(`https://robotics-club.hmu.gr:443/api/posts/latest`);
       })
       .catch((error) => {
         console.log(error);
