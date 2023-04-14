@@ -32,7 +32,7 @@ exports.find_post = async(req,res,next) => {
 }
 
 exports.get_latest_posts = async(req,res,next) => {
-    db.execute('SELECT * FROM `post` ORDER BY `id` DESC LIMIT 5', (err,result) => {
+    db.execute('SELECT * FROM `post`', (err,result) => {
         if(err) throw err
         console.log(result)
         if(result.length == 0){

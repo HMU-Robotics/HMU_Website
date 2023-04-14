@@ -12,7 +12,7 @@ function CreatePost (){
     const [postDesc, setPostDesc] = useState()
     const [content, setContent] = useState()
     const [date, setDate] = useState()
-    // const [imageList, setImageList] = useState(null)
+    const [imageList, setImageList] = useState()
 
     const handleTitle = (e) => {
         setTitle(e.target.value)
@@ -30,18 +30,29 @@ function CreatePost (){
         setDate(e.target.value)
     }
 
-    // const handleImageList = (e) => {
-    //     setImageList(e.target.value)
-    // }
+    const handleImageList = (e) => {
+        const files = Array.from(e.target.files)
+        setImageList([...imageList, ...files])
+    }
 
 
     const handleSubmit = async (e) => {
 
-        await axios.post(api_url, {
-            "title": title,
-            "content": content,
-            "post_desc": postDesc,
-            "created_at": date
+        const formData = new FormData()
+        formData.append("title",title)
+        formData.append("content",content)
+        formData.append("post_desc",postDesc)
+        formData.append("created_at",date)
+
+        imageList.forEach((image, index) => {
+            formData.append(`upload_img${index}`, image)
+        })
+
+
+        await axios.post(api_url, formData, {
+            headers: {
+                "Content-Type": "multipart/form-data"
+            }
         })
         .then((res) => {
             console.log(res)
@@ -74,10 +85,10 @@ function CreatePost (){
                     <Form.Label>Date</Form.Label>
                     <Form.Control type="text"/>
                 </Form.Group>
-                {/* <Form.Group onChange={handleImageList}>
+                <Form.Group onChange={handleImageList}>
                     <Form.Label>Add Images</Form.Label>
                     <Form.Control type="file" multiple/>
-                </Form.Group> */}
+                </Form.Group>
                 <Button variant="primary" type="submit">
                     Submit
                 </Button>

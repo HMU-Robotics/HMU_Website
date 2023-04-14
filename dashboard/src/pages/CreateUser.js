@@ -6,10 +6,6 @@ import axios from "axios"
 
 function CreateUser (){
 
-    // temporary data
-    const subscription = true
-    const subscriptionDate = "2023-01-01"
-
 
     const api_url = "https://robotics-club.hmu.gr:443/api/dashboard/addMember"
     const [email, setEmail] = useState("")
@@ -18,6 +14,7 @@ function CreateUser (){
     const [academic_id, setAcademicID] = useState("")
     const [course, setCourse] = useState("ECE")
     const [role, setRole] = useState(3)
+    const [image, setImage] = useState()
 
     const handleEmail = (e) => {
         setEmail(e.target.value)
@@ -43,18 +40,27 @@ function CreateUser (){
         setRole(e.target.value)
     }
 
-    const handleSubmit = async (e) => {
-        e.preventDefault()
+    const handleImage = (e) => {
+        const file = e.target.files[0]
+        setImage(file)
+    }
 
-        await axios.post(api_url, {
-            email: email,
-            first_name: firstname,
-            last_name: lastname,
-            academic_id: academic_id,
-            school: course,
-            role_id: role,
-            subscription: subscription,
-            subscription_date: subscriptionDate
+    const handleSubmit = async (e) => {
+
+        const formData = new FormData()
+        formData.append("email",email)
+        formData.append("first_name",firstname)
+        formData.append("last_name",lastname)
+        formData.append("academic_id",academic_id)
+        formData.append("school",course)
+        formData.append("role_id",role)
+        formData.append("upload_img",image)
+
+
+        await axios.post(api_url, formData, {
+            headers: {
+                "Content-Type": "multiform/form-data"
+            }
         })
         .then((res) => {
             console.log(res)
@@ -102,10 +108,10 @@ function CreateUser (){
                     <option value={2}>Editor</option>
                     <option value={3}>Viewer</option>
                 </Form.Select>
-                {/* <Form.Group onChange={handleImage}>
+                <Form.Group onChange={handleImage}>
                     <Form.Label>Add Image</Form.Label>
                     <Form.Control type="file"/>
-                </Form.Group> */}
+                </Form.Group>
                 <Button variant="primary" type="submit">
                     Submit
                 </Button>

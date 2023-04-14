@@ -69,72 +69,50 @@ const makePost = async(req,res,next)=>{
         if(err) {
             throw err;
         }
-  //       db.execute("SELECT `id` FROM post WHERE `title` = ?" , [req.body.title],(err,result)=>{
-  //         if(err){
-  //           throw err;
-  //           console.log(err)
-  //         }
-  //         let id = result[0].id
-  //         console.log(req.body.images)
-  //         for(const image in req.body.images){
-  //           db.execute("INSERT INTO `postImages`(post_id,img) VALUES(?,?)",[id,req.body.images[image]],(err,result)=>{
-  //             if(err){
-  //               throw err; //       db.execute("SELECT `id` FROM post WHERE `title` = ?" , [req.body.title],(err,result)=>{
-  //         if(err){
-  //           throw err;
-  //           console.log(err)
-  //         }
-  //         let id = result[0].id
-  //         console.log(req.body.images)
-  //         for(const image in req.body.images){
-  //           db.execute("INSERT INTO `postImages`(post_id,img) VALUES(?,?)",[id,req.body.images[image]],(err,result)=>{
-  //             if(err){
-  //               throw err;
-  //             }
-  //         })
-  //       }
-  //   })
+        db.execute("SELECT `id` FROM post WHERE `title` = ?" , [req.body.title],(err,result)=>{
+          if(err){
+            throw err;
+          }
+          let id = result[0].id
+          console.log(req.body.images)
+          for(const image in req.body.images){
+            db.execute("INSERT INTO `postImages`(post_id,img) VALUES(?,?)",[id,req.body.images[image]],(err,result)=>{
+              if(err){
+                throw err;
+              }
+            })
+          }
+          })
+        })
 
-
-  // })
-  //             }
-  //         })
-  //       }
-  //   })
-
-
-   })
-  
   res.send("created post")
 }
 
 
 const makeMember = async(req,res,next)=>{
   const path = "./api/public/storage/uploads/members"
-  // TO DO FIX VALUE NAMES
   db.execute("INSERT INTO `user`(email,first_name,last_name,academic_id,school,subscription,subscription_date,role_id) VALUES(?,?,?,?,?,?,?,?)",[req.body.email,req.body.first_name,req.body.last_name,req.body.academic_id,req.body.school,req.body.subscription,req.body.subscription_date,req.body.role_id],(err,user)=>{
     console.log(req.body)
     if(err) {
         throw err;
     }
-      // db.execute("SELECT `id` FROM user WHERE `name` = ?" , [req.body.name],(err,result)=>{
-      //   if(err){
-      //     throw err;
-      //   }
-      //   let id = result[0].id
-      //   console.log(req.body.images)
-      //   for(const image in req.body.images){
-      //     // TO DO FIX VALUE NAMES
-      //     db.execute("INSERT INTO `memberImages`(post_id,img) VALUES(?,?)",[id,req.body.images[image]],(err,result)=>{
-      //       if(err){
-      //         throw err;
-      //       }
-      //   })
-      // }
+      db.execute("SELECT `id` FROM user WHERE `last_name` = ?" , [req.body.last_name],(err,result)=>{
+        if(err){
+          throw err;
+        }
+        let id = result[0].id
+        console.log(req.body.images)
+        for(const image in req.body.images){
+          db.execute("INSERT INTO `memberImages`(post_id,img) VALUES(?,?)",[id,req.body.images[image]],(err,result)=>{
+            if(err){
+              throw err;
+            }
+        })
+      }
   })
 
 
-// })
+})
 
 res.send("created member")
 }

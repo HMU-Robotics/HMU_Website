@@ -41,12 +41,12 @@ function MemberGrid(props) {
     const [isLoading, setIsLoading] = useState(true);
 
      useEffect(() => {
-     fetch(`http://localhost:4000/api/find/all`, {})
+     fetch(`http://localhost:4000/api/members/find/all`, {})
        .then((res) => res.json())
        .then((response) => {
          setIsLoading(false);
          sortMembers(response);
-         console.log(`http://localhost:4000/api/find/all`);
+         console.log(`http://localhost:4000/api/members/find/all`);
        })
        .catch((error) => {
          console.log(error);
