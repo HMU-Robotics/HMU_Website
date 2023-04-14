@@ -13,12 +13,12 @@ function Posts() {
 
 
     useEffect(() => {
-        fetch(`http://localhost:4000/api/posts/${id}`, {})
+        fetch(`https://robotics-club.hmu.gr:443/api/posts/${id}`, {})
           .then((res) => res.json())
           .then((response) => {
             setData(response);
             setIsLoading(false);
-            console.log(`http://localhost:4000/api/posts/${id}`);
+            console.log(`https://robotics-club.hmu.gr:443/api/posts/${id}`);
             console.log(response)
           })
           .catch((error) =>{
