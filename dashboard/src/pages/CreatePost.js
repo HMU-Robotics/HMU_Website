@@ -12,7 +12,7 @@ function CreatePost (){
     const [postDesc, setPostDesc] = useState()
     const [content, setContent] = useState()
     const [date, setDate] = useState()
-    const [imageList, setImageList] = useState()
+    const [imageList, setImageList] = useState([])
 
     const handleTitle = (e) => {
         setTitle(e.target.value)
@@ -32,6 +32,8 @@ function CreatePost (){
 
     const handleImageList = (e) => {
         const files = Array.from(e.target.files)
+        if(!files) return;
+        
         setImageList([...imageList, ...files])
     }
 
