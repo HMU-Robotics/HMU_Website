@@ -1,4 +1,5 @@
 import Card from 'react-bootstrap/Card';
+import { Link } from 'react-router-dom';
 import "./ProjectCard.css"
 
 
@@ -12,14 +13,16 @@ function ProjectCard(props) {
 
 
     return (
-      <Card className='project-card' onClick={() => window.open(`/Post/${id}`)} style={{ width: '22rem', height: '25em' }}>
-        <Card.Img variant="top" src={img} />
-        <Card.Body>
-          <Card.Title className='project-title'>{title}</Card.Title>
-          <Card.Text className='project-date'>{date}</Card.Text>
-          <Card.Text className='project-desc'>{desc}</Card.Text>
-        </Card.Body>
-      </Card>
+      <Link to={`/Post/${id}`} className="project-card-link">
+        <Card className='project-card' onClick={() => window.open(`/Post/${id}`)} style={{ width: '22rem', height: '25em' }}>
+          <Card.Img variant="top" src={img} />
+          <Card.Body>
+            <Card.Title className='project-title'>{title}</Card.Title>
+            <Card.Text className='project-date'>{date}</Card.Text>
+            <Card.Text className='project-desc'>{desc}</Card.Text>
+          </Card.Body>
+        </Card>
+      </Link>
     );
   }
 
