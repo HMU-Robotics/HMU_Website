@@ -30,6 +30,8 @@ function Posts() {
 
     return(
         <div>
+                {console.log(data)}
+                {console.log(data.title)}
                 <h1 className="post-title">{data?.title}</h1>
                 {/* <div className="image-list-wrapper">
                     <img src={data.imageList[0]} alt="img1"></img>
