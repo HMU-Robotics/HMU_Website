@@ -5,7 +5,7 @@ import { useParams } from "react-router-dom";
 
 function Posts() {
 
-    const { id } = useParams();
+    const { postid } = useParams();
 
     const [isLoading, setIsLoading] = useState(true);
     const [data, setData] = useState();
@@ -13,12 +13,12 @@ function Posts() {
 
 
     useEffect(() => {
-        fetch(`https://robotics-club.hmu.gr:443/api/posts/${id}`, {})
+        fetch(`https://robotics-club.hmu.gr:443/api/posts/${postid}`, {})
           .then((res) => res.json())
           .then((response) => {
             setData(response);
             setIsLoading(false);
-            console.log(`https://robotics-club.hmu.gr:443/api/posts/${id}`);
+            console.log(`https://robotics-club.hmu.gr:443/api/posts/${postid}`);
             console.log(response)
           })
           .catch((error) =>{
