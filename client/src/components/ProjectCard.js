@@ -14,7 +14,7 @@ function ProjectCard(props) {
 
     return (
       <Link to={`/Post/${id}`} className="project-card-link">
-        <Card className='project-card' onClick={() => window.open(`/Post/${id}`)} style={{ width: '22rem', height: '25em' }}>
+        <Card className='project-card' style={{ width: '22rem', height: '25em' }}>
           <Card.Img variant="top" src={img} />
           <Card.Body>
             <Card.Title className='project-title'>{title}</Card.Title>
