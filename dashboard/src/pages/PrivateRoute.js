@@ -4,7 +4,6 @@ import { Outlet, Navigate } from 'react-router-dom';
 export default function PrivateRoutes(props) {
 
    const [user, setUser] = useState(props.user);
-//   const [user, setUser] = useState("admin@gmail.com");
    const [loading, setLoading] = useState(<div>Loading ...</div>);
 
    const passRender = () =>{
@@ -27,8 +26,6 @@ export default function PrivateRoutes(props) {
 
       return(
          <div>
-               {console.log(props)}
-               {console.log(user)}
                {loading}
          </div>
       )

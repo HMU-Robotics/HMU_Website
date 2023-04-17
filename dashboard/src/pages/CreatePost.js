@@ -27,7 +27,8 @@ function CreatePost (){
     }
 
     const handleDate = (e) => {
-        setDate(e.target.value)
+        const inputDate = e.target.value
+        setDate(new Date(inputDate))
     }
 
     const handleImageList = (e) => {
@@ -86,7 +87,7 @@ function CreatePost (){
                 </Form.Group>
                 <Form.Group className="date" onChange={handleDate}>
                     <Form.Label>Date</Form.Label>
-                    <Form.Control type="text"/>
+                    <Form.Control type="date"/>
                 </Form.Group>
                 <Form.Group onChange={handleImageList}>
                     <Form.Label>Add Images</Form.Label>

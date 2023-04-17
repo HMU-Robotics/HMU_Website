@@ -18,8 +18,8 @@ function Dashboard () {
         navigate("/editpost")
     }
 
-    const gotoCreateUser = () => {
-        navigate("/createuser")
+    const gotoCreateMember = () => {
+        navigate("/createmember")
     }
 
     const gotoEditUser = () => {
@@ -53,7 +53,7 @@ function Dashboard () {
             </div>
             <div className="wrapper">
                 <h3>Create User</h3>
-                <Button onClick={gotoCreateUser} variant="primary">Button</Button>
+                <Button onClick={gotoCreateMember} variant="primary">Button</Button>
             </div>
             <div className="wrapper">
                 <h3>Edit User</h3>

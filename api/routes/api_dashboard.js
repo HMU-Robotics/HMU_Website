@@ -11,8 +11,6 @@ const { uploadImages , resizeImages  ,makePost ,makeMember, test} = require("../
 
 router.post('/addPost',AuthMiddleware,viewer,uploadImages,resizeImages,makePost)
 router.put('/editPost',AuthMiddleware,viewer,dashboard_controller.post_post)
-// this is a test will get deleted
-router.post('/test',AuthMiddleware,viewer,test)
 
 /////////////////// Members //////////////////////////
 router.post('/addMember',AuthMiddleware,viewer,uploadImages,resizeImages,makeMember)

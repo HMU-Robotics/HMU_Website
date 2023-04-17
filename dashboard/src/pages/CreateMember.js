@@ -4,21 +4,17 @@ import Button from "react-bootstrap/esm/Button"
 import axios from "axios"
 
 
-function CreateUser (){
+function CreateMember (){
 
 
     const api_url = "https://robotics-club.hmu.gr:443/api/dashboard/addMember"
-    const [email, setEmail] = useState("")
     const [firstname, setFirstName] = useState("")
     const [lastname, setLastName] = useState("")
     const [academic_id, setAcademicID] = useState("")
     const [school, setSchool] = useState("ECE")
-    const [role, setRole] = useState(3)
+    const [subscriptionDate, setsubcriptionDate] = useState()
     const [image, setImage] = useState([])
 
-    const handleEmail = (e) => {
-        setEmail(e.target.value)
-    }
 
     const handleFirstName = (e) => {
         setFirstName(e.target.value)
@@ -36,8 +32,9 @@ function CreateUser (){
         setSchool(e.target.value)
     }
 
-    const handleRole = (e) => {
-        setRole(e.target.value)
+    const handleSubscriptionDate = (e) => {
+        const inputSubDate = e.target.value
+        setsubcriptionDate(new Date(inputSubDate))
     }
 
     const handleImage = (e) => {
@@ -49,12 +46,11 @@ function CreateUser (){
         e.preventDefault()
 
         const formData = new FormData()
-        formData.append("email",email)
+        formData.append("academic_id",academic_id)
         formData.append("first_name",firstname)
         formData.append("last_name",lastname)
-        formData.append("academic_id",academic_id)
         formData.append("school",school)
-        formData.append("role_id",role)
+        formData.append("subscription_date",subscriptionDate)
         formData.append("upload_img",image)
 
 
@@ -79,10 +75,6 @@ function CreateUser (){
             
             <Form onSubmit={handleSubmit}>
                 <Form.Label>Create New User</Form.Label>
-                <Form.Group className="email" onChange={handleEmail}>
-                    <Form.Label>Email</Form.Label>
-                    <Form.Control type="text"/>
-                </Form.Group>
                 <Form.Group className="firstname" onChange={handleFirstName}>
                     <Form.Label>First Name</Form.Label>
                     <Form.Control type="text"/>
@@ -103,12 +95,10 @@ function CreateUser (){
                     <option value="CE">Μηχανικοί Υπολογιστών</option>
                     <option value="other">Εξωτερικοί Συνεργάτες</option>
                 </Form.Select>
-                <Form.Label>Role</Form.Label>
-                <Form.Select className="role" defaultValue={3} onChange={handleRole}>
-                    <option value={1}>Admin</option>
-                    <option value={2}>Editor</option>
-                    <option value={3}>Viewer</option>
-                </Form.Select>
+                <Form.Group className="subcription_date" onChange={handleSubscriptionDate}>
+                    <Form.Label>Subscription Date</Form.Label>
+                    <Form.Control type="date"/>
+                </Form.Group>
                 <Form.Group onChange={handleImage}>
                     <Form.Label>Add Image</Form.Label>
                     <Form.Control type="file"/>
@@ -121,4 +111,4 @@ function CreateUser (){
     )
 }
 
-export default CreateUser
+export default CreateMember

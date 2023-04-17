@@ -28,7 +28,7 @@ module.exports = async(req,res,next)=> {
                 return res.status(404)
             }else{
                 return res.status(200).json({
-                    member_id: session[0].member_id
+                    user_id: session[0].user_id
                 })
             }
         })
