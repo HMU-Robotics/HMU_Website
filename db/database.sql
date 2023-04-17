@@ -26,6 +26,19 @@ create table postImages(
     foreign key (post_id) references post(id)
 );
 
+create table member(
+    id int not null unique auto_increment,
+    academic_id varchar(25) not null,
+    first_name varchar(50) not null,
+    last_name varchar(50) not null,
+    school varchar(120) not null,
+    subscription Boolean not null default true,
+    subscription_date timestamp,
+    end_date timestamp,
+    created_at timestamp default current_timestamp,
+    updated_at timestamp default current_timestamp on update current_timestamp,
+    primary key (academic_id)
+);
 
 create table user(
     id int not null auto_increment,
@@ -49,19 +62,6 @@ create table memberImages(
     foreign key (member_id) references member(id)
 );
 
-create table member(
-    id int not null unique auto_increment,
-    academic_id varchar(25) not null,
-    first_name varchar(50) not null,
-    last_name varchar(50) not null,
-    school varchar(120) not null,
-    subscription Boolean not null default true,
-    subscription_date timestamp,
-    end_date timestamp,
-    created_at timestamp default current_timestamp,
-    updated_at timestamp default current_timestamp on update current_timestamp,
-    primary key (academic_id)
-);
 
 create table reservation(
     id int not null auto_increment,
