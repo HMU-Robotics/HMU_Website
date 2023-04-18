@@ -26,6 +26,8 @@ export default function PrivateRoutes(props) {
 
       return(
          <div>
+               {console.log(props)}
+               {console.log(user)}
                {loading}
          </div>
       )
