@@ -5,9 +5,6 @@ import { useNavigate } from "react-router-dom"
 
 function Dashboard () {
 
-    const api_url = "https://robotics-club.hmu.gr:443/api/dashboard/test"
-    const emailTest = "test123"
-
     const navigate = useNavigate();
 
     const gotoCreatePost = () => {
@@ -24,20 +21,6 @@ function Dashboard () {
 
     const gotoEditUser = () => {
         navigate("/edituser")
-    }
-
-    // this is for testing purposes will get deleted
-    const gotoTest = async(e) => {
-        await axios.post(api_url, {
-            "email": emailTest
-        })
-        .then((res) => {
-            console.log(res)
-            console.log(res.status)
-        })
-        .catch((err) => {
-            console.log(err)
-        })
     }
 
     return(
@@ -58,10 +41,6 @@ function Dashboard () {
             <div className="wrapper">
                 <h3>Edit User</h3>
                 <Button onClick={gotoEditUser} variant="primary">Button</Button>
-            </div>
-            <div className="wrapper">
-                <h3>test</h3>
-                <Button onClick={gotoTest} variant="primary">Button</Button>
             </div>
         </>
     )
