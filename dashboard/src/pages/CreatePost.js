@@ -50,8 +50,8 @@ function CreatePost (){
         formData.append("post_desc",postDesc)
         formData.append("created_at",date)
 
-        imageList.forEach((image, index) => {
-            formData.append(`upload_img${index}`, image)
+        imageList.forEach((image) => {
+            formData.append("upload_img", image)
         })
 
 
