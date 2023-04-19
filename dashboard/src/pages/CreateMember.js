@@ -45,7 +45,6 @@ function CreateMember (){
     }
 
     const handleSubmit = async (e) => {
-        e.preventDefault()
 
         const formData = new FormData()
         formData.append("academic_id",academic_id)
