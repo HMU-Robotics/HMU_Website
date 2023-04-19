@@ -35,7 +35,7 @@ function CreateMember (){
     const handleSubscriptionDate = (e) => {
         const inputSubDate = new Date(e.target.value)
         const subDate = inputSubDate.toISOString()
-        const formattedSubDate = subDate.substring(0,19).replace('T',' ')
+        const formattedSubDate = subDate.substring(0,10).replace('T',' ')
         setSubcriptionDate(formattedSubDate)
     }
 

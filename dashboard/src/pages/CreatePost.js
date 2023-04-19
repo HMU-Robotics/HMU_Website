@@ -29,7 +29,7 @@ function CreatePost (){
     const handleDate = (e) => {
         const inputDate = new Date(e.target.value)
         const postDate = inputDate.toISOString()
-        const formattedDate = postDate.substring(0,19).replace('T',' ')
+        const formattedDate = postDate.substring(0,10).replace('T',' ')
         setDate(formattedDate)
     }
 

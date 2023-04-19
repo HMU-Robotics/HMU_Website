@@ -13,7 +13,7 @@ create table post(
     title varchar(80) not null,
     post_desc varchar(80) not null,
     content varchar(1500) not null,
-    created_at timestamp,
+    created_at date,
     updated_at timestamp default current_timestamp on update current_timestamp,
     primary key(id)
 );
@@ -33,8 +33,8 @@ create table member(
     last_name varchar(50) not null,
     school varchar(120) not null,
     subscription Boolean not null default true,
-    subscription_date timestamp,
-    end_date timestamp,
+    subscription_date date,
+    end_date date,
     created_at timestamp default current_timestamp,
     updated_at timestamp default current_timestamp on update current_timestamp,
     primary key (academic_id)
