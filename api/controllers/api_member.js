@@ -16,6 +16,10 @@ const db =  mysql.createPool({
 
 exports.find_member = async(req,res,next)=>{
     const { id } = req.params
+    if (id == 1) {
+        res.status(403).json('Access denied');
+        return;
+      }
     db.execute('SELECT * FROM `member` WHERE `academic_id` = ?',[id],(err,member)=>{
         if(err) throw err
         console.log(member)
@@ -45,7 +49,7 @@ exports.find_member = async(req,res,next)=>{
 
 
 exports.find_all_members = async(req,res,next)=>{
-    db.execute('SELECT * FROM `member` LEFT JOIN `memberImages` ON `member`.`academic_id` = `memberImages`.`member_id`', (err,result)=>{
+    db.execute('SELECT * FROM `member` LEFT JOIN `memberImages` ON `member`.`academic_id` = `memberImages`.`member_id` WHERE `member`.`academic_id` <> 1', (err,result)=>{
         if(err) throw err
         console.log(result)
         if(result.length == 0){
