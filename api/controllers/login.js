@@ -44,7 +44,7 @@ exports.user_login = async(req,res,next) =>{
                         }
                     )
                     let date = new Date()
-                    db.execute('DELETE FROM `session` WHERE `member_id` = ?',[user[0].id],(err,user)=>{
+                    db.execute('DELETE FROM `session` WHERE `user_id` = ?',[user[0].id],(err,user)=>{
                         if(user){
                             console.log("DELETED SESSION")
                             console.log(user)
@@ -55,7 +55,7 @@ exports.user_login = async(req,res,next) =>{
                         }
                         
                     })
-                    db.execute('INSERT into `session`(member_id,expires,data) VALUES (?,?,?)',[user[0].id,date.getTime(),token],(err,user)=>{
+                    db.execute('INSERT into `session`(user_id,expires,data) VALUES (?,?,?)',[user[0].id,date.getTime(),token],(err,user)=>{
                         if(user){
                             console.log("INSERT SESSION")
                             console.log(user)

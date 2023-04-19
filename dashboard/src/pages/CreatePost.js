@@ -27,7 +27,10 @@ function CreatePost (){
     }
 
     const handleDate = (e) => {
-        setDate(e.target.value)
+        const inputDate = new Date(e.target.value)
+        const postDate = inputDate.toISOString()
+        const formattedDate = postDate.substring(0,10).replace('T',' ')
+        setDate(formattedDate)
     }
 
     const handleImageList = (e) => {
@@ -39,7 +42,6 @@ function CreatePost (){
 
 
     const handleSubmit = async (e) => {
-        e.preventDefault()
 
         const formData = new FormData()
         formData.append("title",title)
@@ -47,8 +49,8 @@ function CreatePost (){
         formData.append("post_desc",postDesc)
         formData.append("created_at",date)
 
-        imageList.forEach((image, index) => {
-            formData.append(`upload_img${index}`, image)
+        imageList.forEach((image) => {
+            formData.append("upload_img", image)
         })
 
 
@@ -86,7 +88,7 @@ function CreatePost (){
                 </Form.Group>
                 <Form.Group className="date" onChange={handleDate}>
                     <Form.Label>Date</Form.Label>
-                    <Form.Control type="text"/>
+                    <Form.Control type="date"/>
                 </Form.Group>
                 <Form.Group onChange={handleImageList}>
                     <Form.Label>Add Images</Form.Label>

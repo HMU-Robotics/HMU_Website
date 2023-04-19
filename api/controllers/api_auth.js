@@ -33,7 +33,7 @@ exports.user_signup = async(req,res,next) =>{
                 } 
                 try{
                 
-                    db.execute('INSERT INTO `user`(email,password,first_name,last_name,role_id,academic_id,subscription,school) VALUES(?,?,?,?,?,?,?,?)',[req.body.email,hash,req.body.first_name,req.body.last_name,req.body.role_id,req.body.academic_id,req.body.subscription,req.body.school],(err,result)=>{
+                    db.execute('INSERT INTO `user`(email,password,role_id,academic_id) VALUES(?,?,?,?)',[req.body.email,hash,req.body.role_id,req.body.academic_id],(err,result)=>{
                         if(err) throw err;
                         console.log(result)
                         res.status(200).json({

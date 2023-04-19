@@ -1,6 +1,5 @@
 import React,{createContext, useEffect} from 'react'
 import axios from 'axios'
-import { Navigate } from 'react-router-dom'
 
  const UserContext = createContext()
 
@@ -13,8 +12,8 @@ useEffect(() => {
   async function findUser() {
      await axios.post(api_login)
         .then((res) => {
-        setUser(res.data.member_id);
-        console.log(res.data.member_id)
+        setUser(res.data.user_id);
+        console.log(res.data.user_id)
         })
         .catch((err) => {
       console.log(err)

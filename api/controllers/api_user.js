@@ -42,7 +42,6 @@ exports.find_user = async(req,res,next)=>{
     })
 }
 
-//TODO Broken path
 exports.find_all_users = async(req,res,next)=>{
         db.execute('SELECT * from `user` ',(err,result)=>{
         if(err) throw err
