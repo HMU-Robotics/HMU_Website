@@ -29,7 +29,8 @@ function CreatePost (){
     const handleDate = (e) => {
         const inputDate = new Date(e.target.value)
         const postDate = inputDate.toISOString()
-        setDate(postDate)
+        const formattedDate = postDate.substring(0,19).replace('T',' ')
+        setDate(formattedDate)
     }
 
     const handleImageList = (e) => {

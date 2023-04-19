@@ -12,7 +12,7 @@ function CreateMember (){
     const [lastname, setLastName] = useState("")
     const [academic_id, setAcademicID] = useState("")
     const [school, setSchool] = useState("ECE")
-    const [subscriptionDate, setsubcriptionDate] = useState()
+    const [subscriptionDate, setSubcriptionDate] = useState()
     const [image, setImage] = useState([])
 
 
@@ -35,7 +35,8 @@ function CreateMember (){
     const handleSubscriptionDate = (e) => {
         const inputSubDate = new Date(e.target.value)
         const subDate = inputSubDate.toISOString()
-        setsubcriptionDate(subDate)
+        const formattedSubDate = subDate.substring(0,19).replace('T',' ')
+        setSubcriptionDate(formattedSubDate)
     }
 
     const handleImage = (e) => {
