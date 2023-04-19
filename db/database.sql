@@ -55,11 +55,11 @@ create table user(
 
 create table memberImages(
     id int not null auto_increment,
-    member_id int not null,
+    member_id varchar(25) not null,
     img varchar(80) not null,
     caption varchar(80),
     primary key (id),
-    foreign key (member_id) references member(id)
+    foreign key (member_id) references member(academic_id)
 );
 
 
