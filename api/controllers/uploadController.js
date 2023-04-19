@@ -96,14 +96,14 @@ const makeMember = async(req,res,next)=>{
     if(err) {
         throw err;
     }
-      db.execute("SELECT `id` FROM `member` WHERE `last_name` = ?" , [req.body.last_name],(err,result)=>{
+      db.execute("SELECT `academic_id` FROM `member` WHERE `last_name` = ?" , [req.body.last_name],(err,result)=>{
         if(err){
           throw err;
         }
-        let id = result[0].id
+        let academic_id = result[0].academic_id
         console.log(req.body.images)
         for(const image in req.body.images){
-          db.execute("INSERT INTO `memberImages`(member_id,img) VALUES(?,?)",[id,req.body.images[image]],(err,result)=>{
+          db.execute("INSERT INTO `memberImages`(member_id,img) VALUES(?,?)",[academic_id,req.body.images[image]],(err,result)=>{
             if(err){
               throw err;
             }
