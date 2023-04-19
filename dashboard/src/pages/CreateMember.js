@@ -33,8 +33,9 @@ function CreateMember (){
     }
 
     const handleSubscriptionDate = (e) => {
-        const inputSubDate = e.target.value
-        setsubcriptionDate(new Date(inputSubDate))
+        const inputSubDate = new Date(e.target.value)
+        const subDate = inputSubDate.toISOString()
+        setsubcriptionDate(subDate)
     }
 
     const handleImage = (e) => {
