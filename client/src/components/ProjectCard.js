@@ -14,6 +14,7 @@ function ProjectCard(props) {
 
     return (
       <Link to={`/Post/${id}`} className="project-card-link">
+        {console.log(props.children)}
         <Card className='project-card' style={{ width: '22rem', height: '25em' }}>
           <Card.Img variant="top" src={img} />
           <Card.Body>
