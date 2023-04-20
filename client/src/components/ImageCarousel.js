@@ -148,7 +148,6 @@ function ImageCarousel(props) {
       .then((response) => {
         setIsLoading(false);
         setData(response)
-        setCarouselData(projectCar)
         console.log(`https://robotics-club.hmu.gr:443/api/posts/find/latest`);
         console.log(response)
       })
@@ -159,13 +158,26 @@ function ImageCarousel(props) {
     }
     else if(props.children === "Seminars") {
       setData(seminarData)
-      setCarouselData(seminarCar)
     }
     else if(props.children === "News") {
       setData(newsData)
-      setCarouselData(newsCar)
     }
   }, [props.children]);
+
+
+  useEffect(() => {
+    if(data.length > 0){
+      if(props.children === "Projects"){
+        setCarouselData(projectCar)
+      }
+      else if(props.children === "Seminars"){
+        setCarouselData(seminarCar)
+      }
+      else if(props.children === "News"){
+        setCarouselData(newsCar)
+      }
+    }
+  }, [data, props.children])
 
   const projectCar =     <Carousel
   responsive={responsive}
@@ -207,10 +219,7 @@ className='seminar-carousel'
 
     return(
       
-      <div>{data.length > 0 ? 
-      carouselData  : (
-        <p>Loading ...</p>
-      )}
+      <div>{carouselData}
       {console.log(data)}
       {console.log(data.Item)}</div>
     );
