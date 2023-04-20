@@ -188,7 +188,7 @@ autoPlaySpeed={5000}
 infinite={true}
 className='news-carousel'
 >
-{Array(data.length).fill(data.map((newsArticle, i) => <Suspense fallback={<div>Loading . . .</div>}><Card key={i}>{newsArticle}</Card></Suspense>))}
+{Array(data.length).fill(data.map(newsArticle => <Suspense fallback={<div>Loading . . .</div>}><Card>{Object.keys(newsArticle)}</Card></Suspense>))}
 </Carousel>;
 
 
@@ -201,7 +201,7 @@ autoPlaySpeed={5000}
 infinite={true}
 className='seminar-carousel'
 >
-{Array(data.length).fill(data.map((seminar, i) => <Suspense fallback={<div>Loading . . .</div>}><Card key={i}>{seminar}</Card></Suspense>))}
+{Array(data.length).fill(data.map(seminar => <Suspense fallback={<div>Loading . . .</div>}><Card>{Object.keys(seminar)}</Card></Suspense>))}
 </Carousel>;
 
 
