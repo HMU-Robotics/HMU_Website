@@ -57,19 +57,23 @@ exports.find_all_members = async(req,res,next)=>{
         } else {
             let members = {}
             result.forEach(row => {
-                if (!members[row.member_id]) {
+                if (!members[row.academic_id]) {
                     // Create a new member object if we haven't seen this member yet
-                    members[row.member_id] = {
-                        member_id: row.member_id,
-                        name: row.name,
+                    members[row.academic_id] = {
+                        academic_id: row.academic_id,
+                        first_name: row.first_name,
+                        last_name: row.last_name,
+                        school: row.school,
+                        subscription_date: row.subscription_date,
+                        end_date: row.end_date,
                         images: []
                     }
                 }
                 if (row.image_id) {
                     // Add the image to the member object if it exists
                     members[row.member_id].images.push({
-                        image_id: row.image_id,
-                        image_url: row.image_url
+                        image_id: row.member_id,
+                        image_url: row.img
                     })
                 }
             })
