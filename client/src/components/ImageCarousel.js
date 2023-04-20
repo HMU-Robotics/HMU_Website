@@ -136,7 +136,7 @@ const newsData = [
 
 function ImageCarousel(props) {
 
-  const [data, setData] = useState(projectData);
+  const [data, setData] = useState([]);
   const [carouselData, setCarouselData] = useState(projectCar)
   const [isLoading, setIsLoading] = useState(true);
 
@@ -207,7 +207,10 @@ className='seminar-carousel'
 
     return(
       
-      <div>{carouselData}
+      <div>{data.length > 0 ? 
+      carouselData  : (
+        <p>Loading ...</p>
+      )}
       {console.log(data)}
       {console.log(data.Item)}</div>
     );
