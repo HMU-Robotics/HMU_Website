@@ -4,7 +4,7 @@ import "react-multi-carousel/lib/styles.css";
 import "./ImageCarousel.css"
 
 
-const Card = React.lazy(() => import('./ProjectCard'));
+const Card = React.lazy(() => import('./Card'));
 
 const responsive = {
   desktop: {
