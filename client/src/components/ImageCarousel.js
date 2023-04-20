@@ -209,7 +209,7 @@ className='seminar-carousel'
       
       <div>{carouselData}
       {console.log(data)}
-      {console.log(Object.keys(data))}</div>
+      {console.log(data.Item)}</div>
     );
 }
 
