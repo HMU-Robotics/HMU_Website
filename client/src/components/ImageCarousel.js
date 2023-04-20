@@ -168,9 +168,9 @@ function ImageCarousel(props) {
   className='project-carousel'
   >
     {/* {Array(2).fill(data?.Item?.map(project => <Suspense fallback={<div>Loading . . .</div>}><Card>{project}</Card></Suspense>))} */}
-    {data?.Item?.map((project, index) => (
+    {Array(5).fill(data?.Item?.map((project, index) => (
       <Card key={index}>{project}</Card>
-    ))}
+    )))}
 
   </Carousel>;
 
