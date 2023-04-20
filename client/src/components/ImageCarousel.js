@@ -136,7 +136,7 @@ const newsData = [
 
 function ImageCarousel(props) {
 
-  const [carousel, setCarousel] = useState()
+  const [carousel, setCarousel] = useState([])
 
   const data = props.children.Item
 
@@ -155,7 +155,7 @@ function ImageCarousel(props) {
     else{
       setCarousel(<div>Loading . . .</div>)
     }
-  }, [props.category, props.children])
+  }, [props.children.Item])
 
   const projectCar =     <Carousel
   responsive={responsive}
@@ -198,8 +198,7 @@ className='seminar-carousel'
     return(
       
       <div>{carousel}
-      {console.log(props.children)}
-      {console.log(props.children.Item)}
+      {console.log(data)}
       </div>
     );
 }
