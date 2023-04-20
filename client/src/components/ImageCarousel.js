@@ -147,7 +147,7 @@ function ImageCarousel(props) {
       .then((res) => res.json())
       .then((response) => {
         setIsLoading(false);
-        // setData(response)
+        setData(response)
         setCarouselData(projectCar)
         console.log(`https://robotics-club.hmu.gr:443/api/posts/find/latest`);
         console.log(response)
@@ -176,7 +176,7 @@ function ImageCarousel(props) {
   infinite={true}
   className='project-carousel'
   >
-    {Array(data.length).fill(data.map((project, i) => <Suspense fallback={<div>Loading . . .</div>}><Card key={i}>{project}</Card></Suspense>))}
+    {Array(5).fill(Object.keys(data.Item).map((project, i) => <Suspense fallback={<div>Loading . . .</div>}><Card key={i}>{project}</Card></Suspense>))}
   </Carousel>;
 
 const newsCar =     <Carousel
