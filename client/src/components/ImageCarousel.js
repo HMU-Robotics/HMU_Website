@@ -141,16 +141,21 @@ function ImageCarousel(props) {
   const data = props.children.Item
 
   useEffect(() => {
-    if(props.category === "projects"){
-      setCarousel(projectCar)
+    if(props.children.length != 0){
+      if(props.category === "projects"){
+        setCarousel(projectCar)
+      }
+      else if(props.category === "seminars"){
+        setCarousel(seminarCar)
+      }
+      else if(props.category === "news"){
+        setCarousel(newsCar)
+      }
     }
-    else if(props.category === "seminars"){
-      setCarousel(seminarCar)
+    else{
+      setCarousel(<div>Loading . . .</div>)
     }
-    else if(props.category === "news"){
-      setCarousel(newsCar)
-    }
-  }, [props.category])
+  }, [props.category, props.children])
 
   const projectCar =     <Carousel
   responsive={responsive}
@@ -161,7 +166,7 @@ function ImageCarousel(props) {
   infinite={true}
   className='project-carousel'
   >
-    {Array(5).fill(data?.map(project => <Suspense fallback={<div>Loading . . .</div>}><Card>{project}</Card></Suspense>))}
+    {Array(5).fill(data.Item?.map(project => <Suspense fallback={<div>Loading . . .</div>}><Card>{project}</Card></Suspense>))}
   </Carousel>;
 
 const newsCar =     <Carousel
