@@ -165,7 +165,7 @@ function ImageCarousel(props) {
       setData(newsData)
       setCarouselData(newsCar)
     }
-  }, [props.children]);
+  }, [props]);
 
   const projectCar =     <Carousel
   responsive={responsive}
