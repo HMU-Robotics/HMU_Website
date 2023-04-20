@@ -206,7 +206,9 @@ className='seminar-carousel'
 
 
     return(
-      <div>{carouselData}</div>
+      
+      <div>{carouselData}
+      {console.log(data)}</div>
     );
 }
 
