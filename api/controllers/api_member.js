@@ -69,7 +69,7 @@ exports.find_all_members = async(req,res,next)=>{
                         images: []
                     }
                 }
-                if (row.image_id) {
+                if (row.img) {
                     // Add the image to the member object if it exists
                     members[row.member_id].images.push({
                         image_id: row.member_id,
