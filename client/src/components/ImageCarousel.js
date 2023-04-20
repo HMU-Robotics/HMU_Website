@@ -176,7 +176,7 @@ function ImageCarousel(props) {
   infinite={true}
   className='project-carousel'
   >
-    {Array(5).fill(Object.keys(data.Item).map((project, i) => <Suspense fallback={<div>Loading . . .</div>}><Card key={i}>{project}</Card></Suspense>))}
+    {Array(5).fill(data.Item.map(project => <Suspense fallback={<div>Loading . . .</div>}><Card>{Object.keys(project)}</Card></Suspense>))}
   </Carousel>;
 
 const newsCar =     <Carousel
