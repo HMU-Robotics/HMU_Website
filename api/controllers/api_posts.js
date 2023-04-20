@@ -15,24 +15,40 @@ const db =  mysql.createPool({
 
 exports.find_post = async(req,res,next) => {
     const {id} = req.params
-    db.execute('SELECT * FROM `post` WHERE `id` = ?', [id],(err,result) => {
+    db.execute('SELECT * FROM `post` WHERE `id` = ?', [id],(err,post) => {
         if(err) throw err
-        console.log(result)
-        if(result.length == 0){
+        console.log(post)
+        if(post.length == 0){
             res.status(409).json("Invalid input")
-
         }
-        else{
-            res.status(200).json({
-                message: "Post found",
-                Item: result[0]
-            })
-        }
+        db.execute('SELECT * FROM `postImages` WHERE `post_id` = ?',[id],(err,images)=>{
+            if(err) throw err
+            console.log(images)
+            if(images.length == 0){
+                res.status(206).json({
+                    Message:"Post found but no Image Info",
+                    Post:post[0]
+                })
+            }
+            else{
+                res.status(200).json({
+                    Message:"Post and Images found",
+                    Post:post[0],
+                    Images:images
+                })
+            }
+        })
     })
 }
 
 exports.get_latest_posts = async(req,res,next) => {
-    db.execute('SELECT * FROM `post` WHERE `id` = 1', (err,result) => {
+    db.execute(`
+        SELECT p.*, pi.*
+        FROM post p 
+        LEFT JOIN postImages pi ON p.id = pi.post_id 
+        ORDER BY p.id DESC 
+        LIMIT 5
+    `, (err,result) => {
         if(err) throw err
         console.log(result)
         if(result.length == 0){
@@ -40,8 +56,8 @@ exports.get_latest_posts = async(req,res,next) => {
         }
         else {
             res.status(200).json({
-                message: "Latest Posts found",
-                Item: result[0]
+                Message: "Latest Posts found",
+                Item: result
             })
         }
     })
