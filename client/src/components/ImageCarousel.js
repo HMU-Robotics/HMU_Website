@@ -136,48 +136,21 @@ const newsData = [
 
 function ImageCarousel(props) {
 
-  const [data, setData] = useState([]);
-  const [carouselData, setCarouselData] = useState(projectCar)
-  const [isLoading, setIsLoading] = useState(true);
+  const [carousel, setCarousel] = useState()
 
-
-  useEffect(() => {
-    if(props.children === "Projects") {
-      fetch(`https://robotics-club.hmu.gr:443/api/posts/find/latest`, {})
-      .then((res) => res.json())
-      .then((response) => {
-        setIsLoading(false);
-        setData(response)
-        console.log(`https://robotics-club.hmu.gr:443/api/posts/find/latest`);
-        console.log(response)
-      })
-      .catch((error) => {
-        console.log(error);
-        setIsLoading(true);
-    })
-    }
-    else if(props.children === "Seminars") {
-      setData(seminarData)
-    }
-    else if(props.children === "News") {
-      setData(newsData)
-    }
-  }, [props.children]);
-
+  const data = props.children.Item
 
   useEffect(() => {
-    if(data.length > 0){
-      if(props.children === "Projects"){
-        setCarouselData(projectCar)
-      }
-      else if(props.children === "Seminars"){
-        setCarouselData(seminarCar)
-      }
-      else if(props.children === "News"){
-        setCarouselData(newsCar)
-      }
+    if(props.category === "projects"){
+      setCarousel(projectCar)
     }
-  }, [data])
+    else if(props.category === "seminars"){
+      setCarousel(seminarCar)
+    }
+    else if(props.category === "news"){
+      setCarousel(newsCar)
+    }
+  }, [props.category])
 
   const projectCar =     <Carousel
   responsive={responsive}
@@ -188,7 +161,7 @@ function ImageCarousel(props) {
   infinite={true}
   className='project-carousel'
   >
-    {Array(5).fill(data.Item?.map(project => <Suspense fallback={<div>Loading . . .</div>}><Card>{project}</Card></Suspense>))}
+    {Array(5).fill(data.map(project => <Suspense fallback={<div>Loading . . .</div>}><Card>{project}</Card></Suspense>))}
   </Carousel>;
 
 const newsCar =     <Carousel
@@ -200,7 +173,7 @@ autoPlaySpeed={5000}
 infinite={true}
 className='news-carousel'
 >
-{Array(5).fill(Object.keys(data)?.map(newsArticle => <Suspense fallback={<div>Loading . . .</div>}><Card>{Object.keys(newsArticle)}</Card></Suspense>))}
+{Array(5).fill(seminarData.map(newsArticle => <Suspense fallback={<div>Loading . . .</div>}><Card>{newsArticle}</Card></Suspense>))}
 </Carousel>;
 
 
@@ -213,15 +186,15 @@ autoPlaySpeed={5000}
 infinite={true}
 className='seminar-carousel'
 >
-{Array(5).fill(Object.keys(data)?.map(seminar => <Suspense fallback={<div>Loading . . .</div>}><Card>{Object.keys(seminar)}</Card></Suspense>))}
+{Array(5).fill(newsData.map(seminar => <Suspense fallback={<div>Loading . . .</div>}><Card>{Object.keys(seminar)}</Card></Suspense>))}
 </Carousel>;
 
 
     return(
       
-      <div>{carouselData}
-      {console.log(data)}
-      {console.log(data.Item)}</div>
+      <div>{carousel}
+      {console.log(props.children)}
+      </div>
     );
 }
 
