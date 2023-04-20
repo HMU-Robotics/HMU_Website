@@ -56,7 +56,6 @@ exports.get_latest_posts = async(req,res,next) => {
         }
         else {
             res.status(200).json({
-                Message: "Latest Posts found",
                 Item: result
             })
         }
