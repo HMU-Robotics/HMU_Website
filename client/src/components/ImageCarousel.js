@@ -143,13 +143,13 @@ function ImageCarousel(props) {
 
   useEffect(() => {
     if(props.children === "Projects") {
-      fetch(`https://robotics-club.hmu.gr:443/api/posts/latest`, {})
+      fetch(`https://robotics-club.hmu.gr:443/api/posts/find/latest`, {})
       .then((res) => res.json())
       .then((response) => {
         setIsLoading(false);
         setData(response)
         setCarouselData(projectCar)
-        console.log(`https://robotics-club.hmu.gr:443/api/posts/latest`);
+        console.log(`https://robotics-club.hmu.gr:443/api/posts/find/latest`);
         console.log(response)
       })
       .catch((error) => {
@@ -165,7 +165,7 @@ function ImageCarousel(props) {
       setData(newsData)
       setCarouselData(newsCar)
     }
-  }, [props.children]);
+  }, [props.ch]);
 
   const projectCar =     <Carousel
   responsive={responsive}
