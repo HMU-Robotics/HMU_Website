@@ -137,10 +137,11 @@ const newsData = [
 function ImageCarousel(props) {
 
   const [carousel, setCarousel] = useState([])
+  const [data, setData] = useState()
   
 
   useEffect(() => {
-    const data = props.children.Item
+    setData(props.children.Item)
     if(data != undefined && data != null){
       if(props.category === "projects"){
         setCarousel(projectCar)
