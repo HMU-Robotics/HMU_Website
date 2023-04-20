@@ -176,7 +176,7 @@ function ImageCarousel(props) {
   infinite={true}
   className='project-carousel'
   >
-    {Array(5).fill(data.Item.map(project => <Suspense fallback={<div>Loading . . .</div>}><Card>{project}</Card></Suspense>))}
+    {Array(5).fill(data.Item?.map(project => <Suspense fallback={<div>Loading . . .</div>}><Card>{project}</Card></Suspense>))}
   </Carousel>;
 
 const newsCar =     <Carousel
@@ -188,7 +188,7 @@ autoPlaySpeed={5000}
 infinite={true}
 className='news-carousel'
 >
-{Array(5).fill(Object.keys(data).map(newsArticle => <Suspense fallback={<div>Loading . . .</div>}><Card>{Object.keys(newsArticle)}</Card></Suspense>))}
+{Array(5).fill(Object.keys(data)?.map(newsArticle => <Suspense fallback={<div>Loading . . .</div>}><Card>{Object.keys(newsArticle)}</Card></Suspense>))}
 </Carousel>;
 
 
@@ -201,7 +201,7 @@ autoPlaySpeed={5000}
 infinite={true}
 className='seminar-carousel'
 >
-{Array(5).fill(Object.keys(data).map(seminar => <Suspense fallback={<div>Loading . . .</div>}><Card>{Object.keys(seminar)}</Card></Suspense>))}
+{Array(5).fill(Object.keys(data)?.map(seminar => <Suspense fallback={<div>Loading . . .</div>}><Card>{Object.keys(seminar)}</Card></Suspense>))}
 </Carousel>;
 
 
