@@ -3,7 +3,7 @@ import "./News.css"
 import ImageCarousel from "./ImageCarousel";
 
 
-function News(){
+function News(props){
 
     const [data , setData] = useState([])
 
@@ -11,14 +11,12 @@ function News(){
         fetch(`https://robotics-club.hmu.gr:443/api/posts/find/latest`, {})
         .then((res) => res.json())
         .then((response) => {
-          setIsLoading(false);
           setData(response)
           console.log(`https://robotics-club.hmu.gr:443/api/posts/find/latest`);
           console.log(response)
         })
         .catch((error) => {
           console.log(error);
-          setIsLoading(true);
       })
     }, [props]);
 
