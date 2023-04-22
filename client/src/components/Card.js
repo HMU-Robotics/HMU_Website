@@ -1,4 +1,3 @@
-import Card from 'react-bootstrap/Card';
 import "./Card.css"
 
 function NewsCard(props) {
@@ -10,14 +9,15 @@ function NewsCard(props) {
   const img = props.children.img;
 
   return (
-    <div className='card-con' onClick={()=>window.open(`/Post/${id}`)}>
+    <Link to={`/Post/${id}`} className="card-link">
+      {console.log(props.children)}      
       <img id='card-img' src={img}/>
       <div className='card-body'>
         <p className='card-title'>{title}</p>
         <p className='card-date'>{date}</p>
         <p className='card-desc'>{desc}</p>
       </div>
-    </div>
+    </Link>
   );
 }
 

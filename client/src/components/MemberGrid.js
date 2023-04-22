@@ -60,11 +60,11 @@ function MemberGrid(props) {
         var previousMembers = [];
         var sortedMembers = [];
 
-        for(const member in sortedMembers) {
-            if(member.subscription === true) {
+        for(const member in response) {
+            if(member.subscription === 1) {
                 currentMembers.push(member);
             }
-            else if(member.subscription === false) {
+            else if(member.subscription === 0) {
                 previousMembers.push(member);
             }
         }
@@ -91,7 +91,7 @@ function MemberGrid(props) {
         <div className="member-grid">
             <h2 className='members-box-title'>Members</h2>
             <Grid2 container spacing={4} columns={12} display="flex" alignItems="center">
-                {Array(5).fill(memberCards.map((member, i) => (
+                {Array(1).fill(memberCards.map((member, i) => (
                     <Grid2 xs={12} sm={6} md={4} lg={3} key={i}>
                         <Suspense fallback={<div>Loading...</div>}><MemberCard key={i}>{member}</MemberCard></Suspense>
                     </Grid2>
