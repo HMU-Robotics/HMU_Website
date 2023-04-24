@@ -1,4 +1,6 @@
 import "./Card.css"
+import { Link } from 'react-router-dom';
+
 
 function NewsCard(props) {
 
