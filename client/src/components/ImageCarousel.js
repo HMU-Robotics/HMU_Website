@@ -135,77 +135,88 @@ const newsData = [
 
 
 function ImageCarousel(props) {
-
-  const [carousel, setCarousel] = useState([])
-  const [data, setData] = useState([])
-  
+  const [carousel, setCarousel] = useState([]);
+  const [data, setData] = useState([]);
 
   useEffect(() => {
-    setData(props.data)
-    if(data != undefined && data != null){
-      if(props.category === "projects"){
-        setCarousel(projectCar)
+    setData(props.data);
+  }, [props.data]);
+
+  useEffect(() => {
+    if (data !== undefined && data !== null) {
+      if (props.category === "projects") {
+        setCarousel(projectCar);
+      } else if (props.category === "seminars") {
+        setCarousel(seminarCar);
+      } else if (props.category === "news") {
+        setCarousel(newsCar);
       }
-      else if(props.category === "seminars"){
-        setCarousel(seminarCar)
-      }
-      else if(props.category === "news"){
-        setCarousel(newsCar)
-      }
+    } else {
+      setCarousel(<div>Loading . . .</div>);
     }
-    else{
-      setCarousel(<div>Loading . . .</div>)
-    }
-  }, [props.children.Item, data])
+  }, [props.category, data]);
 
-  const projectCar =     <Carousel
-  responsive={responsive}
-  swipeable={true}
-  arrows={true}
-  autoPlay={true}
-  autoPlaySpeed={5000}
-  infinite={true}
-  className='project-carousel'
-  >
-    {/* {Array(2).fill(data?.Item?.map(project => <Suspense fallback={<div>Loading . . .</div>}><Card>{project}</Card></Suspense>))} */}
-    {Array(5).fill(data?.Item?.map((project, index) => (
-      <Card key={index}>{project}</Card>
-    )))}
+  const projectCar = (
+    <Carousel
+      responsive={responsive}
+      swipeable={true}
+      arrows={true}
+      autoPlay={true}
+      autoPlaySpeed={5000}
+      infinite={true}
+      className="project-carousel"
+    >
+      {Array(5)
+        .fill(data?.Item)
+        .map((project, index) => (
+          <Suspense key={index} fallback={<div>Loading . . .</div>}>
+            <Card>{project}</Card>
+          </Suspense>
+        ))}
+    </Carousel>
+  );
 
-  </Carousel>;
+  const newsCar = (
+    <Carousel
+      responsive={responsive}
+      swipeable={true}
+      arrows={true}
+      autoPlay={true}
+      autoPlaySpeed={5000}
+      infinite={true}
+      className="news-carousel"
+    >
+      {Array(5)
+        .fill(newsData)
+        .map((newsArticle, index) => (
+          <Suspense key={index} fallback={<div>Loading . . .</div>}>
+            <Card>{newsArticle}</Card>
+          </Suspense>
+        ))}
+    </Carousel>
+  );
 
-const newsCar =     <Carousel
-responsive={responsive}
-swipeable={true}
-arrows={true}
-autoPlay={true}
-autoPlaySpeed={5000}
-infinite={true}
-className='news-carousel'
->
-{Array(5).fill(newsData?.map(newsArticle => <Suspense fallback={<div>Loading . . .</div>}><Card>{newsArticle}</Card></Suspense>))}
-</Carousel>;
+  const seminarCar = (
+    <Carousel
+      responsive={responsive}
+      swipeable={true}
+      arrows={true}
+      autoPlay={true}
+      autoPlaySpeed={5000}
+      infinite={true}
+      className="seminar-carousel"
+    >
+      {Array(5)
+        .fill(seminarData)
+        .map((seminar, index) => (
+          <Suspense key={index} fallback={<div>Loading . . .</div>}>
+            <Card>{seminar}</Card>
+          </Suspense>
+        ))}
+    </Carousel>
+  );
 
-
-const seminarCar =     <Carousel
-responsive={responsive}
-swipeable={true}
-arrows={true}
-autoPlay={true}
-autoPlaySpeed={5000}
-infinite={true}
-className='seminar-carousel'
->
-{Array(5).fill(seminarData?.map(seminar => <Suspense fallback={<div>Loading . . .</div>}><Card>{seminar}</Card></Suspense>))}
-</Carousel>;
-
-
-    return(
-      
-      <div>{carousel}
-      {console.log(data)}
-      </div>
-    );
+  return <>{carousel}</>;
 }
 
 export default ImageCarousel;
