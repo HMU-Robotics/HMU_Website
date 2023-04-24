@@ -144,15 +144,20 @@ function ImageCarousel(props) {
 
   useEffect(() => {
     if (data !== undefined && data !== null) {
-      if (props.category === "projects") {
-        setCarousel(projectCar);
-      } else if (props.category === "seminars") {
-        setCarousel(seminarCar);
-      } else if (props.category === "news") {
-        setCarousel(newsCar);
+      switch(props.category) {
+        case "projects":
+          setCarousel(projectCar);
+          break;
+        case "seminars":
+          setCarousel(seminarCar);
+          break;
+        case "news":
+          setCarousel(newsCar);
+          break;
+        default:
+          setCarousel(<div>Loading . . .</div>);
+          break;
       }
-    } else {
-      setCarousel(<div>Loading . . .</div>);
     }
   }, [props.category, data]);
 
@@ -170,7 +175,7 @@ function ImageCarousel(props) {
         .fill(data?.Item)
         .map((project, index) => (
           <Suspense key={index} fallback={<div>Loading . . .</div>}>
-            <Card>{project}</Card>
+            <Card key={index} id={project.id} title={project.title} desc={project.post_desc} date={project.created_at} img={project.img} />
           </Suspense>
         ))}
     </Carousel>
