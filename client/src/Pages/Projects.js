@@ -4,7 +4,7 @@ import "./Projects.css"
 import Divider from "../components/Divider"
 
 
-function Projects(props){
+function Projects(){
 
     const [data, setData] = useState([])
 
@@ -19,7 +19,7 @@ function Projects(props){
         .catch((error) => {
           console.log(error);
       })
-    }, [props, data]);
+    }, []);
 
 
     return (
