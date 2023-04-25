@@ -23,7 +23,7 @@ function News(props){
     return(
         <div className="new-cont">
             <h2 className="new-title">News Feed</h2>
-            <ImageCarousel className="news-carousel" category="news">{data}</ImageCarousel>
+            <ImageCarousel className="news-carousel" category="news" data={data}></ImageCarousel>
         </div>
     )
 }

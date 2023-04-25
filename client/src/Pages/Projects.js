@@ -21,37 +21,37 @@ function Projects(props){
       })
     }, [props]);
 
-    // return(
-    // <div className="project-page">
-    //     <div className="project-cont">
-    //         <h1 className="project-page-title">Projects Page</h1>
-    //         <ImageCarousel className="project-carousel" category="projects">{data}</ImageCarousel>
-    //     </div>
-    //     <Divider/>
-    //     <div className="seminars-cont">
-    //         <h1 className="project-page-title">Seminars / Workshops</h1>
-    //         <ImageCarousel className="seminar-carousel" category="seminars">{data}</ImageCarousel>
-    //     </div>
-    // </div>
-    // )
-
-    return (
-        <div className="project-page">
-          <div className="project-cont">
+    return(
+    <div className="project-page">
+        <div className="project-cont">
             <h1 className="project-page-title">Projects Page</h1>
-            {data.length > 0 && (
-              <ImageCarousel className="project-carousel" category="projects" data={data} />
-            )}
-          </div>
-          <Divider />
-          <div className="seminars-cont">
-            <h1 className="project-page-title">Seminars / Workshops</h1>
-            {data.length > 0 && (
-              <ImageCarousel className="seminar-carousel" category="seminars" data={data} />
-            )}
-          </div>
+            <ImageCarousel className="project-carousel" category="projects">{data}</ImageCarousel>
         </div>
-      );
+        <Divider/>
+        <div className="seminars-cont">
+            <h1 className="project-page-title">Seminars / Workshops</h1>
+            <ImageCarousel className="seminar-carousel" category="seminars">{data}</ImageCarousel>
+        </div>
+    </div>
+    )
+
+    // return (
+    //     <div className="project-page">
+    //       <div className="project-cont">
+    //         <h1 className="project-page-title">Projects Page</h1>
+    //         {data.length > 0 && (
+    //           <ImageCarousel className="project-carousel" category="projects" data={data} />
+    //         )}
+    //       </div>
+    //       <Divider />
+    //       <div className="seminars-cont">
+    //         <h1 className="project-page-title">Seminars / Workshops</h1>
+    //         {data.length > 0 && (
+    //           <ImageCarousel className="seminar-carousel" category="seminars" data={data} />
+    //         )}
+    //       </div>
+    //     </div>
+    //   );
 }
 
 export default Projects
