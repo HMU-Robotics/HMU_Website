@@ -29,7 +29,7 @@ function Projects(){
             {console.log(data)}
             {console.log(data.Item)}
             {console.log(data?.Item?.length)}
-            {data.length > 0 && (
+            {data?.Item?.length > 0 && (
               <ImageCarousel className="project-carousel" category="projects" data={data} />
             )}
           </div>
@@ -37,7 +37,7 @@ function Projects(){
           <div className="seminars-cont">
             <h1 className="project-page-title">Seminars / Workshops</h1>
             {console.log(data)}
-            {data.length > 0 && (
+            {data?.Item?.length > 0 && (
               <ImageCarousel className="seminar-carousel" category="seminars" data={data} />
             )}
           </div>
