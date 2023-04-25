@@ -11,8 +11,7 @@ function NewsCard(props) {
   const img = props.img;
 
   return (
-    // <Link to={`/Post/${id}`} className="card-link">
-    <div>
+    <Link to={`/Post/${id}`} className="card-link">
       {console.log(props)}      
       <img id='card-img' src={img}/>
       <div className='card-body'>
@@ -20,8 +19,7 @@ function NewsCard(props) {
         <p className='card-date'>{date}</p>
         <p className='card-desc'>{desc}</p>
       </div>
-    {/* </Link> */}
-    </div>
+    </Link>
   );
 }
 
