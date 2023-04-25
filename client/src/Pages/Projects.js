@@ -19,7 +19,7 @@ function Projects(props){
         .catch((error) => {
           console.log(error);
       })
-    }, [props]);
+    }, [props, data]);
 
 
     return (
@@ -27,6 +27,8 @@ function Projects(props){
           <div className="project-cont">
             <h1 className="project-page-title">Projects Page</h1>
             {console.log(data)}
+            {console.log(data.Item)}
+            {console.log(data.Item[0])}
             {data.length > 0 && (
               <ImageCarousel className="project-carousel" category="projects" data={data} />
             )}
