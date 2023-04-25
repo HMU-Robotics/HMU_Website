@@ -25,113 +25,6 @@ const responsive = {
   }
 };
 
-const projectData = [
-  {
-    id: 1,
-    title: "Test title",
-    desc: "This is a very long and useless text that is ment only as a very long and long text to see and test",
-    date: "11/2/2012",
-    img: "Media/about.jpg"
-  },
-  {
-    id: 2,
-    title: "Ptitle2",
-    desc: "desc2",
-    date: "date2",
-    img: "Media/about.jpg"
-  },
-  {
-    id: 3,
-    title: "Ptitle3",
-    desc: "desc3",
-    date: "date3",
-    img: "Media/about.jpg"
-  },
-  {
-    id: 4,
-    title: "Ptitle4",
-    desc: "desc4",
-    date: "date4",
-    img: "Media/about.jpg"
-  },
-  {
-    id: 5,
-    title: "Ptitle5",
-    desc: "desc5",
-    date: "date5",
-    img: "Media/about.jpg"
-  }
-];
-
-const seminarData = [
-
-  {
-    id: 7,
-    title: "Test title",
-    desc: "This is a very long and useless text that is ment only as a very long and long text to see and test",
-    date: "11/2/2012",
-    img: "Media/about.jpg"
-  },
-  {
-    id: 8,
-    title: "Stitle3",
-    desc: "desc3",
-    date: "date3",
-    img: "Media/about.jpg"
-  },
-  {
-    id: 9,
-    title: "Stitle4",
-    desc: "desc4",
-    date: "date4",
-    img: "Media/about.jpg"
-  },
-  {
-    id: 10,
-    title: "Stitle5",
-    desc: "desc5",
-    date: "date5",
-    img: "Media/about.jpg"
-  }
-];
-
-const newsData = [
-  {
-    id: 11,
-    title: "Test title",
-    desc: "This is a very long and useless text that is ment only as a very long and long text to see and test",
-    date: "11/2/2012",
-    img: "Media/about.jpg"
-  },
-  {
-    id: 12,
-    title: "title2",
-    desc: "desc2",
-    date: "date2",
-    img: "Media/about.jpg"
-  },
-  {
-    id: 13,
-    title: "title3",
-    desc: "desc3",
-    date: "date3",
-    img: "Media/about.jpg"
-  },
-  {
-    id: 14,
-    title: "title4",
-    desc: "desc4",
-    date: "date4",
-    img: "Media/about.jpg"
-  },
-  {
-    id: 15,
-    title: "title5",
-    desc: "desc5",
-    date: "date5",
-    img: "Media/about.jpg"
-  }
-];
 
 
 function ImageCarousel(props) {
@@ -193,10 +86,11 @@ function ImageCarousel(props) {
       className="news-carousel"
     >
       {Array(5)
-        .fill(newsData)
-        .map((newsArticle, index) => (
+        .fill(data?.Item)
+        .map((news, index) => (
           <Suspense key={index} fallback={<div>Loading . . .</div>}>
-            <Card>{newsArticle}</Card>
+            {console.log(news)}
+            <Card key={index} id={news?.id} title={news?.title} desc={news?.post_desc} date={news?.created_at} img={news?.img} />
           </Suspense>
         ))}
     </Carousel>
@@ -213,10 +107,11 @@ function ImageCarousel(props) {
       className="seminar-carousel"
     >
       {Array(5)
-        .fill(seminarData)
+        .fill(data?.Item)
         .map((seminar, index) => (
           <Suspense key={index} fallback={<div>Loading . . .</div>}>
-            <Card>{seminar}</Card>
+            {console.log(seminar)}
+            <Card key={index} id={seminar?.id} title={seminar?.title} desc={seminar?.post_desc} date={seminar?.created_at} img={seminar?.img} />
           </Suspense>
         ))}
     </Carousel>
