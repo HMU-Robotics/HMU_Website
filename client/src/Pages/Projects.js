@@ -28,7 +28,7 @@ function Projects(){
             <h1 className="project-page-title">Projects Page</h1>
             {console.log(data)}
             {console.log(data.Item)}
-            {console.log(data.length)}
+            {console.log(data?.Item?.length)}
             {data.length > 0 && (
               <ImageCarousel className="project-carousel" category="projects" data={data} />
             )}
