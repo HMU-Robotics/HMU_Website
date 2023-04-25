@@ -69,7 +69,6 @@ function ImageCarousel(props) {
         .map((project, index) => (
           <Suspense key={index} fallback={<div>Loading . . .</div>}>
             {console.log(project)}
-            {console.log(project[index])}
             <Card key={index} id={project?.id} title={project?.title} desc={project?.post_desc} date={project?.created_at} img={project?.img} />
           </Suspense>
         ))}
