@@ -12,7 +12,7 @@ function NewsCard(props) {
 
   return (
     <Link to={`/Post/${id}`} className="card-link">
-      {console.log(props)}      
+      {console.log(props?.id)}
       <img id='card-img' src={img}/>
       <div className='card-body'>
         <p className='card-title'>{title}</p>
