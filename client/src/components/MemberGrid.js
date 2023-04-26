@@ -6,32 +6,6 @@ import { useState, useEffect } from 'react'
 
 const MemberCard = React.lazy(() => import('./MemberCard'));
 
-const cardData = [
-    {
-        id: 1,
-        name:  "name1",
-        desc:  "test1",
-        img: "Media/about.jpg",
-        dateAdded: "2021",
-        dateRemoved: "Current"
-    },
-    {
-        id: 2,
-        name:  "name2",
-        desc:  "test2",
-        img: "Media/about.jpg",
-        dateAdded: "2021",
-        dateRemoved: "2022"
-    },
-    {
-        id: 3,
-        name:  "name3",
-        desc:  "test3",
-        img: "Media/about.jpg",
-        dateAdded: "2020",
-        dateRemoved: "2021"
-    }
-];
 
 
 function MemberGrid(props) {
@@ -54,35 +28,33 @@ function MemberGrid(props) {
      })
    }, []);
 
-    function sortMembers(response) {
-        var currentMembers = [];
-        var previousMembers = [];
-        var sortedMembers = [];
 
-        for(const member in response) {
-            if(member.subscription === 1) {
-                currentMembers.push(member);
-            }
-            else if(member.subscription === 0) {
-                previousMembers.push(member);
-            }
+   function sortMembers(response) {
+    const { members } = response;
+  
+    const sortedMembers = members.reduce(
+      (acc, member) => {
+        if (member.subscription === 1) {
+          acc.currentMembers.push(member);
+        } else if (member.subscription === 0) {
+          acc.previousMembers.push(member);
         }
-
-        // sort alphabetically based on last name
-        currentMembers.sort(function(a, b) {
-            let x = a.last_name.toLowerCase();
-            let y = b.last_name.toLowerCase();
-            if(x < y) {return -1;}
-            if(x > y) {return 1;}
-            return 0;
-        });
-
-        // sort based on year finished
-        previousMembers.sort(function(a, b) {return a.end_date - b.end_date});
-
-        sortedMembers = currentMembers.concat(previousMembers);
-        setMemberData(sortedMembers);
-    }
+        return acc;
+      },
+      { currentMembers: [], previousMembers: [] }
+    );
+  
+    // sort alphabetically based on last name
+    sortedMembers.currentMembers.sort((a, b) =>
+      a.last_name.toLowerCase().localeCompare(b.last_name.toLowerCase())
+    );
+  
+    // sort based on year finished
+    sortedMembers.previousMembers.sort((a, b) => a.end_date - b.end_date);
+  
+    const combinedMembers = [...sortedMembers.currentMembers, ...sortedMembers.previousMembers];
+    setMemberData(combinedMembers);
+  }
 
 
 
@@ -92,6 +64,7 @@ function MemberGrid(props) {
             <Grid2 container spacing={4} columns={12} display="flex" alignItems="center">
                 {memberData.map((member, i) => (
                     <Grid2 xs={12} sm={6} md={4} lg={3} key={i}>
+                        {console.log(member)}
                         <Suspense fallback={<div>Loading...</div>}><MemberCard key={i} academid_id={member?.academid_id} end_date={member?.end_date} first_name={member?.first_name} last_name={member?.last_name} school={member?.school} subscription_date={member?.subscription_date} image={member?.images[0]?.image_url} /></Suspense>
                     </Grid2>
                 ))}

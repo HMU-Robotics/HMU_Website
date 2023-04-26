@@ -44,6 +44,8 @@ function MemberCard(props) {
 
     return (
         <div className='members-con'>
+            {console.log(props)}
+            {console.log(props.academic_id)}
             <img id='members-img' src={image}/>
             <div className='members-body'>
                 <h3 className='members-title'>{last_name} {first_name}</h3>
