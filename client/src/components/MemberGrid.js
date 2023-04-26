@@ -92,7 +92,7 @@ function MemberGrid(props) {
             <Grid2 container spacing={4} columns={12} display="flex" alignItems="center">
                 {memberData.map((member, i) => (
                     <Grid2 xs={12} sm={6} md={4} lg={3} key={i}>
-                        <Suspense fallback={<div>Loading...</div>}><MemberCard key={i}>{member}</MemberCard></Suspense>
+                        <Suspense fallback={<div>Loading...</div>}><MemberCard key={i} academid_id={member?.academid_id} end_date={member?.end_date} first_name={member?.first_name} last_name={member?.last_name} school={member?.school} subscription_date={member?.subscription_date} image={member?.images[0]?.image_url} /></Suspense>
                     </Grid2>
                 ))}
             </Grid2>

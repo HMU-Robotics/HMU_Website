@@ -4,40 +4,40 @@ import "./MemberCard.css"
 function MemberCard(props) {
 
 
-    const academic_id = props.children.academic_id;
-    const first_name = props.children.first_name
-    const last_name = props.children.last_name
+    const academic_id = props.academic_id
+    const first_name = props.first_name
+    const last_name = props.last_name
     const school = () => {
-        if(props.children.school === "ECE"){
+        if(props.school === "ECE"){
             return "Ηλεκτρολόγων Μηχανικών και Μηχανικών Υπολογιστών"
         }
-        else if(props.children.school === "MECH"){
+        else if(props.school === "MECH"){
             return "Μηχανολόγων Μηχανικών"
         }
-        else if(props.children.school === "EE"){
+        else if(props.school === "EE"){
             return "Ηλεκτρολόγων Μηχανικών"
         }
-        else if(props.children.school === "CE"){
+        else if(props.school === "CE"){
             return "Τμήμα Μηχανικών Υπολογιστών"
         }
-        else if(props.children.school === "other"){
+        else if(props.school === "other"){
             return "Εξωτερικός Συνεργάτης"
         }
     }
-    const subscription_date = props.children.subscription_date
+    const subscription_date = props.subscription_date
     const end_date = () => {
-        if(props.children.end_date != null){
+        if(props.end_date != null){
             return "Current"
         }
-        else return props.children.end_date
+        else return props.end_date
     }
 
     const image = () => {
-        if(props.children.images[0].image_url === undefined){
+        if(props.images === undefined){
             return "Media/about.jpg"
         }
         else{
-            return props.children.images[0].image_url
+            return props.image
         }
     }
 
@@ -49,7 +49,7 @@ function MemberCard(props) {
                 <h3 className='members-title'>{last_name} {first_name}</h3>
                 <p className='members-school'>{school}</p>
                 <p className='members-date'>{subscription_date} - {end_date}</p>
-        </div>
+            </div>
       </div>
     );
 }
