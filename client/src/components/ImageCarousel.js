@@ -64,14 +64,12 @@ function ImageCarousel(props) {
       infinite={true}
       className="project-carousel"
     >
-      {Array(1)
-        .fill(data?.Item)
-        .map((project, index) => (
-          <Suspense key={index} fallback={<div>Loading . . .</div>}>
-            {console.log(project)}
-            <Card key={index} id={project?.id} title={project?.title} desc={project?.post_desc} date={project?.created_at} img={project?.img} />
-          </Suspense>
-        ))}
+      {data?.Item.map((project, index) => (
+        <Suspense key={index} fallback={<div>Loading . . .</div>}>
+          {console.log(project)}
+          <Card key={index} id={project?.id} title={project?.title} desc={project?.post_desc} date={project?.created_at} img={project?.img} />
+        </Suspense>
+      ))}
     </Carousel>
   );
 
