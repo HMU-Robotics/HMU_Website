@@ -59,4 +59,5 @@
 
 .card-body{
     border-top: solid #000 3px;
+    text-decoration: none;
 }

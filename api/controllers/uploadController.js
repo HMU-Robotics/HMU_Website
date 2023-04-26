@@ -55,7 +55,7 @@ const resizeImages = async(req,res,next)=>{
             .resize(640,320)
             .toFormat("jpeg")
             .jpeg({quality:90})
-            .toFile(`./api/public/storage/uploads/posts/${newFilename}`)
+            .toFile(`/var/www/robotics-club.hmu.gr/HMU_Website/client/public/uploads/posts/${newFilename}`)
             req.body.images.push(newFilename)
         })
     )
@@ -63,7 +63,6 @@ const resizeImages = async(req,res,next)=>{
 }
 
 const makePost = async(req,res,next)=>{
-    const path = "./api/public/storage/uploads/posts"
     db.execute("INSERT INTO `post`(title,content,post_desc,created_at) VALUES(?,?,?,?)",[req.body.title,req.body.content,req.body.post_desc,req.body.created_at],(err,user)=>{
       console.log(req.body)
         if(err) {

@@ -38,7 +38,6 @@ function MemberGrid(props) {
 
     const [memberCards, setMemberCards] = useState(cardData);
     const [memberData, setMemberData] = useState(null);
-    const [isLoading, setIsLoading] = useState(true);
 
      useEffect(() => {
      fetch(`https://robotics-club.hmu.gr:443/api/members/find/all`, {})

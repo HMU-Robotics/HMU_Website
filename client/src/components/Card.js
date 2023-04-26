@@ -7,7 +7,7 @@ function NewsCard(props) {
   const id = props.id;
   const title = props.title;
   const desc = props.desc;
-  const date = props.date;
+  const date = props.date.substring(0,10);
   const img = "Media/about.jpg"
 
   return (
