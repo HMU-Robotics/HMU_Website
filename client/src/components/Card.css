@@ -63,3 +63,7 @@
 .card-body{
     border-top: solid #000 3px;
 }
+
+.card-link{
+    text-decoration: none;
+}
