@@ -7,9 +7,9 @@ function NewsCard(props) {
   const id = props.id;
   const title = props.title;
   const desc = props.desc;
-  const date_db = props.date;
+  const date_json = props.date;
   const img = "Media/about.jpg"
-  const date = date_db?.substring(0,10)
+  const date = date_json?.substring(0,10)
 
   return (
     <Link to={`/Post/${id}`} className="card-link">

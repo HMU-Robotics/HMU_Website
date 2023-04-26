@@ -7,7 +7,7 @@ function MemberCard(props) {
     const academic_id = props.children.academic_id;
     const first_name = props.children.first_name
     const last_name = props.children.last_name
-    const img = props.children.images.image_url;
+    const img = props.children.images[0].image_url;
     const school = () => {
         if(props.children.school === "ECE"){
             return "Ηλεκτρολόγων Μηχανικών και Μηχανικών Υπολογιστών"
@@ -41,7 +41,7 @@ function MemberCard(props) {
             <div className='members-body'>
                 <h3 className='members-title'>{last_name} {first_name}</h3>
                 <p className='members-school'>{school}</p>
-                <p className='members-date'>{subscription_date} - {}</p>
+                <p className='members-date'>{subscription_date} - {end_date}</p>
         </div>
       </div>
     );
