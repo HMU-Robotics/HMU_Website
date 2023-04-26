@@ -54,7 +54,7 @@ function ImageCarousel(props) {
     }
   }, [props.category, data]);
 
-  const projectCar = (
+  const projectCar = data ? (
     <Carousel
       responsive={responsive}
       swipeable={true}
@@ -64,14 +64,17 @@ function ImageCarousel(props) {
       infinite={true}
       className="project-carousel"
     >
-      {data?.Item.map((project, index) => (
+      {data.Item.map((project, index) => (
         <Suspense key={index} fallback={<div>Loading . . .</div>}>
           {console.log(project)}
           <Card key={index} id={project?.id} title={project?.title} desc={project?.post_desc} date={project?.created_at} img={project?.img} />
         </Suspense>
       ))}
     </Carousel>
+  ) : (
+    <div>Loading . . .</div>
   );
+  
 
   const newsCar = (
     <Carousel
