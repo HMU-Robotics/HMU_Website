@@ -8,7 +8,7 @@ function NewsCard(props) {
   const title = props.title;
   const desc = props.desc;
   const date = props.date;
-  const img = props.img;
+  const img = "Media/about.jpg"
 
   return (
     <Link to={`/Post/${id}`} className="card-link">
