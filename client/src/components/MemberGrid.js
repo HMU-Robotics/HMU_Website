@@ -36,8 +36,7 @@ const cardData = [
 
 function MemberGrid(props) {
 
-    const [memberCards, setMemberCards] = useState(cardData);
-    const [memberData, setMemberData] = useState(null);
+    const [memberData, setMemberData] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
 
      useEffect(() => {
@@ -91,11 +90,11 @@ function MemberGrid(props) {
         <div className="member-grid">
             <h2 className='members-box-title'>Members</h2>
             <Grid2 container spacing={4} columns={12} display="flex" alignItems="center">
-                {Array(1).fill(memberCards.map((member, i) => (
+                {memberData.map((member, i) => (
                     <Grid2 xs={12} sm={6} md={4} lg={3} key={i}>
                         <Suspense fallback={<div>Loading...</div>}><MemberCard key={i}>{member}</MemberCard></Suspense>
                     </Grid2>
-                )))}
+                ))}
             </Grid2>
         </div>
     );
