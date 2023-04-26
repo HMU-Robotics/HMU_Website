@@ -9,7 +9,7 @@ function NewsCard(props) {
   const desc = props.desc;
   const date_db = props.date;
   const img = "Media/about.jpg"
-  const date = date_db.substring(0,10)
+  const date = date_db?.substring(0,10)
 
   return (
     <Link to={`/Post/${id}`} className="card-link">
