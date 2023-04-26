@@ -7,7 +7,6 @@ function MemberCard(props) {
     const academic_id = props.children.academic_id;
     const first_name = props.children.first_name
     const last_name = props.children.last_name
-    const img = props.children.images[0].image_url;
     const school = () => {
         if(props.children.school === "ECE"){
             return "Ηλεκτρολόγων Μηχανικών και Μηχανικών Υπολογιστών"
@@ -33,11 +32,19 @@ function MemberCard(props) {
         else return props.children.end_date
     }
 
+    const image = () => {
+        if(props.children.images[0].image_url === undefined){
+            return "Media/about.jpg"
+        }
+        else{
+            return props.children.images[0].image_url
+        }
+    }
 
 
     return (
         <div className='members-con'>
-            <img id='members-img' src={img}/>
+            <img id='members-img' src={image}/>
             <div className='members-body'>
                 <h3 className='members-title'>{last_name} {first_name}</h3>
                 <p className='members-school'>{school}</p>
