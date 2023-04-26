@@ -54,7 +54,7 @@ function ImageCarousel(props) {
     }
   }, [props.category, data]);
 
-  const projectCar = data ? (
+  const projectCar = data && data.Item ? (
     <Carousel
       responsive={responsive}
       swipeable={true}
