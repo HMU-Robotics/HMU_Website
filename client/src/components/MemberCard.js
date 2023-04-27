@@ -30,7 +30,8 @@ function MemberCard(props) {
             return props.end_date
         }
         else{
-            return curr = "Current"
+            const curr = "Current"
+            return curr
         }
     }
 
