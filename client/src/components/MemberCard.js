@@ -42,7 +42,7 @@ function MemberCard(props) {
             return "Media/about.jpg"
         }
         else{
-            return `uploads/posts/${props.image}`
+            return `Uploads/members/${props.image}`
         }
     }
 
