@@ -45,12 +45,13 @@ function MemberCard(props) {
     return (
         <div className='members-con'>
             {console.log(props)}
-            {console.log(props.academic_id)}
-            <img id='members-img' src={image}/>
+            {console.log(end_date())}
+            {console.log(image())}
+            <img id='members-img' src={image()}/>
             <div className='members-body'>
                 <h3 className='members-title'>{last_name} {first_name}</h3>
-                <p className='members-school'>{school}</p>
-                <p className='members-date'>{subscription_date} - {end_date}</p>
+                <p className='members-school'>{school()}</p>
+                <p className='members-date'>{subscription_date} - {end_date()}</p>
             </div>
       </div>
     );
