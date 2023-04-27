@@ -26,10 +26,12 @@ function MemberCard(props) {
     }
     const subscription_date = props.subscription_date
     const end_date = () => {
-        if(props.end_date != null){
+        if(props.end_date === null){
+            return props.end_date
+        }
+        else{
             return "Current"
         }
-        else return props.end_date
     }
 
     const image = () => {
