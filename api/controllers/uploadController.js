@@ -44,26 +44,27 @@ const upload = multer({
     })
 }
 
-const resizeImages = async(req,res,next)=>{
-    if(!req.files) return next()
+const resizeImages = async(req, res, next, type) => {
+  if (!req.files) return next();
 
-    req.body.images = []
-    await Promise.all(
-        req.files.map(async file=>{
-            const newFilename = `image-${Date.now()}-${file.originalname}`
-            await sharp(file.buffer)
-            .resize(640,320)
-            .toFormat("jpeg")
-            .jpeg({quality:90})
-            .toFile(`./api/public/storage/uploads/posts/${newFilename}`)
-            req.body.images.push(newFilename)
-        })
-    )
-    next()
+  req.body.images = [];
+  const resizeDimensions = type === 'member' ? { width: 500, height: 500 } : { width: 640, height: 320 };
+
+  await Promise.all(
+    req.files.map(async file => {
+      const newFilename = `image-${Date.now()}-${file.originalname}`;
+      await sharp(file.buffer)
+        .resize(resizeDimensions.width, resizeDimensions.height)
+        .toFormat("jpeg")
+        .jpeg({ quality: 90 })
+        .toFile(`/var/www/robotics-club.hmu.gr/HMU_Website/client/public/Uploads/${type}s/${newFilename}`);
+      req.body.images.push(newFilename);
+    })
+  );
+  next();
 }
 
 const makePost = async(req,res,next)=>{
-    const path = "./api/public/storage/uploads/posts"
     db.execute("INSERT INTO `post`(title,content,post_desc,created_at) VALUES(?,?,?,?)",[req.body.title,req.body.content,req.body.post_desc,req.body.created_at],(err,user)=>{
       console.log(req.body)
         if(err) {

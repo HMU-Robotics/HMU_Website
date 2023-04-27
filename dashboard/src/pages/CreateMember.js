@@ -46,6 +46,9 @@ function CreateMember (){
 
     const handleSubmit = async (e) => {
 
+        // testing purposes
+        e.preventDefault()
+
         const formData = new FormData()
         formData.append("academic_id",academic_id)
         formData.append("first_name",firstname)
@@ -72,10 +75,10 @@ function CreateMember (){
 
     return(
         <>
-            <h1>Create New User</h1>
-            
+            <h1>Create New Member</h1>
+
             <Form onSubmit={handleSubmit}>
-                <Form.Label>Create New User</Form.Label>
+                <Form.Label>Create New Member</Form.Label>
                 <Form.Group className="firstname" onChange={handleFirstName}>
                     <Form.Label>First Name</Form.Label>
                     <Form.Control type="text"/>

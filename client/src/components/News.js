@@ -3,18 +3,27 @@ import "./News.css"
 import ImageCarousel from "./ImageCarousel";
 
 
-function News(){
+function News(props){
 
-    const [newsList , setnewsList] = useState([])
+    const [data , setData] = useState([])
 
-    useEffect(()=>{
-
-    },[newsList])
+    useEffect(() => {
+        fetch(`https://robotics-club.hmu.gr:443/api/posts/find/latest`, {})
+        .then((res) => res.json())
+        .then((response) => {
+          setData(response)
+          console.log(`https://robotics-club.hmu.gr:443/api/posts/find/latest`);
+          console.log(response)
+        })
+        .catch((error) => {
+          console.log(error);
+      })
+    }, [props]);
 
     return(
         <div className="new-cont">
             <h2 className="new-title">News Feed</h2>
-            <ImageCarousel className="news-carousel">News</ImageCarousel>
+            <ImageCarousel className="news-carousel" category="news" data={data}></ImageCarousel>
         </div>
     )
 }

@@ -1,23 +1,28 @@
-import Card from 'react-bootstrap/Card';
 import "./Card.css"
+import { Link } from 'react-router-dom';
+
 
 function NewsCard(props) {
 
-  const id = props.children.id;
-  const title = props.children.title;
-  const desc = props.children.desc;
-  const date = props.children.date;
-  const img = props.children.img;
+  const id = props.id;
+  const title = props.title;
+  const desc = props.desc;
+  const date_json = props.date;
+  const img = "Media/about.jpg"
+  const date = date_json?.substring(0,10)
 
   return (
-    <div className='card-con' onClick={()=>window.open(`/Post/${id}`)}>
-      <img id='card-img' src={img}/>
-      <div className='card-body'>
-        <p className='card-title'>{title}</p>
-        <p className='card-date'>{date}</p>
-        <p className='card-desc'>{desc}</p>
+    <Link to={`/Post/${id}`} className="card-link">
+      <div className="card-con">
+        {console.log(props)}
+        <img id='card-img' src={img}/>
+        <div className='card-body'>
+          <p className='card-title'>{title}</p>
+          <p className='card-date'>{date}</p>
+          <p className='card-desc'>{desc}</p>
+        </div>
       </div>
-    </div>
+    </Link>
   );
 }
 

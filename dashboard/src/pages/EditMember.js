@@ -1,14 +1,14 @@
 import React , { Component } from "react"
 
 
-function EditUser (){
+function EditMember (){
 
     
     return(
         <div>
-            <h1>EditUser Page</h1>
+            <h1>EditMember Page</h1>
         </div>
     )
 }
 
-export default EditUser
+export default EditMember

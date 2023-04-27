@@ -1,6 +1,6 @@
 import axios from "axios";
-import React , { Component, useState ,useContext } from "react"
-import { Navigate  } from 'react-router-dom';
+import React , { useState } from "react"
+import { useNavigate  } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 
@@ -10,6 +10,9 @@ function Login (){
         const api_login = "https://robotics-club.hmu.gr:443/api/auth/AdminLogin"
         const [password , setPassword] = useState(null)
         const [email , setEmail] = useState(null)
+
+        const navigate = useNavigate()
+
         const handleEmail = (e)=>{
             setEmail(e.target.value)
         }
@@ -32,7 +35,7 @@ function Login (){
             .then((res)=>{
                 console.log(res)
                 console.log(res.status)
-                return <Navigate to={"/dashboard"}/>
+                navigate("/dashboard")
             })
             .catch((err)=>{
                 console.log(err)

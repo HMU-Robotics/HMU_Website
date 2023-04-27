@@ -9,11 +9,17 @@ const { uploadImages , resizeImages  ,makePost ,makeMember, test} = require("../
 
 ////////////////// Posts //////////////////////////////
 
-router.post('/addPost',AuthMiddleware,viewer,uploadImages,resizeImages,makePost)
+router.post('/addPost', AuthMiddleware, viewer, uploadImages, (req, res, next) => {
+    resizeImages(req, res, next, 'post');
+}, makePost);
 router.put('/editPost',AuthMiddleware,viewer,dashboard_controller.post_post)
 
 /////////////////// Members //////////////////////////
-router.post('/addMember',AuthMiddleware,viewer,uploadImages,resizeImages,makeMember)
+
+router.post('/addMember', AuthMiddleware, viewer, uploadImages, (req, res, next) => {
+    resizeImages(req, res, next, 'member');
+}, makeMember);
+
 router.put('/editMember',AuthMiddleware,viewer,dashboard_controller.post_member)
 
 module.exports = router;

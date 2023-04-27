@@ -1,4 +1,4 @@
-import React, { Children, Suspense, useEffect, useState } from 'react';
+import React, { Suspense, useEffect, useState } from 'react';
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import "./ImageCarousel.css"
@@ -25,189 +25,96 @@ const responsive = {
   }
 };
 
-const projectData = [
-  {
-    id: 1,
-    title: "Test title",
-    desc: "This is a very long and useless text that is ment only as a very long and long text to see and test",
-    date: "11/2/2012",
-    img: "Media/about.jpg"
-  },
-  {
-    id: 2,
-    title: "Ptitle2",
-    desc: "desc2",
-    date: "date2",
-    img: "Media/about.jpg"
-  },
-  {
-    id: 3,
-    title: "Ptitle3",
-    desc: "desc3",
-    date: "date3",
-    img: "Media/about.jpg"
-  },
-  {
-    id: 4,
-    title: "Ptitle4",
-    desc: "desc4",
-    date: "date4",
-    img: "Media/about.jpg"
-  },
-  {
-    id: 5,
-    title: "Ptitle5",
-    desc: "desc5",
-    date: "date5",
-    img: "Media/about.jpg"
-  }
-];
-
-const seminarData = [
-
-  {
-    id: 7,
-    title: "Test title",
-    desc: "This is a very long and useless text that is ment only as a very long and long text to see and test",
-    date: "11/2/2012",
-    img: "Media/about.jpg"
-  },
-  {
-    id: 8,
-    title: "Stitle3",
-    desc: "desc3",
-    date: "date3",
-    img: "Media/about.jpg"
-  },
-  {
-    id: 9,
-    title: "Stitle4",
-    desc: "desc4",
-    date: "date4",
-    img: "Media/about.jpg"
-  },
-  {
-    id: 10,
-    title: "Stitle5",
-    desc: "desc5",
-    date: "date5",
-    img: "Media/about.jpg"
-  }
-];
-
-const newsData = [
-  {
-    id: 11,
-    title: "Test title",
-    desc: "This is a very long and useless text that is ment only as a very long and long text to see and test",
-    date: "11/2/2012",
-    img: "Media/about.jpg"
-  },
-  {
-    id: 12,
-    title: "title2",
-    desc: "desc2",
-    date: "date2",
-    img: "Media/about.jpg"
-  },
-  {
-    id: 13,
-    title: "title3",
-    desc: "desc3",
-    date: "date3",
-    img: "Media/about.jpg"
-  },
-  {
-    id: 14,
-    title: "title4",
-    desc: "desc4",
-    date: "date4",
-    img: "Media/about.jpg"
-  },
-  {
-    id: 15,
-    title: "title5",
-    desc: "desc5",
-    date: "date5",
-    img: "Media/about.jpg"
-  }
-];
 
 
 function ImageCarousel(props) {
-
-  const [data, setData] = useState(projectData);
-  const [carouselData, setCarouselData] = useState(projectCar)
-  const [isLoading, setIsLoading] = useState(true);
-
+  const [carousel, setCarousel] = useState([]);
+  const [data, setData] = useState([]);
 
   useEffect(() => {
-    if(props.children === "Projects") {
-      fetch(`https://robotics-club.hmu.gr:443/api/posts/latest`, {})
-      .then((res) => res.json())
-      .then((response) => {
-        setIsLoading(false);
-        setData(response)
-        setCarouselData(projectCar)
-        console.log(`https://robotics-club.hmu.gr:443/api/posts/latest`);
-        console.log(response)
-      })
-      .catch((error) => {
-        console.log(error);
-        setIsLoading(true);
-    })
+    setData(props.data);
+  }, [props.data]);
+
+  useEffect(() => {
+    if (data !== undefined && data !== null) {
+      switch(props.category) {
+        case "projects":
+          setCarousel(projectCar);
+          break;
+        case "seminars":
+          setCarousel(seminarCar);
+          break;
+        case "news":
+          setCarousel(newsCar);
+          break;
+        default:
+          setCarousel(<div>Loading . . .</div>);
+          break;
+      }
     }
-    else if(props.children === "Seminars") {
-      setData(seminarData)
-      setCarouselData(seminarCar)
-    }
-    else if(props.children === "News") {
-      setData(newsData)
-      setCarouselData(newsCar)
-    }
-  }, []);
+  }, [props.category, data]);
 
-  const projectCar =     <Carousel
-  responsive={responsive}
-  swipeable={true}
-  arrows={true}
-  autoPlay={true}
-  autoPlaySpeed={5000}
-  infinite={true}
-  className='project-carousel'
-  >
-    {Array(data.length).fill(data.map((project, i) => <Suspense fallback={<div>Loading . . .</div>}><Card key={i}>{project}</Card></Suspense>))}
-  </Carousel>;
+  const projectCar = data && data.Item ? (
+    <Carousel
+      responsive={responsive}
+      swipeable={true}
+      arrows={true}
+      autoPlay={true}
+      autoPlaySpeed={5000}
+      infinite={true}
+      className="project-carousel"
+    >
+      {data.Item.map((project, index) => (
+        <Suspense key={index} fallback={<div>Loading . . .</div>}>
+          {console.log(project)}
+          <Card key={index} id={project?.id} title={project?.title} desc={project?.post_desc} date={project?.created_at} img={project?.img} />
+        </Suspense>
+      ))}
+    </Carousel>
+  ) : (
+    <div>Loading . . .</div>
+  );
+  
 
-const newsCar =     <Carousel
-responsive={responsive}
-swipeable={true}
-arrows={true}
-autoPlay={true}
-autoPlaySpeed={5000}
-infinite={true}
-className='news-carousel'
->
-{Array(data.length).fill(data.map((newsArticle, i) => <Suspense fallback={<div>Loading . . .</div>}><Card key={i}>{newsArticle}</Card></Suspense>))}
-</Carousel>;
+  const newsCar = (
+    <Carousel
+      responsive={responsive}
+      swipeable={true}
+      arrows={true}
+      autoPlay={true}
+      autoPlaySpeed={5000}
+      infinite={true}
+      className="news-carousel"
+    >
+      {data.Item.map((news, index) => (
+        <Suspense key={index} fallback={<div>Loading . . .</div>}>
+          {console.log(news)}
+          <Card key={index} id={news?.id} title={news?.title} desc={news?.post_desc} date={news?.created_at} img={news?.img} />
+        </Suspense>
+      ))}
+    </Carousel>
+  );
 
+  const seminarCar = (
+    <Carousel
+      responsive={responsive}
+      swipeable={true}
+      arrows={true}
+      autoPlay={true}
+      autoPlaySpeed={5000}
+      infinite={true}
+      className="seminar-carousel"
+    >
+      {data.Item.map((seminar, index) => (
+        <Suspense key={index} fallback={<div>Loading . . .</div>}>
+          {console.log(seminar)}
+          <Card key={index} id={seminar?.id} title={seminar?.title} desc={seminar?.post_desc} date={seminar?.created_at} img={seminar?.img} />
+        </Suspense>
+      ))}
+    </Carousel>
+  );
 
-const seminarCar =     <Carousel
-responsive={responsive}
-swipeable={true}
-arrows={true}
-autoPlay={true}
-autoPlaySpeed={5000}
-infinite={true}
-className='seminar-carousel'
->
-{Array(data.length).fill(data.map((seminar, i) => <Suspense fallback={<div>Loading . . .</div>}><Card key={i}>{seminar}</Card></Suspense>))}
-</Carousel>;
-
-
-    return(
-      <div>{carouselData}</div>
-    );
+  return <>{carousel}</>;
 }
 
 export default ImageCarousel;
