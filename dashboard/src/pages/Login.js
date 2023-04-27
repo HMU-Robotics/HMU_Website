@@ -1,6 +1,6 @@
 import axios from "axios";
-import React , { Component, useState ,useContext } from "react"
-import { Navigate  } from 'react-router-dom';
+import React , { useState } from "react"
+import { useNavigate  } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 
