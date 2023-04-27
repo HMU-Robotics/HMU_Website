@@ -18,7 +18,8 @@ function MemberGrid(props) {
        .then((res) => res.json())
        .then((response) => {
          setIsLoading(false);
-         sortMembers(response);
+         setMemberData(response);
+         sortMembers(memberData);
          console.log(`https://robotics-club.hmu.gr:443/api/members/find/all`);
          console.log(response)
        })
@@ -29,8 +30,8 @@ function MemberGrid(props) {
    }, []);
 
 
-   function sortMembers(response) {
-    const { members } = response;
+   function sortMembers(memberList) {
+    const { members } = memberList;
   
     const sortedMembers = members.reduce(
       (acc, member) => {
