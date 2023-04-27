@@ -38,7 +38,7 @@ function MemberCard(props) {
       }
 
     const image = () => {
-        if(props.images === undefined){
+        if(props.image === undefined){
             return "Media/about.jpg"
         }
         else{
@@ -49,6 +49,7 @@ function MemberCard(props) {
 
     return (
         <div className='members-con'>
+            {console.log(props.image)}
             {console.log(image())}
             <img id='members-img' src={image()}/>
             <div className='members-body'>
