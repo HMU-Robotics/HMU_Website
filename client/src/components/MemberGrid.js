@@ -31,7 +31,7 @@ function MemberGrid(props) {
 
 
    function sortMembers(memberList) {
-    const { members } = memberList;
+    const { members } = memberList.Item;
   
     const sortedMembers = members.reduce(
       (acc, member) => {
