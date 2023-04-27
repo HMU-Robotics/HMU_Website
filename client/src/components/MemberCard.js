@@ -24,13 +24,16 @@ function MemberCard(props) {
             return "Εξωτερικός Συνεργάτης"
         }
     }
-    const subscription_date = props.subscription_date
+    const date = props.subscription_date
+    const subscription_date = date.substring(0,4)
 
     const end_date = () => {
         if (!props.end_date) {
           return "Current";
         } else {
-          return props.end_date;
+          const date = props.end_date
+          const end_date = date.substring(0,4)
+          return end_date
         }
       }
 
@@ -46,8 +49,6 @@ function MemberCard(props) {
 
     return (
         <div className='members-con'>
-            {console.log(props)}
-            {console.log(end_date())}
             {console.log(image())}
             <img id='members-img' src={image()}/>
             <div className='members-body'>
