@@ -86,14 +86,12 @@ function ImageCarousel(props) {
       infinite={true}
       className="news-carousel"
     >
-      {Array(1)
-        .fill(data?.Item)
-        .map((news, index) => (
-          <Suspense key={index} fallback={<div>Loading . . .</div>}>
-            {console.log(news)}
-            <Card key={index} id={news?.id} title={news?.title} desc={news?.post_desc} date={news?.created_at} img={news?.img} />
-          </Suspense>
-        ))}
+      {data.Item.map((news, index) => (
+        <Suspense key={index} fallback={<div>Loading . . .</div>}>
+          {console.log(news)}
+          <Card key={index} id={news?.id} title={news?.title} desc={news?.post_desc} date={news?.created_at} img={news?.img} />
+        </Suspense>
+      ))}
     </Carousel>
   );
 
@@ -107,14 +105,12 @@ function ImageCarousel(props) {
       infinite={true}
       className="seminar-carousel"
     >
-      {Array(1)
-        .fill(data?.Item)
-        .map((seminar, index) => (
-          <Suspense key={index} fallback={<div>Loading . . .</div>}>
-            {console.log(seminar)}
-            <Card key={index} id={seminar?.id} title={seminar?.title} desc={seminar?.post_desc} date={seminar?.created_at} img={seminar?.img} />
-          </Suspense>
-        ))}
+      {data.Item.map((seminar, index) => (
+        <Suspense key={index} fallback={<div>Loading . . .</div>}>
+          {console.log(seminar)}
+          <Card key={index} id={seminar?.id} title={seminar?.title} desc={seminar?.post_desc} date={seminar?.created_at} img={seminar?.img} />
+        </Suspense>
+      ))}
     </Carousel>
   );
 
