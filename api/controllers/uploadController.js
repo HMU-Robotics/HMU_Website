@@ -44,22 +44,24 @@ const upload = multer({
     })
 }
 
-const resizeImages = async(req,res,next)=>{
-    if(!req.files) return next()
+const resizeImages = async(req, res, next, type) => {
+  if (!req.files) return next();
 
-    req.body.images = []
-    await Promise.all(
-        req.files.map(async file=>{
-            const newFilename = `image-${Date.now()}-${file.originalname}`
-            await sharp(file.buffer)
-            .resize(500,500)
-            .toFormat("jpeg")
-            .jpeg({quality:90})
-            .toFile(`/var/www/robotics-club.hmu.gr/HMU_Website/client/public/uploads/posts/${newFilename}`)
-            req.body.images.push(newFilename)
-        })
-    )
-    next()
+  req.body.images = [];
+  const resizeDimensions = type === 'member' ? { width: 500, height: 500 } : { width: 640, height: 320 };
+
+  await Promise.all(
+    req.files.map(async file => {
+      const newFilename = `image-${Date.now()}-${file.originalname}`;
+      await sharp(file.buffer)
+        .resize(resizeDimensions.width, resizeDimensions.height)
+        .toFormat("jpeg")
+        .jpeg({ quality: 90 })
+        .toFile(`/var/www/robotics-club.hmu.gr/HMU_Website/client/public/uploads/${type}s/${newFilename}`);
+      req.body.images.push(newFilename);
+    })
+  );
+  next();
 }
 
 const makePost = async(req,res,next)=>{
