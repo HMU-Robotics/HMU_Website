@@ -25,15 +25,14 @@ function MemberCard(props) {
         }
     }
     const subscription_date = props.subscription_date
+
     const end_date = () => {
-        if(props.end_date === null){
-            return props.end_date
+        if (!props.end_date) {
+          return "Current";
+        } else {
+          return props.end_date;
         }
-        else{
-            const curr = "Current"
-            return curr
-        }
-    }
+      }
 
     const image = () => {
         if(props.images === undefined){
