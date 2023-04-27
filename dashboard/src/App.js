@@ -6,10 +6,10 @@ import NotFound from './pages/NotFound';
 import Dashboard from './pages/Dashboard';
 import CreatePost from './pages/CreatePost';
 import EditPost from './pages/EditPost';
-import EditUser from './pages/EditUser';
 import CreateMember from './pages/CreateMember';
 import {UserProvider} from './hooks/UserContext';
 import { useState } from 'react';
+import EditMember from './pages/EditMember';
 
 function App() {
 
@@ -23,7 +23,7 @@ return (
      <Route element={<PrivateRoute user={user}/>}>
         <Route element={<Dashboard/>} path="/dashboard"  exact/>
         <Route element={<CreateMember/>} path="/createmember"  exact/>
-        <Route element={<EditUser/>} path="/edituser" exact/>
+        <Route element={<EditMember/>} path="/editmember" exact/>
         <Route element={<CreatePost/>} path="/createpost" exact/>
         <Route element={<EditPost/>} path="/editpost" exact/>
      </Route>

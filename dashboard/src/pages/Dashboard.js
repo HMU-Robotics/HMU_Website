@@ -1,4 +1,3 @@
-import axios from "axios"
 import React , { Component } from "react"
 import Button from "react-bootstrap/esm/Button"
 import { useNavigate } from "react-router-dom"
@@ -19,8 +18,8 @@ function Dashboard () {
         navigate("/createmember")
     }
 
-    const gotoEditUser = () => {
-        navigate("/edituser")
+    const gotoEditMember = () => {
+        navigate("/editmember")
     }
 
     return(
@@ -35,12 +34,12 @@ function Dashboard () {
                 <Button onClick={gotoEditPost} variant="primary">Button</Button>
             </div>
             <div className="wrapper">
-                <h3>Create User</h3>
+                <h3>Create Member</h3>
                 <Button onClick={gotoCreateMember} variant="primary">Button</Button>
             </div>
             <div className="wrapper">
-                <h3>Edit User</h3>
-                <Button onClick={gotoEditUser} variant="primary">Button</Button>
+                <h3>Edit Member</h3>
+                <Button onClick={gotoEditMember} variant="primary">Button</Button>
             </div>
         </>
     )

@@ -10,6 +10,9 @@ function Login (){
         const api_login = "https://robotics-club.hmu.gr:443/api/auth/AdminLogin"
         const [password , setPassword] = useState(null)
         const [email , setEmail] = useState(null)
+
+        const navigate = useNavigate()
+
         const handleEmail = (e)=>{
             setEmail(e.target.value)
         }
@@ -32,7 +35,7 @@ function Login (){
             .then((res)=>{
                 console.log(res)
                 console.log(res.status)
-                return <Navigate to={"/dashboard"}/>
+                navigate("/dashboard")
             })
             .catch((err)=>{
                 console.log(err)
