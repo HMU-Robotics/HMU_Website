@@ -74,7 +74,39 @@ exports.get_projects = async(req,res,next) => {
         LEFT JOIN postImages pi ON p.id = pi.post_id 
         WHERE p.type = "Project"`
         ,   (err,result) => {
-            
+            if(err) throw err
+            console.log(result)
+            if(result.length == 0){
+                res.status(404).json("Projects not Found")
+            }
+            else {
+                res.status(200).json({
+                    Item: result
+                })
+            }
+        }
+        )
+}
+
+
+// finds All Seminars with their data for Seminar Carousel
+exports.get_seminars = async(req,res,next) => {
+    db.execute(`
+        SELECT p.*, pi.*
+        FROM post p 
+        LEFT JOIN postImages pi ON p.id = pi.post_id 
+        WHERE p.type = "Seminar"`
+        ,   (err,result) => {
+            if(err) throw err
+            console.log(result)
+            if(result.length == 0){
+                res.status(404).json("Seminars not Found")
+            }
+            else {
+                res.status(200).json({
+                    Item: result
+                })
+            }
         }
         )
 }
