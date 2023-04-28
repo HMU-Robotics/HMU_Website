@@ -40,18 +40,18 @@ function Projects(){
         <div className="project-page">
           <div className="project-cont">
             <h1 className="project-page-title">Projects Page</h1>
-            {console.log(data)}
-            {console.log(data.Item)}
-            {console.log(data?.Item?.length)}
-            {data?.Item?.length > 0 && (
+            {console.log(projectData)}
+            {console.log(projectData.Item)}
+            {console.log(projectData?.Item?.length)}
+            {projectData?.Item?.length > 0 && (
               <ImageCarousel className="project-carousel" category="projects" data={projectData} />
             )}
           </div>
           <Divider />
           <div className="seminars-cont">
             <h1 className="project-page-title">Seminars / Workshops</h1>
-            {console.log(data)}
-            {data?.Item?.length > 0 && (
+            {console.log(seminarData)}
+            {seminarData?.Item?.length > 0 && (
               <ImageCarousel className="seminar-carousel" category="seminars" data={seminarData} />
             )}
           </div>
