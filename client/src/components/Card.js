@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 function NewsCard(props) {
 
-  const id = props.post_id;
+  const post_id = props.id;
   const title = props.title;
   const desc = props.desc;
   const date_json = props.date;
@@ -12,7 +12,7 @@ function NewsCard(props) {
   const date = date_json?.substring(0,10)
 
   return (
-    <Link to={`/Post/${id}`} className="card-link">
+    <Link to={`/Post/${post_id}`} className="card-link">
       <div className="card-con">
         {console.log(props)}
         <img id='card-img' src={img}/>
