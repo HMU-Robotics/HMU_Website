@@ -76,7 +76,7 @@ function ImageCarousel(props) {
   );
   
 
-  const newsCar = (
+  const newsCar = data && data.Item ?  (
     <Carousel
       responsive={responsive}
       swipeable={true}
@@ -93,9 +93,11 @@ function ImageCarousel(props) {
         </Suspense>
       ))}
     </Carousel>
+  ) : (
+    <div>Loading . . .</div>
   );
 
-  const seminarCar = (
+  const seminarCar = data && data.Item ?  (
     <Carousel
       responsive={responsive}
       swipeable={true}
@@ -112,6 +114,8 @@ function ImageCarousel(props) {
         </Suspense>
       ))}
     </Carousel>
+  ) : (
+    <div>Loading . . .</div>
   );
 
   return <>{carousel}</>;
