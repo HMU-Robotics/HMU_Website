@@ -8,14 +8,15 @@ function NewsCard(props) {
   const title = props.title;
   const desc = props.desc;
   const date_json = props.date;
-  const img = "Media/about.jpg"
   const date = date_json?.substring(0,10)
+
+  const image = props.img ? `Uploads/posts/${props.img}` : "Media/about.jpg"
 
   return (
     <Link to={`/Post/${post_id}`} className="card-link">
       <div className="card-con">
         {console.log(props)}
-        <img id='card-img' src={img}/>
+        <img id='card-img' src={image}/>
         <div className='card-body'>
           <p className='card-title'>{title}</p>
           <p className='card-date'>{date}</p>
