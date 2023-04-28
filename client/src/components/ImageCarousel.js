@@ -64,7 +64,7 @@ function ImageCarousel(props) {
       infinite={true}
       className="project-carousel"
     >
-      {data.Item.map((project, index) => (
+      {data?.Item?.map((project, index) => (
         <Suspense key={index} fallback={<div>Loading . . .</div>}>
           {console.log(project)}
           <Card key={index} id={project?.id} title={project?.title} desc={project?.post_desc} date={project?.created_at} img={project?.img} />
@@ -105,7 +105,7 @@ function ImageCarousel(props) {
       infinite={true}
       className="seminar-carousel"
     >
-      {data.Item.map((seminar, index) => (
+      {data?.Item?.map((seminar, index) => (
         <Suspense key={index} fallback={<div>Loading . . .</div>}>
           {console.log(seminar)}
           <Card key={index} id={seminar?.id} title={seminar?.title} desc={seminar?.post_desc} date={seminar?.created_at} img={seminar?.img} />
