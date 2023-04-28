@@ -38,7 +38,7 @@ const upload = multer({
         // handle other errors
             console.log(err)
       }
-  
+
       // Everything is ok.
       next()
     })
@@ -65,7 +65,7 @@ const resizeImages = async(req, res, next, type) => {
 }
 
 const makePost = async(req,res,next)=>{
-    db.execute("INSERT INTO `post`(title,content,post_desc,created_at) VALUES(?,?,?,?)",[req.body.title,req.body.content,req.body.post_desc,req.body.created_at],(err,user)=>{
+    db.execute("INSERT INTO `post`(title,content,post_desc,created_at,type) VALUES(?,?,?,?,?)",[req.body.title,req.body.content,req.body.post_desc,req.body.created_at,req.body.type],(err,user)=>{
       console.log(req.body)
         if(err) {
             throw err;
@@ -91,8 +91,7 @@ const makePost = async(req,res,next)=>{
 
 
 const makeMember = async(req,res,next)=>{
-  const path = "./api/public/storage/uploads/members"
-  db.execute("INSERT INTO `member`(academic_id,first_name,last_name,school,subscription_date) VALUES(?,?,?,?,?)",[req.body.academic_id,req.body.first_name,req.body.last_name,req.body.school,req.body.subscription_date],(err,member)=>{
+  db.execute("INSERT INTO `member`(academic_id,first_name,last_name,school,subscription_date,role) VALUES(?,?,?,?,?,?)",[req.body.academic_id,req.body.first_name,req.body.last_name,req.body.school,req.body.subscription_date,req.body.role],(err,member)=>{
     console.log(req.body)
     if(err) {
         throw err;

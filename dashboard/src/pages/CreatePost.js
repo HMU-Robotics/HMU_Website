@@ -12,6 +12,7 @@ function CreatePost (){
     const [postDesc, setPostDesc] = useState()
     const [content, setContent] = useState()
     const [date, setDate] = useState()
+    const [type, setType] = useState()
     const [imageList, setImageList] = useState([])
 
     const handleTitle = (e) => {
@@ -33,6 +34,10 @@ function CreatePost (){
         setDate(formattedDate)
     }
 
+    const handleType = (e) => {
+        setType(e.target.value)
+    }
+
     const handleImageList = (e) => {
         const files = Array.from(e.target.files)
         if(!files) return;
@@ -51,6 +56,7 @@ function CreatePost (){
         formData.append("content",content)
         formData.append("post_desc",postDesc)
         formData.append("created_at",date)
+        formData.append("type",type)
 
         imageList.forEach((image) => {
             formData.append("upload_img", image)
@@ -93,6 +99,11 @@ function CreatePost (){
                     <Form.Label>Date</Form.Label>
                     <Form.Control type="date"/>
                 </Form.Group>
+                <Form.Select className="type" onChange={handleType}>
+                    <Form.Label>Type of Post</Form.Label>
+                    <option value="Project">Project</option>
+                    <option value="Seminar">Seminar</option>
+                </Form.Select>
                 <Form.Group onChange={handleImageList}>
                     <Form.Label>Add Images</Form.Label>
                     <Form.Control type="file" multiple/>

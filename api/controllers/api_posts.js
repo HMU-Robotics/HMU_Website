@@ -13,6 +13,8 @@ const db =  mysql.createPool({
     queueLimit: 0
 });
 
+
+// finds Post based on Post ID retrieved from url
 exports.find_post = async(req,res,next) => {
     const {id} = req.params
     db.execute('SELECT * FROM `post` WHERE `id` = ?', [id],(err,post) => {
@@ -41,6 +43,7 @@ exports.find_post = async(req,res,next) => {
     })
 }
 
+// finds 5 latest posts for News Carousel
 exports.get_latest_posts = async(req,res,next) => {
     db.execute(`
         SELECT p.*, pi.*
@@ -60,4 +63,18 @@ exports.get_latest_posts = async(req,res,next) => {
             })
         }
     })
+}
+
+
+// finds All Projects with their data for Project Carousel
+exports.get_projects = async(req,res,next) => {
+    db.execute(`
+        SELECT p.*, pi.*
+        FROM post p 
+        LEFT JOIN postImages pi ON p.id = pi.post_id 
+        WHERE p.type = "Project"`
+        ,   (err,result) => {
+            
+        }
+        )
 }
