@@ -13,6 +13,7 @@ function CreateMember (){
     const [academic_id, setAcademicID] = useState("")
     const [school, setSchool] = useState("ECE")
     const [subscriptionDate, setSubcriptionDate] = useState()
+    const [role, setRole] = useState("Member")
     const [image, setImage] = useState([])
 
 
@@ -44,6 +45,10 @@ function CreateMember (){
         setImage(file)
     }
 
+    const handleRole = (e) => {
+        setRole(e.target.value)
+    }
+
     const handleSubmit = async (e) => {
 
         // testing purposes
@@ -55,6 +60,7 @@ function CreateMember (){
         formData.append("last_name",lastname)
         formData.append("school",school)
         formData.append("subscription_date",subscriptionDate)
+        formData.append("role",role)
         formData.append("upload_img",image)
 
 
@@ -103,6 +109,13 @@ function CreateMember (){
                     <Form.Label>Subscription Date</Form.Label>
                     <Form.Control type="date"/>
                 </Form.Group>
+                <Form.Select className="role" onChange={handleRole}>
+                    <Form.Label>Role</Form.Label>
+                    <option value="Member">Member</option>
+                    <option value="Secretary">Secretary</option>
+                    <option value="Treasurer">Treasurer</option>
+                    <option value="President">President</option>
+                </Form.Select>
                 <Form.Group onChange={handleImage}>
                     <Form.Label>Add Image</Form.Label>
                     <Form.Control type="file"/>

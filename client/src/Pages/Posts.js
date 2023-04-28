@@ -30,14 +30,14 @@ function Posts() {
 
     return(
         <div>
-                <h1 className="post-title">{data?.Item.title}</h1>
-                <div className="image-list-wrapper">
-                    <img src={data?.Item.imageList[0]} alt="img1"></img>
-                    <img src={data?.Item.imageList[1]} alt="img2"></img>
-                    <img src={data?.Item.imageList[2]} alt="img3"></img>
-                </div>
-                <p className="post-main-text">{data?.Item.content}</p>
-                
+          {console.log(data)}
+          <h1 className="post-title">{data?.Item?.title}</h1>
+          <div className="image-list-wrapper">
+              {/* <img src={data?.Item.imageList[0]} alt="img1"></img>
+              <img src={data?.Item.imageList[1]} alt="img2"></img>
+              <img src={data?.Item.imageList[2]} alt="img3"></img> */}
+          </div>
+          <p className="post-main-text">{data?.Item?.content}</p>                
         </div>
     );
 }

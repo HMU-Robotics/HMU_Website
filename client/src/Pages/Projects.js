@@ -1,4 +1,4 @@
-import React , { Component, useState, useEffect } from "react"
+import React , { useState, useEffect } from "react"
 import ImageCarousel from "../components/ImageCarousel"
 import "./Projects.css"
 import Divider from "../components/Divider"
@@ -6,14 +6,15 @@ import Divider from "../components/Divider"
 
 function Projects(){
 
-    const [data, setData] = useState([])
+    const [projectData, setProjectData] = useState([])
+    const [seminarData, setSeminarData] = useState([])
 
     useEffect(() => {
-        fetch(`https://robotics-club.hmu.gr:443/api/posts/find/latest`, {})
+        fetch(`https://robotics-club.hmu.gr:443/api/posts/find/projects`, {})
         .then((res) => res.json())
         .then((response) => {
-          setData(response)
-          console.log(`https://robotics-club.hmu.gr:443/api/posts/find/latest`);
+          setProjectData(response)
+          console.log(`https://robotics-club.hmu.gr:443/api/posts/find/projects`);
           console.log(response)
         })
         .catch((error) => {
@@ -21,24 +22,37 @@ function Projects(){
       })
     }, []);
 
+    useEffect(() => {
+      fetch(`https://robotics-club.hmu.gr:443/api/posts/find/seminars`, {})
+      .then((res) => res.json())
+      .then((response) => {
+        setSeminarData(response)
+        console.log(`https://robotics-club.hmu.gr:443/api/posts/find/seminars`);
+        console.log(response)
+      })
+      .catch((error) => {
+        console.log(error);
+    })
+  }, []);
+
 
     return (
         <div className="project-page">
           <div className="project-cont">
             <h1 className="project-page-title">Projects Page</h1>
-            {console.log(data)}
-            {console.log(data.Item)}
-            {console.log(data?.Item?.length)}
-            {data?.Item?.length > 0 && (
-              <ImageCarousel className="project-carousel" category="projects" data={data} />
+            {console.log(projectData)}
+            {console.log(projectData.Item)}
+            {console.log(projectData?.Item?.length)}
+            {projectData?.Item?.length > 0 && (
+              <ImageCarousel className="project-carousel" category="projects" data={projectData} />
             )}
           </div>
           <Divider />
           <div className="seminars-cont">
             <h1 className="project-page-title">Seminars / Workshops</h1>
-            {console.log(data)}
-            {data?.Item?.length > 0 && (
-              <ImageCarousel className="seminar-carousel" category="seminars" data={data} />
+            {console.log(seminarData)}
+            {seminarData?.Item?.length > 0 && (
+              <ImageCarousel className="seminar-carousel" category="seminars" data={seminarData} />
             )}
           </div>
         </div>
