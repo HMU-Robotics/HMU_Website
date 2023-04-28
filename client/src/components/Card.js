@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 function NewsCard(props) {
 
-  const id = props.id;
+  const id = props.post_id;
   const title = props.title;
   const desc = props.desc;
   const date_json = props.date;
