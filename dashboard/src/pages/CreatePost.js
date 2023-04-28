@@ -12,7 +12,7 @@ function CreatePost (){
     const [postDesc, setPostDesc] = useState()
     const [content, setContent] = useState()
     const [date, setDate] = useState()
-    const [type, setType] = useState()
+    const [type, setType] = useState("Project")
     const [imageList, setImageList] = useState([])
 
     const handleTitle = (e) => {
@@ -100,7 +100,7 @@ function CreatePost (){
                     <Form.Control type="date"/>
                 </Form.Group>
                 <Form.Label>Type of Post</Form.Label>
-                <Form.Select className="type" defaultValue="Project" onChange={handleType}>
+                <Form.Select className="type" onChange={handleType}>
                     <option value="Project">Project</option>
                     <option value="Seminar">Seminar</option>
                 </Form.Select>
