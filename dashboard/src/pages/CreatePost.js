@@ -99,8 +99,8 @@ function CreatePost (){
                     <Form.Label>Date</Form.Label>
                     <Form.Control type="date"/>
                 </Form.Group>
-                <Form.Select className="type" onChange={handleType}>
-                    <Form.Label>Type of Post</Form.Label>
+                <Form.Label>Type of Post</Form.Label>
+                <Form.Select className="type" defaultValue="Project" onChange={handleType}>
                     <option value="Project">Project</option>
                     <option value="Seminar">Seminar</option>
                 </Form.Select>

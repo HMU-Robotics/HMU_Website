@@ -97,7 +97,7 @@ function CreateMember (){
                     <Form.Label>Academic ID</Form.Label>
                     <Form.Control type="text"/>
                 </Form.Group>
-                <Form.Select className="school" onChange={handleSchool}>
+                <Form.Select className="school" defaultValue="ECE" onChange={handleSchool}>
                     <Form.Label>University Course</Form.Label>
                     <option value="ECE">Ηλεκτρολόγων Μηχ. Μηχ. Υπολογιστών</option>
                     <option value="MECH">Μηχανολόγων Μηχανικών</option>
@@ -109,7 +109,7 @@ function CreateMember (){
                     <Form.Label>Subscription Date</Form.Label>
                     <Form.Control type="date"/>
                 </Form.Group>
-                <Form.Select className="role" onChange={handleRole}>
+                <Form.Select className="role" defaultValue="Member" onChange={handleRole}>
                     <Form.Label>Role</Form.Label>
                     <option value="Member">Member</option>
                     <option value="Secretary">Secretary</option>
