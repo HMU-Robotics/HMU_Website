@@ -3,7 +3,6 @@ import './Posts.css'
 import { useParams } from "react-router-dom";
 import { ReactMarkdown } from "react-markdown/lib/react-markdown";
 
-
 function Posts() {
 
     const { postid } = useParams();
