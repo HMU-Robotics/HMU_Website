@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import './Posts.css'
 import { useParams } from "react-router-dom";
-import { ReactMarkdown } from "react-markdown";
+import  ReactMarkdown from "react-markdown";
 
 function Posts() {
 
