@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import './Posts.css'
 import { useParams } from "react-router-dom";
+import { ReactMarkdown } from "react-markdown/lib/react-markdown";
 
 
 function Posts() {
@@ -37,7 +38,7 @@ function Posts() {
               <img src={`Uploads/posts/${data?.Images[1]?.img}`} alt="img2"></img>
               <img src={`Uploads/posts/${data?.Images[2]?.img}`} alt="img3"></img>
           </div>
-          <p className="post-main-text">{data?.Post?.content}</p>
+          <ReactMarkdown className="post-main-text">{data?.Post?.content}</ReactMarkdown>
         </div>
     );
 }
