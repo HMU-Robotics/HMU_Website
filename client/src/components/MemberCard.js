@@ -50,7 +50,7 @@ function MemberCard(props) {
         if (props.image === undefined) {
           return "Media/about.jpg";
         } else {
-          return "Uploads/" + props.image;
+          return "Uploads/members" + props.image;
         }
       };
       
