@@ -42,7 +42,7 @@ function MemberCard(props) {
             return "Media/about.jpg"
         }
         else{
-            return `Uploads/members/${props.image}`
+            return `Uploads/${props.image}`
         }
     }
 
@@ -51,7 +51,7 @@ function MemberCard(props) {
         <div className='members-con'>
             {console.log(props.image)}
             {console.log(image())}
-            <img id='members-img' src={image}/>
+            <img id='members-img' src={image()}/>
             <div className='members-body'>
                 <h3 className='members-title'>{last_name} {first_name}</h3>
                 <p className='members-school'>{school()}</p>

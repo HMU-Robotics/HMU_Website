@@ -58,7 +58,7 @@ const resizeImages = async(req, res, next, type) => {
         .resize(400,400)
         .toFormat("jpeg")
         .jpeg({ quality: 90 })
-        .toFile(`/var/www/robotics-club.hmu.gr/HMU_Website/client/public/Uploads/${type}s/${newFilename}`);
+        .toFile(`/var/www/robotics-club.hmu.gr/HMU_Website/client/public/Uploads/${newFilename}`);
       req.body.images.push(newFilename);
     })
   );
