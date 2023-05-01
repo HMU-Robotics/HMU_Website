@@ -37,21 +37,30 @@ function MemberCard(props) {
         }
       }
 
+    // const image = () => {
+    //     if(props.image === undefined){
+    //         return "Media/about.jpg"
+    //     }
+    //     else{
+    //         return `Uploads/${props.image}`
+    //     }
+    // }
+
     const image = () => {
-        if(props.image === undefined){
-            return "Media/about.jpg"
+        if (props.image === undefined) {
+          return "Media/about.jpg";
+        } else {
+          return "Uploads/" + props.image;
         }
-        else{
-            return `Uploads/${props.image}`
-        }
-    }
+      };
+      
 
 
     return (
         <div className='members-con'>
             {console.log(props.image)}
             {console.log(image())}
-            <img id='members-img' src={"Uploads/image-1682980386337-danihl.png"}/>
+            <img id='members-img' src={image()}/>
             <div className='members-body'>
                 <h3 className='members-title'>{last_name} {first_name}</h3>
                 <p className='members-school'>{school()}</p>
