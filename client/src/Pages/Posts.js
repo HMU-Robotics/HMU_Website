@@ -14,7 +14,7 @@ function Posts() {
     const [isLoading, setIsLoading] = useState(true);
     const [data, setData] = useState();
 
-    const testData = "This is a **test** \n asdasd"
+    const testData = "This is a **test** asdasd"
 
 
 
@@ -47,7 +47,7 @@ function Posts() {
             <MarkdownRenderer content={testData} />
           </div> */}
           
-          <ReactMarkdown>{testData}</ReactMarkdown>
+          <ReactMarkdown>{data?.Post?.content}</ReactMarkdown>
         </div>
     );
 }
