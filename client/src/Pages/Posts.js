@@ -41,11 +41,11 @@ function Posts() {
               <img src={`Uploads/${data?.Images[1]?.img}`} alt="img2"></img>
               <img src={`Uploads/${data?.Images[2]?.img}`} alt="img3"></img>
           </div>
-          <div>
+          {/* <div>
             <MarkdownRenderer content={testData} />
-          </div>
+          </div> */}
           
-          {/* <ReactMarkdown>{data?.Post?.content}</ReactMarkdown> */}
+          <ReactMarkdown>{testData}</ReactMarkdown>
         </div>
     );
 }
