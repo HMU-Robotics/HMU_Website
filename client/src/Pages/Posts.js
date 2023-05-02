@@ -12,6 +12,8 @@ function Posts() {
     const [isLoading, setIsLoading] = useState(true);
     const [data, setData] = useState();
 
+    const testData = "This is a **test** \n asdasd"
+
 
 
     useEffect(() => {
@@ -40,7 +42,7 @@ function Posts() {
               <img src={`Uploads/${data?.Images[2]?.img}`} alt="img3"></img>
           </div>
           <div>
-            <MarkdownRenderer content={data?.Post?.content} />
+            <MarkdownRenderer content={testData} />
           </div>
           
           {/* <ReactMarkdown>{data?.Post?.content}</ReactMarkdown> */}
