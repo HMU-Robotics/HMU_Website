@@ -3,6 +3,8 @@ import './Posts.css'
 import { useParams } from "react-router-dom";
 import "../components/MarkdownRenderer"
 import MarkdownRenderer from "../components/MarkdownRenderer";
+import ReactMarkdown from "react-markdown";
+
 
 
 function Posts() {
