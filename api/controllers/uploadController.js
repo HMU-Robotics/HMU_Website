@@ -55,7 +55,6 @@ const resizeImages = async(req, res, next, type) => {
       const newFilename = `image-${Date.now()}-${file.originalname}`;
       await sharp(file.buffer)
         .resize(resizeDimensions.width, resizeDimensions.height)
-        // .resize(400,400)
         .toFormat("jpeg")
         .jpeg({ quality: 90 })
         .toFile(`/var/www/robotics-club.hmu.gr/HMU_Website/client/public/Uploads/${type}s/${newFilename}`);
