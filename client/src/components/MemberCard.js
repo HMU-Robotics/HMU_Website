@@ -37,23 +37,14 @@ function MemberCard(props) {
         }
       }
 
-    // const image = () => {
-    //     if(props.image === undefined){
-    //         return "Media/about.jpg"
-    //     }
-    //     else{
-    //         return `Uploads/${props.image}`
-    //     }
-    // }
 
     const image = () => {
         if (props.image === undefined) {
           return "Media/about.jpg";
         } else {
-          return "Uploads/" + props.image;
+          return "Uploads/members/" + props.image;
         }
       };
-      
 
 
     return (

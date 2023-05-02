@@ -48,15 +48,17 @@ const resizeImages = async(req, res, next, type) => {
   if (!req.files) return next();
 
   req.body.images = [];
+  const resizeDimensions = type === 'member' ? { width: 400, height: 400 } : { width: 640, height: 320 };
 
   await Promise.all(
     req.files.map(async file => {
       const newFilename = `image-${Date.now()}-${file.originalname}`;
       await sharp(file.buffer)
-        .resize(400,400)
+        .resize(resizeDimensions.width, resizeDimensions.height)
+        // .resize(400,400)
         .toFormat("jpeg")
         .jpeg({ quality: 90 })
-        .toFile(`/var/www/robotics-club.hmu.gr/HMU_Website/client/public/Uploads/${newFilename}`);
+        .toFile(`/var/www/robotics-club.hmu.gr/HMU_Website/client/public/Uploads/${type}s/${newFilename}`);
       req.body.images.push(newFilename);
     })
   );
