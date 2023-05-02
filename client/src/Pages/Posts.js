@@ -31,7 +31,7 @@ function Posts() {
 
     return(
         <div>
-          {console.log(data)}
+          {console.log(data?.Images[0]?.img)}
           <h1 className="post-title">{data?.Post?.title}</h1>
           <div className="image-list-wrapper">
               <img src={`Uploads/${data?.Images[0]?.img}`} alt="img1"></img>
