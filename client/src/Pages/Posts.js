@@ -34,7 +34,7 @@ function Posts() {
           {console.log(data?.Images[0]?.img)}
           <h1 className="post-title">{data?.Post?.title}</h1>
           <div className="image-list-wrapper">
-              <img src={"Media/about.jpg"} alt="img1"></img>
+              <img src={"Uploads/manos.png"} alt="img1"></img>
               {/* <img src={`Uploads/posts/${data?.Images[1]?.img}`} alt="img2"></img>
               <img src={`Uploads/posts/${data?.Images[2]?.img}`} alt="img3"></img> */}
           </div>          
