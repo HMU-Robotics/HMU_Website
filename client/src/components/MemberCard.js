@@ -4,7 +4,6 @@ import "./MemberCard.css"
 function MemberCard(props) {
 
 
-    const academic_id = props.academic_id
     const first_name = props.first_name
     const last_name = props.last_name
     const school = () => {
@@ -40,7 +39,7 @@ function MemberCard(props) {
 
     const image = () => {
         if (props.image === undefined) {
-          return "Media/about.jpg";
+          return "Media/stock_image_man.png";
         } else {
           return "Uploads/members/" + props.image;
         }

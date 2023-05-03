@@ -43,19 +43,20 @@ exports.find_post = async(req,res,next) => {
     })
 }
 
-// finds 5 latest posts for News Carousel
+// finds 10 latest news posts for News Carousel
 exports.get_latest_posts = async(req,res,next) => {
     db.execute(`
         SELECT p.*, pi.*
-        FROM post p 
-        LEFT JOIN postImages pi ON p.id = pi.post_id 
-        ORDER BY p.id DESC 
-        LIMIT 5
+        FROM post p
+        LEFT JOIN postImages pi ON p.id = pi.post_id
+        WHERE p.type = "News"
+        ORDER BY p.id DESC
+        LIMIT 10
     `, (err,result) => {
         if(err) throw err
         console.log(result)
         if(result.length == 0){
-            res.status(404).json("Posts not Found")
+            res.status(404).json("News not Found")
         }
         else {
             res.status(200).json({

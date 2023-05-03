@@ -102,6 +102,7 @@ function CreatePost (){
                 <Form.Select className="type" onChange={handleType}>
                     <option value="Project">Project</option>
                     <option value="Seminar">Seminar</option>
+                    <option value="News">News</option>
                 </Form.Select>
                 <Form.Group onChange={handleImageList}>
                     <Form.Label>Add Images</Form.Label>
