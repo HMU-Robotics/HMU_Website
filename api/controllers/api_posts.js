@@ -23,23 +23,25 @@ exports.find_post = async(req,res,next) => {
         if(post.length == 0){
             res.status(409).json("Invalid input")
         }
-        db.execute('SELECT * FROM `postImages` WHERE `post_id` = ?',[id],(err,images)=>{
-            if(err) throw err
-            console.log(images)
-            if(images.length == 0){
-                res.status(206).json({
-                    Message:"Post found but no Image Info",
-                    Post:post[0]
-                })
-            }
-            else{
-                res.status(200).json({
-                    Message:"Post and Images found",
-                    Post:post[0],
-                    Images:images
-                })
-            }
-        })
+        else{
+            db.execute('SELECT * FROM `postImages` WHERE `post_id` = ?',[id],(err,images)=>{
+                if(err) throw err
+                console.log(images)
+                if(images.length == 0){
+                    res.status(206).json({
+                        Message:"Post found but no Image Info",
+                        Post:post[0]
+                    })
+                }
+                else{
+                    res.status(200).json({
+                        Message:"Post and Images found",
+                        Post:post[0],
+                        Images:images
+                    })
+                }
+            })
+        }
     })
 }
 
