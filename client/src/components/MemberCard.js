@@ -37,14 +37,14 @@ function MemberCard(props) {
         }
       }
 
+
     const image = () => {
-        if(props.image === undefined){
-            return "Media/about.jpg"
+        if (props.image === undefined) {
+          return "Media/about.jpg";
+        } else {
+          return "Uploads/members/" + props.image;
         }
-        else{
-            return `Uploads/members/${props.image}`
-        }
-    }
+      };
 
 
     return (
