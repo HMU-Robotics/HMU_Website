@@ -39,11 +39,10 @@ function CreatePost (){
     }
 
     const handleImageList = (e) => {
-        const files = Array.from(e.target.files)
-        if(!files) return;
-        
-        setImageList([...imageList, ...files])
-    }
+        const files = e.target.files;
+        if (!files || files.length === 0) return;
+        setImageList([...imageList, ...files]);
+      }      
 
 
     const handleSubmit = async (e) => {
