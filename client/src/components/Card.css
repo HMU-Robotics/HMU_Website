@@ -40,11 +40,13 @@
 }
 
 .card-date {
-    opacity: 0.8;
-    margin-left: 1.3em;
+    opacity: 1;
+    margin-top: 2em;
+    margin-left: 5em;
     font-family: Georgia, 'Times New Roman', Times, serif;
-    font-size: 1em;
+    font-size: 1.3em;
     text-decoration: none;
+    color: #000;
 }
 
 .card-desc {
