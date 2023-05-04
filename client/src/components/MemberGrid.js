@@ -64,17 +64,17 @@ function MemberGrid(props) {
         <Grid2 container spacing={4} columns={12} display="flex" alignItems="center">
           {memberData && memberData.Item ? (
             <>
-              {["President", "Secretary", "Treasurer"].map((type) => {
+              {["President", "Secretary", "Treasurer"].map((role) => {
                 const filteredMembers = memberData.Item.filter(
-                  (member) => member.type === type
+                  (member) => member.role === role
                 );
                 return (
                   <div className="member-grid">
-                    <Grid2 xs={12} sm={6} md={4} lg={3} key={type}>
+                    <Grid2 xs={12} sm={6} md={4} lg={3} key={role}>
                       {filteredMembers.length > 0 ? (
                         <Suspense fallback={<div>Loading...</div>}>
                           <MemberCard
-                            key={type}
+                            key={role}
                             end_date={filteredMembers[0]?.end_date}
                             first_name={filteredMembers[0]?.first_name}
                             last_name={filteredMembers[0]?.last_name}
@@ -84,7 +84,7 @@ function MemberGrid(props) {
                           />
                         </Suspense>
                       ) : (
-                        <div>No {type} found</div>
+                        <div>No {role} found</div>
                       )}
                     </Grid2>
                   </div>
