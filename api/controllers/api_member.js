@@ -66,6 +66,7 @@ exports.find_all_members = async(req,res,next)=>{
                         school: row.school,
                         subscription_date: row.subscription_date,
                         end_date: row.end_date,
+                        role: row.role,
                         images: []
                     }
                 }
