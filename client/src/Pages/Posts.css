@@ -11,7 +11,7 @@
   
   .post-title {
     color: black;
-    font-size: 28px;
+    font-size: 32px;
     margin-bottom: 20px;
   }
   
@@ -22,8 +22,8 @@
   }
   
   .image-list-wrapper img {
-    width: 200px;
-    height: 200px;
+    width: 300px;
+    height: 300px;
     object-fit: cover; /* crop images if they are too big or too small */
     margin-right: 10px;
   }
