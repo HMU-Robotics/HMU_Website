@@ -17,7 +17,7 @@ function MemberCard(props) {
             return "Ηλεκτρολόγων Μηχανικών"
         }
         else if(props.school === "CE"){
-            return "Τμήμα Μηχανικών Υπολογιστών"
+            return "Τμήμα Μηχανικών Πληροφορικής"
         }
         else if(props.school === "other"){
             return "Εξωτερικός Συνεργάτης"
@@ -42,7 +42,7 @@ function MemberCard(props) {
         if (props.image === undefined) {
           return "Media/stock_image_man.png";
         } else {
-          return "Uploads/members/" + props.image;
+          return "/Uploads/members/" + props.image;
         }
       };
 
