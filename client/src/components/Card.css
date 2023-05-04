@@ -34,17 +34,17 @@
 .card-title {
     color: black;
     font-family: Georgia, 'Times New Roman', Times, serif;
-    font-size: 1.7em;
+    font-size: 1.4em;
     margin-left: 0.3em;
     text-decoration: none;
 }
 
 .card-date {
     opacity: 1;
-    margin-top: 2em;
-    margin-left: 5em;
+    /* margin-top: 2em; */
+    margin-left: 1.1em;
     font-family: Georgia, 'Times New Roman', Times, serif;
-    font-size: 1.3em;
+    font-size: 1em;
     text-decoration: none;
     color: #000;
 }
@@ -57,7 +57,7 @@
     text-overflow: ellipsis;
     color: #000;
     font-family: Georgia, 'Times New Roman', Times, serif;
-    font-size: 1.3em;
+    font-size: 1.2em;
     margin: 10px;
     text-decoration: none;
 }
