@@ -20,7 +20,7 @@ function NewsCard(props) {
         <div className='card-body'>
           <p className='card-title'>{title}</p>
           <p className='card-date'>{date}</p>
-          {/* <p className='card-desc'>{desc}</p> */}
+          <p className='card-desc'>{desc}</p>
         </div>
       </div>
     </Link>
