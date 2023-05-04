@@ -79,7 +79,7 @@ function MemberGrid(props) {
 
 
     return (
-      <div className="member-whole">
+      <>
         <h2 className="members-box-title">Coordination Members</h2>
         <Grid2 container spacing={4} columns={12} display="flex" alignItems="center">
           {memberData && memberData.Item ? (
@@ -135,7 +135,7 @@ function MemberGrid(props) {
             <div>Loading...</div>
           )}
         </Grid2>
-      </div>
+      </>
     );
     
 
