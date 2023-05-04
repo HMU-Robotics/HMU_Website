@@ -25,6 +25,7 @@ function MemberCard(props) {
     }
     const date = props.subscription_date
     const subscription_date = date.substring(0,4)
+    const role = props.role
 
     const end_date = () => {
         if (!props.end_date) {
@@ -53,6 +54,9 @@ function MemberCard(props) {
             <img id='members-img' src={image()}/>
             <div className='members-body'>
                 <h3 className='members-title'>{last_name} {first_name}</h3>
+                {role === "President" && <p className='members-role'>President</p>}
+                {role === "Treasurer" && <p className='members-role'>Treasurer</p>}
+                {role === "Secretary" && <p className='members-role'>Secretary</p>}
                 <p className='members-school'>{school()}</p>
                 <p className='members-date'>{subscription_date} - {end_date()}</p>
             </div>

@@ -19,7 +19,7 @@ function MemberGrid(props) {
        .then((response) => {
          setIsLoading(false);
          setMemberData(response);
-         sortMembers(response);
+        //  sortMembers(response);
          console.log(`https://robotics-club.hmu.gr:443/api/members/find/all`);
          console.log(response)
        })
@@ -31,7 +31,7 @@ function MemberGrid(props) {
 
 
    function sortMembers(memberList) {
-    const { members } = memberList?.Item;
+    const { members } = memberList.Item;
   
     const sortedMembers = members.reduce(
       (acc, member) => {
@@ -81,6 +81,7 @@ function MemberGrid(props) {
                             school={filteredMembers[0]?.school}
                             subscription_date={filteredMembers[0]?.subscription_date}
                             image={filteredMembers[0]?.images[0]?.image_url}
+                            role={filteredMembers[0]?.role}
                           />
                         </Suspense>
                       ) : (
@@ -112,6 +113,7 @@ function MemberGrid(props) {
                     school={member?.school}
                     subscription_date={member?.subscription_date}
                     image={member?.images[0]?.image_url}
+                    role={member?.role}
                   />
                 </Suspense>
               </Grid2>
