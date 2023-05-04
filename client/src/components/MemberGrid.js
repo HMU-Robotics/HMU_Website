@@ -79,7 +79,7 @@ function MemberGrid(props) {
 
 
     return (
-      <div className="member-grid">
+      <div className="member-whole">
         <h2 className="members-box-title">Coordination Members</h2>
         <Grid2 container spacing={4} columns={12} display="flex" alignItems="center">
           {memberData && memberData.Item ? (
@@ -89,6 +89,7 @@ function MemberGrid(props) {
                   (member) => member.type === type
                 );
                 return (
+                  <div className="member-grid">
                   <Grid2 xs={12} sm={6} md={4} lg={3} key={type}>
                     {filteredMembers.length > 0 ? (
                       <Suspense fallback={<div>Loading...</div>}>
@@ -106,9 +107,10 @@ function MemberGrid(props) {
                       <div>No {type} found</div>
                     )}
                   </Grid2>
+                  </div>
                 );
               })}
-              <div></div>
+              <div className="member-grid">
               <h2 className="members-box-title">Members</h2>
               <Grid2 container spacing={4} columns={12} display="flex" alignItems="center">
                 {memberData.Item.map((member, i) => (
@@ -127,6 +129,7 @@ function MemberGrid(props) {
                   </Grid2>
                 ))}
               </Grid2>
+              </div>
             </>
           ) : (
             <div>Loading...</div>
