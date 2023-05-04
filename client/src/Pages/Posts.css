@@ -17,8 +17,8 @@
   }
   
   .image-list-wrapper img {
-    width: 300px;
-    height: 300px;
+    width: 301px;
+    height: 301px;
     object-fit: cover; /* crop images if they are too big or too small */
     margin-right: 10px;
   }
