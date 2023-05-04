@@ -29,22 +29,8 @@ function Posts() {
       }, []);
 
 
-    // return(
-    //     <div>
-    //       {console.log(data?.Images[0]?.img)}
-    //       <h1 className="post-title">{data?.Post?.title}</h1>
-    //       <div className="image-list-wrapper">
-    //           <img src={`/Uploads/posts/${data?.Images[0]?.img}`}></img>
-    //           <img src={`/Uploads/posts/${data?.Images[1]?.img}`}></img>
-    //           <img src={`/Uploads/posts/${data?.Images[2]?.img}`}></img>
-    //       </div>          
-    //       <ReactMarkdown>{data?.Post?.content}</ReactMarkdown>
-    //     </div>
-    // );
-    // }
-
     return (
-      <div>
+      <div className="post-page">
         <h1 className="post-title">{data?.Post?.title}</h1>
         <div className="image-list-wrapper">
           {data?.Images?.map((image, index) => {
