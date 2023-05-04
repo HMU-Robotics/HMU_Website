@@ -102,7 +102,7 @@ function MemberGrid(props) {
           <Grid2 container spacing={4} columns={12} display="flex" alignItems="center">
           {memberData && memberData.Item ? (
             <>
-            {memberData.Item.map((member, i) => (
+            {memberData.Item.filter((member) => !["President", "Secretary", "Treasurer"].includes(member.role)).map((member, i) => (
               <Grid2 xs={12} sm={6} md={4} lg={3} key={i}>
                 <Suspense fallback={<div>Loading...</div>}>
                   <MemberCard
