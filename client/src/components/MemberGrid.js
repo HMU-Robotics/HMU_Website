@@ -19,7 +19,7 @@ function MemberGrid(props) {
        .then((response) => {
          setIsLoading(false);
          setMemberData(response);
-         sortMembers(memberData);
+         sortMembers(response);
          console.log(`https://robotics-club.hmu.gr:443/api/members/find/all`);
          console.log(response)
        })
@@ -31,7 +31,7 @@ function MemberGrid(props) {
 
 
    function sortMembers(memberList) {
-    const { members } = memberList.Item;
+    const { members } = memberList?.Item;
   
     const sortedMembers = members.reduce(
       (acc, member) => {
@@ -108,6 +108,7 @@ function MemberGrid(props) {
                   </Grid2>
                 );
               })}
+              <div></div>
               <h2 className="members-box-title">Members</h2>
               <Grid2 container spacing={4} columns={12} display="flex" alignItems="center">
                 {memberData.Item.map((member, i) => (
