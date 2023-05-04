@@ -179,6 +179,8 @@ function MemberGrid(props) {
         <div className="member-grid">
           <h2 className="members-box-title">Members</h2>
           <Grid2 container spacing={4} columns={12} display="flex" alignItems="center">
+          {memberData && memberData.Item ? (
+            <>
             {memberData.Item.map((member, i) => (
               <Grid2 xs={12} sm={6} md={4} lg={3} key={i}>
                 <Suspense fallback={<div>Loading...</div>}>
@@ -193,7 +195,12 @@ function MemberGrid(props) {
                   />
                 </Suspense>
               </Grid2>
+              
             ))}
+            </>
+          ) : (
+            <div>Loading...</div>
+          )}
           </Grid2>
         </div>
       </>
