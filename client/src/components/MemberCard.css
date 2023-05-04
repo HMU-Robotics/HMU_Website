@@ -58,3 +58,10 @@
     font-weight:500;
     opacity: 0.8;
 }
+
+.members-role{
+    color: #000;
+    font-weight:400;
+    margin-top: 1.5em;
+    font-size: 1.3em;
+}
