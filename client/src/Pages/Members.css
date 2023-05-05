@@ -32,12 +32,13 @@
 }
 
 .member-start{
-    margin-left: 5em;
-    margin-right: 5em;
+    margin-left: 5vw;
+    margin-right: 5vw;
     margin-bottom: 1em;
-    font-size: 2em;
+    font-size: 5vw;
     text-align: center;
 }
+
 
 #member_img{
     width: 100px;
