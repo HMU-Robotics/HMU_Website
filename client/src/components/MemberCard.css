@@ -70,5 +70,11 @@
 }
 
 .members-date-container{
-    margin-top: auto;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.members-date-container p{
+    margin: 0;
 }
