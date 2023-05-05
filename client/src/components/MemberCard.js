@@ -47,19 +47,35 @@ function MemberCard(props) {
       };
 
 
+    // return (
+    //     <div className='members-con'>
+    //         {console.log(props.image)}
+    //         {console.log(image())}
+    //         <img id='members-img' src={image()}/>
+    //         <div className='members-body'>
+    //             <h3 className='members-title'>{last_name} {first_name}</h3>
+    //             {role === "President" && <p className='members-role'>President</p>}
+    //             {role === "Treasurer" && <p className='members-role'>Treasurer</p>}
+    //             {role === "Secretary" && <p className='members-role'>Secretary</p>}
+    //             <p className='members-school'>{school()}</p>
+    //             <p className='members-date'>{subscription_date} - {end_date()}</p>
+    //         </div>
+    //   </div>
+    // );
+
     return (
-        <div className='members-con'>
-            {console.log(props.image)}
-            {console.log(image())}
-            <img id='members-img' src={image()}/>
-            <div className='members-body'>
-                <h3 className='members-title'>{last_name} {first_name}</h3>
-                {role === "President" && <p className='members-role'>President</p>}
-                {role === "Treasurer" && <p className='members-role'>Treasurer</p>}
-                {role === "Secretary" && <p className='members-role'>Secretary</p>}
-                <p className='members-school'>{school()}</p>
-                <p className='members-date'>{subscription_date} - {end_date()}</p>
-            </div>
+      <div className='members-con'>
+        <img id='members-img' src={image()}/>
+        <div className='members-body'>
+          <h3 className='members-title'>{last_name} {first_name}</h3>
+          {role === "President" && <p className='members-role'>President</p>}
+          {role === "Treasurer" && <p className='members-role'>Treasurer</p>}
+          {role === "Secretary" && <p className='members-role'>Secretary</p>}
+          <p className='members-school'>{school()}</p>
+          <div className='members-date-container'>
+            <p className='members-date'>{subscription_date} - {end_date()}</p>
+          </div>
+        </div>
       </div>
     );
 }

@@ -66,3 +66,16 @@
     margin-top: 1.1em;
     font-size: 1.3em;
 }
+
+.members-body {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .members-date-container {
+    margin-top: auto;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+  }
+  
