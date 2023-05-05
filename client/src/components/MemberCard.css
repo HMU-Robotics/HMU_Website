@@ -68,13 +68,3 @@
     margin-top: 1.1em;
     font-size: 1.3em;
 }
-
-.members-date-container{
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-}
-
-.members-date-container p{
-    margin: 0;
-}
