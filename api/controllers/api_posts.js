@@ -51,7 +51,8 @@ exports.get_latest_posts = async(req,res,next) => {
         SELECT p.*, pi.img
         FROM post p
         LEFT JOIN postImages pi ON p.id = pi.post_id
-        WHERE p.type = "News";
+        WHERE p.type = "News"
+        LIMIT 1;
     `, (err,result) => {
         if(err) throw err
         console.log(result)
@@ -73,7 +74,8 @@ exports.get_projects = async(req,res,next) => {
         SELECT p.*, pi.img
         FROM post p 
         LEFT JOIN postImages pi ON p.id = pi.post_id 
-        WHERE p.type = "Project"`
+        WHERE p.type = "Project"
+        LIMIT 1;`
         ,   (err,result) => {
             if(err) throw err
             console.log(result)
@@ -96,7 +98,8 @@ exports.get_seminars = async(req,res,next) => {
         SELECT p.*, pi.img
         FROM post p 
         LEFT JOIN postImages pi ON p.id = pi.post_id 
-        WHERE p.type = "Seminar"`
+        WHERE p.type = "Seminar"
+        LIMIT 1;`
         ,   (err,result) => {
             if(err) throw err
             console.log(result)
