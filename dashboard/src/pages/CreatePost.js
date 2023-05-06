@@ -9,8 +9,8 @@ function CreatePost (){
 
     const api_url = "https://robotics-club.hmu.gr:443/api/dashboard/addPost"
     const [title, setTitle] = useState()
-    const [postDesc, setPostDesc] = useState()
-    const [content, setContent] = useState()
+    const [postDesc, setPostDesc] = useState("")
+    const [content, setContent] = useState("")
     const [date, setDate] = useState()
     const [type, setType] = useState("Project")
     const [imageList, setImageList] = useState([])
