@@ -10,7 +10,7 @@ function NewsCard(props) {
   const date_json = props.date;
   const date = date_json?.substring(0,10)
 
-  const image = props.img ? `Uploads/posts/${props.img}` : "Media/about.jpg"
+  const image = props.img ? `/Uploads/posts/${props.img}` : "Media/about.jpg"
   const singleImage = image.split(',')[0];
 
   return (
