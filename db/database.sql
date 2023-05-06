@@ -12,7 +12,7 @@ create table post(
     id int not null auto_increment,
     title varchar(80) not null,
     post_desc varchar(200) not null,
-    content varchar(1500) not null,
+    content varchar(20000) not null,
     type varchar(20) not null,
     created_at date,
     updated_at timestamp default current_timestamp on update current_timestamp,

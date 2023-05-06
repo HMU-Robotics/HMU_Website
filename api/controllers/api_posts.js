@@ -52,8 +52,6 @@ exports.get_latest_posts = async(req,res,next) => {
         FROM post p
         LEFT JOIN postImages pi ON p.id = pi.post_id
         WHERE p.type = "News"
-        ORDER BY p.id DESC
-        LIMIT 10
     `, (err,result) => {
         if(err) throw err
         console.log(result)
