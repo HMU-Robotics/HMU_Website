@@ -48,10 +48,10 @@ exports.find_post = async(req,res,next) => {
 // finds 10 latest news posts for News Carousel
 exports.get_latest_posts = async(req,res,next) => {
     db.execute(`
-        SELECT p.*, pi.*
+        SELECT p.*, pi.img
         FROM post p
         LEFT JOIN postImages pi ON p.id = pi.post_id
-        WHERE p.type = "News"
+        WHERE p.type = "News";
     `, (err,result) => {
         if(err) throw err
         console.log(result)
@@ -70,7 +70,7 @@ exports.get_latest_posts = async(req,res,next) => {
 // finds All Projects with their data for Project Carousel
 exports.get_projects = async(req,res,next) => {
     db.execute(`
-        SELECT p.*, pi.*
+        SELECT p.*, pi.img
         FROM post p 
         LEFT JOIN postImages pi ON p.id = pi.post_id 
         WHERE p.type = "Project"`
@@ -93,7 +93,7 @@ exports.get_projects = async(req,res,next) => {
 // finds All Seminars with their data for Seminar Carousel
 exports.get_seminars = async(req,res,next) => {
     db.execute(`
-        SELECT p.*, pi.*
+        SELECT p.*, pi.img
         FROM post p 
         LEFT JOIN postImages pi ON p.id = pi.post_id 
         WHERE p.type = "Seminar"`
