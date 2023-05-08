@@ -1,4 +1,6 @@
-
+body {
+    overflow: hidden;
+}
 
 .member-page {
     color: whitesmoke;
@@ -7,6 +9,10 @@
 }
 
 .member_con{
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
     display: flex;
     flex-direction: column;
     background-color: whitesmoke;

@@ -1,5 +1,8 @@
 
 .card-con{
+    display: -webkit-box;
+    overflow: hidden;
+    text-overflow: ellipsis;
     width: 22em;
     height: 25em;
     background-color:rgba(240,240,240,0.9);
