@@ -37,6 +37,8 @@
     font-size: 1.3em;
     margin-left: 0.3em;
     text-decoration: none;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
 }
 
 .card-date {
