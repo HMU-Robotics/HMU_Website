@@ -1,3 +1,20 @@
+@media (max-width: 768px) {
+    body {
+      /* Hide the scrollbar for webkit-based browsers (Safari, Chrome) */
+      ::-webkit-scrollbar {
+        width: 0.5rem;
+        background-color: transparent;
+      }
+  
+      /* Hide the scrollbar for all other browsers */
+      scrollbar-width: none;
+  
+      /* Add some padding to the right to make up for the missing scrollbar */
+      padding-right: 0.5rem;
+    }
+  }
+  
+
 
 .member-page {
     color: whitesmoke;
