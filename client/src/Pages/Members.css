@@ -1,7 +1,6 @@
-html, body {
+body {
     overflow: hidden;
-    height: 100%;
-  }
+}
 
 .member-page {
     color: whitesmoke;
