@@ -1,7 +1,7 @@
 
 .card-con{
     display: -webkit-box;
-    overflow: hidden;
+    /* overflow: hidden; */
     text-overflow: ellipsis;
     width: 22em;
     height: 25em;
