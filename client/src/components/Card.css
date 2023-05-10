@@ -50,11 +50,13 @@
     text-decoration: none;
     display: -webkit-box;
     -webkit-box-orient: vertical;
-    -webkit-line-clamp: 1;
+    -webkit-line-clamp: 3;
+    max-height: 1.5em;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: normal;
-}
+  }
+  
 
 
 .card-date {
