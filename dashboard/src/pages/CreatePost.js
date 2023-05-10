@@ -9,8 +9,8 @@ function CreatePost (){
 
     const api_url = "https://robotics-club.hmu.gr:443/api/dashboard/addPost"
     const [title, setTitle] = useState()
-    const [postDesc, setPostDesc] = useState()
-    const [content, setContent] = useState()
+    const [postDesc, setPostDesc] = useState("")
+    const [content, setContent] = useState("")
     const [date, setDate] = useState()
     const [type, setType] = useState("Project")
     const [imageList, setImageList] = useState([])
@@ -102,6 +102,7 @@ function CreatePost (){
                 <Form.Select className="type" onChange={handleType}>
                     <option value="Project">Project</option>
                     <option value="Seminar">Seminar</option>
+                    <option value="News">News</option>
                 </Form.Select>
                 <Form.Group onChange={handleImageList}>
                     <Form.Label>Add Images</Form.Label>

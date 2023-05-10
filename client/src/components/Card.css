@@ -31,20 +31,30 @@
     }
 }
 
+
 .card-title {
     color: black;
     font-family: Georgia, 'Times New Roman', Times, serif;
-    font-size: 1.7em;
+    font-size: 1.3em;
     margin-left: 0.3em;
     text-decoration: none;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: normal;
 }
 
+
 .card-date {
-    opacity: 0.8;
-    margin-left: 1.3em;
+    opacity: 1;
+    /* margin-top: 2em; */
+    margin-left: 1.1em;
     font-family: Georgia, 'Times New Roman', Times, serif;
     font-size: 1em;
     text-decoration: none;
+    color: #000;
 }
 
 .card-desc {
@@ -55,8 +65,10 @@
     text-overflow: ellipsis;
     color: #000;
     font-family: Georgia, 'Times New Roman', Times, serif;
-    font-size: 1.3em;
-    margin: 10px;
+    font-size: 1.1em;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-bottom: 10px;
     text-decoration: none;
 }
 

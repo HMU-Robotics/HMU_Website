@@ -67,7 +67,7 @@ function ImageCarousel(props) {
       {data?.Item?.map((project, index) => (
         <Suspense key={index} fallback={<div>Loading . . .</div>}>
           {console.log(project)}
-          <Card key={index} id={project?.id} title={project?.title} desc={project?.post_desc} date={project?.created_at} img={project?.img} />
+          <Card id={project?.id} title={project?.title} desc={project?.post_desc} date={project?.created_at} img={project?.img} />
         </Suspense>
       ))}
     </Carousel>
@@ -89,7 +89,7 @@ function ImageCarousel(props) {
       {data?.Item?.map((news, index) => (
         <Suspense key={index} fallback={<div>Loading . . .</div>}>
           {console.log(news)}
-          <Card key={index} id={news?.id} title={news?.title} desc={news?.post_desc} date={news?.created_at} img={news?.img} />
+          <Card  id={news?.id} title={news?.title} desc={news?.post_desc} date={news?.created_at} img={news?.img} />
         </Suspense>
       ))}
     </Carousel>
@@ -110,7 +110,7 @@ function ImageCarousel(props) {
       {data?.Item?.map((seminar, index) => (
         <Suspense key={index} fallback={<div>Loading . . .</div>}>
           {console.log(seminar)}
-          <Card key={index} id={seminar?.id} title={seminar?.title} desc={seminar?.post_desc} date={seminar?.created_at} img={seminar?.img} />
+          <Card id={seminar?.id} title={seminar?.title} desc={seminar?.post_desc} date={seminar?.created_at} img={seminar?.img} />
         </Suspense>
       ))}
     </Carousel>

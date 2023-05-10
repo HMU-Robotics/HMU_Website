@@ -4,7 +4,6 @@ import "./MemberCard.css"
 function MemberCard(props) {
 
 
-    const academic_id = props.academic_id
     const first_name = props.first_name
     const last_name = props.last_name
     const school = () => {
@@ -18,7 +17,7 @@ function MemberCard(props) {
             return "Ηλεκτρολόγων Μηχανικών"
         }
         else if(props.school === "CE"){
-            return "Τμήμα Μηχανικών Υπολογιστών"
+            return "Τμήμα Μηχανικών Πληροφορικής"
         }
         else if(props.school === "other"){
             return "Εξωτερικός Συνεργάτης"
@@ -26,6 +25,7 @@ function MemberCard(props) {
     }
     const date = props.subscription_date
     const subscription_date = date.substring(0,4)
+    const role = props.role
 
     const end_date = () => {
         if (!props.end_date) {
@@ -40,23 +40,42 @@ function MemberCard(props) {
 
     const image = () => {
         if (props.image === undefined) {
-          return "Media/about.jpg";
+          return "Media/stock_image_man.png";
         } else {
-          return "Uploads/members/" + props.image;
+          return "/Uploads/members/" + props.image;
         }
       };
 
 
+    // return (
+    //     <div className='members-con'>
+    //         {console.log(props.image)}
+    //         {console.log(image())}
+    //         <img id='members-img' src={image()}/>
+    //         <div className='members-body'>
+    //             <h3 className='members-title'>{last_name} {first_name}</h3>
+    //             {role === "President" && <p className='members-role'>President</p>}
+    //             {role === "Treasurer" && <p className='members-role'>Treasurer</p>}
+    //             {role === "Secretary" && <p className='members-role'>Secretary</p>}
+    //             <p className='members-school'>{school()}</p>
+    //             <p className='members-date'>{subscription_date} - {end_date()}</p>
+    //         </div>
+    //   </div>
+    // );
+
     return (
-        <div className='members-con'>
-            {console.log(props.image)}
-            {console.log(image())}
-            <img id='members-img' src={image()}/>
-            <div className='members-body'>
-                <h3 className='members-title'>{last_name} {first_name}</h3>
-                <p className='members-school'>{school()}</p>
-                <p className='members-date'>{subscription_date} - {end_date()}</p>
-            </div>
+      <div className='members-con'>
+        <img id='members-img' src={image()}/>
+        <div className='members-body'>
+          <h3 className='members-title'>{last_name} {first_name}</h3>
+          {role === "President" && <p className='members-role'>President</p>}
+          {role === "Treasurer" && <p className='members-role'>Treasurer</p>}
+          {role === "Secretary" && <p className='members-role'>Secretary</p>}
+          <p className='members-school'>{school()}</p>
+          <div className='members-date-container'>
+            <p className='members-date'>{subscription_date} - {end_date()}</p>
+          </div>
+        </div>
       </div>
     );
 }

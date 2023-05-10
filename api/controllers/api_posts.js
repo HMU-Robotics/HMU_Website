@@ -23,39 +23,41 @@ exports.find_post = async(req,res,next) => {
         if(post.length == 0){
             res.status(409).json("Invalid input")
         }
-        db.execute('SELECT * FROM `postImages` WHERE `post_id` = ?',[id],(err,images)=>{
-            if(err) throw err
-            console.log(images)
-            if(images.length == 0){
-                res.status(206).json({
-                    Message:"Post found but no Image Info",
-                    Post:post[0]
-                })
-            }
-            else{
-                res.status(200).json({
-                    Message:"Post and Images found",
-                    Post:post[0],
-                    Images:images
-                })
-            }
-        })
+        else{
+            db.execute('SELECT * FROM `postImages` WHERE `post_id` = ?',[id],(err,images)=>{
+                if(err) throw err
+                console.log(images)
+                if(images.length == 0){
+                    res.status(206).json({
+                        Message:"Post found but no Image Info",
+                        Post:post[0]
+                    })
+                }
+                else{
+                    res.status(200).json({
+                        Message:"Post and Images found",
+                        Post:post[0],
+                        Images:images
+                    })
+                }
+            })
+        }
     })
 }
 
-// finds 5 latest posts for News Carousel
+// finds 10 latest news posts for News Carousel
 exports.get_latest_posts = async(req,res,next) => {
     db.execute(`
-        SELECT p.*, pi.*
-        FROM post p 
-        LEFT JOIN postImages pi ON p.id = pi.post_id 
-        ORDER BY p.id DESC 
-        LIMIT 5
+        SELECT p.*, GROUP_CONCAT(pi.img) AS img
+        FROM post p
+        LEFT JOIN postImages pi ON p.id = pi.post_id
+        WHERE p.type = 'News'
+        GROUP BY p.id;
     `, (err,result) => {
         if(err) throw err
         console.log(result)
         if(result.length == 0){
-            res.status(404).json("Posts not Found")
+            res.status(404).json("News not Found")
         }
         else {
             res.status(200).json({
@@ -69,10 +71,12 @@ exports.get_latest_posts = async(req,res,next) => {
 // finds All Projects with their data for Project Carousel
 exports.get_projects = async(req,res,next) => {
     db.execute(`
-        SELECT p.*, pi.*
-        FROM post p 
-        LEFT JOIN postImages pi ON p.id = pi.post_id 
-        WHERE p.type = "Project"`
+        SELECT p.*, GROUP_CONCAT(pi.img) AS img
+        FROM post p
+        LEFT JOIN postImages pi ON p.id = pi.post_id
+        WHERE p.type = 'Project'
+        GROUP BY p.id;
+        `
         ,   (err,result) => {
             if(err) throw err
             console.log(result)
@@ -92,10 +96,11 @@ exports.get_projects = async(req,res,next) => {
 // finds All Seminars with their data for Seminar Carousel
 exports.get_seminars = async(req,res,next) => {
     db.execute(`
-        SELECT p.*, pi.*
-        FROM post p 
-        LEFT JOIN postImages pi ON p.id = pi.post_id 
-        WHERE p.type = "Seminar"`
+        SELECT p.*, GROUP_CONCAT(pi.img) AS img
+        FROM post p
+        LEFT JOIN postImages pi ON p.id = pi.post_id
+        WHERE p.type = 'Seminar'
+        GROUP BY p.id;`
         ,   (err,result) => {
             if(err) throw err
             console.log(result)

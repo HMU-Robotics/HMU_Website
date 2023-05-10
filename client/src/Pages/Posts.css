@@ -1,4 +1,31 @@
 
 .post-page {
-    background: linear-gradient(90deg, #3a588a 0%, #252d53 100%);
-}
+    background-color: #f0f6ff; /* very slight blue background */
+    padding: 20px;
+  }
+  
+  .post-title {
+    color: black;
+    font-size: 32px;
+    margin-bottom: 20px;
+  }
+  
+  .image-list-wrapper {
+    display: flex; /* display images in a horizontal row */
+    justify-content: flex-start; /* align images to the left */
+    margin-bottom: 20px;
+  }
+  
+  .image-list-wrapper img {
+    width: 301px;
+    height: 301px;
+    object-fit: cover; /* crop images if they are too big or too small */
+    margin-right: 10px;
+  }
+  
+  /* Style main content with black color and suitable font size */
+  .post-page > *:not(.post-title):not(.image-list-wrapper) {
+    color: black;
+    font-size: 20px;
+    line-height: 1.5;
+  }

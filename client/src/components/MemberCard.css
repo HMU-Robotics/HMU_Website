@@ -44,17 +44,27 @@
     font-weight:500;
 }
 
-.members-date{
+.members-date {
+    margin: 0;
     color: #000;
     font-size: 1.2em;
     opacity: 0.7;
-    font-weight:400;
-}
+    font-weight: 400;
+    text-align: center;
+  }
+  
 
 .members-school{
     color: #000;
-    margin-top: 1.8em;
+    margin-top: 1.6em;
     font-size: 1.2em;
     font-weight:500;
     opacity: 0.8;
+}
+
+.members-role{
+    color: #000;
+    font-weight:400;
+    margin-top: 1.1em;
+    font-size: 1.3em;
 }

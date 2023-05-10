@@ -13,10 +13,10 @@ function Footer(){
                         <h4>Links</h4>
                         <hr/>
                         <ul className="list-unstyled navigation footer_links">
-                            <li><a href="http://www.hu.gr/">Hellenic Mediterranean University</a></li>
-                            <li><a href="https://hmu.gr/en/seng/16130">School of Engineering</a></li>
-                            <li><a href="https://mech.hmu.gr/">Department of Mechanical Engineering</a></li>
-                            <li><a href="https://ece.hmu.gr/">Department of Electrical & Computer Engineering</a></li>
+                            <li><a href="https://hmu.gr/en/home/">Hellenic Mediterranean University</a></li>
+                            <li><a href="https://hmu.gr/en/school-of-engineering/">School of Engineering</a></li>
+                            <li><a href="https://mech.hmu.gr/en/home/">Department of Mechanical Engineering</a></li>
+                            <li><a href="https://ece.hmu.gr/en/home">Department of Electrical & Computer Engineering</a></li>
                         </ul>
                     </div>
                         {/* column 2 Contact */}

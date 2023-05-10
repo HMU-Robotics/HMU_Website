@@ -1,12 +1,17 @@
 
-
 .member-page {
     color: whitesmoke;
     background: linear-gradient(90deg, #3a588a 0%, #252d53 100%);
     padding-top: 2em;
+    height: 100%;
+    overflow-x: hidden;
 }
 
 .member_con{
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
     display: flex;
     flex-direction: column;
     background-color: whitesmoke;
@@ -32,12 +37,13 @@
 }
 
 .member-start{
-    margin-left: 5em;
-    margin-right: 5em;
+    margin-left: 5vw;
+    margin-right: 5vw;
     margin-bottom: 1em;
-    font-size: 2em;
+    font-size: 2vw;
     text-align: center;
 }
+
 
 #member_img{
     width: 100px;
