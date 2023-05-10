@@ -1,11 +1,9 @@
 # HMU Robotics Club Website
 
-HMU Robotics Club new Website
+![image](https://github.com/HMU-Robotics/HMU_Website/assets/68197873/950ccf5b-dec7-4757-8ec4-e1b872bd521a)
 
-Written in React js with Express
 
-# HOW TO START
+## HMU Robotics Club New Website
 
-Clone repo to folder, then "npm install" in folder HMU_Website
+**New and updated Website** for the HMU Robotics Club, that showcases all our projects and our Members that are part of the Club.
 
-Then use "npm start" in folder "client" to start website in localhost
