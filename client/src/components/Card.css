@@ -31,16 +31,6 @@
     }
 }
 
-/* .card-title {
-    color: black;
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    font-size: 1.3em;
-    margin-left: 0.3em;
-    text-decoration: none;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-} */
-
 
 .card-title {
     color: black;
@@ -50,13 +40,11 @@
     text-decoration: none;
     display: -webkit-box;
     -webkit-box-orient: vertical;
-    -webkit-line-clamp: 3;
-    max-height: 1.5em;
+    -webkit-line-clamp: 2;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: normal;
-  }
-  
+}
 
 
 .card-date {
