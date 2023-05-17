@@ -37,6 +37,12 @@
     justify-content: center;
 }
 
+@media (max-width: 450px) {
+    .member-start {
+      font-size: 4vw;
+    }
+}
+
 .member-start{
     margin-left: 5vw;
     margin-right: 5vw;
@@ -68,8 +74,6 @@
     transform: scale(0.8);
 }
 
-
-
 .member_img_2{
     margin-left: 3em;
 }
@@ -84,6 +88,14 @@
     list-style: circle;
     margin-left: 2em;
     font-size: 1.5em;
+}
+
+@media (max-width: 450px) {
+    .teams {
+      font-size: 0.8em;
+      margin-left: 0.5em;
+      margin-right: 0.5em;
+    }
 }
 
 .teams {
@@ -101,9 +113,4 @@
     .table_members{
       flex-direction: row;
     }
-    .teams{
-        font-size: 1.3em;
-        margin-left: 2em;
-        margin-right: 1.5em;
-    }
-  }
+}
