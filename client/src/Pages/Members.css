@@ -39,7 +39,7 @@
 
 @media (max-width: 450px) {
     .member-start {
-      font-size: 4vw;
+      font-size: 2em;
     }
 }
 
@@ -90,9 +90,9 @@
     font-size: 1.5em;
 }
 
-@media (max-width: 450px) {
+@media (max-width: 600px) {
     .teams {
-      font-size: 0.8em;
+      font-size: 0.5em;
       margin-left: 0.5em;
       margin-right: 0.5em;
     }
