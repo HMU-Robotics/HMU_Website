@@ -37,6 +37,12 @@
     justify-content: center;
 }
 
+@media only screen and (max-width: 600px) {
+    .member-start {
+      font-size: 4vw !important;
+    }
+}
+
 .member-start{
     margin-left: 5vw;
     margin-right: 5vw;
@@ -68,8 +74,6 @@
     transform: scale(0.8);
 }
 
-
-
 .member_img_2{
     margin-left: 3em;
 }
@@ -84,6 +88,26 @@
     list-style: circle;
     margin-left: 2em;
     font-size: 1.5em;
+}
+
+@media (max-width: 600px) {
+    .teams {
+      font-size: 3.5vw !important;
+      margin-top: 0.5em !important;
+      margin-bottom: 0.5em !important;
+      margin-left: 0.5em !important;
+      margin-right: 0.5em !important;
+    }
+}
+
+@media (max-width: 320px) {
+    .teams {
+      font-size: 4vw !important;
+      margin-top: 0.5em !important;
+      margin-bottom: 0.5em !important;
+      margin-left: 0.5em !important;
+      margin-right: 0.5em !important;
+    }
 }
 
 .teams {
@@ -101,9 +125,4 @@
     .table_members{
       flex-direction: row;
     }
-    .teams{
-        font-size: 1.3em;
-        margin-left: 2em;
-        margin-right: 1.5em;
-    }
-  }
+}
