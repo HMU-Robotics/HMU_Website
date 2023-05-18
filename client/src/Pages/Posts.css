@@ -31,22 +31,22 @@
     }
   }
 
-  @media (max-width: 500px) {
+  @media (max-width: 750px) {
       .image-list-wrapper img {
         width: 301px !important;
         height: 301px !important;
-        object-fit: cover !important; /* crop images if they are too big or too small */
+        object-fit: contain !important; /* crop images if they are too big or too small */
       }
   }
   
   .image-list-wrapper img {
-    width: 401px;
-    height: 401px;
+    width: 600px;
+    height: 500px;
     object-fit: cover; /* crop images if they are too big or too small */
   }
 
   .image-list-wrapper img:not(:last-child) {
-    margin-right: 100px;
+    margin-right: 50px;
   }
   
   /* Style main content with black color and suitable font size */
