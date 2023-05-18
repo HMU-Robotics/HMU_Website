@@ -12,15 +12,41 @@
   
   .image-list-wrapper {
     display: flex; /* display images in a horizontal row */
-    justify-content: flex-start; /* align images to the left */
-    margin-bottom: 20px;
+    justify-content: center; /* align images to the left */
+    margin-bottom: 50px;
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+
+  @media (max-width: 1000px) {
+    .image-list-wrapper {
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .image-list-wrapper img:not(:last-child) {
+      margin-right: 0px !important;
+      margin-bottom: 100px;
+    }
+  }
+
+  @media (max-width: 500px) {
+      .image-list-wrapper img {
+        width: 301px !important;
+        height: 301px !important;
+        object-fit: cover !important; /* crop images if they are too big or too small */
+      }
   }
   
   .image-list-wrapper img {
-    width: 301px;
-    height: 301px;
+    width: 401px;
+    height: 401px;
     object-fit: cover; /* crop images if they are too big or too small */
-    margin-right: 10px;
+  }
+
+  .image-list-wrapper img:not(:last-child) {
+    margin-right: 100px;
   }
   
   /* Style main content with black color and suitable font size */

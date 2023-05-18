@@ -8,6 +8,36 @@
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
+@media (max-width: 1000px) {
+    .support-card {
+        display: flex;
+        flex-direction: column;
+        height: auto;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .support-a {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+  
+    .support-img {
+        width: auto;
+        max-width: 17em;
+        height: 8em;
+        margin-top: 1em;
+    }
+  
+    .support-textarea {
+        text-align: center;
+        margin-left: 2em;
+        margin-right: 2em;
+        margin-top: 1em; /* Adjust the margin as needed */
+    }
+  }
+
 .support-a{
     width: 100%;
     justify-content: center;
@@ -15,7 +45,7 @@
     margin-left: 1em;
 }
 .support-img{
-    width: 15em;
+    width: auto;
     height: 8em;
     margin-top: 1em;
 }
@@ -25,10 +55,4 @@
     margin-left: 2em;
     margin-right: 2em;
     margin-top: 4em;
-}
-
-.support-img #get3d{
-    width: auto;
-    height: auto;
-    margin-top: 1em;
 }
