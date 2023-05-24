@@ -43,7 +43,7 @@ function MemberCard(props) {
           return "Media/stock_image_man.png";
         } else {
           // return "/Uploads/members/" + props.image;
-          return "/var/www/robotics-club.hmu.gr/HMU_Website/client/public/Uploads/members/" + props.image;
+          return "../../public/Uploads/members/" + props.image;
         }
       };
 
