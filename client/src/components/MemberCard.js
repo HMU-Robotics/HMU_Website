@@ -42,7 +42,8 @@ function MemberCard(props) {
         if (props.image === undefined) {
           return "Media/stock_image_man.png";
         } else {
-          return "/Uploads/members/" + props.image;
+          // return "/Uploads/members/" + props.image;
+          return "/var/www/robotics-club.hmu.gr/HMU_Website/client/public/Uploads/members/" + props.image;
         }
       };
 
@@ -50,6 +51,7 @@ function MemberCard(props) {
     return (
           <div className='members-con'>
             <div className='members-photo' style={{ backgroundImage: image()}}>
+              {console.log(image)}
               <div className='members-body'>
                 <h3 className='members-title'>{last_name} {first_name}</h3>
                 {role === "President" && <p className='members-role'>President</p>}
