@@ -49,7 +49,8 @@ function MemberCard(props) {
 
     return (
           <div className='members-con'>
-            <div className='members-photo' style={{ backgroundImage: `url(${image()})` }}>
+            {/* <div className='members-photo' style={{ backgroundImage: url(`${image()}`) }}> */}
+            <div className='members-photo' style={{ backgroundImage: url(`${image}`) }}>
               <div className='members-body'>
                 <h3 className='members-title'>{last_name} {first_name}</h3>
                 {role === "President" && <p className='members-role'>President</p>}
@@ -60,7 +61,6 @@ function MemberCard(props) {
                 </div>
             </div>
           </div>
-
     );
 }
 
