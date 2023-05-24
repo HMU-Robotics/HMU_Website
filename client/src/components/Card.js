@@ -1,27 +1,21 @@
-import "./Card.css"
+import React from 'react';
 import { Link } from 'react-router-dom';
-
+import './Card.css';
 
 function NewsCard(props) {
-
-  const post_id = props.id;
-  const title = props.title;
-  const desc = props.desc;
-  const date_json = props.date;
-  const date = date_json?.substring(0,10)
-
-  const image = props.img ? `/Uploads/posts/${props.img}` : "Media/about.jpg"
+  const { id, title, desc, date: date_json, img } = props;
+  const date = date_json?.substring(0, 10);
+  const image = img ? `/Uploads/posts/${img}` : 'Media/about.jpg';
   const singleImage = image.split(',')[0];
 
   return (
-    <Link to={`/Post/${post_id}`} className="card-link">
+    <Link to={`/Post/${id}`} className="card-link">
       <div className="card-con">
-        {console.log(singleImage)}
-        <img id='card-img' src={singleImage}/>
-        <div className='card-body'>
-          <p className='card-title'>{title}</p>
-          <p className='card-date'>{date}</p>
-          <p className='card-desc'>{desc}</p>
+        <img className="card-image" src={singleImage} alt="Post Thumbnail" />
+        <div className="card-content">
+          <p className="card-title">{title}</p>
+          <p className="card-date">{date}</p>
+          <p className="card-desc">{desc}</p>
         </div>
       </div>
     </Link>
