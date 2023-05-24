@@ -97,7 +97,7 @@ function MemberGrid(props) {
           )}
         </Grid2>
     
-        <div className="member-grid">
+        <div className="member-grid member-grid-members">
           <h2 className="members-box-title">Members</h2>
           <Grid2 container spacing={4} columns={12} display="flex" alignItems="center">
           {memberData && memberData.Item ? (

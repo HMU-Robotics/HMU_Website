@@ -1,78 +1,43 @@
-@media screen and (max-width: 1024px) {
-    .members-con {
-        margin-left: auto;
-        margin-right: auto;
-    }
-}
-
-.members-con{
-    height: 30em;
-    width: 20em;
-    background: whitesmoke;
-    margin: auto;
-    text-align: center;
-    border-radius: 5px;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-    transition: ease-in-out 0.2s;
-    margin-bottom: 2em;
-}
-
-.members-con:hover{
-    transform: scale(1.05);
-    background: #ffe;
-}
-
-#members-img{
-    height: 13em;
-    width: 13em;
-    border-radius: 50%;
-    margin-top: 1em;
-    border: 2px solid #000;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-}
-
-.members-title{
-    color: #000;
-    margin-top: 1em;
-    font-weight:500;
-}
-
-.members-desc{
-    color: #000;
-    margin-top: 1em;
-    font-size: 1.2em;
-    font-weight:500;
-}
-
-.members-date {
-    margin: 0;
-    color: #000;
-    font-size: 1.2em;
-    opacity: 0.7;
-    font-weight: 400;
-    text-align: center;
+.members-con {
+    width: 300px; /* Adjust the width as needed */
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: #f7f7f7; /* Set a background color for the card */
   }
   
-
-.members-school{
-    color: #000;
-    margin-top: 1.6em;
-    font-size: 1.2em;
-    font-weight:500;
-    opacity: 0.8;
-}
-
-.members-role{
-    color: #000;
-    font-weight:400;
-    margin-top: 1.1em;
-    font-size: 1.3em;
-}
-
-.members-flex-main{
-    height: 5em;
-}
-
-.members-flex-school{
-    height: 5.5em;
-}
+  .members-photo {
+    position: relative;
+    width: 100%;
+    height: 350px; /* Adjust the height as needed */
+    background-size: cover;
+    background-position: center;
+  }
+  
+  .members-body {
+    position: relative;
+    top: 12rem;
+    background-color: rgba(150, 150, 150, 0.3);
+    padding: 15px;
+  }
+  
+  .members-title {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  .members-role {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  .members-school {
+    font-size: 16px;
+    margin-bottom: 5px;
+  }
+  
+  .members-date {
+    font-size: 16px;
+  }
+  
