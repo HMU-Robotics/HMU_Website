@@ -1,132 +1,72 @@
-.about-cont{
+.about-container {
     display: flex;
     flex-direction: column;
-    width: 100vw;
-    height: 100vh;
+    align-items: center;
+    padding: 2rem;
+  }
+  
+  .about-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 3rem;
+  }
+  
+  .about-image {
+    width: 100%;
+    max-height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #000;
+    box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.24);
     overflow: hidden;
-    text-overflow: ellipsis;
-    min-width: 0;
-}
-
-@media only screen and (max-width: 700px) {
-    #about_top{
-        flex-direction: column;
-        align-items: center;
-    }
-    #about_bottom{
-        flex-direction: column;
-        align-items: center;
-    }
-    #about-img-1{
-        align-self: stretch;
-        width: auto !important;
-        background-size: cover !important;
-        background-position: center;
-    }
-    #about-img-2{
-        align-self: center;
-        background-position: center top;
-    }
-    .about-text-cont{
-        width: 80% !important;
-    }
+  }
+  
+  .about-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .about-content {
+    width: 100%;
+    padding: 0 2rem;
+    padding-top: 1rem;
+    text-align: center;
+  }
+  
+  .about-heading {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: whitesmoke;
   }
 
-.about-first-right{
-    display: flex;
-    flex-direction: row;
-    height: 50vh;
-    border: solid 2px #000;
-    background-color: #252d53
-}
-
-.about-text-cont{
-    height: 50vh;
-    width: 50vw;
-}
-
-.about-text{
-    color: whitesmoke;
-    text-align: center;
-    font-size: 1.25vw;
-    margin-top: 3em;
-    padding-right: 5em;
-    padding-left: 5em;
-}
-
- /* needs scss to make it look cleaner , so repeating code for now */
-@media only screen and (max-width: 1600px){
-    .about-text {
-        font-size: 1.3vw;
+  .about-section-2{
+    flex-direction: column-reverse;
+  }
+  
+  .about-text {
+    color: #ccc;
+    font-size: 1.2rem;
+    line-height: 1.5;
+  }
+  
+  @media only screen and (min-width: 600px) {
+    .about-section {
+      flex-direction: row;
+      align-items: flex-start;
     }
-}
-
-@media only screen and (max-width: 1300px){
-    .about-text {
-        font-size: 1.4vw;
+  
+    .about-image {
+      width: 50%;
+      align-self: flex-start;
     }
-}
-
-@media only screen and (max-width: 1050px){
-    .about-text {
-        font-size: 1.5vw;
+  
+    .about-content {
+      width: 50%;
+      padding: 0 2rem;
+      text-align: left;
     }
-}
-
-@media only screen and (max-width: 850px){
-    .about-text {
-        font-size: 1.7vw;
-    }
-}
-
-@media only screen and (max-width: 650px){
-    .about-text {
-        font-size: 1.9vw;
-    }
-}
-
-@media only screen and (max-width: 500px){
-    .about-text {
-        font-size: 2.1vw;
-    }
-}
-
-@media only screen and (max-width: 450px){
-    .about-text {
-        font-size: 2.3vw;
-    }
-}
-
-@media only screen and (max-width: 380px){
-    .about-text {
-        font-size: 2.5vw;
-    }
-}
-
-#about-img-1{
-    background-image: url("../../public/Media/about.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
-    height: 50vh;
-    width: 50vw;
-    border: solid #000 2px;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-}
-
-.about-second-left{
-    display: flex;
-    flex-direction: row;
-    height: 50vh;
-    border: solid 2px #000;
-    background-color: #5073b9
-}
-
-#about-img-2{
-    background-image: url("../../public/Media/arduino.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
-    width: 50vw;
-    height: 50vh;
-    border: solid #000 2px;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-}
+  }
+  
