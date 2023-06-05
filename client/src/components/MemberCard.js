@@ -40,17 +40,16 @@ function MemberCard(props) {
 
     const image = () => {
         if (props.image === undefined) {
-          return "Media/stock_image_man.png";
+          return "Media/about.jpg";
         } else {
-          // return "/Uploads/members/" + props.image;
-          return "../../public/Uploads/members/" + props.image;
+          return "Uploads/members/" + props.image;
         }
       };
 
 
     return (
           <div className='members-con'>
-            <div className='members-photo' style={{ backgroundImage: `${image()}`}}>
+            <div className='members-photo' style={{ backgroundImage: `url(${image()})` }}>
               {console.log(image())}
               <div className='members-body'>
                 <h3 className='members-title'>{last_name} {first_name}</h3>
