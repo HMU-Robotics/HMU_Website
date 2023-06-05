@@ -40,29 +40,26 @@ function MemberCard(props) {
 
     const image = () => {
         if (props.image === undefined) {
-          return "Media/stock_image_man.png";
+          return "Media/about.jpg";
         } else {
-          return "/Uploads/members/" + props.image;
+          return "Uploads/members/" + props.image;
         }
       };
 
 
     return (
-      <div className='members-con'>
-        <img id='members-img' src={image()}/>
-        <div className='members-body'>
-          <div className="members-flex-main">
-            <h3 className='members-title'>{last_name} {first_name}</h3>
-            {role === "President" && <p className='members-role'>President</p>}
-            {role === "Treasurer" && <p className='members-role'>Treasurer</p>}
-            {role === "Secretary" && <p className='members-role'>Secretary</p>}
+          <div className='members-con'>
+            <div className='members-photo' style={{ backgroundImage: `url(${image()})` }}>
+              <div className='members-body'>
+                <h3 className='members-title'>{last_name} {first_name}</h3>
+                {role === "President" && <p className='members-role'>President</p>}
+                {role === "Treasurer" && <p className='members-role'>Treasurer</p>}
+                {role === "Secretary" && <p className='members-role'>Secretary</p>}
+                <p className='members-school'>{school()}</p>
+                <p className='members-date'>{subscription_date} - {end_date()}</p>
+                </div>
+            </div>
           </div>
-          <div className="members-flex-school">
-            <p className='members-school'>{school()}</p>
-          </div>
-          <p className='members-date'>{subscription_date} - {end_date()}</p>
-        </div>
-      </div>
     );
 }
 

@@ -11,7 +11,7 @@ function Posts() {
 
     const [isLoading, setIsLoading] = useState(true);
     const [data, setData] = useState();
-
+    const [zoomedImage , setZoomedImage] = useState(null)
 
     useEffect(() => {
         fetch(`https://robotics-club.hmu.gr:443/api/posts/${postid}`, {})
@@ -28,21 +28,42 @@ function Posts() {
                });
       }, []);
 
+    const handleImageClick = (e)=>{
+      setZoomedImage(e)
+      console.log("image clicked : " + e)
+      console.log(zoomedImage)
+    }
+
+    const handleOverlayClick = ()=>{
+      setZoomedImage(null)
+      console.log("overlay-click")
+    }
 
     return (
       <div className="post-page">
         <h1 className="post-title">{data?.Post?.title}</h1>
         <div className="image-list-wrapper">
-          {data?.Images?.map((image, index) => {
-            if (index < 3) {
-              // Only render up to 3 images
-              return <img key={image.id} src={`/Uploads/posts/${image.img}`} />;
-            } else {
-              return null;
-            }
+          {data?.Images?.slice(0, 3).map((image) => {
+            const imageSrc = `/Uploads/posts/${image.img}`;
+            return (
+              <img
+                key={image.id}
+                src={imageSrc}
+                alt="Post Image"
+                onClick={() => handleImageClick(imageSrc)}
+                className="zoomable-image"
+              />
+            );
           })}
         </div>
-        <ReactMarkdown>{data?.Post?.content}</ReactMarkdown>
+        {zoomedImage && (
+          <div className="zoom-overlay" onClick={handleOverlayClick}>
+            <img src={zoomedImage} alt="Zoomed Image" className="zoomed-image" />
+          </div>
+        )}
+        <div className="text-section">
+          <ReactMarkdown>{data?.Post?.content}</ReactMarkdown>
+        </div>
       </div>
     );
   }

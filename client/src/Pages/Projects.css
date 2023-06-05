@@ -1,7 +1,7 @@
 
 .project-page {
-    font-family: Georgia, 'Times New Roman', Times, serif;
     background: linear-gradient(90deg, #3a588a 0%, #252d53 100%);
+    height: 100%;
 }
 
 .project-page-title {
@@ -13,10 +13,12 @@
 .project-cont{
     height: 600px;
     width: 100%;
+    margin-bottom: 2em;
 }
 .seminars-cont{
-    height: 600px;
+    height: 650px;
     width: 100%;
+
 }
 
 .project-carousel{
