@@ -14,11 +14,15 @@
   }
   
   .members-body {
-    position: relative;
-    top: 12rem;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
     background-color: rgba(150, 150, 150, 0.3);
     padding: 15px;
   }
+  
   
   .members-title {
     font-size: 20px;
