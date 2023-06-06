@@ -55,6 +55,7 @@ function Projects(){
               <ImageCarousel className="seminar-carousel" category="seminars" data={seminarData} />
             )}
           </div>
+          <Divider />
         </div>
       );
 }
