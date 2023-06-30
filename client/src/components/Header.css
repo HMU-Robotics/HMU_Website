@@ -1,29 +1,33 @@
-.Navbar{
+.Navbar {
     background-color: #1C0C3C;
-    text-align: center;
     display: flex;
-}
+    justify-content: center;
+    align-items: center;
+  }
 
-.HeaderLogo{
+  .nav-link{
+    text-align: center;
+  }
+  
+  .HeaderLogo {
     max-width: 25%;
-    max-height: 25%;
-}
-
-.img-tag #Logo{
-    position:relative;
-    max-width:100%;
-    max-height:100%;
+  }
+  
+  .img-tag #Logo {
+    position: relative;
+    max-width: 100%;
+    max-height: 100%;
     margin-left: 150%;
-}
-
-.social{
+  }
+  
+  .social {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     margin-right: 5em;
     margin-left: 5em;
     margin-top: 1em;
-}
+  }
 
 .social a svg{
     fill: #DAE4F2;
