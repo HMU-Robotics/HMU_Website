@@ -34,7 +34,7 @@ function ImageCarousel(props) {
   useEffect(() => {
     const mergedJson = {}
     if(props.data) {
-      Object.assign(mergedJson,props.data[0],props.data[1])
+      Object.assign(mergedJson,props.data[1],props.data[0])
       setData(mergedJson);
     }
   }, [props.data]);
