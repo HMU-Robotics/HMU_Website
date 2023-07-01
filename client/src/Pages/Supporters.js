@@ -13,7 +13,7 @@ class Supporters extends Component{
         }
 
         const img = {
-            get3d:'Media/support/get3d.png',
+            get3d:'Media/support/get_3d.png',
             o3:'Media/support/o3.png',
             hero:'Media/support/hero.png',
             csrl:'Media/support/CSRL_Logo.png'

@@ -26,7 +26,7 @@ function SmallSup(){
         {
             name:'get3d',
             link:'https://get3d.gr/en/ ',
-            img:'Media/support/get3d.png'
+            img:'Media/support/get_3d.png'
         },
         {
             name:'o3',

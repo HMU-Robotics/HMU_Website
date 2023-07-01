@@ -25,11 +25,15 @@ function TableMembers(props){
         ]
     }
     return(
-        <div className="table_members">
-            <TableCard table_data={table_data['categories'][0]}/>
-            <TableCard table_data={table_data['categories'][1]}/>
-            <TableCard table_data={table_data['categories'][2]}/>
-            <TableCard table_data={table_data['categories'][3]}/>
+        <div className="container_table_members">
+            <div className="table_members" id="table_1">
+                <TableCard table_data={table_data['categories'][0]}/>
+                <TableCard table_data={table_data['categories'][1]}/>
+            </div>
+            <div className="table_members" id="table_2">
+                <TableCard table_data={table_data['categories'][2]}/>
+                <TableCard table_data={table_data['categories'][3]}/>
+            </div>
         </div>
     )
 }
