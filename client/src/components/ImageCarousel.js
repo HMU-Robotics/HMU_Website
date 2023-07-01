@@ -29,20 +29,18 @@ const responsive = {
 
 function ImageCarousel(props) {
   const [carousel, setCarousel] = useState([]);
-  const [data, setData] = useState([]);
+  const [projects, setProjects] = useState([]);
+  const [seminars, setSeminars] = useState([]);
 
   useEffect(() => {
-    const mergedJson = {}
-    if(props.data) {
-      Object.assign(mergedJson,props.data[0],props.data[1])
-      setData(mergedJson);
-    }
+    setProjects(props.data[0]);
+    setSeminars(props.data[1])
   }, [props.data]);
 
 
   // temporary change 
   useEffect(() => {
-    if (data !== undefined && data !== null) {
+    if (projects !== undefined && projects !== null && seminars !== undefined && seminars !== null) {
       // switch(props.category) {
       //   case "projects":
       //     setCarousel(projectCar);
@@ -63,9 +61,9 @@ function ImageCarousel(props) {
     else {
       setCarousel(<div>Loading . . .</div>);
     }
-  }, [props.category, data]);
+  }, [props.category, projects, seminars]);
 
-  const projectCar = data && data.Item ? (
+  const projectCar = projects && projects.Item ? (
     <Carousel
       responsive={responsive}
       swipeable={true}
@@ -75,7 +73,7 @@ function ImageCarousel(props) {
       infinite={true}
       className="project-carousel"
     >
-      {data?.Item?.map((project, index) => (
+      {projects?.Item?.map((project, index) => (
         <Suspense key={index} fallback={<div>Loading . . .</div>}>
           {console.log(project)}
           <Card id={project?.id} title={project?.title} desc={project?.post_desc} date={project?.created_at} img={project?.img} />
@@ -87,7 +85,7 @@ function ImageCarousel(props) {
   );
   
 
-  const newsCar = data && data.Item ?  (
+  const newsCar = projects && projects.Item ?  (
     <Carousel
       responsive={responsive}
       swipeable={true}
@@ -97,17 +95,17 @@ function ImageCarousel(props) {
       infinite={true}
       className="news-carousel"
     >
-      {console.log(data)}
-      {data?.Item?.map((news, index) => (
+      {console.log(projects)}
+      {projects?.Item?.map((project, index) => (
         <Suspense key={index} fallback={<div>Loading . . .</div>}>
-          {console.log(news)}
-          <Card  id={news?.id} title={news?.title} desc={news?.post_desc} date={news?.created_at} img={news?.img} />
+          {console.log(project)}
+          <Card  id={project?.id} title={project?.title} desc={project?.post_desc} date={project?.created_at} img={project?.img} />
         </Suspense>
       ))}
-      {data?.Item?.map((news, index) => (
+      {seminars?.Item?.map((seminar, index) => (
         <Suspense key={index} fallback={<div>Loading . . .</div>}>
-          {console.log(news)}
-          <Card  id={news?.id} title={news?.title} desc={news?.post_desc} date={news?.created_at} img={news?.img} />
+          {console.log(seminar)}
+          <Card  id={seminar?.id} title={seminar?.title} desc={seminar?.post_desc} date={seminar?.created_at} img={seminar?.img} />
         </Suspense>
       ))}
     </Carousel>
@@ -115,7 +113,7 @@ function ImageCarousel(props) {
     <div>Loading . . .</div>
   );
 
-  const seminarCar = data && data.Item ?  (
+  const seminarCar = projects && projects.Item ?  (
     <Carousel
       responsive={responsive}
       swipeable={true}
@@ -125,7 +123,7 @@ function ImageCarousel(props) {
       infinite={true}
       className="seminar-carousel"
     >
-      {data?.Item?.map((seminar, index) => (
+      {projects?.Item?.map((seminar, index) => (
         <Suspense key={index} fallback={<div>Loading . . .</div>}>
           {console.log(seminar)}
           <Card id={seminar?.id} title={seminar?.title} desc={seminar?.post_desc} date={seminar?.created_at} img={seminar?.img} />
