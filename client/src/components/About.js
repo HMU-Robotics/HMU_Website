@@ -6,13 +6,12 @@ function About() {
     <div className="about-container">
       <div className="about-section">
         <div className="about-image">
-          <img src="./Media/about.jpg" alt="About" />
+          <img src="./Media/team.jpg" alt="About" />
         </div>
         <div className="about-content">
           <h2 className="about-heading">Welcome to our Team</h2>
           <p className="about-text">
-          Η Λέσχης Ρομποτικής του ΕΛΜΕΠΑ είναι μία ομάδα φοιτητών που έχει ως σκοπό να δώσει στους φοιτητές την ευκαιρία να γνωρίσουν τους κλάδους που σχετίζονται με τη Ρομποτική. Μέσω σεμιναρίων, projects και διαγωνισμών. τα μέλη μας διευρύνουν τις γνώσεις τους αλληλεπιδρώντας με συμφοιτητές τους, με τους οποίους μοιράζονται το ίδιο πάθος.
-          </p>
+          Η Λέσχη Ρομποτικής του ΕΛΜΕΠΑ είναι μια φοιτητική ομάδα που δίνει στα μέλη της την ευκαιρία να γνωρίσουν τους κλάδους που απαρτίζουν τη Ρομποτική. Μέσω workshop, project και διαγωνισμών, τα μέλη μας διευρύνουν τις γνώσεις του πάνω στη Ρομποτική, αλληλεπιδρώντας ταυτόχρονα με συμφοιτητές του που μοιράζονται το ίδιο πάθος με αυτούς.          </p>
         </div>
       </div>
       <div className="about-section about-section-2">
