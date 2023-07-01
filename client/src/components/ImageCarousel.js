@@ -32,9 +32,7 @@ function ImageCarousel(props) {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    if(props.data != undefined) {
-      const combinedData = [...props.data[0], ...props.data[1]]
-    }
+    const combinedData = [...props.data[0], ...props.data[1]]
     setData(combinedData);
   }, [props.data]);
 
@@ -89,11 +87,13 @@ function ImageCarousel(props) {
       infinite={true}
       className="news-carousel"
     >
-      {data?.Item?.map((news, index) => (
-        <Suspense key={index} fallback={<div>Loading . . .</div>}>
-          {console.log(news)}
-          <Card  id={news?.id} title={news?.title} desc={news?.post_desc} date={news?.created_at} img={news?.img} />
-        </Suspense>
+      {data?.map((item, index) => (
+        item?.Item?.map((news, innerIndex) => (
+          <Suspense key={`${index}-${innerIndex}`} fallback={<div>Loading . . .</div>}>
+            {console.log(news)}
+            <Card  id={news?.id} title={news?.title} desc={news?.post_desc} date={news?.created_at} img={news?.img} />
+          </Suspense>
+        ))
       ))}
     </Carousel>
   ) : (
