@@ -54,6 +54,11 @@ function News(props){
           }
           
           setData(combinedData);
+
+          console.log(`https://robotics-club.hmu.gr:443/api/posts/find/projects`);
+          console.log(`https://robotics-club.hmu.gr:443/api/posts/find/seminars`);
+          console.log(combinedData)
+
         })
         .catch((error) => {
           console.log(error);
