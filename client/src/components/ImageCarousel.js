@@ -34,7 +34,7 @@ function ImageCarousel(props) {
   useEffect(() => {
     const mergedJson = {}
     if(props.data) {
-      Object.assign(mergedJson,props.data[1],props.data[0])
+      Object.assign(mergedJson,props.data[0],props.data[1])
       setData(mergedJson);
     }
   }, [props.data]);
@@ -98,6 +98,12 @@ function ImageCarousel(props) {
       className="news-carousel"
     >
       {console.log(data)}
+      {data?.Item?.map((news, index) => (
+        <Suspense key={index} fallback={<div>Loading . . .</div>}>
+          {console.log(news)}
+          <Card  id={news?.id} title={news?.title} desc={news?.post_desc} date={news?.created_at} img={news?.img} />
+        </Suspense>
+      ))}
       {data?.Item?.map((news, index) => (
         <Suspense key={index} fallback={<div>Loading . . .</div>}>
           {console.log(news)}
