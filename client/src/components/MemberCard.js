@@ -8,7 +8,7 @@ function MemberCard(props) {
     const last_name = props.last_name
     const school = () => {
         if(props.school === "ECE"){
-            return "Ηλεκτρολόγων Μηχανικών και Μηχανικών Υπολογιστών"
+            return "ΗΜΜΥ"
         }
         else if(props.school === "MECH"){
             return "Μηχανολόγων Μηχανικών"
