@@ -33,7 +33,7 @@ function ImageCarousel(props) {
 
   useEffect(() => {
     if(props.data) {
-      const mergedJson = {...props.data[0], ...props.data[1]}
+      const mergedJson = {...props.data[1], ...props.data[0]}
       setData(mergedJson);
     }
   }, [props.data]);
