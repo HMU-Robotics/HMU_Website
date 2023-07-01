@@ -34,11 +34,26 @@ function News(props){
           Promise.all([projectsResponse.json(), seminarsResponse.json()])
         )
         .then(([projectsData, seminarsData]) => {
-          const combinedData = [...projectsData, ...seminarsData];
+          // const combinedData = [...projectsData, ...seminarsData];
+          // setData(combinedData);
+          // console.log(`https://robotics-club.hmu.gr:443/api/posts/find/projects`);
+          // console.log(`https://robotics-club.hmu.gr:443/api/posts/find/seminars`);
+          // console.log(combinedData);
+          const combinedData = [];
+      
+          if (Array.isArray(projectsData)) {
+            combinedData.push(...projectsData);
+          } else if (typeof projectsData === 'object') {
+            combinedData.push(projectsData);
+          }
+          
+          if (Array.isArray(seminarsData)) {
+            combinedData.push(...seminarsData);
+          } else if (typeof seminarsData === 'object') {
+            combinedData.push(seminarsData);
+          }
+          
           setData(combinedData);
-          console.log(`https://robotics-club.hmu.gr:443/api/posts/find/projects`);
-          console.log(`https://robotics-club.hmu.gr:443/api/posts/find/seminars`);
-          console.log(combinedData);
         })
         .catch((error) => {
           console.log(error);
