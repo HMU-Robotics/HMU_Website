@@ -86,15 +86,11 @@ function ImageCarousel(props) {
       infinite={true}
       className="news-carousel"
     >
-      {console.log(data)}
-      {data?.map((item, index) => (
-        item?.Item?.map((news, innerIndex) => (
-          <Suspense key={`${index}-${innerIndex}`} fallback={<div>Loading . . .</div>}>
-            {console.log(news)}
-            {console.log(item)}
-            <Card  id={news?.id} title={news?.title} desc={news?.post_desc} date={news?.created_at} img={news?.img} />
-          </Suspense>
-        ))
+      {data[0]?.Item?.map((news, index) => (
+        <Suspense key={index} fallback={<div>Loading . . .</div>}>
+          {console.log(news)}
+          <Card  id={news?.id} title={news?.title} desc={news?.post_desc} date={news?.created_at} img={news?.img} />
+        </Suspense>
       ))}
     </Carousel>
   ) : (
