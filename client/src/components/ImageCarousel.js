@@ -38,22 +38,29 @@ function ImageCarousel(props) {
     }
   }, [props.data]);
 
+
+  // temporary change 
   useEffect(() => {
     if (data !== undefined && data !== null) {
-      switch(props.category) {
-        case "projects":
-          setCarousel(projectCar);
-          break;
-        case "seminars":
-          setCarousel(seminarCar);
-          break;
-        case "news":
-          setCarousel(newsCar);
-          break;
-        default:
-          setCarousel(<div>Loading . . .</div>);
-          break;
-      }
+      // switch(props.category) {
+      //   case "projects":
+      //     setCarousel(projectCar);
+      //     break;
+      //   case "seminars":
+      //     setCarousel(seminarCar);
+      //     break;
+      //   case "news":
+      //     setCarousel(newsCar);
+      //     break;
+      //   default:
+      //     setCarousel(<div>Loading . . .</div>);
+      //     break;
+      // }
+
+      setCarousel(newsCar);
+    }
+    else {
+      setCarousel(<div>Loading . . .</div>);
     }
   }, [props.category, data]);
 
