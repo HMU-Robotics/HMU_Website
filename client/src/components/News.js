@@ -34,7 +34,7 @@ function News(props){
           Promise.all([projectsResponse.json(), seminarsResponse.json()])
         )
         .then(([projectsData, seminarsData]) => {
-          const combinedData = projectsData?.concat(seminarsData);
+          const combinedData = [...projectsData, ...seminarsData];
           setData(combinedData);
           console.log(`https://robotics-club.hmu.gr:443/api/posts/find/projects`);
           console.log(`https://robotics-club.hmu.gr:443/api/posts/find/seminars`);
