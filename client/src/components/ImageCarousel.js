@@ -32,8 +32,7 @@ function ImageCarousel(props) {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    const combinedData = [...props.data[0], ...props.data[1]]
-    setData(combinedData);
+    setData(props.data);
   }, [props.data]);
 
   useEffect(() => {
