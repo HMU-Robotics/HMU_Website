@@ -42,13 +42,13 @@ function News(props){
           const combinedData = [];
       
           if (Array.isArray(projectsData)) {
-            combinedData.push(...projectsData);
+            combinedData.push(...projectsData[0]);
           } else if (typeof projectsData === 'object') {
             combinedData.push(projectsData);
           }
           
           if (Array.isArray(seminarsData)) {
-            combinedData.push(...seminarsData);
+            combinedData.push(...seminarsData[0]);
           } else if (typeof seminarsData === 'object') {
             combinedData.push(seminarsData);
           }
