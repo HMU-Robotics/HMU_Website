@@ -90,6 +90,7 @@ function ImageCarousel(props) {
         item?.Item?.map((news, innerIndex) => (
           <Suspense key={`${index}-${innerIndex}`} fallback={<div>Loading . . .</div>}>
             {console.log(news)}
+            {console.log(item)}
             <Card  id={news?.id} title={news?.title} desc={news?.post_desc} date={news?.created_at} img={news?.img} />
           </Suspense>
         ))
