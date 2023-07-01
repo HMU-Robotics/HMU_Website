@@ -32,7 +32,10 @@ function ImageCarousel(props) {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    setData(props.data[0]);
+    if(props.data) {
+      const mergedJson = {...props.data[0], ...props.data[1]}
+      setData(mergedJson);
+    }
   }, [props.data]);
 
   useEffect(() => {
@@ -86,6 +89,7 @@ function ImageCarousel(props) {
       infinite={true}
       className="news-carousel"
     >
+      {console.log(data)}
       {data?.Item?.map((news, index) => (
         <Suspense key={index} fallback={<div>Loading . . .</div>}>
           {console.log(news)}
