@@ -32,7 +32,7 @@ function ImageCarousel(props) {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    setData(props.data);
+    setData(props.data[0]);
   }, [props.data]);
 
   useEffect(() => {
@@ -86,7 +86,7 @@ function ImageCarousel(props) {
       infinite={true}
       className="news-carousel"
     >
-      {data[0]?.Item?.map((news, index) => (
+      {data?.Item?.map((news, index) => (
         <Suspense key={index} fallback={<div>Loading . . .</div>}>
           {console.log(news)}
           <Card  id={news?.id} title={news?.title} desc={news?.post_desc} date={news?.created_at} img={news?.img} />
