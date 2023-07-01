@@ -34,6 +34,11 @@ function ImageCarousel(props) {
   useEffect(() => {
     if(props.data) {
       const mergedJson = {...props.data[1], ...props.data[0]}
+      for (const key in json2) {
+        if (!(key in json1)) {
+          mergedJSON[key] = json2[key];
+        }
+      }
       setData(mergedJson);
     }
   }, [props.data]);
