@@ -65,6 +65,26 @@ create table memberImages(
 );
 
 
+create table sponsor(
+    id int not null auto_increment,
+    sponsor_name varchar(50) not null,
+    sponsor_desc varchar(150) not null,
+    sponsor_tier varchar(20) not null,
+    created_at timestamp default current_timestamp,
+    updated_at timestamp default current_timestamp on update current_timestamp,
+    primary key (id)
+);
+
+
+create table sponsorImages(
+    id int not null auto_increment,
+    sponsor_id int not null,
+    image varchar(100) not null,
+    primary key(id),
+    foreign key (sponsor_id) references sponsor(id)
+);
+
+
 create table reservation(
     id int not null auto_increment,
     user_id int not null,

@@ -4,7 +4,11 @@ const AuthMiddleware = require("../middleware/auth")
 const {admin,viewer,editor} = require("../middleware/roles")
 const dashboard_controller = require("../controllers/dashboard")
 const check_session = require("../middleware/session")
-const { uploadImages , resizeImages  ,makePost ,makeMember, test} = require("../controllers/uploadController")
+const { uploadImages , resizeImages  ,makePost ,makeMember, makeSponsor} = require("../controllers/uploadController")
+
+
+// TODO fix all edit paths and their db executes
+
 
 
 ////////////////// Posts //////////////////////////////
@@ -21,5 +25,15 @@ router.post('/addMember', AuthMiddleware, viewer, uploadImages, (req, res, next)
 }, makeMember);
 
 router.put('/editMember',AuthMiddleware,viewer,dashboard_controller.post_member)
+
+
+/////////////////// Sponsors //////////////////////////
+
+router.post('/addSponsor', AuthMiddleware, viewer, uploadImages, (req,res,next) => {
+    resizeImages(req, res, next, 'sponsor');
+}, makeSponsor);
+
+// TODO fix all edit paths and db executes
+router.put('/editSponsor', AuthMiddleware, viewer);
 
 module.exports = router;

@@ -48,7 +48,16 @@ const resizeImages = async(req, res, next, type) => {
   if (!req.files) return next();
 
   req.body.images = [];
-  const resizeDimensions = type === 'member' ? { width: 400, height: 400 } : { width: 600, height: 500 };
+  let resizeDimensions;
+  if(type === 'member') {
+    resizeDimensions = {width: 400, height: 400};
+  }
+  else if(type === 'post') {
+    resizeDimensions = {width: 786, height: 1080};
+  }
+  else if(type === 'sponsor') {
+    resizeDimensions = {width: 300, height: 300};
+  }
 
   await Promise.all(
     req.files.map(async file => {
@@ -119,6 +128,31 @@ res.send("created member")
 
 
 
+const makeSponsor = async(req,res,next)=>{
+  db.execute("INSERT INTO `sponsors`(sponsor_name,sponsor_desc,sponsor_tier) VALUES (?,?,?)", [req.body.sponsor_name,req.body.sponsor_desc,req.body.sponsor_tier], (err,sponsor) => {
+    console.log(req.body);
+    if(err) {
+      throw err;
+    }
+    db.execute("SELECT `id` FROM `sponsors` WHERE `sponsor_name` = ?", [req.body.sponsor_name], (err,result) => {
+      if(err) {
+        throw err;
+      }
+      let id = result[0].id;
+      console.log(req.body.sponsor_image);
+      db.execute("INSERT INTO `sponsorImages` (sponsor_id,image) VALUES (?,?)", [id,req.body.sponsor_image], (err,result) => {
+        if(err) {
+          throw err;
+        }
+      })
+    })
+  })
+
+  res.send("Created Sponsor");
+}
+
+
+
 const getResult = async (req, res) => {
     if (req.body.images.length <= 0) {
         console.log("here_1")
@@ -143,5 +177,6 @@ const getResult = async (req, res) => {
     uploadImages: uploadImages,
     resizeImages: resizeImages,
     getResult: getResult,
-    makeMember : makeMember
+    makeMember : makeMember,
+    makeSponsor: makeSponsor
   }

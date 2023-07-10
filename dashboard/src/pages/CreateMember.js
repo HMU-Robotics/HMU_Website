@@ -97,8 +97,8 @@ function CreateMember (){
                     <Form.Label>Academic ID</Form.Label>
                     <Form.Control type="text"/>
                 </Form.Group>
+                <Form.Label>University Course</Form.Label>
                 <Form.Select className="school" onChange={handleSchool}>
-                    <Form.Label>University Course</Form.Label>
                     <option value="ECE">Ηλεκτρολόγων Μηχ. Μηχ. Υπολογιστών</option>
                     <option value="MECH">Μηχανολόγων Μηχανικών</option>
                     <option value="EE">Ηλεκτρολόγων Μηχανικών</option>

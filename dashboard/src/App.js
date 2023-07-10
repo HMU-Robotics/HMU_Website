@@ -7,6 +7,8 @@ import Dashboard from './pages/Dashboard';
 import CreatePost from './pages/CreatePost';
 import EditPost from './pages/EditPost';
 import CreateMember from './pages/CreateMember';
+import AddSponsor from './pages/AddSponsor';
+import EditSponsor from './pages/EditSponsor';
 import {UserProvider} from './hooks/UserContext';
 import { useState } from 'react';
 import EditMember from './pages/EditMember';
@@ -26,6 +28,8 @@ return (
         <Route element={<EditMember/>} path="/editmember" exact/>
         <Route element={<CreatePost/>} path="/createpost" exact/>
         <Route element={<EditPost/>} path="/editpost" exact/>
+        <Route element={<AddSponsor/>} path="/addsponsor" exact/>
+        <Route element={<EditSponsor/>} path="/editsponsor" exact/>
      </Route>
      <Route element={<NotFound/>}/>
   </Routes>
