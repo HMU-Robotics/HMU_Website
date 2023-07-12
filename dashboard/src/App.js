@@ -30,6 +30,9 @@ return (
         <Route element={<EditPost/>} path="/editpost" exact/>
         <Route element={<AddSponsor/>} path="/addsponsor" exact/>
         <Route element={<EditSponsor/>} path="/editsponsor" exact/>
+        <Route element={<MemberPanel/>} path="/member/:academic_id" exact/>
+        <Route element={<PostPanel/>} path="/post/:post_id" exact/>
+        <Route element={<SponsorPanel/>} path="/sponsor/:id" exact/>
      </Route>
      <Route element={<NotFound/>}/>
   </Routes>

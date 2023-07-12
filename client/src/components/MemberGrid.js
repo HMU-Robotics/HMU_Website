@@ -6,7 +6,7 @@ import { useState, useEffect } from 'react'
 
 const MemberCard = React.lazy(() => import('./MemberCard'));
 
-
+// TODO fix sorting of members by name / years member.
 
 function MemberGrid(props) {
 
@@ -19,7 +19,6 @@ function MemberGrid(props) {
        .then((response) => {
          setIsLoading(false);
          setMemberData(response);
-        //  sortMembers(response);
          console.log(`https://robotics-club.hmu.gr:443/api/members/find/all`);
          console.log(response)
        })
@@ -28,34 +27,6 @@ function MemberGrid(props) {
          setIsLoading(true);
      })
    }, []);
-
-
-   function sortMembers(memberList) {
-    const { members } = memberList.Item;
-  
-    const sortedMembers = members.reduce(
-      (acc, member) => {
-        if (member.subscription === 1) {
-          acc.currentMembers.push(member);
-        } else if (member.subscription === 0) {
-          acc.previousMembers.push(member);
-        }
-        return acc;
-      },
-      { currentMembers: [], previousMembers: [] }
-    );
-  
-    // sort alphabetically based on last name
-    sortedMembers.currentMembers.sort((a, b) =>
-      a.last_name.toLowerCase().localeCompare(b.last_name.toLowerCase())
-    );
-  
-    // sort based on year finished
-    sortedMembers.previousMembers.sort((a, b) => a.end_date - b.end_date);
-  
-    const combinedMembers = [...sortedMembers.currentMembers, ...sortedMembers.previousMembers];
-    setMemberData(combinedMembers);
-  }
 
 
     return (

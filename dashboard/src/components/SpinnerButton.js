@@ -8,11 +8,11 @@ function SpinnerButton() {
         <>
             <Button variant="primary" disabled>
                 <Spinner
-                as="span"
-                animation="grow"
-                size="sm"
-                role="status"
-                aria-hidden="true"
+                    as="span"
+                    animation="grow"
+                    size="sm"
+                    role="status"
+                    aria-hidden="true"
                 />
                 Loading...
             </Button>

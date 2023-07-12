@@ -1,7 +1,9 @@
-import React , { useState } from "react"
+import React , { useState, useEffect } from "react"
 import  Form  from "react-bootstrap/Form"
 import Button from "react-bootstrap/esm/Button"
 import axios from "axios"
+import SpinnerButton from "../components/SpinnerButton"
+import AlertBox from "../components/AlertBox"
 
 
 function CreateMember (){
@@ -15,6 +17,33 @@ function CreateMember (){
     const [subscriptionDate, setSubcriptionDate] = useState()
     const [role, setRole] = useState("Member")
     const [image, setImage] = useState([])
+    const [isLoading, setIsLoading] = useState(false);
+    const [buttonState, setButtonState] = useState(<Button variant="primary" type="submit">Submit</Button>);
+    const [errorMessage, setErrorMessage] = useState(false);
+    const [alertState, setAlertState] = useState(null);
+
+
+    // useEffect for loading button
+    useEffect(() => {
+        if(isLoading === false) {
+            setButtonState(<Button variant="primary" type="submit">Submit</Button>);
+        }
+        else {
+            setButtonState(SpinnerButton);
+        }
+    }, [isLoading]);
+
+
+    // useEffect for alert box
+    useEffect(() => {
+        if(errorMessage === true) {
+            setButtonState(null);
+            setAlertState(AlertBox("Member"));
+        }
+        else {
+            setAlertState(null);
+        }
+    }, [errorMessage])
 
 
     const handleFirstName = (e) => {
@@ -51,7 +80,9 @@ function CreateMember (){
 
     const handleSubmit = async (e) => {
 
-        // testing purposes
+        // checks when button is pressed so it sets state to loading
+        setIsLoading(true);
+
         e.preventDefault()
 
         const formData = new FormData()
@@ -75,13 +106,16 @@ function CreateMember (){
         })
         .catch((err) => {
             console.log(err)
+            
         })
+
+        setIsLoading(false);
     }
 
 
     return(
         <>
-            <h1>Create New Member</h1>
+            <h1 className="d-flex justify-content-center">Create New Member</h1>
 
             <Form onSubmit={handleSubmit}>
                 <Form.Label>Create New Member</Form.Label>
@@ -120,9 +154,8 @@ function CreateMember (){
                     <Form.Label>Add Image</Form.Label>
                     <Form.Control type="file"/>
                 </Form.Group>
-                <Button variant="primary" type="submit">
-                    Submit
-                </Button>
+                {buttonState}
+                {alertState}
             </Form>
         </>
     )

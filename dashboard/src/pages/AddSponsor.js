@@ -3,15 +3,42 @@ import  Form  from "react-bootstrap/Form"
 import Button from "react-bootstrap/esm/Button"
 import axios from "axios"
 import SpinnerButton from "../components/SpinnerButton"
+import AlertBox from "../components/AlertBox"
 
 
 function AddSponsor () {
 
-    const api_url = "https://robotics-club.hmu.gr:443/api/dashboard/addMember"
+    const api_url = "https://robotics-club.hmu.gr:443/api/dashboard/addSponsor"
     const [sponsorName, setSponsorName] = useState("");
     const [sponsorDesc, setSponsorDesc] = useState("");
     const [sponsorTier, setSponsorTier] = useState("bronze");
     const [sponsorImage, setSponsorImage] = useState("");
+    const [isLoading, setIsLoading] = useState(false);
+    const [buttonState, setButtonState] = useState(<Button variant="primary" type="submit">Submit</Button>);
+    const [errorMessage, setErrorMessage] = useState(false);
+    const [alertState, setAlertState] = useState(null);
+
+    // useEffect for loading button
+    useEffect(() => {
+        if(isLoading === false) {
+            setButtonState(<Button variant="primary" type="submit">Submit</Button>);
+        }
+        else {
+            setButtonState(SpinnerButton);
+        }
+    }, [isLoading]);
+
+    
+    //useEffect for alert box
+    useEffect(() => {
+        if(errorMessage === true) {
+            setButtonState(null);
+            setAlertState(AlertBox("Sponsor"));
+        }
+        else {
+            setAlertState(null);
+        }
+    }, [errorMessage]);
 
 
     const handleSponsorName = (e) => {
@@ -33,6 +60,9 @@ function AddSponsor () {
 
     const handleSubmit = async (e) => {
 
+        // checks when button is pressed so it sets state to loading
+        setIsLoading(true);
+
         e.preventDefault();
 
         const formData = new FormData();
@@ -49,16 +79,21 @@ function AddSponsor () {
         .then((res) => {
             console.log(res)
             console.log(res.status)
+            setErrorMessage(false);
+            window.location.reload();
         })
         .catch((err) => {
             console.log(err)
+            setErrorMessage(true);
         })
+        
+        setIsLoading(false);
     }
 
     
     return(
         <>
-            <h1>Add New Sponsor</h1>
+            <h1 className="d-flex justify-content-center">Add New Sponsor</h1>
 
             <Form onSubmit={handleSubmit}>
                 <Form.Label>Add New Sponsor</Form.Label>
@@ -81,9 +116,8 @@ function AddSponsor () {
                     <Form.Label>Sponsor Image</Form.Label>
                     <Form.Control type="file"/>
                 </Form.Group>
-                <Button variant="primary" type="submit">
-                    Submit
-                </Button>
+                {buttonState}
+                {alertState}
             </Form>
         </>
     )

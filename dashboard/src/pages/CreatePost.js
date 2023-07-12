@@ -1,10 +1,12 @@
 import axios from "axios"
-import React , { useState } from "react"
+import React , { useEffect, useState } from "react"
 import Button from "react-bootstrap/esm/Button"
 import Form from "react-bootstrap/Form"
+import SpinnerButton from "../components/SpinnerButton"
+import AlertBox from "../components/AlertBox"
 
 
-function CreatePost (){
+function CreatePost() {
 
 
     const api_url = "https://robotics-club.hmu.gr:443/api/dashboard/addPost"
@@ -14,6 +16,35 @@ function CreatePost (){
     const [date, setDate] = useState()
     const [type, setType] = useState("Project")
     const [imageList, setImageList] = useState([])
+    const [isLoading, setIsLoading] = useState(false);
+    const [buttonState, setButtonState] = useState(<Button variant="primary" type="submit">Submit</Button>);
+    const [errorMessage, setErrorMessage] = useState(false);
+    const [alertState, setAlertState] = useState(null);
+
+
+    // useEffect for loading button
+    useEffect(() => {
+        if(isLoading === false) {
+            setButtonState(<Button variant="primary" type="submit">Submit</Button>);
+        }
+        else {
+            setButtonState(SpinnerButton);
+        }
+    }, [isLoading]);
+
+
+
+    // useEffect for Alert box
+    useEffect(() => {
+        if(errorMessage === true) {
+            setButtonState(null);
+            setAlertState(AlertBox("Post"));
+        }
+        else {
+            setAlertState(null);
+        }
+    }, [errorMessage]);
+    
 
     const handleTitle = (e) => {
         setTitle(e.target.value)
@@ -47,7 +78,9 @@ function CreatePost (){
 
     const handleSubmit = async (e) => {
 
-        // testing purposes
+        // checks when button is pressed so it sets state to loading
+        setIsLoading(true);
+
         e.preventDefault()
 
         const formData = new FormData()
@@ -70,16 +103,21 @@ function CreatePost (){
         .then((res) => {
             console.log(res)
             console.log(res.status)
+            setErrorMessage(false);
+            window.location.reload();
         })
         .catch((err) => {
             console.log(err)
+            setErrorMessage(true);
         })
+
+        setIsLoading(false);
     }
 
 
     return(
         <>
-            <h1>Create New Post</h1>
+            <h1 className="d-flex justify-content-center">Create New Post</h1>
             
             <Form onSubmit={handleSubmit}>
                 <Form.Group className="title" onChange={handleTitle}>
@@ -108,9 +146,8 @@ function CreatePost (){
                     <Form.Label>Add Images</Form.Label>
                     <Form.Control type="file" multiple/>
                 </Form.Group>
-                <Button variant="primary" type="submit">
-                    Submit
-                </Button>
+                {buttonState}
+                {alertState}
             </Form>
         </>
     )

@@ -16,7 +16,7 @@ export default function PrivateRoutes(props) {
 
    useEffect(() => {
 
-      // DO NOT DEPLOY REALLY FUCKING BAD
+      // idk if its bad but probably should be removed from live
       
       if(window.location.hostname === "localhost") {
          setUser(1);
