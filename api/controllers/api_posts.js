@@ -68,50 +68,22 @@ exports.get_latest_posts = async(req,res,next) => {
 }
 
 
-// finds All Projects with their data for Project Carousel
-exports.get_projects = async(req,res,next) => {
+// finds all Posts
+exports.get_posts = async(req,res,next) => {
     db.execute(`
-        SELECT p.*, GROUP_CONCAT(pi.img) AS img
+        SELECT p.*, pi.img
         FROM post p
-        LEFT JOIN postImages pi ON p.id = pi.post_id
-        WHERE p.type = 'Project'
-        GROUP BY p.id;
-        `
-        ,   (err,result) => {
-            if(err) throw err
-            console.log(result)
-            if(result.length == 0){
-                res.status(404).json("Projects not Found")
-            }
-            else {
-                res.status(200).json({
-                    Item: result
-                })
-            }
+        LEFT JOIN postImages pi ON p.id = pi.post_id;
+    `, (err,result) => {
+        if(err) throw err;
+        console.log(result);
+        if(result.length == 0) {
+            res.status(404).json("Posts not found");
         }
-        )
-}
-
-
-// finds All Seminars with their data for Seminar Carousel
-exports.get_seminars = async(req,res,next) => {
-    db.execute(`
-        SELECT p.*, GROUP_CONCAT(pi.img) AS img
-        FROM post p
-        LEFT JOIN postImages pi ON p.id = pi.post_id
-        WHERE p.type = 'Seminar'
-        GROUP BY p.id;`
-        ,   (err,result) => {
-            if(err) throw err
-            console.log(result)
-            if(result.length == 0){
-                res.status(404).json("Seminars not Found")
-            }
-            else {
-                res.status(200).json({
-                    Item: result
-                })
-            }
+        else {
+            res.status(200).json({
+                Item: result
+            });
         }
-        )
+    });
 }

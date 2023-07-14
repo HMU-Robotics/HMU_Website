@@ -16,8 +16,8 @@ const db =  mysql.createPool({
 exports.get_sponsors = async(req,res,next) => {
     db.execute(`
         SELECT s.*, si.image
-        FROM sponsor p
-        LEFT JOIN sponsorImages si ON s.id = si.sponsor_id;
+        FROM sponsor s
+        JOIN sponsorImages si ON s.id = si.sponsor_id;
     `, (err,result) => {
         if(err) throw err;
         console.log(result);

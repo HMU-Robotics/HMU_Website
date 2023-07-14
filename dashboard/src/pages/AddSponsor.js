@@ -11,7 +11,7 @@ function AddSponsor () {
     const api_url = "https://robotics-club.hmu.gr:443/api/dashboard/addSponsor"
     const [sponsorName, setSponsorName] = useState("");
     const [sponsorDesc, setSponsorDesc] = useState("");
-    const [sponsorTier, setSponsorTier] = useState("bronze");
+    const [sponsorTier, setSponsorTier] = useState("silver");
     const [sponsorImage, setSponsorImage] = useState("");
     const [isLoading, setIsLoading] = useState(false);
     const [buttonState, setButtonState] = useState(<Button variant="primary" type="submit">Submit</Button>);
@@ -107,10 +107,10 @@ function AddSponsor () {
                 </Form.Group>
                 <Form.Label>Sponsor Tier</Form.Label>
                 <Form.Select className="sponsorTier" onChange={handleSponsorTier}>
-                    <option value="bronze">Bronze</option>
                     <option value="silver">Silver</option>
                     <option value="gold">Gold</option>
                     <option value="platinum">Platinum</option>
+                    <option value="diamond">Diamond</option>
                 </Form.Select>
                 <Form.Group className="sponsorImage" onChange={handleSponsorImage}>
                     <Form.Label>Sponsor Image</Form.Label>

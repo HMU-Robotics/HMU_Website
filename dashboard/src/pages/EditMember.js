@@ -38,12 +38,17 @@ function EditMember (){
             {memberData && memberData.Item ? (
                 <>
                     {memberData.Item.map((member, i) => (
-                        <div className="d-flex justify-content-start" key={i}>
+                        <>
+                        <div className="d-flex justify-content-between" key={i}>
                             <p>{member.first_name}</p>
                             <p>{member.last_name}</p>
                             <p>{member.academic_id}</p>
-                            <Button variant="primary" onClick={() => gotoMember(member.academic_id)}>Update Member</Button>
+                            <div className="d-flex justify-content-end">
+                                <Button variant="primary" onClick={() => gotoMember(member.academic_id)}>Update Member</Button>
+                            </div>
                         </div>
+                        <hr/>
+                        </>
                     ))}
                 </>
             ) : (
