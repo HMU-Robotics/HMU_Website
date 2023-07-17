@@ -10,7 +10,8 @@ function CreatePost() {
 
 
     const api_url = "https://robotics-club.hmu.gr:443/api/dashboard/addPost"
-    const [title, setTitle] = useState()
+    const [language, setLanguage] = useState("english")
+    const [title, setTitle] = useState("")
     const [postDesc, setPostDesc] = useState("")
     const [content, setContent] = useState("")
     const [date, setDate] = useState()
@@ -43,7 +44,11 @@ function CreatePost() {
             setAlertState(null);
         }
     }, [errorMessage]);
-    
+
+
+    const handleLanguage = (e) => {
+        setLanguage(e.target.value)
+    }
 
     const handleTitle = (e) => {
         setTitle(e.target.value)
@@ -69,7 +74,7 @@ function CreatePost() {
         const files = e.target.files;
         if (!files || files.length === 0) return;
         setImageList([...imageList, ...files]);
-      }      
+      }
 
 
     const handleSubmit = async (e) => {
@@ -80,6 +85,7 @@ function CreatePost() {
         e.preventDefault()
 
         const formData = new FormData()
+        formData.append("language",language)
         formData.append("title",title)
         formData.append("content",content)
         formData.append("post_desc",postDesc)
@@ -115,6 +121,11 @@ function CreatePost() {
             <h1 className="d-flex justify-content-center">Create New Post</h1>
             
             <Form onSubmit={handleSubmit}>
+                <Form.Label>Language</Form.Label>
+                <Form.Select className="language" onChange={handleLanguage}>
+                    <option value="english">English</option>
+                    <option value="greek">Greek</option>
+                </Form.Select>
                 <Form.Group className="title" onChange={handleTitle}>
                     <Form.Label>Title</Form.Label>
                     <Form.Control type="text"/>

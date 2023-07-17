@@ -10,6 +10,7 @@ create table role(
 
 create table post(
     id int not null auto_increment,
+    language varchar(10) not null,
     title varchar(80) not null,
     post_desc varchar(200) not null,
     content varchar(20000) not null,
@@ -18,16 +19,20 @@ create table post(
     primary key(id)
 );
 
+-- takes 2 post ids, 1 from greek 1 from english so the same image cna be loaded for both languages
 create table postImages(
     id int not null auto_increment,
-    post_id int not null,
+    post_en int,
+    post_gr int,
     img varchar(80) not null,
     primary key (id),
-    foreign key (post_id) references post(id)
+    foreign key (post_en) references post(id),
+    foreign key (post_gr) references post(id)
 );
 
 create table member(
     id int not null unique auto_increment,
+    language varchar(10) not null,
     academic_id varchar(25) not null,
     first_name varchar(50) not null,
     last_name varchar(50) not null,

@@ -16,6 +16,7 @@ function MemberPage() {
     const api_url = `https://robotics-club.hmu.gr:443/api/dashboard/editMember/${memberID}`
 
 
+    const [language, setLanguage] = useState("english")
     const [firstname, setFirstName] = useState("");
     const [lastname, setLastName] = useState("");
     const [academic_id, setAcademicID] = useState("");
@@ -32,6 +33,7 @@ function MemberPage() {
 
     // enters previous data into the text boxes of page
     const setStartingData = (member) => {
+        setLanguage(member.language);
         setFirstName(member.first_name);
         setLastName(member.last_name);
         setAcademicID(member.academic_id);
@@ -81,6 +83,9 @@ useEffect(() => {
     }
 }, [errorMessage])
 
+const handleLanguage = (e) => {
+    setLanguage(e.target.value)
+}
 
 const handleFirstName = (e) => {
     setFirstName(e.target.value)
@@ -129,6 +134,7 @@ const handleSubmit = async (e) => {
     e.preventDefault()
 
     const formData = new FormData()
+    formData.append("language",language)
     formData.append("academic_id",academic_id)
     formData.append("first_name",firstname)
     formData.append("last_name",lastname)
@@ -147,9 +153,12 @@ const handleSubmit = async (e) => {
     .then((res) => {
         console.log(res)
         console.log(res.status)
+        setErrorMessage(false);
+        window.location.reload();
     })
     .catch((err) => {
         console.log(err)
+        setErrorMessage(true);
     })
 
     setIsLoading(false);

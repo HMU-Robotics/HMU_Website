@@ -77,26 +77,38 @@ const resizeImages = async(req, res, next, type) => {
 
 // query to make a post
 const makePost = async(req,res,next)=>{
-    db.execute("INSERT INTO `post`(title,content,post_desc,created_at,type) VALUES(?,?,?,?,?)",[req.body.title,req.body.content,req.body.post_desc,req.body.created_at,req.body.type],(err,user)=>{
+    db.execute("INSERT INTO `post`(title,language,content,post_desc,created_at,type) VALUES(?,?,?,?,?)",[req.body.title,req.body.language,req.body.content,req.body.post_desc,req.body.created_at,req.body.type],(err,user)=>{
       console.log(req.body)
         if(err) {
             throw err;
         }
-        db.execute("SELECT `id` FROM post WHERE `title` = ?" , [req.body.title],(err,result)=>{
+        db.execute("SELECT id FROM post WHERE `title` = ?" , [req.body.title],(err,result)=>{
           if(err){
             throw err;
           }
           let id = result[0].id
-          console.log(req.body.images)
-          for(const image in req.body.images){
-            db.execute("INSERT INTO `postImages`(post_id,img) VALUES(?,?)",[id,req.body.images[image]],(err,result)=>{
-              if(err){
-                throw err;
+          db.execute("SELECT img FROM postImages WHERE post_en = ? OR post_gr = ?", [id,id], (err,imageResult) => {
+            if(err) throw err;
+            // checks if image has already been uploaded , and a postImage row already exists with the image path so it doesnt double upload a picture
+            if(imageResult.length === 0){
+              const colName = req.body.language === "english" ? "post_en" : "post_gr";
+              for(const image in req.body.images){
+                db.execute(`INSERT INTO postImages(${colName}, img) VALUES (?,?)`,[id,req.body.images[image]], (err,result2) => {
+                  if(err) throw err;
+                })
               }
-            })
-          }
+            }
+            else {
+              for(const image in req.body.images){
+                  const colName = req.body.language === "english" ? "post_en" : "post_gr";
+                  db.execute(`UPDATE postImages SET ${colName} = ? WHERE img = ?`, [id,req.body.images[image]], (err,result) => {
+                    if(err) throw err;
+                  })
+              }
+            }
           })
         })
+    })
 
   res.send("created post")
 }

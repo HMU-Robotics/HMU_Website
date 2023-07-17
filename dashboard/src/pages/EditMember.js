@@ -39,7 +39,7 @@ function EditMember (){
             console.log(error);
         })
       }, []);
-    
+
     return(
         <div>
             <h1 className="d-flex justify-content-center">Edit Members Page</h1>

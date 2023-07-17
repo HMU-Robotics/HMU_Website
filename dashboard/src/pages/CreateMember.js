@@ -12,6 +12,7 @@ function CreateMember (){
     const api_url = "https://robotics-club.hmu.gr:443/api/dashboard/addMember"
     const [firstname, setFirstName] = useState("")
     const [lastname, setLastName] = useState("")
+    const [language, setLanguage] = useState("english")
     const [academic_id, setAcademicID] = useState("")
     const [school, setSchool] = useState("ECE")
     const [subscriptionDate, setSubcriptionDate] = useState()
@@ -45,6 +46,10 @@ function CreateMember (){
         }
     }, [errorMessage])
 
+
+    const handleLanguage = (e) => {
+        setLanguage(e.target.value)
+    }
 
     const handleFirstName = (e) => {
         setFirstName(e.target.value)
@@ -86,6 +91,7 @@ function CreateMember (){
         e.preventDefault()
 
         const formData = new FormData()
+        formData.append("language",language)
         formData.append("academic_id",academic_id)
         formData.append("first_name",firstname)
         formData.append("last_name",lastname)
@@ -103,10 +109,12 @@ function CreateMember (){
         .then((res) => {
             console.log(res)
             console.log(res.status)
+            setErrorMessage(false);
+            window.location.reload();
         })
         .catch((err) => {
             console.log(err)
-            
+            setErrorMessage(true);
         })
 
         setIsLoading(false);
@@ -118,7 +126,13 @@ function CreateMember (){
             <h1 className="d-flex justify-content-center">Create New Member</h1>
 
             <Form onSubmit={handleSubmit}>
-                <Form.Label>Create New Member</Form.Label>
+                <h2>Create New Member</h2>
+                <hr/>
+                <Form.Label>Language</Form.Label>
+                <Form.Select className="language" onChange={handleLanguage}>
+                    <option value="english">English</option>
+                    <option value="greek">Greek</option>
+                </Form.Select>
                 <Form.Group className="firstname" onChange={handleFirstName}>
                     <Form.Label>First Name</Form.Label>
                     <Form.Control type="text"/>
@@ -143,8 +157,8 @@ function CreateMember (){
                     <Form.Label>Subscription Date</Form.Label>
                     <Form.Control type="date"/>
                 </Form.Group>
+                <Form.Label>Role</Form.Label>
                 <Form.Select className="role" onChange={handleRole}>
-                    <Form.Label>Role</Form.Label>
                     <option value="Member">Member</option>
                     <option value="Secretary">Secretary</option>
                     <option value="Treasurer">Treasurer</option>
