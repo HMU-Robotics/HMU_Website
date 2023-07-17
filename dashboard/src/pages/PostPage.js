@@ -1,16 +1,20 @@
-import axios from "axios"
-import React , { useEffect, useState } from "react"
+import React , { useState, useEffect } from "react"
+import  Form  from "react-bootstrap/Form"
 import Button from "react-bootstrap/esm/Button"
-import Form from "react-bootstrap/Form"
+import axios from "axios"
 import SpinnerButton from "../components/SpinnerButton"
 import AlertBox from "../components/AlertBox"
+import { useParams } from "react-router-dom";
 
 
-function CreatePost() {
+
+function PostPage() {
+    const { postID } = useParams();
+    const [postData, setPostData] = useState([]);
+    const api_url = `https://robotics-club.hmu.gr:443/api/dashboard/editPost/${postID}`
 
 
-    const api_url = "https://robotics-club.hmu.gr:443/api/dashboard/addPost"
-    const [title, setTitle] = useState()
+    const [title, setTitle] = useState("")
     const [postDesc, setPostDesc] = useState("")
     const [content, setContent] = useState("")
     const [date, setDate] = useState()
@@ -19,6 +23,32 @@ function CreatePost() {
     const [buttonState, setButtonState] = useState(<Button variant="primary" type="submit">Submit</Button>);
     const [errorMessage, setErrorMessage] = useState(false);
     const [alertState, setAlertState] = useState(null);
+
+
+    // enters previous data into the text boxes of page
+    const setStartingData = (post) => {
+        setTitle(post.title);
+        setContent(post.content);
+        setDate(post.date);
+    }
+    
+    
+    
+    // useEffect for post data
+    useEffect(() => {
+        fetch(`https://robotics-club.hmu.gr:443/api/posts/${postID}`, {})
+            .then((res) => res.json())
+            .then((response) => {
+                setPostData(response);
+                setStartingData(postData.post);
+                console.log(`https://robotics-club.hmu.gr:443/api/posts/${postID}`);
+                console.log(response)
+            })
+            .catch((error) => {
+                console.log(error);
+            })
+    }, []);
+    
 
 
     // useEffect for loading button
@@ -112,7 +142,7 @@ function CreatePost() {
 
     return(
         <>
-            <h1 className="d-flex justify-content-center">Create New Post</h1>
+            <h1 className="d-flex justify-content-center">Update Post</h1>
             
             <Form onSubmit={handleSubmit}>
                 <Form.Group className="title" onChange={handleTitle}>
@@ -140,6 +170,7 @@ function CreatePost() {
             </Form>
         </>
     )
+
 }
 
-export default CreatePost
+export default PostPage;

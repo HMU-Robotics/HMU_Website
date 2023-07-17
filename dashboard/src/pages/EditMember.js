@@ -1,6 +1,7 @@
 import React , { useState, useEffect } from "react"
 import Button from "react-bootstrap/esm/Button"
 import { useNavigate } from "react-router-dom"
+import axios from "axios"
 
 
 
@@ -12,6 +13,16 @@ function EditMember (){
 
     const gotoMember = (academic_id) => {
         navigate(`/member/${academic_id}`);
+    }
+
+    const deleteMember = async(academic_id) => {
+        await axios.delete(`https://robotics-club.hmu.gr:443/api/dashboard/deleteMember/${academic_id}`)
+        .then(response => {
+            console.log("Post deleted succesfully");
+        })
+        .catch(error => {
+            console.error("Error deleting post: ",error);
+        })
     }
 
 
@@ -45,6 +56,7 @@ function EditMember (){
                             <p>{member.academic_id}</p>
                             <div className="d-flex justify-content-end">
                                 <Button variant="primary" onClick={() => gotoMember(member.academic_id)}>Update Member</Button>
+                                <Button variant="danger" onClick={() => deleteMember(member.academic_id)}>Delete Member</Button>
                             </div>
                         </div>
                         <hr/>

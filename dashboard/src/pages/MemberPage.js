@@ -13,8 +13,9 @@ function MemberPage() {
 
     const { memberID } = useParams();
     const [memberData, setMemberData] = useState([]);
+    const api_url = `https://robotics-club.hmu.gr:443/api/dashboard/editMember/${memberID}`
 
-    // 
+
     const [firstname, setFirstName] = useState("");
     const [lastname, setLastName] = useState("");
     const [academic_id, setAcademicID] = useState("");
@@ -43,7 +44,7 @@ function MemberPage() {
 
 
 // useEffect for member data
-seEffect(() => {
+useEffect(() => {
     fetch(`https://robotics-club.hmu.gr:443/api/members/${memberID}`, {})
         .then((res) => res.json())
         .then((response) => {
@@ -104,6 +105,13 @@ const handleSubscriptionDate = (e) => {
     setSubcriptionDate(formattedSubDate)
 }
 
+const handleEndDate = (e) => {
+    const inputEndDate = new Date(e.target.value)
+    const subDate = inputEndDate.toISOString()
+    const formattedEndDate = subDate.substring(0,10).replace('T',' ')
+    setEndDate(formattedEndDate)
+}
+
 const handleImage = (e) => {
     const file = e.target.files[0]
     setImage(file)
@@ -126,11 +134,12 @@ const handleSubmit = async (e) => {
     formData.append("last_name",lastname)
     formData.append("school",school)
     formData.append("subscription_date",subscriptionDate)
+    formData.append("end_date",endDate)
     formData.append("role",role)
     formData.append("upload_img",image)
 
 
-    await axios.post(api_url, formData, {
+    await axios.put(api_url, formData, {
         headers: {
             "Content-Type": "multipart/form-data"
         }
@@ -141,7 +150,6 @@ const handleSubmit = async (e) => {
     })
     .catch((err) => {
         console.log(err)
-        
     })
 
     setIsLoading(false);
@@ -176,6 +184,10 @@ return(
             </Form.Select>
             <Form.Group className="subcription_date" onChange={handleSubscriptionDate}>
                 <Form.Label>Subscription Date</Form.Label>
+                <Form.Control type="date"/>
+            </Form.Group>
+            <Form.Group className="end_date" onChange={handleEndDate}>
+                <Form.Label>End Date</Form.Label>
                 <Form.Control type="date"/>
             </Form.Group>
             <Form.Select className="role" onChange={handleRole}>

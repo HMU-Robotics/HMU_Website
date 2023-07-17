@@ -44,6 +44,7 @@ const upload = multer({
     })
 }
 
+// resizes images that are sent via form to server
 const resizeImages = async(req, res, next, type) => {
   if (!req.files) return next();
 
@@ -73,6 +74,8 @@ const resizeImages = async(req, res, next, type) => {
   next();
 }
 
+
+// query to make a post
 const makePost = async(req,res,next)=>{
     db.execute("INSERT INTO `post`(title,content,post_desc,created_at,type) VALUES(?,?,?,?,?)",[req.body.title,req.body.content,req.body.post_desc,req.body.created_at,req.body.type],(err,user)=>{
       console.log(req.body)
@@ -99,6 +102,7 @@ const makePost = async(req,res,next)=>{
 }
 
 
+// query for making a new member
 const makeMember = async(req,res,next)=>{
   db.execute("INSERT INTO `member`(academic_id,first_name,last_name,school,subscription_date,role) VALUES(?,?,?,?,?,?)",[req.body.academic_id,req.body.first_name,req.body.last_name,req.body.school,req.body.subscription_date,req.body.role],(err,member)=>{
     console.log(req.body)
@@ -127,7 +131,7 @@ res.send("created member")
 }
 
 
-
+// query for making a new sponsor
 const makeSponsor = async(req,res,next)=>{
   db.execute("INSERT INTO `sponsors`(sponsor_name,sponsor_desc,sponsor_tier) VALUES (?,?,?)", [req.body.sponsor_name,req.body.sponsor_desc,req.body.sponsor_tier], (err,sponsor) => {
     console.log(req.body);
@@ -151,6 +155,107 @@ const makeSponsor = async(req,res,next)=>{
   res.send("Created Sponsor");
 }
 
+
+// query for updating an existing post
+const updatePost = async(req,res,next) => {
+  const { id } = req.params
+  db.execute(`
+    UPDATE post
+    SET title = ?, post_desc = ?, content = ?
+    WHERE id = ?
+`,[req.body.title,req.body.post_desc,req.body.content,id], (err,post)=>{
+    console.log(req.body);
+    if(err) throw err;
+    console.log(req.body.images);
+    for(const image in req.body.images){
+      db.execute("UPDATE postImages SET img = ? WHERE post_id = ?", [req.body.images[image],id], (err,result) => {
+        if(err) throw err;
+      })
+  }
+  })
+
+res.send("Updated Post");
+}
+
+
+// query for updating an existing member
+const updateMember = async(req,res,next) => {
+  const { id } = req.params
+  db.execute(`
+    UPDATE member
+    SET academic_id = ?, first_name = ?, last_name = ?, school = ?,
+    subscription = ?, subscription_date = ?, end_date = ?, role = ?
+    WHERE academic_id = ?
+  `,[req.body.academic_id,req.body.first_name,req.body.last_name,req.body.school,req.body.subscription,req.body.subscription_date,req.body.end_date,req.body.role,id], (err,member)=>{
+    console.log(req.body);
+    if(err) throw err;
+      for(const image in req.body.images){
+        db.execute("UPDATE memberImages SET img = ? WHERE member_id = ?", [req.body.images[image],id], (err,result) => {
+          if(err) throw err;
+        })
+      }
+    }
+  )
+
+  res.send("Updated Member");
+}
+
+
+// query for deleting a post
+const deletePost = async(req,res,next) => {
+  db.execute(`
+    DELETE FROM postImages
+    WHERE post_id = ?
+  `, [req.body.id], (err,result) => {
+    if(err) throw err;
+    db.execute(`
+      DELETE FROM post
+      WHERE id = ?  
+    `,[req.body.id], (err,result) => {
+      if(err) throw err;
+    })
+  })
+
+  res.send("Deleted Post");
+}
+
+
+// query for deleting a member
+const deleteMember = async(req,res,next) => {
+  db.execute(`
+    DELETE FROM memberImages
+    WHERE member_id = ?
+  `, [req.body.academic_id], (err,result) => {
+    if(err) throw err;
+    db.execute(`
+      DELETE FROM member
+      WHERE academic_id = ?  
+    `,[req.body.academic_id], (err,result) => {
+      if(err) throw err;
+    })
+  })
+
+  res.send("Deleted Member");
+}
+
+
+// query for deleting a sponsor
+const deleteSponsor = async(req,res,next) => {
+  db.execute(`
+    DELETE FROM sponsorImages
+    WHERE sponsor_id = ?
+  `, [req.body.id], (err,result) => {
+    if(err) throw err;
+    db.execute(`
+      DELETE FROM sponsor
+      WHERE id = ?  
+    `,[req.body.id], (err,result) => {
+      if(err) throw err;
+    })
+  })
+
+  res.send("Deleted sponsor");
+}
 
 
 const getResult = async (req, res) => {
@@ -178,5 +283,10 @@ const getResult = async (req, res) => {
     resizeImages: resizeImages,
     getResult: getResult,
     makeMember : makeMember,
-    makeSponsor: makeSponsor
+    makeSponsor: makeSponsor,
+    updateMember: updateMember,
+    updatePost: updatePost,
+    deleteMember: deleteMember,
+    deletePost: deletePost,
+    deleteSponsor: deleteSponsor
   }

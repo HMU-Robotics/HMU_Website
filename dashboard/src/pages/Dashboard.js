@@ -26,9 +26,6 @@ function Dashboard () {
         navigate("/addsponsor");
     }
 
-    const gotoEditSponsor = () => {
-        navigate("/editsponsor");
-    }
 
     return(
         <>
@@ -52,10 +49,6 @@ function Dashboard () {
             <div className="wrapper">
                 <h3>Add Sponsor</h3>
                 <Button onClick={gotoAddSponsor} variant="primary">Button</Button>
-            </div>
-            <div className="wrapper">
-                <h3>Edit Sponsor</h3>
-                <Button onClick={gotoEditSponsor} variant="primary">Button</Button>
             </div>
         </>
     )

@@ -34,7 +34,7 @@ create table member(
     school varchar(120) not null,
     subscription Boolean not null default true,
     subscription_date date,
-    end_date date,
+    end_date date default null,
     role varchar(20) not null default "Member",
     created_at timestamp default current_timestamp,
     updated_at timestamp default current_timestamp on update current_timestamp,
