@@ -1,25 +1,28 @@
-import React, { useState , useEffect } from "react";
+import React, { useState , useEffect , useContext} from "react";
 import "./News.css"
 import ImageCarousel from "./ImageCarousel";
-
+import LanguageContext from "../hooks/LanguageContext"
 
 function News(props){
 
     const [data , setData] = useState([])
 
+    const { language, setLanguage } = useContext(LanguageContext);
+    const lang = language == "english" ? "en" : "gr";
+
     
     useEffect(() => {
-      fetch(`https://robotics-club.hmu.gr:443/api/posts/find/all`, {})
+      fetch(`https://robotics-club.hmu.gr:443/api/posts/find/all/${lang}`, {})
         .then((res) => res.json())
         .then((response) => {
           setData(response);
-          console.log(`https://robotics-club.hmu.gr:443/api/posts/find/all`);
+          console.log(`https://robotics-club.hmu.gr:443/api/posts/find/all/${lang}`);
           console.log(response)
         })
         .catch((error) => {
           console.log(error);
       })
-    }, []);
+    }, [language]);
 
 
     return(

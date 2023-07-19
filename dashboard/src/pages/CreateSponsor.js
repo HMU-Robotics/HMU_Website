@@ -6,7 +6,7 @@ import SpinnerButton from "../components/SpinnerButton"
 import AlertBox from "../components/AlertBox"
 
 
-function AddSponsor () {
+function CreateSponsor () {
 
     const api_url = "https://robotics-club.hmu.gr:443/api/dashboard/addSponsor"
     const [sponsorName, setSponsorName] = useState("");
@@ -124,4 +124,4 @@ function AddSponsor () {
 
 }
 
-export default AddSponsor
+export default CreateSponsor;

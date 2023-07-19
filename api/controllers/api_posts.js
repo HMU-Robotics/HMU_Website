@@ -17,6 +17,7 @@ const db =  mysql.createPool({
 // finds Post based on Post ID retrieved from url
 exports.find_post = async(req,res,next) => {
     const {id} = req.params
+
     db.execute('SELECT * FROM `post` WHERE `id` = ?', [id],(err,post) => {
         if(err) throw err
         console.log(post)
@@ -24,7 +25,7 @@ exports.find_post = async(req,res,next) => {
             res.status(409).json("Invalid input")
         }
         else{
-            db.execute('SELECT * FROM `postImages` WHERE `post_id` = ?',[id],(err,images)=>{
+            db.execute(`SELECT * FROM postImages WHERE post_en = ? OR post_gr = ?`,[id],(err,images)=>{
                 if(err) throw err
                 console.log(images)
                 if(images.length == 0){
@@ -70,11 +71,14 @@ exports.get_latest_posts = async(req,res,next) => {
 
 // finds all Posts
 exports.get_posts = async(req,res,next) => {
+    const { id, language } = req.params;
+    const postLanguage = language == 'en' ? "post_en" : "post_gr";
     db.execute(`
         SELECT p.*, pi.img
         FROM post p
-        LEFT JOIN postImages pi ON p.id = pi.post_id;
-    `, (err,result) => {
+        LEFT JOIN postImages pi ON p.id = pi.${postLanguage}
+        WHERE p.language = ?;
+    `,[language], (err,result) => {
         if(err) throw err;
         console.log(result);
         if(result.length == 0) {

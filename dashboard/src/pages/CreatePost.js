@@ -4,6 +4,7 @@ import Button from "react-bootstrap/esm/Button"
 import Form from "react-bootstrap/Form"
 import SpinnerButton from "../components/SpinnerButton"
 import AlertBox from "../components/AlertBox"
+import "./CreatePost.css"
 
 
 function CreatePost() {
@@ -142,10 +143,12 @@ function CreatePost() {
                     <Form.Label>Date</Form.Label>
                     <Form.Control type="date"/>
                 </Form.Group>
+                <div className="space"/>
                 <Form.Group onChange={handleImageList}>
-                    <Form.Label>Add Images</Form.Label>
+                    <h3>Add Images</h3>
                     <Form.Control type="file" multiple/>
                 </Form.Group>
+                <div className="space"/>
                 {buttonState}
                 {alertState}
             </Form>

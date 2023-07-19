@@ -72,7 +72,6 @@ create table memberImages(
 create table sponsor(
     id int not null auto_increment,
     sponsor_name varchar(50) not null,
-    sponsor_desc varchar(150) not null,
     sponsor_tier varchar(20) not null,
     created_at timestamp default current_timestamp,
     updated_at timestamp default current_timestamp on update current_timestamp,

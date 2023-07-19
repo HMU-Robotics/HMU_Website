@@ -53,6 +53,11 @@
     transform: scale(1.2);
 }
 
+.flags a{
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+}
 
 
  /* Extra small devices (phones, 600px and down) */

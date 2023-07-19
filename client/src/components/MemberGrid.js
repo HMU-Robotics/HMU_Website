@@ -1,7 +1,8 @@
 import React, { Suspense } from 'react'
 import Grid2 from '@mui/material/Unstable_Grid2/Grid2';
 import './MemberGrid.css'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useContext} from 'react'
+import LanguageContext from '../hooks/LanguageContext';
 
 
 const MemberCard = React.lazy(() => import('./MemberCard'));
@@ -10,16 +11,20 @@ const MemberCard = React.lazy(() => import('./MemberCard'));
 
 function MemberGrid(props) {
 
+  const { language, setLanguage } = useContext(LanguageContext);
+
+  const langUrl = language === 'english' ? "en" : "gr";
+
     const [memberData, setMemberData] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
 
      useEffect(() => {
-     fetch(`https://robotics-club.hmu.gr:443/api/members/find/all`, {})
+     fetch(`https://robotics-club.hmu.gr:443/api/members/find/all/${langUrl}`, {})
        .then((res) => res.json())
        .then((response) => {
          setIsLoading(false);
          setMemberData(response);
-         console.log(`https://robotics-club.hmu.gr:443/api/members/find/all`);
+         console.log(`https://robotics-club.hmu.gr:443/api/members/find/all/${langUrl}`);
          console.log(response)
        })
        .catch((error) => {
@@ -67,7 +72,7 @@ function MemberGrid(props) {
             <div>Loading...</div>
           )}
         </Grid2>
-    
+
         <div className="member-grid member-grid-members">
           <h2 className="members-box-title">Members</h2>
           <Grid2 container spacing={4} columns={12} display="flex" alignItems="center">
@@ -99,8 +104,8 @@ function MemberGrid(props) {
         </div>
       </>
     );
-    
-    
+
+
 
 }
 

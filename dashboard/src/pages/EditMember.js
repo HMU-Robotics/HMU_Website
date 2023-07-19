@@ -8,20 +8,23 @@ import axios from "axios"
 function EditMember (){
 
     const [memberData, setMemberData] = useState([]);
+    const [language, setLanguage] = useState("english");
     const navigate = useNavigate();
+    const memberLanguage = language === "english" ? "en" : "gr";
+
 
 
     const gotoMember = (academic_id) => {
-        navigate(`/member/${academic_id}`);
+        navigate(`/member/${academic_id}/${memberLanguage}`);
     }
 
     const deleteMember = async(academic_id) => {
         await axios.delete(`https://robotics-club.hmu.gr:443/api/dashboard/deleteMember/${academic_id}`)
         .then(response => {
-            console.log("Post deleted succesfully");
+            console.log("Member deleted succesfully");
         })
         .catch(error => {
-            console.error("Error deleting post: ",error);
+            console.error("Error deleting Member: ",error);
         })
     }
 

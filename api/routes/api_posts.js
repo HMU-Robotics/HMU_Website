@@ -5,6 +5,6 @@ const AuthMiddleware = require("../middleware/api_auth")
 const {admin, viewer, editor} = require("../middleware/api_roles")
 
 router.get("/:id",postController.find_post)
-router.get("/find/all", postController.get_posts);
+router.get("/find/all/:lang", postController.get_posts);
 
 module.exports = router

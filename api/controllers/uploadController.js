@@ -1,8 +1,9 @@
-const multer = require("multer")
-const sharp = require("sharp")
+const multer = require("multer");
+const sharp = require("sharp");
 const mysql = require("mysql2");
 const path = require("path");
-require('dotenv').config({path: path.resolve(__dirname, '../../.env')})
+const fs = require("fs");
+require('dotenv').config({path: path.resolve(__dirname, '../../.env')});
 
 
 const db =  mysql.createPool({
@@ -26,29 +27,37 @@ const upload = multer({
     storage: multerStorage,
   })
 
-  const uploadFiles = upload.array("upload_img", 10)
+const uploadFiles = upload.array("upload_img",3)
 
-  const uploadImages = (req, res, next) => {
-    uploadFiles(req, res, err => {
-      if (err instanceof multer.MulterError) { // A Multer error occurred when uploading.
-        if (err.code === "LIMIT_UNEXPECTED_FILE") { // Too many images exceeding the allowed limit
-            console.log(err)
-        }
-      } else if (err) {
-        // handle other errors
-            console.log(err)
+const uploadImages = (req, res, next) => {
+  uploadFiles(req, res, err => {
+    if (err instanceof multer.MulterError) { // A Multer error occurred when uploading.
+      if (err.code === "LIMIT_UNEXPECTED_FILE") { // Too many images exceeding the allowed limit
+          console.log(err)
       }
+    } else if (err) {
+      // handle other errors
+          console.log(err)
+    }
 
-      // Everything is ok.
-      next()
-    })
+    // Everything is ok.
+    next()
+  })
 }
+
+// Function to check if a file exists in a directory
+const fileExistsInDirectory = (directoryPath, filename) => {
+  const filePath = path.join(directoryPath, filename);
+  return fs.existsSync(filePath);
+};
+
 
 // resizes images that are sent via form to server
 const resizeImages = async(req, res, next, type) => {
   if (!req.files) return next();
 
   req.body.images = [];
+  const targetDirectory = `/var/www/robotics-club.hmu.gr/HMU_Website/client/public/Uploads/${type}s`;
   let resizeDimensions;
   if(type === 'member') {
     resizeDimensions = {width: 400, height: 400};
@@ -62,13 +71,20 @@ const resizeImages = async(req, res, next, type) => {
 
   await Promise.all(
     req.files.map(async file => {
-      const newFilename = `image-${Date.now()}-${file.originalname}`;
-      await sharp(file.buffer)
-        .resize(resizeDimensions.width, resizeDimensions.height)
-        .toFormat("jpeg")
-        .jpeg({ quality: 90 })
-        .toFile(`/var/www/robotics-club.hmu.gr/HMU_Website/client/public/Uploads/${type}s/${newFilename}`);
-      req.body.images.push(newFilename);
+      const newFilename = `image-${file.originalname}`;
+
+      // Check if the file already exists in the target directory
+      const fileAlreadyExists = fileExistsInDirectory(targetDirectory, newFilename);
+
+      if (!fileAlreadyExists) {
+        // Resize and save the image if it doesn't exist
+        await sharp(file.buffer)
+          .resize(resizeDimensions.width, resizeDimensions.height)
+          .toFormat("jpeg")
+          .jpeg({ quality: 90 })
+          .toFile(`/var/www/robotics-club.hmu.gr/HMU_Website/client/public/Uploads/${type}s/${newFilename}`);
+        req.body.images.push(newFilename);
+      }
     })
   );
   next();
@@ -87,13 +103,13 @@ const makePost = async(req,res,next)=>{
             throw err;
           }
           let id = result[0].id
-          db.execute("SELECT img FROM postImages WHERE post_en = ? OR post_gr = ?", [id,id], (err,imageResult) => {
+          db.execute("SELECT * FROM postImages WHERE img = ? OR img = ? OR img = ?", [req.body.images[0],req.body.images[1],req.body.images[2]], (err,imageResult) => {
             if(err) throw err;
             // checks if image has already been uploaded , and a postImage row already exists with the image path so it doesnt double upload a picture
             if(imageResult.length === 0){
               const colName = req.body.language === "english" ? "post_en" : "post_gr";
               for(const image in req.body.images){
-                db.execute(`INSERT INTO postImages(${colName}, img) VALUES (?,?)`,[id,req.body.images[image]], (err,result2) => {
+                db.execute(`INSERT INTO postImages(${colName}, img) VALUES (?,?)`,[id,req.body.images[image]], (err,result) => {
                   if(err) throw err;
                 })
               }
@@ -116,28 +132,24 @@ const makePost = async(req,res,next)=>{
 
 // query for making a new member
 const makeMember = async(req,res,next)=>{
-  db.execute("INSERT INTO `member`(academic_id,first_name,last_name,school,subscription_date,role) VALUES(?,?,?,?,?,?)",[req.body.academic_id,req.body.first_name,req.body.last_name,req.body.school,req.body.subscription_date,req.body.role],(err,member)=>{
+  db.execute("INSERT INTO `member`(academic_id,language,first_name,last_name,school,subscription_date,role) VALUES(?,?,?,?,?,?,?)",[req.body.academic_id,req.body.language,req.body.first_name,req.body.last_name,req.body.school,req.body.subscription_date,req.body.role],(err,member)=>{
     console.log(req.body)
     if(err) {
         throw err;
     }
-      db.execute("SELECT `academic_id` FROM `member` WHERE `last_name` = ?" , [req.body.last_name],(err,result)=>{
-        if(err){
-          throw err;
-        }
-        let academic_id = result[0].academic_id
-        console.log(req.body.images)
+    db.execute("SELECT * FROM memberImages WHERE academic_id = ?",[req.body.academic_id], (err,result) => {
+      // checks if member already exists in another language, and if it exists doesnt add img again
+      if(result.length === 0){
         for(const image in req.body.images){
-          db.execute("INSERT INTO `memberImages`(member_id,img) VALUES(?,?)",[academic_id,req.body.images[image]],(err,result)=>{
+          db.execute("INSERT INTO `memberImages`(member_id,img) VALUES(?,?)",[req.body.academic_id,req.body.images[image]],(err,result)=>{
             if(err){
               throw err;
             }
-        })
+          })
+        }
       }
+    })
   })
-
-
-})
 
 res.send("created member")
 }
@@ -145,7 +157,7 @@ res.send("created member")
 
 // query for making a new sponsor
 const makeSponsor = async(req,res,next)=>{
-  db.execute("INSERT INTO `sponsors`(sponsor_name,sponsor_desc,sponsor_tier) VALUES (?,?,?)", [req.body.sponsor_name,req.body.sponsor_desc,req.body.sponsor_tier], (err,sponsor) => {
+  db.execute("INSERT INTO `sponsors`(sponsor_name,sponsor_tier) VALUES (?,?,?)", [req.body.sponsor_name,req.body.sponsor_tier], (err,sponsor) => {
     console.log(req.body);
     if(err) {
       throw err;
@@ -155,12 +167,13 @@ const makeSponsor = async(req,res,next)=>{
         throw err;
       }
       let id = result[0].id;
-      console.log(req.body.sponsor_image);
-      db.execute("INSERT INTO `sponsorImages` (sponsor_id,image) VALUES (?,?)", [id,req.body.sponsor_image], (err,result) => {
-        if(err) {
-          throw err;
-        }
-      })
+      for(const image in req.body.images){
+        db.execute("INSERT INTO `sponsorImages` (sponsor_id,image) VALUES (?,?)", [id,req.body.images[image]], (err,result) => {
+          if(err) {
+            throw err;
+          }
+        })
+      }
     })
   })
 
