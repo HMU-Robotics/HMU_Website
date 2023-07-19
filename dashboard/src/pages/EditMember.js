@@ -18,6 +18,10 @@ function EditMember (){
         navigate(`/member/${academic_id}/${memberLanguage}`);
     }
 
+    const handleLanguage = (e) => {
+        setLanguage(e.target.value);
+    }
+
     const deleteMember = async(academic_id) => {
         await axios.delete(`https://robotics-club.hmu.gr:443/api/dashboard/deleteMember/${academic_id}`)
         .then(response => {
@@ -31,21 +35,28 @@ function EditMember (){
 
     // useEffect to fetch all available members
     useEffect(() => {
-        fetch(`https://robotics-club.hmu.gr:443/api/members/find/all`, {})
+        fetch(`https://robotics-club.hmu.gr:443/api/members/find/all/${memberLanguage}`, {})
           .then((res) => res.json())
           .then((response) => {
             setMemberData(response);
-            console.log(`https://robotics-club.hmu.gr:443/api/members/find/all`);
+            console.log(`https://robotics-club.hmu.gr:443/api/members/find/all/${memberLanguage}`);
             console.log(response)
           })
           .catch((error) => {
             console.log(error);
         })
-      }, []);
+      }, [language]);
 
     return(
         <div>
             <h1 className="d-flex justify-content-center">Edit Members Page</h1>
+            <div>
+                <h2>Select language</h2>
+                <select onChange={handleLanguage}>
+                    <option value="english">English</option>
+                    <option value="greek">Greek</option>
+                </select>
+            </div>
             <h2>List of Members</h2>
             <hr/>
 

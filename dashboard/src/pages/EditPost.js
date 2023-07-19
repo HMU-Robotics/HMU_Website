@@ -29,7 +29,6 @@ function EditPost (){
 
     const handleLanguage = (e) => {
         setLanguage(e.target.value);
-        console.log(postLanguage)
     }
 
 
