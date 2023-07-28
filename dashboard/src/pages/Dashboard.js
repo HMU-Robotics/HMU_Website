@@ -24,35 +24,10 @@ function Dashboard () {
     }
 
     const gotoAddSponsor = () => {
-        navigate("/addsponsor");
+        navigate("/createsponsor");
     }
 
 
-    // return(
-    //     <>
-    //         <h1>Dashboard</h1>
-    //         <div className="wraper">
-    //             <h3>Create Post</h3>
-    //             <Button onClick={gotoCreatePost} variant="primary">Button</Button>
-    //         </div>
-    //         <div className="wrapper">
-    //             <h3>Edit Post</h3>
-    //             <Button onClick={gotoEditPost} variant="primary">Button</Button>
-    //         </div>
-    //         <div className="wrapper">
-    //             <h3>Create Member</h3>
-    //             <Button onClick={gotoCreateMember} variant="primary">Button</Button>
-    //         </div>
-    //         <div className="wrapper">
-    //             <h3>Edit Member</h3>
-    //             <Button onClick={gotoEditMember} variant="primary">Button</Button>
-    //         </div>
-    //         <div className="wrapper">
-    //             <h3>Add Sponsor</h3>
-    //             <Button onClick={gotoAddSponsor} variant="primary">Button</Button>
-    //         </div>
-    //     </>
-    // )
 
     return (
         <>
