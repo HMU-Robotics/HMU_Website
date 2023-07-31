@@ -48,7 +48,7 @@ const resizeImages = async(req, res, next, type) => {
   if (!req.files) return next();
 
   req.body.images = [];
-  const resizeDimensions = type === 'member' ? { width: 400, height: 400 } : { width: 600, height: 500 };
+  const resizeDimensions = type === 'member' ? { width: 400, height: 400 } : { width: 786, height: 1080 };
 
   await Promise.all(
     req.files.map(async file => {
