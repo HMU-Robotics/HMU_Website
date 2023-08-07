@@ -31,7 +31,7 @@ function MemberGrid(props) {
          console.log(error);
          setIsLoading(true);
      })
-   }, []);
+   }, [language]);
 
 
     return (
