@@ -73,11 +73,13 @@ exports.get_latest_posts = async(req,res,next) => {
 exports.get_posts = async(req,res,next) => {
     const { language } = req.params;
     const postLanguage = language == "en" ? "post_en" : "post_gr";
+    // db.execute(`
+    //     SELECT p.*, pi.img
+    //     FROM post p
+    //     LEFT JOIN postImages pi ON p.id = pi.${postLanguage}
+    //     WHERE p.language = ?;
     db.execute(`
-        SELECT p.*, pi.img
-        FROM post p
-        LEFT JOIN postImages pi ON p.id = pi.${postLanguage}
-        WHERE p.language = ?;
+    SELECT * FROM post WHERE post.language = ?;
     `,[language], (err,result) => {
         if(err) throw err;
         console.log(result);
