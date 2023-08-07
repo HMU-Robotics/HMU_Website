@@ -13,7 +13,7 @@ create table post(
     language varchar(10) not null,
     title varchar(80) not null,
     post_desc varchar(200) not null,
-    content varchar(20000) not null,
+    content varchar(16000) not null,
     created_at date,
     updated_at timestamp default current_timestamp on update current_timestamp,
     primary key(id)
