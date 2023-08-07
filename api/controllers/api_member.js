@@ -49,7 +49,13 @@ exports.find_member = async(req,res,next)=>{
 
 
 exports.find_all_members = async(req,res,next)=>{
-    const { language } = req.params;
+    var language;
+    if(!req.params){
+        language = null;
+    }
+    else {
+        language = req.params;
+    }
     db.execute('SELECT * FROM `member` LEFT JOIN `memberImages` ON `member`.`academic_id` = `memberImages`.`member_id` WHERE `member`.`academic_id` <> 1 AND member.language = ?',[language] ,(err,result)=>{
         if(err) throw err
         console.log(result)

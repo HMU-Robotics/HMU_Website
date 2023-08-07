@@ -71,16 +71,14 @@ exports.get_latest_posts = async(req,res,next) => {
 
 // finds all Posts
 exports.get_posts = async(req,res,next) => {
-    // const { language } = req.params;
-    // const postLanguage = language == "en" ? "post_en" : "post_gr";
-    // db.execute(`
-    //     SELECT p.*, pi.img
-    //     FROM post p
-    //     LEFT JOIN postImages pi ON p.id = pi.${postLanguage}
-    //     WHERE p.language = ?;
+    const { language } = req.params;
+    const postLanguage = language == "en" ? "post_en" : "post_gr";
     db.execute(`
-    SELECT * FROM post;
-    `,[], (err,result) => {
+        SELECT p.*, pi.img
+        FROM post p
+        LEFT JOIN postImages pi ON p.id = pi.${postLanguage}
+        WHERE p.language = ?;
+    `,[language], (err,result) => {
         if(err) throw err;
         console.log(result);
         if(result.length == 0) {

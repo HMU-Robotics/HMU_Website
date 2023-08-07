@@ -10,7 +10,7 @@ create table role(
 
 create table post(
     id int not null auto_increment,
-    language varchar(10) not null,
+    language varchar(10) not null default 'en',
     title varchar(80) not null,
     post_desc varchar(200) not null,
     content varchar(16000) not null,
