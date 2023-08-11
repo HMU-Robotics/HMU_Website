@@ -93,7 +93,7 @@ const resizeImages = async(req, res, next, type) => {
 
 // query to make a post
 const makePost = async(req,res,next)=>{
-    db.execute("INSERT INTO `post`(title,language,content,post_desc,created_at) VALUES(?,?,?,?)",[req.body.title,req.body.language,req.body.content,req.body.post_desc,req.body.created_at],(err,user)=>{
+    db.execute("INSERT INTO `post`(title,language,content,post_desc,created_at) VALUES(?,?,?,?,?)",[req.body.title,req.body.language,req.body.content,req.body.post_desc,req.body.created_at],(err,user)=>{
       console.log(req.body)
         if(err) {
           console.log("Test1")
