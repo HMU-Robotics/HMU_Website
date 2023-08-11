@@ -71,14 +71,9 @@ exports.get_latest_posts = async(req,res,next) => {
 
 // finds all Posts
 exports.get_posts = async(req,res,next) => {
-    var language;
-    if(!req.params) {
-        language = null;
-    }
-    else {
-        language = req.params;
-    }
-    const postLanguage = language === "en" ? "post_en" : "post_gr";
+    const { lang } = req.params;
+    
+    const postLanguage = lang === "en" ? "post_en" : "post_gr";
     db.execute(`
         SELECT p.*, pi.img
         FROM post p
