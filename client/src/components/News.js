@@ -8,7 +8,7 @@ function News(props){
     const [data , setData] = useState([])
 
     const { language, setLanguage } = useContext(LanguageContext);
-    const lang = language == "english" ? "en" : "gr";
+    const lang = language === "english" ? "en" : "gr";
 
     
     useEffect(() => {

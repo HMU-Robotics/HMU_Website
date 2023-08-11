@@ -49,6 +49,7 @@ function CreatePost() {
 
 
     const handleLanguage = (e) => {
+        console.log(e.target.value)
         setLanguage(e.target.value)
     }
 
@@ -81,10 +82,17 @@ function CreatePost() {
 
     const handleSubmit = async (e) => {
 
+        e.preventDefault();
+
+        if (!language || !title || !content || !postDesc || !date) {
+            // Handle missing or invalid data
+            console.log("Missing or invalid data");
+            return;
+        }
+
         // checks when button is pressed so it sets state to loading
         setIsLoading(true);
 
-        e.preventDefault()
 
         const formData = new FormData()
         formData.append("language",language)

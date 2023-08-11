@@ -13,7 +13,7 @@ function MemberGrid(props) {
 
   const { language, setLanguage } = useContext(LanguageContext);
 
-  const langUrl = language === 'english' ? "en" : "gr";
+  const langUrl = language === "english" ? "en" : "gr";
 
     const [memberData, setMemberData] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
