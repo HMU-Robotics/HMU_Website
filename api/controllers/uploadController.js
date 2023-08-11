@@ -96,6 +96,7 @@ const makePost = async(req,res,next)=>{
     db.execute("INSERT INTO `post`(title,language,content,post_desc,created_at,type) VALUES(?,?,?,?,?)",[req.body.title,req.body.language,req.body.content,req.body.post_desc,req.body.created_at,req.body.type],(err,user)=>{
       console.log(req.body)
         if(err) {
+          console.log("Test1")
             throw err;
         }
         db.execute("SELECT id FROM post WHERE `title` = ?" , [req.body.title],(err,result)=>{
@@ -139,7 +140,7 @@ const makeMember = async(req,res,next)=>{
     }
     db.execute("SELECT * FROM memberImages WHERE academic_id = ?",[req.body.academic_id], (err,result) => {
       // checks if member already exists in another language, and if it exists doesnt add img again
-      if(result.length === 0){
+      if(!result){
         for(const image in req.body.images){
           db.execute("INSERT INTO `memberImages`(member_id,img) VALUES(?,?)",[req.body.academic_id,req.body.images[image]],(err,result)=>{
             if(err){
