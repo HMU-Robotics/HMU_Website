@@ -54,7 +54,12 @@ exports.find_all_members = async(req,res,next)=>{
         language = null;
     }
     else {
-        language = req.params;
+        if(req.params === "en") {
+            language = "english"
+        }
+        else if(req.params === "gr") {
+            language = "greek"
+        }
     }
     db.execute('SELECT * FROM `member` LEFT JOIN `memberImages` ON `member`.`academic_id` = `memberImages`.`member_id` WHERE `member`.`academic_id` <> 1 AND member.language = ?',[language] ,(err,result)=>{
         if(err) throw err
