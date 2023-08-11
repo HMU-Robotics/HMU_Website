@@ -15,7 +15,15 @@ const db =  mysql.createPool({
 
 
 exports.find_member = async(req,res,next)=>{
-    const { id, language } = req.params
+    const { id, lang } = req.params
+    var language;
+    if(lang === "en"){
+        language = "english"
+    }
+    else if(lang === "gr"){
+        language = "greek"
+    }
+
     if (id == 1) {
         res.status(403).json('Access denied');
         return;
@@ -49,15 +57,16 @@ exports.find_member = async(req,res,next)=>{
 
 
 exports.find_all_members = async(req,res,next)=>{
+    const { lang } = req.params; 
     var language;
-    if(!req.params){
+    if(!lang){
         language = null;
     }
     else {
-        if(req.params === "en") {
+        if(lang === "en") {
             language = "english"
         }
-        else if(req.params === "gr") {
+        else if(lang === "gr") {
             language = "greek"
         }
     }
