@@ -72,6 +72,14 @@ exports.get_latest_posts = async(req,res,next) => {
 // finds all Posts
 exports.get_posts = async(req,res,next) => {
     const { lang } = req.params;
+    var language
+
+    if(lang === "en") {
+        language = "english"
+    }
+    else if(lang === "gr") {
+        language = "greek"
+    }
     
     const postLanguage = lang === "en" ? "post_en" : "post_gr";
     db.execute(`
