@@ -12,7 +12,6 @@ const MemberCard = React.lazy(() => import('./MemberCard'));
 function MemberGrid(props) {
 
   const { language, setLanguage } = useContext(LanguageContext);
-
     const [memberData, setMemberData] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const [fullname, setFullName] = useState(`fullname_en`);

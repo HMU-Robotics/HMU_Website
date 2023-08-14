@@ -80,7 +80,7 @@ function CreateSponsor () {
             console.log(res)
             console.log(res.status)
             setErrorMessage(false);
-            window.location.reload();
+            // window.location.reload();
         })
         .catch((err) => {
             console.log(err)

@@ -16,6 +16,7 @@ const db =  mysql.createPool({
 
 exports.find_member = async(req,res,next)=>{
     const { id } = req.params
+
     if (id == 1) {
         res.status(403).json('Access denied');
         return;

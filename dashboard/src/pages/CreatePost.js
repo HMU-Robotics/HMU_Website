@@ -11,6 +11,7 @@ function CreatePost() {
 
 
     const api_url = "https://robotics-club.hmu.gr:443/api/dashboard/addPost"
+
     const [language, setLanguage] = useState("english")
     const [title, setTitle] = useState("")
     const [postDesc, setPostDesc] = useState("")
@@ -48,6 +49,7 @@ function CreatePost() {
 
 
     const handleLanguage = (e) => {
+        console.log(e.target.value)
         setLanguage(e.target.value)
     }
 
@@ -80,10 +82,17 @@ function CreatePost() {
 
     const handleSubmit = async (e) => {
 
+        e.preventDefault();
+
+        if (!language || !title || !content || !postDesc || !date) {
+            // Handle missing or invalid data
+            console.log("Missing or invalid data");
+            return;
+        }
+
         // checks when button is pressed so it sets state to loading
         setIsLoading(true);
 
-        e.preventDefault()
 
         const formData = new FormData()
         formData.append("language",language)
@@ -106,7 +115,7 @@ function CreatePost() {
             console.log(res)
             console.log(res.status)
             setErrorMessage(false);
-            window.location.reload();
+            // window.location.reload();
         })
         .catch((err) => {
             console.log(err)

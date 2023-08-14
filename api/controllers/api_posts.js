@@ -25,7 +25,7 @@ exports.find_post = async(req,res,next) => {
             res.status(409).json("Invalid input")
         }
         else{
-            db.execute(`SELECT * FROM postImages WHERE post_en = ? OR post_gr = ?`,[id],(err,images)=>{
+            db.execute(`SELECT * FROM postImages WHERE post_en = ? OR post_gr = ?`,[id,id],(err,images)=>{
                 if(err) throw err
                 console.log(images)
                 if(images.length == 0){
@@ -71,14 +71,17 @@ exports.get_latest_posts = async(req,res,next) => {
 
 // finds all Posts
 exports.get_posts = async(req,res,next) => {
-    var language;
-    if(!req.params) {
-        language = null;
+    const { lang } = req.params;
+    var language
+
+    if(lang === "en") {
+        language = "english"
     }
-    else {
-        language = req.params;
+    else if(lang === "gr") {
+        language = "greek"
     }
-    const postLanguage = language === "en" ? "post_en" : "post_gr";
+    
+    const postLanguage = lang === "en" ? "post_en" : "post_gr";
     db.execute(`
         SELECT p.*, pi.img
         FROM post p

@@ -93,24 +93,32 @@ const resizeImages = async(req, res, next, type) => {
 
 // query to make a post
 const makePost = async(req,res,next)=>{
-    db.execute("INSERT INTO `post`(title,language,content,post_desc,created_at,type) VALUES(?,?,?,?,?)",[req.body.title,req.body.language,req.body.content,req.body.post_desc,req.body.created_at,req.body.type],(err,user)=>{
+    db.execute("INSERT INTO `post`(title,language,content,post_desc,created_at) VALUES(?,?,?,?,?)",[req.body.title,req.body.language,req.body.content,req.body.post_desc,req.body.created_at],(err,user)=>{
       console.log(req.body)
         if(err) {
+          console.log("Testtest")
             throw err;
         }
         db.execute("SELECT id FROM post WHERE `title` = ?" , [req.body.title],(err,result)=>{
           if(err){
+            console.log("Test1")
             throw err;
           }
           let id = result[0].id
           db.execute("SELECT * FROM postImages WHERE img = ? OR img = ? OR img = ?", [req.body.images[0],req.body.images[1],req.body.images[2]], (err,imageResult) => {
-            if(err) throw err;
+            if(err){ 
+              console.log("Test2")
+              throw err;
+            }
             // checks if image has already been uploaded , and a postImage row already exists with the image path so it doesnt double upload a picture
             if(imageResult.length === 0){
               const colName = req.body.language === "english" ? "post_en" : "post_gr";
               for(const image in req.body.images){
                 db.execute(`INSERT INTO postImages(${colName}, img) VALUES (?,?)`,[id,req.body.images[image]], (err,result) => {
-                  if(err) throw err;
+                  if(err){ 
+                    console.log("Test3")
+                    throw err;
+                  }
                 })
               }
             }
@@ -139,7 +147,7 @@ const makeMember = async(req,res,next)=>{
     }
     db.execute("SELECT * FROM memberImages WHERE academic_id = ?",[req.body.academic_id], (err,result) => {
       // checks if member already exists in another language, and if it exists doesnt add img again
-      if(result.length === 0){
+      if(!result){
         for(const image in req.body.images){
           db.execute("INSERT INTO `memberImages`(member_id,img) VALUES(?,?)",[req.body.academic_id,req.body.images[image]],(err,result)=>{
             if(err){
