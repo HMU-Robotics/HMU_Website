@@ -18,6 +18,7 @@ create table post(
     created_at date,
     updated_at timestamp default current_timestamp on update current_timestamp,
     primary key(id)
+    index idx_tag (tag)
 );
 
 -- adds post images to posts based on the post tag
@@ -27,7 +28,6 @@ create table postImages(
     img varchar(80) not null,
     primary key (id),
     foreign key (tag) references post(tag)
-    index idx_tag (tag)
 );
 
 create table member(
