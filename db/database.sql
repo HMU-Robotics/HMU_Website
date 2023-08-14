@@ -27,6 +27,7 @@ create table postImages(
     img varchar(80) not null,
     primary key (id),
     foreign key (tag) references post(tag)
+    index idx_tag (tag)
 );
 
 create table member(
