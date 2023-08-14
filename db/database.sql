@@ -17,8 +17,8 @@ create table post(
     content varchar(16000) not null,
     created_at date,
     updated_at timestamp default current_timestamp on update current_timestamp,
-    primary key(id)
-    index idx_tag (tag)
+    primary key(id),
+    index idx_tag using BTREE (tag)
 );
 
 -- adds post images to posts based on the post tag
