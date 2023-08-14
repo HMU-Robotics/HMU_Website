@@ -13,11 +13,11 @@ function CreatePost() {
     const api_url = "https://robotics-club.hmu.gr:443/api/dashboard/addPost"
 
     const [language, setLanguage] = useState("english")
+    const [tag, setTag] = useState("")
     const [title, setTitle] = useState("")
     const [postDesc, setPostDesc] = useState("")
     const [content, setContent] = useState("")
     const [date, setDate] = useState(null)
-    const [imageList, setImageList] = useState([])
     const [isLoading, setIsLoading] = useState(false);
     const [buttonState, setButtonState] = useState(<Button variant="primary" type="submit">Submit</Button>);
     const [errorMessage, setErrorMessage] = useState(false);
@@ -49,8 +49,11 @@ function CreatePost() {
 
 
     const handleLanguage = (e) => {
-        console.log(e.target.value)
         setLanguage(e.target.value)
+    }
+
+    const handleTag = (e) => {
+        setTag(e.target.value)
     }
 
     const handleTitle = (e) => {
@@ -73,12 +76,6 @@ function CreatePost() {
     }
 
 
-    const handleImageList = (e) => {
-        const files = e.target.files;
-        if (!files || files.length === 0) return;
-        setImageList([...imageList, ...files]);
-      }
-
 
     const handleSubmit = async (e) => {
 
@@ -96,14 +93,11 @@ function CreatePost() {
 
         const formData = new FormData()
         formData.append("language",language)
+        formData.append("tag",tag)
         formData.append("title",title)
         formData.append("content",content)
         formData.append("post_desc",postDesc)
         formData.append("created_at",date)
-
-        imageList.forEach((image) => {
-            formData.append("upload_img", image)
-        })
 
 
         await axios.post(api_url, formData, {
@@ -136,6 +130,10 @@ function CreatePost() {
                     <option value="english">English</option>
                     <option value="greek">Greek</option>
                 </Form.Select>
+                <Form.Group className="tag" onChange={handleTag}>
+                    <Form.Label>Post Tag</Form.Label>
+                    <Form.Control type="text"/>
+                </Form.Group>
                 <Form.Group className="title" onChange={handleTitle}>
                     <Form.Label>Title</Form.Label>
                     <Form.Control type="text"/>
@@ -151,11 +149,6 @@ function CreatePost() {
                 <Form.Group className="date" onChange={handleDate}>
                     <Form.Label>Date</Form.Label>
                     <Form.Control type="date"/>
-                </Form.Group>
-                <div className="space"/>
-                <Form.Group onChange={handleImageList}>
-                    <h3>Add Images</h3>
-                    <Form.Control type="file" multiple/>
                 </Form.Group>
                 <div className="space"/>
                 {buttonState}
