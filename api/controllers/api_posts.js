@@ -25,7 +25,7 @@ exports.find_post = async(req,res,next) => {
             res.status(409).json("Invalid input")
         }
         else{
-            db.execute(`SELECT * FROM postImages WHERE post_en = ? OR post_gr = ?`,[id,id],(err,images)=>{
+            db.execute(`SELECT * FROM postImages WHERE tag = ?`,[post[0].tag],(err,images)=>{
                 if(err) throw err
                 console.log(images)
                 if(images.length == 0){

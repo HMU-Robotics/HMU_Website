@@ -13,6 +13,7 @@ import { useState } from 'react';
 import EditMember from './pages/EditMember';
 import MemberPage from './pages/MemberPage'
 import PostPage from './pages/PostPage'
+import AddPostImages from './pages/AddPostImages'
 
 
 function App() {
@@ -30,6 +31,7 @@ return (
         <Route element={<EditMember/>} path="/editmember" exact/>
         <Route element={<CreatePost/>} path="/createpost" exact/>
         <Route element={<EditPost/>} path="/editpost" exact/>
+        <Route element={<AddPostImages/>} path="/addpostimages" exact/>
         <Route element={<CreateSponsor/>} path="/createsponsor" exact/>
         <Route element={<MemberPage/>} path="/member/:academic_id" exact/>
         <Route element={<PostPage/>} path="/post/:post_id" exact/>

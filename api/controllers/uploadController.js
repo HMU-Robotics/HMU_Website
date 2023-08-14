@@ -57,7 +57,6 @@ const resizeImages = async(req, res, next, type) => {
   if (!req.files) return next();
 
   req.body.images = [];
-  const targetDirectory = `/var/www/robotics-club.hmu.gr/HMU_Website/client/public/Uploads/${type}s`;
   let resizeDimensions;
   if(type === 'member') {
     resizeDimensions = {width: 400, height: 400};
@@ -71,66 +70,62 @@ const resizeImages = async(req, res, next, type) => {
 
   await Promise.all(
     req.files.map(async file => {
-      const newFilename = `image-${file.originalname}`;
-
-      // Check if the file already exists in the target directory
-      const fileAlreadyExists = fileExistsInDirectory(targetDirectory, newFilename);
-
-      if (!fileAlreadyExists) {
-        // Resize and save the image if it doesn't exist
-        await sharp(file.buffer)
-          .resize(resizeDimensions.width, resizeDimensions.height)
-          .toFormat("jpeg")
-          .jpeg({ quality: 90 })
-          .toFile(`/var/www/robotics-club.hmu.gr/HMU_Website/client/public/Uploads/${type}s/${newFilename}`);
-        req.body.images.push(newFilename);
-      }
+      const newFilename = `image-${Date.now()}-${file.originalname}`;
+      await sharp(file.buffer)
+        .resize(resizeDimensions.width, resizeDimensions.height)
+        .toFormat("jpeg")
+        .jpeg({ quality: 90 })
+        .toFile(`/var/www/robotics-club.hmu.gr/HMU_Website/client/public/Uploads/${type}s/${newFilename}`);
+      req.body.images.push(newFilename);
     })
   );
   next();
 }
 
 
-// query to make a post
+// query to make a new post
 const makePost = async(req,res,next)=>{
-    db.execute("INSERT INTO `post`(title,language,content,post_desc,created_at) VALUES(?,?,?,?,?)",[req.body.title,req.body.language,req.body.content,req.body.post_desc,req.body.created_at],(err,user)=>{
+    db.execute("INSERT INTO `post`(title,language,tag,content,post_desc,created_at) VALUES(?,?,?,?,?)",[req.body.title,req.body.language,req.body.tag,req.body.content,req.body.post_desc,req.body.created_at],(err,user)=>{
       console.log(req.body)
         if(err) {
             throw err;
         }
-        db.execute("SELECT id FROM post WHERE `title` = ?" , [req.body.title],(err,result)=>{
-          if(err){
-            throw err;
-          }
-          let id = result[0].id
-          db.execute("SELECT * FROM postImages WHERE img = ? OR img = ? OR img = ?", [req.body.images[0],req.body.images[1],req.body.images[2]], (err,imageResult) => {
-            if(err){ 
-              throw err;
-            }
-            // checks if image has already been uploaded , and a postImage row already exists with the image path so it doesnt double upload a picture
-            if(imageResult.length === 0){
-              const colName = req.body.language === "english" ? "post_en" : "post_gr";
-              for(const image in req.body.images){
-                db.execute(`INSERT INTO postImages(${colName}, img) VALUES (?,?)`,[id,req.body.images[image]], (err,result) => {
-                  if(err){ 
-                    throw err;
-                  }
-                })
-              }
-            }
-            else {
-              for(const image in req.body.images){
-                  const colName = req.body.language === "english" ? "post_en" : "post_gr";
-                  db.execute(`UPDATE postImages SET ${colName} = ? WHERE img = ?`, [id,req.body.images[image]], (err,result) => {
-                    if(err) throw err;
-                  })
-              }
-            }
-          })
-        })
     })
-
   res.send("created post")
+}
+
+
+// query to upload and add images to already existing Posts
+const makePostImages = async(req,res,next)=>{
+  for(const image in req.body.images){
+    db.execute("INSERT INTO postImages (tag,img) VALUES (?,?)", [req.body.tag,req.body.images[image]], (err,result) => {
+      if(err) {
+        throw err;
+      }
+      console.log(result);
+    })
+  }
+
+  res.send("added images to posts");
+}
+
+
+// query to get post tags, in order to match postImages to relevant Posts
+const getPostTag = async(req,res,next)=>{
+  db.execute("SELECT tag FROM post", (err,result) => {
+    if(err) {
+      throw err;
+    }
+    console.log(result);
+    if(result.length == 0){
+      res.status(404).json("Tags not Found")
+    }
+    else {
+      res.status(200).json({
+          Item: result
+      })
+    }
+  })
 }
 
 
@@ -312,5 +307,7 @@ const getResult = async (req, res) => {
     updatePost: updatePost,
     deleteMember: deleteMember,
     deletePost: deletePost,
-    deleteSponsor: deleteSponsor
+    deleteSponsor: deleteSponsor,
+    makePostImages: makePostImages,
+    getPostTag: getPostTag
   }

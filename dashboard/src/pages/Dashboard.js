@@ -11,6 +11,10 @@ function Dashboard () {
         navigate("/createpost")
     }
 
+    const gotoAddPostImages = () => {
+      navigate("/addpostimages")
+    }
+
     const gotoEditPost = () => {
         navigate("/editpost")
     }
@@ -44,6 +48,12 @@ function Dashboard () {
               <h3>Edit Post</h3>
               <Button onClick={gotoEditPost} variant="primary">
                 Edit
+              </Button>
+            </div>
+            <div className="wrapper">
+              <h3>Add Post Images</h3>
+              <Button onClick={gotoAddPostImages} variant="primary">
+                Add
               </Button>
             </div>
           </div>
