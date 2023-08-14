@@ -15,7 +15,7 @@ function CreatePost() {
     const [title, setTitle] = useState("")
     const [postDesc, setPostDesc] = useState("")
     const [content, setContent] = useState("")
-    const [date, setDate] = useState()
+    const [date, setDate] = useState(null)
     const [imageList, setImageList] = useState([])
     const [isLoading, setIsLoading] = useState(false);
     const [buttonState, setButtonState] = useState(<Button variant="primary" type="submit">Submit</Button>);
