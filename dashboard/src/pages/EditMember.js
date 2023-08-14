@@ -40,7 +40,7 @@ function EditMember (){
           .catch((error) => {
             console.log(error);
         })
-      }, [language]);
+      }, []);
 
     return(
         <div>
