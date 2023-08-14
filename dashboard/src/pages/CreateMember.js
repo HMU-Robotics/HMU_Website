@@ -10,9 +10,8 @@ function CreateMember (){
 
 
     const api_url = "https://robotics-club.hmu.gr:443/api/dashboard/addMember"
-    const [firstname, setFirstName] = useState("")
-    const [lastname, setLastName] = useState("")
-    const [language, setLanguage] = useState("english")
+    const [fullNameEnglish, setFullNameEnglish] = useState("");
+    const [fullNameGreek, setFullNameGreek] = useState("");
     const [academic_id, setAcademicID] = useState("")
     const [school, setSchool] = useState("ECE")
     const [subscriptionDate, setSubcriptionDate] = useState()
@@ -47,16 +46,12 @@ function CreateMember (){
     }, [errorMessage])
 
 
-    const handleLanguage = (e) => {
-        setLanguage(e.target.value)
+    const handleFullNameEnglish = (e) => {
+        setFullNameEnglish(e.target.value);
     }
 
-    const handleFirstName = (e) => {
-        setFirstName(e.target.value)
-    }
-
-    const handleLastName = (e) => {
-        setLastName(e.target.value)
+    const handleFullNameGreek = (e) => {
+        setFullNameGreek(e.target.value);
     }
 
     const handleAcademicID = (e) => {
@@ -91,10 +86,9 @@ function CreateMember (){
         e.preventDefault()
 
         const formData = new FormData()
-        formData.append("language",language)
+        formData.append("fullname_en", fullNameEnglish)
+        formData.append("fullname_gr", fullNameGreek)
         formData.append("academic_id",academic_id)
-        formData.append("first_name",firstname)
-        formData.append("last_name",lastname)
         formData.append("school",school)
         formData.append("subscription_date",subscriptionDate)
         formData.append("role",role)
@@ -128,17 +122,12 @@ function CreateMember (){
             <Form onSubmit={handleSubmit}>
                 <h2>Create New Member</h2>
                 <hr/>
-                <Form.Label>Language</Form.Label>
-                <Form.Select className="language" onChange={handleLanguage}>
-                    <option value="english">English</option>
-                    <option value="greek">Greek</option>
-                </Form.Select>
-                <Form.Group className="firstname" onChange={handleFirstName}>
-                    <Form.Label>First Name</Form.Label>
+                <Form.Group className="fullname_en" onChange={handleFullNameEnglish}>
+                    <Form.Label>Full Name English</Form.Label>
                     <Form.Control type="text"/>
                 </Form.Group>
-                <Form.Group className="lastname" onChange={handleLastName}>
-                    <Form.Label>Last Name</Form.Label>
+                <Form.Group className="fullname_gr" onChange={handleFullNameGreek}>
+                    <Form.Label>Full Name Greek</Form.Label>
                     <Form.Control type="text"/>
                 </Form.Group>
                 <Form.Group className="academic_id" onChange={handleAcademicID}>

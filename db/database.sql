@@ -32,10 +32,9 @@ create table postImages(
 
 create table member(
     id int not null unique auto_increment,
-    language varchar(10) not null,
     academic_id varchar(25) not null,
-    first_name varchar(50) not null,
-    last_name varchar(50) not null,
+    fullname_en varchar(60) not null,
+    fullname_gr varchar(60) not null,
     school varchar(120) not null,
     subscription Boolean not null default true,
     subscription_date date,
