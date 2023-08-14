@@ -96,18 +96,15 @@ const makePost = async(req,res,next)=>{
     db.execute("INSERT INTO `post`(title,language,content,post_desc,created_at) VALUES(?,?,?,?,?)",[req.body.title,req.body.language,req.body.content,req.body.post_desc,req.body.created_at],(err,user)=>{
       console.log(req.body)
         if(err) {
-          console.log("Testtest")
             throw err;
         }
         db.execute("SELECT id FROM post WHERE `title` = ?" , [req.body.title],(err,result)=>{
           if(err){
-            console.log("Test1")
             throw err;
           }
           let id = result[0].id
           db.execute("SELECT * FROM postImages WHERE img = ? OR img = ? OR img = ?", [req.body.images[0],req.body.images[1],req.body.images[2]], (err,imageResult) => {
             if(err){ 
-              console.log("Test2")
               throw err;
             }
             // checks if image has already been uploaded , and a postImage row already exists with the image path so it doesnt double upload a picture
@@ -116,7 +113,6 @@ const makePost = async(req,res,next)=>{
               for(const image in req.body.images){
                 db.execute(`INSERT INTO postImages(${colName}, img) VALUES (?,?)`,[id,req.body.images[image]], (err,result) => {
                   if(err){ 
-                    console.log("Test3")
                     throw err;
                   }
                 })
@@ -140,23 +136,18 @@ const makePost = async(req,res,next)=>{
 
 // query for making a new member
 const makeMember = async(req,res,next)=>{
-  db.execute("INSERT INTO `member`(academic_id,language,first_name,last_name,school,subscription_date,role) VALUES(?,?,?,?,?,?,?)",[req.body.academic_id,req.body.language,req.body.first_name,req.body.last_name,req.body.school,req.body.subscription_date,req.body.role],(err,member)=>{
+  db.execute("INSERT INTO `member`(academic_id,fullname_en,fullname_gr,school,subscription_date,role) VALUES(?,?,?,?,?,?)",[req.body.academic_id,req.body.fullname_en,req.body.fullname_gr,req.body.school,req.body.subscription_date,req.body.role],(err,member)=>{
     console.log(req.body)
     if(err) {
         throw err;
     }
-    db.execute("SELECT * FROM memberImages WHERE academic_id = ?",[req.body.academic_id], (err,result) => {
-      // checks if member already exists in another language, and if it exists doesnt add img again
-      if(!result){
-        for(const image in req.body.images){
-          db.execute("INSERT INTO `memberImages`(member_id,img) VALUES(?,?)",[req.body.academic_id,req.body.images[image]],(err,result)=>{
-            if(err){
-              throw err;
-            }
-          })
+    for(const image in req.body.images){
+      db.execute("INSERT INTO `memberImages`(member_id,img) VALUES(?,?)",[req.body.academic_id,req.body.images[image]],(err,result)=>{
+        if(err){
+          throw err;
         }
-      }
-    })
+      })
+    }
   })
 
 res.send("created member")
@@ -165,7 +156,7 @@ res.send("created member")
 
 // query for making a new sponsor
 const makeSponsor = async(req,res,next)=>{
-  db.execute("INSERT INTO `sponsors`(sponsor_name,sponsor_tier) VALUES (?,?,?)", [req.body.sponsor_name,req.body.sponsor_tier], (err,sponsor) => {
+  db.execute("INSERT INTO `sponsors`(sponsor_name,sponsor_tier) VALUES (?,?)", [req.body.sponsor_name,req.body.sponsor_tier], (err,sponsor) => {
     console.log(req.body);
     if(err) {
       throw err;
