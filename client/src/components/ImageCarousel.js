@@ -55,7 +55,7 @@ function ImageCarousel(props) {
     >
       {posts?.Item?.map((post, index) => (
         <Suspense key={index} fallback={<div>Loading . . .</div>}>
-          <Card  id={post?.id} title={post?.title} desc={post?.post_desc} date={post?.created_at} img={post?.img} />
+          <Card  id={post?.id} title={post?.title} desc={post?.post_desc} date={post?.created_at} img={post?.images[0]} />
         </Suspense>
       ))}
     </Carousel>
