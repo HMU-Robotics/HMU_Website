@@ -310,3 +310,4 @@ const getResult = async (req, res) => {
     makePostImages: makePostImages,
     getPostTag: getPostTag
   }
+
