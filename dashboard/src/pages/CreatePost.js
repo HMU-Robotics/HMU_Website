@@ -81,7 +81,7 @@ function CreatePost() {
 
         e.preventDefault();
 
-        if (!language || !title || !content || !postDesc || !date) {
+        if (!language || !tag || !title || !content || !postDesc || !date) {
             // Handle missing or invalid data
             console.log("Missing or invalid data");
             return;
