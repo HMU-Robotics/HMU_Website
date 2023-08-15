@@ -70,31 +70,58 @@ exports.get_latest_posts = async(req,res,next) => {
 
 
 // finds all Posts
-exports.get_posts = async(req,res,next) => {
+exports.get_posts = async (req, res, next) => {
     const { lang } = req.params;
     var language;
 
-    if(lang === "en") {
+    if (lang === "en") {
         language = "english"
-    }
-    else if(lang === "gr") {
+    } else if (lang === "gr") {
         language = "greek"
     }
-    
+
     db.execute(`
         SELECT p.*, pi.img
         FROM post p
         LEFT JOIN postImages pi ON p.tag = pi.tag
         WHERE p.language = ?;
-    `,[language], (err,result) => {
-        if(err) throw err;
-        console.log(result);
-        if(result.length == 0) {
+    `, [language], (err, result) => {
+        if (err) throw err;
+        
+        if (result.length == 0) {
             res.status(404).json("Posts not found");
-        }
-        else {
+        } else {
+            const postsMap = new Map(); // Create a map to group posts by ID
+            
+            result.forEach(row => {
+                const post = {
+                    id: row.id,
+                    language: row.language,
+                    tag: row.tag,
+                    title: row.title,
+                    post_desc: row.post_desc,
+                    content: row.content,
+                    created_at: row.created_at,
+                    updated_at: row.updated_at,
+                    images: [] // Initialize an empty array for images
+                };
+                
+                // Check if the post already exists in the map
+                if (!postsMap.has(row.id)) {
+                    postsMap.set(row.id, post);
+                }
+                
+                // Add image to the post's images array
+                if (row.img) {
+                    postsMap.get(row.id).images.push(row.img);
+                }
+            });
+            
+            // Convert the map values to an array of posts
+            const posts = Array.from(postsMap.values());
+            
             res.status(200).json({
-                Item: result
+                Item: posts
             });
         }
     });
