@@ -111,22 +111,21 @@ const makePostImages = async(req,res,next)=>{
 
 
 // query to get post tags, in order to match postImages to relevant Posts
-const getPostTag = async(req,res,next)=>{
-  db.execute("SELECT tag FROM post", (err,result) => {
-    if(err) {
+const getPostTag = async(req, res, next) => {
+  db.execute("SELECT DISTINCT tag FROM post", (err, result) => {
+    if (err) {
       throw err;
     }
     console.log(result);
-    if(result.length == 0){
-      res.status(404).json("Tags not Found")
-    }
-    else {
+    if (result.length === 0) {
+      res.status(404).json("Tags not Found");
+    } else {
       res.status(200).json({
-          Item: result
-      })
+        Item: result
+      });
     }
-  })
-}
+  });
+};
 
 
 // query for making a new member
@@ -224,8 +223,8 @@ const updateMember = async(req,res,next) => {
 const deletePost = async(req,res,next) => {
   db.execute(`
     DELETE FROM postImages
-    WHERE post_id = ?
-  `, [req.body.id], (err,result) => {
+    WHERE tag = ?
+  `, [req.body.tag], (err,result) => {
     if(err) throw err;
     db.execute(`
       DELETE FROM post
