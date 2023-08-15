@@ -29,63 +29,21 @@ const responsive = {
 
 function ImageCarousel(props) {
   const [carousel, setCarousel] = useState([]);
-  const [projects, setProjects] = useState([]);
-  const [seminars, setSeminars] = useState([]);
+  const [posts, setPosts] = useState([]);
 
+  // useEffect for data
   useEffect(() => {
-    setProjects(props.data[0]);
-    setSeminars(props.data[1])
+    setPosts(props.data);
   }, [props.data]);
 
 
-  // temporary change 
+  // useEffect for carousel
   useEffect(() => {
-    if (projects !== undefined && projects !== null && seminars !== undefined && seminars !== null) {
-      // switch(props.category) {
-      //   case "projects":
-      //     setCarousel(projectCar);
-      //     break;
-      //   case "seminars":
-      //     setCarousel(seminarCar);
-      //     break;
-      //   case "news":
-      //     setCarousel(newsCar);
-      //     break;
-      //   default:
-      //     setCarousel(<div>Loading . . .</div>);
-      //     break;
-      // }
-
-      setCarousel(newsCar);
-    }
-    else {
-      setCarousel(<div>Loading . . .</div>);
-    }
-  }, [props.category, projects, seminars]);
-
-  const projectCar = projects && projects.Item ? (
-    <Carousel
-      responsive={responsive}
-      swipeable={true}
-      arrows={true}
-      autoPlay={true}
-      autoPlaySpeed={5000}
-      infinite={true}
-      className="project-carousel"
-    >
-      {projects?.Item?.map((project, index) => (
-        <Suspense key={index} fallback={<div>Loading . . .</div>}>
-          {console.log(project)}
-          <Card id={project?.id} title={project?.title} desc={project?.post_desc} date={project?.created_at} img={project?.img} />
-        </Suspense>
-      ))}
-    </Carousel>
-  ) : (
-    <div>Loading . . .</div>
-  );
+    setCarousel(postCarousel);  
+  }, [posts]);
   
 
-  const newsCar = projects && projects.Item ?  (
+  const postCarousel = posts && posts.Item ?  (
     <Carousel
       responsive={responsive}
       swipeable={true}
@@ -93,19 +51,11 @@ function ImageCarousel(props) {
       autoPlay={true}
       autoPlaySpeed={5000}
       infinite={true}
-      className="news-carousel"
+      className="post-carousel"
     >
-      {console.log(projects)}
-      {projects?.Item?.map((project, index) => (
+      {posts?.Item?.map((post, index) => (
         <Suspense key={index} fallback={<div>Loading . . .</div>}>
-          {console.log(project)}
-          <Card  id={project?.id} title={project?.title} desc={project?.post_desc} date={project?.created_at} img={project?.img} />
-        </Suspense>
-      ))}
-      {seminars?.Item?.map((seminar, index) => (
-        <Suspense key={index} fallback={<div>Loading . . .</div>}>
-          {console.log(seminar)}
-          <Card  id={seminar?.id} title={seminar?.title} desc={seminar?.post_desc} date={seminar?.created_at} img={seminar?.img} />
+          <Card  id={post?.id} title={post?.title} desc={post?.post_desc} date={post?.created_at} img={post?.images[0]} />
         </Suspense>
       ))}
     </Carousel>
@@ -113,26 +63,6 @@ function ImageCarousel(props) {
     <div>Loading . . .</div>
   );
 
-  const seminarCar = projects && projects.Item ?  (
-    <Carousel
-      responsive={responsive}
-      swipeable={true}
-      arrows={true}
-      autoPlay={true}
-      autoPlaySpeed={5000}
-      infinite={true}
-      className="seminar-carousel"
-    >
-      {projects?.Item?.map((seminar, index) => (
-        <Suspense key={index} fallback={<div>Loading . . .</div>}>
-          {console.log(seminar)}
-          <Card id={seminar?.id} title={seminar?.title} desc={seminar?.post_desc} date={seminar?.created_at} img={seminar?.img} />
-        </Suspense>
-      ))}
-    </Carousel>
-  ) : (
-    <div>Loading . . .</div>
-  );
 
   return <>{carousel}</>;
 }

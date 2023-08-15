@@ -4,7 +4,6 @@ import { useParams } from "react-router-dom";
 import ReactMarkdown from "react-markdown";
 
 
-
 function Posts() {
 
     const { postid } = useParams();

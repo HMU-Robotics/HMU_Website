@@ -17,6 +17,7 @@ const db =  mysql.createPool({
 // finds Post based on Post ID retrieved from url
 exports.find_post = async(req,res,next) => {
     const {id} = req.params
+
     db.execute('SELECT * FROM `post` WHERE `id` = ?', [id],(err,post) => {
         if(err) throw err
         console.log(post)
@@ -24,7 +25,7 @@ exports.find_post = async(req,res,next) => {
             res.status(409).json("Invalid input")
         }
         else{
-            db.execute('SELECT * FROM `postImages` WHERE `post_id` = ?',[id],(err,images)=>{
+            db.execute(`SELECT * FROM postImages WHERE tag = ?`,[post[0].tag],(err,images)=>{
                 if(err) throw err
                 console.log(images)
                 if(images.length == 0){
@@ -68,50 +69,60 @@ exports.get_latest_posts = async(req,res,next) => {
 }
 
 
-// finds All Projects with their data for Project Carousel
-exports.get_projects = async(req,res,next) => {
-    db.execute(`
-        SELECT p.*, GROUP_CONCAT(pi.img) AS img
-        FROM post p
-        LEFT JOIN postImages pi ON p.id = pi.post_id
-        WHERE p.type = 'Project'
-        GROUP BY p.id;
-        `
-        ,   (err,result) => {
-            if(err) throw err
-            console.log(result)
-            if(result.length == 0){
-                res.status(404).json("Projects not Found")
-            }
-            else {
-                res.status(200).json({
-                    Item: result
-                })
-            }
-        }
-        )
-}
+// finds all Posts
+exports.get_posts = async (req, res, next) => {
+    const { lang } = req.params;
+    var language;
 
+    if (lang === "en") {
+        language = "english"
+    } else if (lang === "gr") {
+        language = "greek"
+    }
 
-// finds All Seminars with their data for Seminar Carousel
-exports.get_seminars = async(req,res,next) => {
     db.execute(`
-        SELECT p.*, GROUP_CONCAT(pi.img) AS img
+        SELECT p.*, pi.img
         FROM post p
-        LEFT JOIN postImages pi ON p.id = pi.post_id
-        WHERE p.type = 'Seminar'
-        GROUP BY p.id;`
-        ,   (err,result) => {
-            if(err) throw err
-            console.log(result)
-            if(result.length == 0){
-                res.status(404).json("Seminars not Found")
-            }
-            else {
-                res.status(200).json({
-                    Item: result
-                })
-            }
+        LEFT JOIN postImages pi ON p.tag = pi.tag
+        WHERE p.language = ?;
+    `, [language], (err, result) => {
+        if (err) throw err;
+        
+        if (result.length == 0) {
+            res.status(404).json("Posts not found");
+        } else {
+            const postsMap = new Map(); // Create a map to group posts by ID
+            
+            result.forEach(row => {
+                const post = {
+                    id: row.id,
+                    language: row.language,
+                    tag: row.tag,
+                    title: row.title,
+                    post_desc: row.post_desc,
+                    content: row.content,
+                    created_at: row.created_at,
+                    updated_at: row.updated_at,
+                    images: [] // Initialize an empty array for images
+                };
+                
+                // Check if the post already exists in the map
+                if (!postsMap.has(row.id)) {
+                    postsMap.set(row.id, post);
+                }
+                
+                // Add image to the post's images array
+                if (row.img) {
+                    postsMap.get(row.id).images.push(row.img);
+                }
+            });
+            
+            // Convert the map values to an array of posts
+            const posts = Array.from(postsMap.values());
+            
+            res.status(200).json({
+                Item: posts
+            });
         }
-        )
+    });
 }

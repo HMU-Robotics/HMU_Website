@@ -24,6 +24,7 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    align-items: center;
     margin-right: 5em;
     margin-left: 5em;
     margin-top: 1em;
@@ -56,13 +57,31 @@
 
 
  /* Extra small devices (phones, 600px and down) */
- @media only screen and (max-width: 600px) {}
+ @media only screen and (max-width: 600px) {
+    .flags a {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+ }
 
  /* Small devices (portrait tablets and large phones, 600px and up) */
- @media only screen and (min-width: 600px) {}
+ @media only screen and (min-width: 600px) {
+    .flags a {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+ }
  
  /* Medium devices (landscape tablets, 768px and up) */
- @media only screen and (min-width: 768px) {}
+ @media only screen and (min-width: 768px) {
+    .flags a {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+ }
  
  /* Large devices (laptops/desktops, 992px and up) */
  @media only screen and (min-width: 992px) {
@@ -79,9 +98,19 @@
         margin-left: 2em;
     }
 
+    .social {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+        margin-left: 15em;
+        
+      }
+
     .social a{
         display: flex;
         flex-direction: row;
+        align-items: center;
         margin-right: 1em;
     }
     .nav-links{
@@ -90,6 +119,11 @@
         margin-left: 8em;
         font-size: large;
     }
+    .flags a {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
  }
  
  /* Extra large devices (large laptops and desktops, 1200px and up) */
@@ -109,6 +143,7 @@
 
     .social {
         margin-left: 12em;
+        justify-content: center;
     }
     .social a{
         display: flex;
@@ -124,6 +159,9 @@
     }
     
 
-
+    .flags a{
+        display: flex;
+        justify-content: space-around;
+    }
 
  } 

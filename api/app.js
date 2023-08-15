@@ -7,6 +7,7 @@ const api_users = require("./routes/api_user")
 const api_member = require("./routes/api_member")
 const api_dashboard = require("./routes/api_dashboard")
 const api_posts = require("./routes/api_posts")
+const api_sponsors = require("./routes/api_sponsors")
 const helmet = require("helmet")
 const path = require("path")
 const cookieParser = require('cookie-parser');
@@ -60,10 +61,9 @@ app.use((req,res,next)=>{
 app.use('/api/auth',api_auth)
 app.use('/api/storage',api_storage)
 app.use('/api/members',api_member)
-//app.use('/api/user',api_users)
 app.use('/api/dashboard',api_dashboard)
 app.use('/api/posts', api_posts)
-
+app.use('/api/sponsors', api_sponsors)
 
 
 module.exports = app

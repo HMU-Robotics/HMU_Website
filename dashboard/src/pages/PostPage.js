@@ -1,27 +1,54 @@
-import axios from "axios"
-import React , { useEffect, useState } from "react"
+import React , { useState, useEffect } from "react"
+import  Form  from "react-bootstrap/Form"
 import Button from "react-bootstrap/esm/Button"
-import Form from "react-bootstrap/Form"
+import axios from "axios"
 import SpinnerButton from "../components/SpinnerButton"
 import AlertBox from "../components/AlertBox"
-import "./CreatePost.css"
+import { useParams } from "react-router-dom";
 
 
-function CreatePost() {
+
+function PostPage() {
+    const { postID } = useParams();
+    const [postData, setPostData] = useState([]);
+    const api_url = `https://robotics-club.hmu.gr:443/api/dashboard/editPost/${postID}`
 
 
-    const api_url = "https://robotics-club.hmu.gr:443/api/dashboard/addPost"
-
-    const [language, setLanguage] = useState("english")
-    const [tag, setTag] = useState()
-    const [title, setTitle] = useState()
-    const [postDesc, setPostDesc] = useState()
-    const [content, setContent] = useState()
-    const [date, setDate] = useState(null)
+    const [title, setTitle] = useState("")
+    const [postDesc, setPostDesc] = useState("")
+    const [content, setContent] = useState("")
+    const [date, setDate] = useState()
+    const [imageList, setImageList] = useState([])
     const [isLoading, setIsLoading] = useState(false);
     const [buttonState, setButtonState] = useState(<Button variant="primary" type="submit">Submit</Button>);
     const [errorMessage, setErrorMessage] = useState(false);
     const [alertState, setAlertState] = useState(null);
+
+
+    // enters previous data into the text boxes of page
+    const setStartingData = (post) => {
+        setTitle(post.title);
+        setContent(post.content);
+        setDate(post.date);
+    }
+    
+    
+    
+    // useEffect for post data
+    useEffect(() => {
+        fetch(`https://robotics-club.hmu.gr:443/api/posts/${postID}`, {})
+            .then((res) => res.json())
+            .then((response) => {
+                setPostData(response);
+                setStartingData(postData.post);
+                console.log(`https://robotics-club.hmu.gr:443/api/posts/${postID}`);
+                console.log(response)
+            })
+            .catch((error) => {
+                console.log(error);
+            })
+    }, []);
+    
 
 
     // useEffect for loading button
@@ -46,15 +73,7 @@ function CreatePost() {
             setAlertState(null);
         }
     }, [errorMessage]);
-
-
-    const handleLanguage = (e) => {
-        setLanguage(e.target.value)
-    }
-
-    const handleTag = (e) => {
-        setTag(e.target.value)
-    }
+    
 
     const handleTitle = (e) => {
         setTitle(e.target.value)
@@ -76,28 +95,29 @@ function CreatePost() {
     }
 
 
+    const handleImageList = (e) => {
+        const files = e.target.files;
+        if (!files || files.length === 0) return;
+        setImageList([...imageList, ...files]);
+      }      
+
 
     const handleSubmit = async (e) => {
-
-        e.preventDefault();
-
-        if (!language || !tag || !title || !content || !postDesc || !date) {
-            // Handle missing or invalid data
-            console.log("Missing or invalid data");
-            return;
-        }
 
         // checks when button is pressed so it sets state to loading
         setIsLoading(true);
 
+        e.preventDefault()
 
         const formData = new FormData()
-        formData.append("language",language)
-        formData.append("tag",tag)
         formData.append("title",title)
         formData.append("content",content)
         formData.append("post_desc",postDesc)
         formData.append("created_at",date)
+
+        imageList.forEach((image) => {
+            formData.append("upload_img", image)
+        })
 
 
         await axios.post(api_url, formData, {
@@ -109,7 +129,7 @@ function CreatePost() {
             console.log(res)
             console.log(res.status)
             setErrorMessage(false);
-            // window.location.reload();
+            window.location.reload();
         })
         .catch((err) => {
             console.log(err)
@@ -122,18 +142,9 @@ function CreatePost() {
 
     return(
         <>
-            <h1 className="d-flex justify-content-center">Create New Post</h1>
+            <h1 className="d-flex justify-content-center">Update Post</h1>
             
             <Form onSubmit={handleSubmit}>
-                <Form.Label>Language</Form.Label>
-                <Form.Select className="language" onChange={handleLanguage}>
-                    <option value="english">English</option>
-                    <option value="greek">Greek</option>
-                </Form.Select>
-                <Form.Group className="tag" onChange={handleTag}>
-                    <Form.Label>Post Tag</Form.Label>
-                    <Form.Control type="text"/>
-                </Form.Group>
                 <Form.Group className="title" onChange={handleTitle}>
                     <Form.Label>Title</Form.Label>
                     <Form.Control type="text"/>
@@ -150,12 +161,16 @@ function CreatePost() {
                     <Form.Label>Date</Form.Label>
                     <Form.Control type="date"/>
                 </Form.Group>
-                <div className="space"/>
+                <Form.Group onChange={handleImageList}>
+                    <Form.Label>Add Images</Form.Label>
+                    <Form.Control type="file" multiple/>
+                </Form.Group>
                 {buttonState}
                 {alertState}
             </Form>
         </>
     )
+
 }
 
-export default CreatePost
+export default PostPage;

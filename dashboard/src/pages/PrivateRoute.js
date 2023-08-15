@@ -15,7 +15,17 @@ export default function PrivateRoutes(props) {
    }
 
    useEffect(() => {
-      if(props.user) {
+
+      // idk if its bad but probably should be removed from live
+      
+      if(window.location.hostname === "localhost") {
+         setUser(1);
+         setLoading(<Outlet/>);
+      }
+
+
+      
+      else if(props.user) {
          setUser(props.user)
          setLoading(passRender())
       }

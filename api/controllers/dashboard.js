@@ -13,18 +13,18 @@ const db =  mysql.createPool({
 
 
 ////////////////// Posts //////////////////////////////
-exports.get_dashboard = async(req,res,next)=>{
-    return res.sendFile(path.join(__dirname,'../public/Html/Dashboard.html'))
-}
+// exports.get_dashboard = async(req,res,next)=>{
+//     return res.sendFile(path.join(__dirname,'../public/Html/Dashboard.html'))
+// }
 
 
-exports.get_newpost = async(req,res,next)=>{
-    return res.sendFile(path.join(__dirname,'../public/Html/Post.html'))
-}
+// exports.get_newpost = async(req,res,next)=>{
+//     return res.sendFile(path.join(__dirname,'../public/Html/Post.html'))
+// }
 
-exports.get_posts = async(req,res,next)=>{
-    return res.sendFile(path.join(__dirname,'../public/Html/editPost.html'))
-}
+// exports.get_posts = async(req,res,next)=>{
+//     return res.sendFile(path.join(__dirname,'../public/Html/editPost.html'))
+// }
 
 exports.post_newpost = async(req,res,next)=>{
 
@@ -35,18 +35,18 @@ exports.post_post = async(req,res,next)=>{
 }
 /////////////////// Members //////////////////////////
 
-exports.get_newMember = async(req,res,next)=>{
-    return res.sendFile(path.join(__dirname,'../public/Html/Member.html'))
-}
-exports.get_Members = async(req,res,next)=>{
-    return res.sendFile(path.join(__dirname,'../public/Html/editMember.html'))
-}
+// exports.get_newMember = async(req,res,next)=>{
+//     return res.sendFile(path.join(__dirname,'../public/Html/Member.html'))
+// }
+// exports.get_Members = async(req,res,next)=>{
+//     return res.sendFile(path.join(__dirname,'../public/Html/editMember.html'))
+// }
 
 
-exports.post_newmember = async(req,res,next)=>{
+// exports.post_newmember = async(req,res,next)=>{
 
-}
+// }
 
-exports.post_member = async(req,res,next)=>{
+// exports.post_member = async(req,res,next)=>{
 
-}
+// }

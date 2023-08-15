@@ -1,75 +1,34 @@
-import React, { useState , useEffect } from "react";
+import React, { useState , useEffect , useContext} from "react";
 import "./News.css"
 import ImageCarousel from "./ImageCarousel";
-
+import LanguageContext from "../hooks/LanguageContext"
 
 function News(props){
 
     const [data , setData] = useState([])
 
-    // useEffect(() => {
-    //     fetch(`https://robotics-club.hmu.gr:443/api/posts/find/latest`, {})
-    //     .then((res) => res.json())
-    //     .then((response) => {
-    //       setData(response)
-    //       console.log(`https://robotics-club.hmu.gr:443/api/posts/find/latest`);
-    //       console.log(response)
-    //     })
-    //     .catch((error) => {
-    //       console.log(error);
-    //   })
-    // }, [props]);
+    const { language, setLanguage } = useContext(LanguageContext);
+    const lang = language === "english" ? "en" : "gr";
 
-
-    // Changes of News to show all projects and seminars in carousel instead of news
-
-
-    // fetches simultaneously both projects and seminars , concats into data for it to be iterated in carousel
+    
     useEffect(() => {
-      Promise.all([
-        fetch(`https://robotics-club.hmu.gr:443/api/posts/find/projects`),
-        fetch(`https://robotics-club.hmu.gr:443/api/posts/find/seminars`)
-      ])
-        .then(([projectsResponse, seminarsResponse]) =>
-          Promise.all([projectsResponse.json(), seminarsResponse.json()])
-        )
-        .then(([projectsData, seminarsData]) => {
-          // const combinedData = [...projectsData, ...seminarsData];
-          // setData(combinedData);
-          // console.log(`https://robotics-club.hmu.gr:443/api/posts/find/projects`);
-          // console.log(`https://robotics-club.hmu.gr:443/api/posts/find/seminars`);
-          // console.log(combinedData);
-          const combinedData = [];
-      
-          if (Array.isArray(projectsData)) {
-            combinedData.push(...projectsData[0]);
-          } else if (typeof projectsData === 'object') {
-            combinedData.push(projectsData);
-          }
-          
-          if (Array.isArray(seminarsData)) {
-            combinedData.push(...seminarsData[0]);
-          } else if (typeof seminarsData === 'object') {
-            combinedData.push(seminarsData);
-          }
-          
-          setData(combinedData);
-
-          console.log(`https://robotics-club.hmu.gr:443/api/posts/find/projects`);
-          console.log(`https://robotics-club.hmu.gr:443/api/posts/find/seminars`);
-          console.log(combinedData)
-
+      fetch(`https://robotics-club.hmu.gr:443/api/posts/find/all/${lang}`, {})
+        .then((res) => res.json())
+        .then((response) => {
+          setData(response);
+          console.log(`https://robotics-club.hmu.gr:443/api/posts/find/all/${lang}`);
+          console.log(response)
         })
         .catch((error) => {
           console.log(error);
-        });
-    }, [props]);
+      })
+    }, [language]);
 
 
     return(
         <div className="new-cont">
             <h2 className="new-title">Activities</h2>
-            <ImageCarousel className="news-carousel" category="news" data={data}></ImageCarousel>
+            <ImageCarousel className="news-carousel" data={data}></ImageCarousel>
         </div>
     )
 }

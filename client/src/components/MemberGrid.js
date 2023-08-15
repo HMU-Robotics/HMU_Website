@@ -1,17 +1,20 @@
 import React, { Suspense } from 'react'
 import Grid2 from '@mui/material/Unstable_Grid2/Grid2';
 import './MemberGrid.css'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useContext} from 'react'
+import LanguageContext from '../hooks/LanguageContext';
 
 
 const MemberCard = React.lazy(() => import('./MemberCard'));
 
-
+// TODO fix sorting of members by name / years member.
 
 function MemberGrid(props) {
 
+  const { language, setLanguage } = useContext(LanguageContext);
     const [memberData, setMemberData] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
+    const [fullname, setFullName] = useState(`fullname_en`);
 
      useEffect(() => {
      fetch(`https://robotics-club.hmu.gr:443/api/members/find/all`, {})
@@ -19,7 +22,6 @@ function MemberGrid(props) {
        .then((response) => {
          setIsLoading(false);
          setMemberData(response);
-        //  sortMembers(response);
          console.log(`https://robotics-club.hmu.gr:443/api/members/find/all`);
          console.log(response)
        })
@@ -29,38 +31,20 @@ function MemberGrid(props) {
      })
    }, []);
 
-
-   function sortMembers(memberList) {
-    const { members } = memberList.Item;
-  
-    const sortedMembers = members.reduce(
-      (acc, member) => {
-        if (member.subscription === 1) {
-          acc.currentMembers.push(member);
-        } else if (member.subscription === 0) {
-          acc.previousMembers.push(member);
-        }
-        return acc;
-      },
-      { currentMembers: [], previousMembers: [] }
-    );
-  
-    // sort alphabetically based on last name
-    sortedMembers.currentMembers.sort((a, b) =>
-      a.last_name.toLowerCase().localeCompare(b.last_name.toLowerCase())
-    );
-  
-    // sort based on year finished
-    sortedMembers.previousMembers.sort((a, b) => a.end_date - b.end_date);
-  
-    const combinedMembers = [...sortedMembers.currentMembers, ...sortedMembers.previousMembers];
-    setMemberData(combinedMembers);
-  }
+   useEffect(() => {
+    if(language === "english") {
+      setFullName(`fullname_en`);
+    }
+    else if(language === "greek") {
+      setFullName(`fullname_gr`);
+    }
+   }, [language]);
 
 
     return (
       <>
-        <h2 className="coordination-box-title">Coordination Members</h2>
+        {language === "english" && <h2 className="coordination-box-title">Coordination Members</h2>}
+        {language === "greek" && <h2 className="coordination-box-title">Μέλη Συντονισμού</h2>}
         <Grid2 container spacing={4} columns={12} display="flex" alignItems="center">
           {memberData && memberData.Item ? (
             <>
@@ -76,8 +60,7 @@ function MemberGrid(props) {
                           <MemberCard
                             key={role}
                             end_date={filteredMembers[0]?.end_date}
-                            first_name={filteredMembers[0]?.first_name}
-                            last_name={filteredMembers[0]?.last_name}
+                            fullname={filteredMembers[0]?.[fullname]}
                             school={filteredMembers[0]?.school}
                             subscription_date={filteredMembers[0]?.subscription_date}
                             image={filteredMembers[0]?.images[0]?.image_url}
@@ -96,9 +79,10 @@ function MemberGrid(props) {
             <div>Loading...</div>
           )}
         </Grid2>
-    
+
         <div className="member-grid member-grid-members">
-          <h2 className="members-box-title">Members</h2>
+          {language === "english" && <h2 className="members-box-title">Members</h2>}
+          {language === "greek" && <h2 className="members-box-title">Μέλη</h2>}
           <Grid2 container spacing={4} columns={12} display="flex" alignItems="center">
           {memberData && memberData.Item ? (
             <>
@@ -109,8 +93,7 @@ function MemberGrid(props) {
                     <MemberCard
                       key={i}
                       end_date={member?.end_date}
-                      first_name={member?.first_name}
-                      last_name={member?.last_name}
+                      fullname={member?.[fullname]}
                       school={member?.school}
                       subscription_date={member?.subscription_date}
                       image={member?.images[0]?.image_url}
@@ -128,8 +111,8 @@ function MemberGrid(props) {
         </div>
       </>
     );
-    
-    
+
+
 
 }
 

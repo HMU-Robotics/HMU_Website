@@ -10,32 +10,35 @@ create table role(
 
 create table post(
     id int not null auto_increment,
+    language varchar(10) not null,
+    tag varchar(50) not null,
     title varchar(80) not null,
     post_desc varchar(200) not null,
-    content varchar(20000) not null,
-    type varchar(20) not null,
+    content varchar(16000) not null,
     created_at date,
     updated_at timestamp default current_timestamp on update current_timestamp,
-    primary key(id)
+    primary key(id),
+    index idx_tag using BTREE (tag)
 );
 
+-- adds post images to posts based on the post tag
 create table postImages(
     id int not null auto_increment,
-    post_id int not null,
+    tag varchar(50) not null,
     img varchar(80) not null,
     primary key (id),
-    foreign key (post_id) references post(id)
+    foreign key (tag) references post(tag)
 );
 
 create table member(
     id int not null unique auto_increment,
     academic_id varchar(25) not null,
-    first_name varchar(50) not null,
-    last_name varchar(50) not null,
+    fullname_en varchar(60) not null,
+    fullname_gr varchar(60) not null,
     school varchar(120) not null,
     subscription Boolean not null default true,
     subscription_date date,
-    end_date date,
+    end_date date default null,
     role varchar(20) not null default "Member",
     created_at timestamp default current_timestamp,
     updated_at timestamp default current_timestamp on update current_timestamp,
@@ -62,6 +65,25 @@ create table memberImages(
     caption varchar(80),
     primary key (id),
     foreign key (member_id) references member(academic_id)
+);
+
+
+create table sponsor(
+    id int not null auto_increment,
+    sponsor_name varchar(50) not null,
+    sponsor_tier varchar(20) not null,
+    created_at timestamp default current_timestamp,
+    updated_at timestamp default current_timestamp on update current_timestamp,
+    primary key (id)
+);
+
+
+create table sponsorImages(
+    id int not null auto_increment,
+    sponsor_id int not null,
+    image varchar(100) not null,
+    primary key(id),
+    foreign key (sponsor_id) references sponsor(id)
 );
 
 
