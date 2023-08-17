@@ -6,7 +6,9 @@
   }
 
   .nav-link{
+    display: flex;
     text-align: center;
+    margin: 0 2em;
   }
   
   .HeaderLogo {
@@ -25,16 +27,15 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    margin-right: 5em;
-    margin-left: 5em;
-    margin-top: 1em;
   }
 
-.social a svg{
+
+  .social a svg{
     fill: #DAE4F2;
     width: 30px;
     height: 30px;
     transition: ease-in-out 0.2s;
+
 }
 
 #facebook:hover{
@@ -104,6 +105,7 @@
         justify-content: space-around;
         align-items: center;
         margin-left: 15em;
+        margin-right: 3em;
         
       }
 
@@ -111,7 +113,7 @@
         display: flex;
         flex-direction: row;
         align-items: center;
-        margin-right: 1em;
+        margin-right: 3em;
     }
     .nav-links{
         display: flex;
@@ -142,13 +144,13 @@
     }
 
     .social {
-        margin-left: 12em;
+        margin-left: 20em;
         justify-content: center;
     }
     .social a{
         display: flex;
         flex-direction: row;
-        margin-right: 1em;
+        margin-right: 5em;
     }
 
     .nav-links{
