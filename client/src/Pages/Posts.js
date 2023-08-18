@@ -59,8 +59,8 @@ function Posts() {
             navigate(`Post/${post?.id}`);
           }
           else{
-            console.log(post.Item)
-            console.log(tags)
+            console.log(tags.Item[0])
+            console.log(tags[0])
           }
         }
         else {
