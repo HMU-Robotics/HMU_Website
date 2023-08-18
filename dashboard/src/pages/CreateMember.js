@@ -147,12 +147,10 @@ function CreateMember (){
                     <Form.Control type="date"/>
                 </Form.Group>
                 <Form.Label>Role</Form.Label>
-                <Form.Select className="role" onChange={handleRole}>
-                    <option value="Member">Member</option>
-                    <option value="Secretary">Secretary</option>
-                    <option value="Treasurer">Treasurer</option>
-                    <option value="President">President</option>
-                </Form.Select>
+                <Form.Group className="role" onChange={handleRole}>
+                    <Form.Label>Member Role</Form.Label>
+                    <Form.Control type="text"/>
+                </Form.Group>
                 <Form.Group onChange={handleImage}>
                     <Form.Label>Add Image</Form.Label>
                     <Form.Control type="file"/>

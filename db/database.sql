@@ -39,7 +39,7 @@ create table member(
     subscription Boolean not null default true,
     subscription_date date,
     end_date date default null,
-    role varchar(20) not null default "Member",
+    role varchar(50) not null default "Member",
     created_at timestamp default current_timestamp,
     updated_at timestamp default current_timestamp on update current_timestamp,
     primary key (academic_id)
