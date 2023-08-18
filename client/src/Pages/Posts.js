@@ -55,7 +55,8 @@ function Posts() {
 
       tags?.Item?.map((post, index) => {
         if(post?.tag === data?.Post?.tag && post?.id != postid) {
-          navigate(`https://robotics-club.hmu.gr/Post/${post?.id}`, {replace: true});
+          window.history.replaceState(null, null, `https://robotics-club.hmu.gr/Post/${post?.id}`);
+          navigate(`https://robotics-club.hmu.gr/Post/${post?.id}`);
           return;
         }
         else {
