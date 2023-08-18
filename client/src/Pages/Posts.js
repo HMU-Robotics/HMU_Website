@@ -36,11 +36,11 @@ function Posts() {
       });
       
       // fetch for fetching all available Post Tags
-      fetch(`https://robotics-club.hmu.gr:443/api/posts/getPostTag`, {})
+      fetch(`https://robotics-club.hmu.gr:443/api/posts/find/getPostTag`, {})
       .then((res) => res.json())
       .then((response) => {
         SetTags(response);
-        console.log(`https://robotics-club.hmu.gr:443/api/posts/getPostTag`);
+        console.log(`https://robotics-club.hmu.gr:443/api/posts/find/getPostTag`);
         console.log(response)
       })
       .catch((error) => {
