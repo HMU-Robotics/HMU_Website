@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import './Posts.css'
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import ReactMarkdown from "react-markdown";
 import LanguageContext from '../hooks/LanguageContext';
 
@@ -9,6 +9,8 @@ import LanguageContext from '../hooks/LanguageContext';
 function Posts() {
 
   const { postid } = useParams();
+
+  const navigate = useNavigate();
 
   const { language, setLanguage } = useContext(LanguageContext);
 
@@ -50,9 +52,13 @@ function Posts() {
     
     // useEffect used for changing to post based on language
     useEffect(() => {
-      for(const tag in tags?.Item?.tag) {
-        if(tag === data?.Item?.tag){
-          
+      for(const post in tags?.Item) {
+        // checks for other posts with the same tags , but filters its own post at the same time
+        if(post?.tag === tags?.Item?.tag && post?.id != postid) {
+          navigate(`Post/${post?.id}`);
+        }
+        else {
+          console.log("error");
         }
       }
     }, [language]);
