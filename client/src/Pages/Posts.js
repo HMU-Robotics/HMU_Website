@@ -18,7 +18,7 @@ function Posts() {
   const [isLoading, setIsLoading] = useState(true);
   const [data, setData] = useState();
   const [zoomedImage , setZoomedImage] = useState(null)
-  const [tags, SetTags] = useState([]);
+  const [tags, SetTags] = useState();
 
   // useEffect for fetching post data
   useEffect(() => {
@@ -59,7 +59,8 @@ function Posts() {
           return;
         }
         else {
-          console.log(index)
+          console.log(data?.Post?.tag)
+          console.log(postid)
         }
       })
       
