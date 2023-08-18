@@ -55,7 +55,9 @@ function Posts() {
       for(const post in tags?.Item) {
         // checks for other posts with the same tags , but filters its own post at the same time
         if(post?.tag === tags?.Item?.tag && post?.id != postid) {
-          navigate(`Post/${post?.id}`);
+          if(post?.id){
+            navigate(`Post/${post?.id}`);
+          }
         }
         else {
           console.log("error");
