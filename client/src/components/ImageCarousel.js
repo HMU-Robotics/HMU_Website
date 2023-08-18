@@ -8,11 +8,11 @@ const Card = React.lazy(() => import('./Card'));
 
 const responsive = {
   desktop: {
-    breakpoint: { max: 3000, min: 1400 },
+    breakpoint: { max: 3000, min: 1300 },
     items: 4
   },
   laptop: {
-    breakpoint: { max: 1400, min: 1100},
+    breakpoint: { max: 1300, min: 1100},
     items: 3
   },
   tablet: {
