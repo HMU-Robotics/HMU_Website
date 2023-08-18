@@ -53,9 +53,9 @@ function Posts() {
     // useEffect used for changing to post based on language
     useEffect(() => {
 
-      tags.Item.map((post, index) => {
-        if(post.tag === data.Post.tag && post.id != postid) {
-          navigate(`Post/${post.id}`);
+      tags?.Item?.map((post, index) => {
+        if(post?.tag === data?.Post?.tag && post?.id != postid) {
+          navigate(`Post/${post?.id}`);
         }
         else {
           console.log("error")
