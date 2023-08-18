@@ -52,21 +52,16 @@ function Posts() {
     
     // useEffect used for changing to post based on language
     useEffect(() => {
-      for(const post in tags) {
-        // checks for other posts with the same tags , but filters its own post at the same time
-        if(post?.Item?.tag === tags?.Item?.tag && post?.Item?.id != postid) {
-          if(post?.Item?.id){
-            navigate(`Post/${post?.id}`);
-          }
-          else{
-            console.log(tags.Item[0])
-            console.log(tags[0])
-          }
+
+      tags.Item.map((post, index) => {
+        if(post.tag === data.Post.tag && post.id != postid) {
+          navigate(`Post/${post.id}`);
         }
         else {
-          console.log("error");
+          console.log("error")
         }
-      }
+      })
+      
     }, [language]);
     
 
