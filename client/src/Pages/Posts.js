@@ -59,7 +59,7 @@ function Posts() {
             navigate(`Post/${post?.id}`);
           }
           else{
-            console.log(post)
+            console.log(post.Item)
             console.log(tags)
           }
         }
