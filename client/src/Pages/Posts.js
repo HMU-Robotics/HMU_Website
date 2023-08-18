@@ -59,7 +59,8 @@ function Posts() {
             navigate(`Post/${post?.id}`);
           }
           else{
-            console.log("test")
+            console.log(post)
+            console.log(tags)
           }
         }
         else {
