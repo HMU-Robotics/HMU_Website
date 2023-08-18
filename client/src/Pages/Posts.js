@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import './Posts.css'
 import { useParams, useNavigate } from "react-router-dom";
 import ReactMarkdown from "react-markdown";
