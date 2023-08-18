@@ -45,12 +45,6 @@ const uploadImages = (req, res, next) => {
   })
 }
 
-// Function to check if a file exists in a directory
-const fileExistsInDirectory = (directoryPath, filename) => {
-  const filePath = path.join(directoryPath, filename);
-  return fs.existsSync(filePath);
-};
-
 
 // resizes images that are sent via form to server
 const resizeImages = async(req, res, next, type) => {
@@ -109,23 +103,6 @@ const makePostImages = async(req,res,next)=>{
   res.send("added images to posts");
 }
 
-
-// query to get post tags, in order to match postImages to relevant Posts
-const getPostTag = async(req, res, next) => {
-  db.execute("SELECT DISTINCT tag FROM post", (err, result) => {
-    if (err) {
-      throw err;
-    }
-    console.log(result);
-    if (result.length === 0) {
-      res.status(404).json("Tags not Found");
-    } else {
-      res.status(200).json({
-        Item: result
-      });
-    }
-  });
-};
 
 
 // query for making a new member
@@ -307,7 +284,6 @@ const getResult = async (req, res) => {
     deleteMember: deleteMember,
     deletePost: deletePost,
     deleteSponsor: deleteSponsor,
-    makePostImages: makePostImages,
-    getPostTag: getPostTag
+    makePostImages: makePostImages
   }
 

@@ -22,11 +22,11 @@ function AddPostImages() {
 
     // useEffect for fetching all available Post Tags
     useEffect(() => {
-        fetch(`https://robotics-club.hmu.gr:443/api/dashboard/getPostTag`, {})
+        fetch(`https://robotics-club.hmu.gr:443/api/posts/getPostTag`, {})
           .then((res) => res.json())
           .then((response) => {
             setOptions(response);
-            console.log(`https://robotics-club.hmu.gr:443/api/dashboard/getPostTag`);
+            console.log(`https://robotics-club.hmu.gr:443/api/posts/getPostTag`);
             console.log(response)
           })
           .catch((error) => {
