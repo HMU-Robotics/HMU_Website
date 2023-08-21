@@ -4,6 +4,8 @@ import Button from "react-bootstrap/esm/Button"
 import Form from "react-bootstrap/Form"
 import SpinnerButton from "../components/SpinnerButton"
 import AlertBox from "../components/AlertBox"
+import SuccessBox from "../components/SuccessBox"
+
 
 
 
@@ -18,6 +20,8 @@ function AddPostImages() {
     const [buttonState, setButtonState] = useState(<Button variant="primary" type="submit">Submit</Button>);
     const [errorMessage, setErrorMessage] = useState(false);
     const [alertState, setAlertState] = useState(null);
+    const [successState, setSuccessState] = useState(SuccessBox("Post Images"));
+    const [successMessage, setSuccessMessage] = useState(false);
 
 
     // useEffect for fetching all available Post Tags
@@ -52,12 +56,26 @@ function AddPostImages() {
     useEffect(() => {
         if(errorMessage === true) {
             setButtonState(null);
-            setAlertState(AlertBox("Post"));
+            setAlertState(AlertBox("Post Images"));
         }
         else {
             setAlertState(null);
         }
     }, [errorMessage]);
+
+
+
+    // useEffect for Success Box
+    useEffect(() => {
+        if(successMessage === true) {
+            setButtonState(null);
+            setAlertState(null);
+            setSuccessState(SuccessBox("Post Images"));
+        }
+        else if(successMessage === false) {
+            setSuccessState(null);
+        }
+    }, [successMessage]);
 
 
     
@@ -94,10 +112,11 @@ function AddPostImages() {
             console.log(res)
             console.log(res.status)
             setErrorMessage(false);
-            // window.location.reload();
+            setSuccessMessage(true);
         })
         .catch((err) => {
             console.log(err)
+            setSuccessMessage(false);
             setErrorMessage(true);
         })
 
@@ -121,6 +140,7 @@ function AddPostImages() {
             <Form.Control type="file" multiple/>
         </Form.Group>
         {buttonState}
+        {successState}
         {alertState}
     </Form>
   );
