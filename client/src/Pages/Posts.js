@@ -1,31 +1,72 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import './Posts.css'
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import ReactMarkdown from "react-markdown";
+import LanguageContext from '../hooks/LanguageContext';
+
 
 
 function Posts() {
 
-    const { postid } = useParams();
+  const { postid } = useParams();
 
-    const [isLoading, setIsLoading] = useState(true);
-    const [data, setData] = useState();
-    const [zoomedImage , setZoomedImage] = useState(null)
+  const navigate = useNavigate();
 
+  const { language, setLanguage } = useContext(LanguageContext);
+
+
+  const [isLoading, setIsLoading] = useState(true);
+  const [data, setData] = useState();
+  const [zoomedImage , setZoomedImage] = useState(null)
+  const [tags, SetTags] = useState();
+
+  // useEffect for fetching post data
+  useEffect(() => {
+      fetch(`https://robotics-club.hmu.gr:443/api/posts/${postid}`, {})
+        .then((res) => res.json())
+        .then((response) => {
+          setData(response);
+          setIsLoading(false);
+          console.log(`https://robotics-club.hmu.gr:443/api/posts/${postid}`);
+          console.log(response)
+        })
+      .catch((error) =>{
+        console.log(error);
+        setIsLoading(true);
+      });
+      
+      // fetch for fetching all available Post Tags
+      fetch(`https://robotics-club.hmu.gr:443/api/posts/find/getPostTag`, {})
+      .then((res) => res.json())
+      .then((response) => {
+        SetTags(response);
+        console.log(`https://robotics-club.hmu.gr:443/api/posts/find/getPostTag`);
+        console.log(response)
+      })
+      .catch((error) => {
+        console.log(error);
+    })
+    }, []);
+
+    
+    
+    // useEffect used for changing to post based on language
     useEffect(() => {
-        fetch(`https://robotics-club.hmu.gr:443/api/posts/${postid}`, {})
-          .then((res) => res.json())
-          .then((response) => {
-            setData(response);
-            setIsLoading(false);
-            console.log(`https://robotics-club.hmu.gr:443/api/posts/${postid}`);
-            console.log(response)
-          })
-          .catch((error) =>{
-               console.log(error);
-               setIsLoading(true);
-               });
-      }, []);
+
+      tags?.Item?.map((post, index) => {
+        if(post?.tag === data?.Post?.tag && post?.id != postid) {
+          window.history.replaceState(null, null, `https://robotics-club.hmu.gr/Post/${post?.id}`);
+          navigate(`https://robotics-club.hmu.gr/Post/${post?.id}`);
+          return;
+        }
+        else {
+          console.log(data?.Post?.tag)
+          console.log(postid)
+        }
+      })
+      
+    }, [language]);
+    
 
     const handleImageClick = (e)=>{
       setZoomedImage(e)
