@@ -4,8 +4,16 @@
     flex-direction: row;
     background-color: whitesmoke;
     border-radius: 20px;
-    margin: 2em;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    margin-bottom: 2em;
+}
+
+.support-card:first-of-type{
+    margin-top: 2em;
+}
+
+.support-card:nth-of-type(3){
+    margin-top: 2em;
 }
 
 @media (max-width: 1000px) {
@@ -32,8 +40,8 @@
   
     .support-textarea {
         text-align: center;
-        margin-left: 2em;
-        margin-right: 2em;
+        margin-left: 1em;
+        margin-right: 1em;
         margin-top: 1em; /* Adjust the margin as needed */
     }
   }
@@ -46,7 +54,7 @@
 }
 .support-img{
     width: auto;
-    height: 8em;
+    height: 6em;
     margin-top: 1em;
 }
 

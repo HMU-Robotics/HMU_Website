@@ -1,4 +1,4 @@
-import React , { Component, useContext } from "react"
+import React , { useContext } from "react"
 import './Supporters.css'
 import SupportCard from "../components/SupportCard"
 import LanguageContext from "../hooks/LanguageContext"

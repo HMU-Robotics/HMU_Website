@@ -69,3 +69,16 @@ exports.find_number_users = async(req,res,next)=>{
         })
     })
 }
+
+
+exports.find_eurobots_team = async(req,res,next)=>{
+    const eurobot = "Eurobots"
+    db.execute('SELECT * FROM `member` WHERE `role` = ?',[eurobot],(err,result)=>{
+        if(err) throw err
+        console.log(result)
+        res.status(200).json({
+            Message:"Success",
+            Users:result
+        })
+    })
+}

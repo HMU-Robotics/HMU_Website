@@ -6,6 +6,7 @@ import Landing from './Pages/Landing';
 import Members from './Pages/Members';
 import Supporters from './Pages/Supporters';
 import Posts from './Pages/Posts';
+// import Eurobot from './Pages/Eurobot'
 import { LanguageProvider } from './hooks/LanguageContext'; 
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
           <Route exact path="/" element={<Landing />} />
           <Route exact path="/Members" element={<Members />} />
           <Route exact path="/Supporters" element={<Supporters />} />
+          {/* <Route exact path="/Eurobot" element={<Eurobot />}/> */}
           <Route exact path="*" element={<Landing />} />
           <Route exact path="/Post/:postid" element={<Posts />} />
         </Routes>
