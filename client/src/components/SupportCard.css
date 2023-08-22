@@ -44,6 +44,17 @@
         margin-right: 1em;
         margin-top: 1em; /* Adjust the margin as needed */
     }
+
+    @media (max-width: 600px) {
+        .support-textarea {
+            display: none;
+        }
+
+        .support-img {
+            max-width: 5.5em; /* Adjust the max-width as needed */
+            height: 6em; /* Adjust the height as needed */
+        }
+    }
   }
 
 .support-a{

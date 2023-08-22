@@ -1,4 +1,5 @@
 .support-cont{
+    display: block;
     background: linear-gradient(90deg, #3a588a 0%, #252d53 100%);
     padding-top: 4em;
     padding-bottom: 4em;

@@ -52,19 +52,14 @@ function Posts() {
     
     // useEffect used for changing to post based on language
     useEffect(() => {
-
-      tags?.Item?.map((post, index) => {
-        if(post?.tag === data?.Post?.tag && post?.id != postid) {
-          window.history.replaceState(null, null, `https://robotics-club.hmu.gr/Post/${post?.id}`);
-          navigate(`https://robotics-club.hmu.gr/Post/${post?.id}`);
-          return;
+      tags?.Item?.forEach((post) => {
+        if (post?.tag === data?.Post?.tag && post?.id != postid) {
+          const newUrl = `/Post/${post?.id}`;
+          navigate(newUrl);
+          window.location.reload();
+          return; // This only exits the forEach loop, not the useEffect
         }
-        else {
-          console.log(data?.Post?.tag)
-          console.log(postid)
-        }
-      })
-      
+      });
     }, [language]);
     
 
