@@ -15,6 +15,18 @@
     }
   }
 
+
+  @keyframes slideInFromRight {
+    0% {
+      transform: translateX(100%);
+      opacity: 0;
+    }
+    100% {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+
 .eurobot-image-hero{
     background-color: white;
     border-radius: 50px;
@@ -23,6 +35,14 @@
     animation: 1.2s ease-out 0s 1 slideInFromLeft;
 }
 
+
+.eurobot-left{
+    animation: 1.2s ease-out 0s 1 slideInFromLeft;
+}
+
+.eurobot-right{
+    animation: 1.2s ease-out 0s 1 slideInFromRight;
+}
 
 
 
@@ -71,5 +91,10 @@
 
 .eubots-members-container{
     color: white;
+}
+
+.about-text{
+    margin-top: 2em;
+    text-align: center;
 }
 
