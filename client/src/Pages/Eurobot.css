@@ -1,0 +1,75 @@
+.euro-page{
+    background: linear-gradient(90deg, #3a588a 0%, #252d53 100%);
+}
+
+
+
+@keyframes slideInFromLeft {
+    0% {
+      transform: translateX(-100%);
+      opacity: 0;
+    }
+    100% {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+
+.eurobot-image-hero{
+    background-color: white;
+    border-radius: 50px;
+    border: none;
+    margin: 2em 2em;
+    animation: 1.2s ease-out 0s 1 slideInFromLeft;
+}
+
+
+
+
+.eurobot-hero{
+    background: #220e24;
+    padding-bottom: 3em;
+}
+
+.eurobot-hero-btn{
+    background: none;
+    border-radius: 10px;
+    height: 2em;
+    width: auto;
+    color: white;
+    border-color: white;
+    transition:ease-in-out 0.2s;
+}
+
+.eurobot-hero-btn:hover{
+    transform: scale(1.2);
+}
+
+.eurobot-hero-btn:active{
+    transform: scale(1);
+}
+
+.eurobot-hero-text-area{
+    text-align: center;
+    margin: auto 0;
+}
+
+
+.eurobot-about{
+    background-color: #252d53;
+}
+
+.eurobot-container{
+    width: 100%;
+}
+
+
+.eurobot-hero-btn{
+    text-decoration: none;
+    color: white;
+}
+
+.eubots-members-container{
+    color: white;
+}
+
