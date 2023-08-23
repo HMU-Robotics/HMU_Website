@@ -83,6 +83,7 @@ exports.find_eurobots_team = async(req,res,next)=>{
                 if (!members[row.academic_id]) {
                     // Create a new member object if we haven't seen this member yet
                     members[row.academic_id] = {
+                        id : row.id,
                         fullname_en: row.fullname_en,
                         fullname_gr: row.fullname_gr,
                         academic_id: row.academic_id,
