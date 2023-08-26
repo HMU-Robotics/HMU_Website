@@ -52,7 +52,7 @@ function Eurobot(){
                 <div className="euro-page">
                     <div className="about-section eurobot-hero">
                         <div className="about-image eurobot-image-hero">
-                            <img src="/Eurobot/eurobot.png" alt="About" />
+                            <img src="/eurobot/eurobot.png" alt="About" />
                         </div>
                             <div className="about-content eurobot-hero-text-area">
                                 <h2 className="about-heading eurobot-hero-title">Eurobots 2024</h2>
