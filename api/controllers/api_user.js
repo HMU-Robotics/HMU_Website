@@ -72,7 +72,7 @@ exports.find_number_users = async(req,res,next)=>{
 
 
 exports.find_eurobots_team = async(req,res,next)=>{
-    db.execute('SELECT * FROM `member` LEFT JOIN `memberImages` ON `member.academic_id` = `memberImages.member_id` WHERE `member.academic_id` <> 1 AND `member.role` = ?',"eurobots",(err,result)=>{
+    db.execute('SELECT * FROM `member` LEFT JOIN `memberImages` ON `member.academic_id` = `memberImages.member_id` WHERE `member.academic_id` <> 1 AND `member.role` IN (?,?,?,?)',["eurobots","President","Treasurer","Secretary"],(err,result)=>{
         if(err) throw err
         console.log(result)
         if(result.length == 0){
