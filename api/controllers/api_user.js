@@ -72,13 +72,42 @@ exports.find_number_users = async(req,res,next)=>{
 
 
 exports.find_eurobots_team = async(req,res,next)=>{
-    const eurobot = "Eurobots"
-    db.execute('SELECT * FROM `member` WHERE `role` = ?',[eurobot],(err,result)=>{
+    db.execute('SELECT * FROM `member` LEFT JOIN `memberImages` ON `member.academic_id` = `memberImages.member_id` WHERE `member.academic_id` <> 1 AND `member.role` IN (?,?,?,?)',["eurobots","President","Treasurer","Secretary"],(err,result)=>{
         if(err) throw err
         console.log(result)
-        res.status(200).json({
-            Message:"Success",
-            Users:result
-        })
+        if(result.length == 0){
+            res.status(404).json("Members not found")
+        } else {
+            let members = {}
+            result.forEach(row => {
+                if (!members[row.academic_id]) {
+                    // Create a new member object if we haven't seen this member yet
+                    members[row.academic_id] = {
+                        id : row.id,
+                        fullname_en: row.fullname_en,
+                        fullname_gr: row.fullname_gr,
+                        academic_id: row.academic_id,
+                        first_name: row.first_name,
+                        last_name: row.last_name,
+                        school: row.school,
+                        subscription_date: row.subscription_date,
+                        end_date: row.end_date,
+                        role: row.role,
+                        images: []
+                    }
+                }
+                if (row.img) {
+                    // Add the image to the member object if it exists
+                    members[row.member_id].images.push({
+                        image_id: row.member_id,
+                        image_url: row.img
+                    })
+                }
+            })
+            res.status(200).json({
+                Message:"Members found",
+                Item:Object.values(members)
+            })
+        }
     })
 }
