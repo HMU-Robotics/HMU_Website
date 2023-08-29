@@ -32,16 +32,24 @@
     border-radius: 50px;
     border: none;
     margin: 2em 2em;
+    height: 100em;
+    width: 30em;
     animation: 1.2s ease-out 0s 1 slideInFromLeft;
 }
 
 
 .eurobot-left{
     animation: 1.2s ease-out 0s 1 slideInFromLeft;
+    border-radius: 10px;
 }
 
 .eurobot-right{
     animation: 1.2s ease-out 0s 1 slideInFromRight;
+    border-radius: 10px;
+}
+
+.eurobot-heading{
+    text-align: center;
 }
 
 
@@ -49,6 +57,7 @@
 .eurobot-hero{
     background: #220e24;
     padding-bottom: 3em;
+    justify-content: center;
 }
 
 .eurobot-hero-btn{
@@ -98,3 +107,8 @@
     text-align: center;
 }
 
+.eurobots-imgs{
+    border-radius: 10px;
+    align-items: center;
+    justify-content: center;
+}
