@@ -46,28 +46,6 @@ exports.find_post = async(req,res,next) => {
     })
 }
 
-// finds 10 latest news posts for News Carousel
-exports.get_latest_posts = async(req,res,next) => {
-    db.execute(`
-        SELECT p.*, GROUP_CONCAT(pi.img) AS img
-        FROM post p
-        LEFT JOIN postImages pi ON p.id = pi.post_id
-        WHERE p.type = 'News'
-        GROUP BY p.id;
-    `, (err,result) => {
-        if(err) throw err
-        console.log(result)
-        if(result.length == 0){
-            res.status(404).json("News not Found")
-        }
-        else {
-            res.status(200).json({
-                Item: result
-            })
-        }
-    })
-}
-
 
 // finds all Posts
 exports.get_posts = async (req, res, next) => {
@@ -126,3 +104,23 @@ exports.get_posts = async (req, res, next) => {
         }
     });
 }
+
+
+// query to get post tags, in order to match postImages to relevant Posts
+exports.getPostTag = async(req, res, next) => {
+    db.execute("SELECT DISTINCT tag, id FROM post", (err, result) => {
+      if (err) {
+        throw err;
+      }
+      console.log(result);
+      if (result.length === 0) {
+        res.status(404).json("Tags not Found");
+      } else {
+        res.status(200).json({
+          Item: result
+        });
+      }
+    });
+  };
+
+

@@ -26,20 +26,20 @@ function MemberCard(props) {
           return "Μηχανολόγων Μηχανικών"
         }
       }
-      else if(props.school === "EE"){
+      else if(props.school === "CSD"){
         if(language === "english") {
-          return "Electrical Engineering"
+          return "Computer Scientist"
         }
         else if(language === "greek") {
-          return "Ηλεκτρολόγων Μηχανικών"
+          return "Τμήμα Επιστήμης Υπολογιστών"
         }
       }
-      else if(props.school === "CE"){
+      else if(props.school === "AGRO"){
         if(language === "english") {
-          return "Software Engineering"
+          return "Agricultural scientist"
         }
         else if(language === "greek"){
-          return "Τμήμα Μηχανικών Πληροφορικής"
+          return "Επιστήμη Γεωπονίας"
         }
       }
       else if(props.school === "other"){
@@ -69,7 +69,7 @@ function MemberCard(props) {
 
   const image = () => {
       if (props.image === undefined) {
-        return "Media/about.jpg";
+        return "Media/stock_image_man.png";
       } else {
         return "Uploads/members/" + props.image;
       }
