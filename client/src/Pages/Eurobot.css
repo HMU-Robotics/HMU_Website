@@ -29,11 +29,11 @@
 
 .eurobot-image-hero{
     background-color: white;
-    border-radius: 50px;
+    border-radius: 20px;
     border: none;
     margin: 2em 2em;
     height: 100em;
-    width: 30em;
+    width: 25em;
     animation: 1.2s ease-out 0s 1 slideInFromLeft;
 }
 
@@ -41,11 +41,13 @@
 .eurobot-left{
     animation: 1.2s ease-out 0s 1 slideInFromLeft;
     border-radius: 10px;
+    justify-content: space-between;
 }
 
 .eurobot-right{
     animation: 1.2s ease-out 0s 1 slideInFromRight;
     border-radius: 10px;
+    justify-content: space-between;
 }
 
 .eurobot-heading{
@@ -108,7 +110,11 @@
 }
 
 .eurobots-imgs{
-    border-radius: 10px;
+    height: 100em;
+    width: 25em;
+    border: none;
+    margin: 2em;
+    box-shadow: none;
     align-items: center;
     justify-content: center;
 }

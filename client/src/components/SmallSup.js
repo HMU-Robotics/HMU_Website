@@ -48,6 +48,11 @@ function SmallSup(){
           name:'mechatron',
           link:'https://mechatron.eu/',
           img:'Media/support/mechatron.png'
+        },
+        {
+          name:'solidworks',
+          link:'https://www.solidworks.com/',
+          img:'Media/support/solidworks.jpg'
         }
       ]
 
