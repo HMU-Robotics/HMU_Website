@@ -53,7 +53,7 @@ function Eurobot(){
                 </div>
                 <div className="about-section about-section-2 eurobot-about eurobot-right">
                     <div className="about-content ">
-                        <h2 className="about-heading eurobot-heading">Θέμα 2024</h2>
+                    <h2 className="about-heading eurobot-heading">Θέμα 2024</h2>
                         <p className="about-text">{text_gr.text_theme}</p>
                         <p className="about-text">{text_gr.text_theme_2}</p>
                     </div>
