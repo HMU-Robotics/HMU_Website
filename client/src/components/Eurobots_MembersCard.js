@@ -62,7 +62,7 @@ function Eurobot_Member_Card(props) {
       if (props.image === undefined) {
         return "Media/about.jpg";
       } else {
-        return "Uploads/members/" + props.image;
+        return "/Uploads/members/" + props.image;
       }
     };
 
