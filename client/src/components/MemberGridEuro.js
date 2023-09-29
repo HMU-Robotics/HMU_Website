@@ -42,6 +42,21 @@ function MemberGridEuro(props) {
    }, [language]);
 
 
+   const role_picker = (th) => {
+    console.log(th)
+    switch(th){
+      case "eurobots1" : return "Programming"
+      case "eurobots2" : return "Programming"
+      case "th20079" : return "Programming"
+      case "th20550" : return "Team leader, Mechanical"
+      case "th6209": return "Programming lead"
+      case "th6295" : return "Electronics, Management"
+      case "tm20288" : return "Mechanical"
+      case "tp4658" : return "Programming"
+      default :  return "Eurobots"
+    }
+  }
+
     return (
       <>
         {language === "english" && <h2 className="coordination-box-title">Team Members</h2>}
@@ -57,9 +72,8 @@ function MemberGridEuro(props) {
                     <MemberCard
                       key={i}
                       fullname={member?.[fullname]}
-                      school={member?.school}
                       image={member?.images[0]?.image_url}
-                      role={member?.role}
+                      role={role_picker(member?.academic_id)}
                     />
                   </Suspense>
                 </Grid2>
