@@ -64,6 +64,7 @@ app.use('/api/members',api_member)
 app.use('/api/dashboard',api_dashboard)
 app.use('/api/posts', api_posts)
 app.use('/api/sponsors', api_sponsors)
+app.use('/api/users', api_users)
 
 
 module.exports = app

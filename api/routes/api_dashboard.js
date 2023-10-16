@@ -2,7 +2,7 @@ const express = require('express')
 const router = express.Router()
 const AuthMiddleware = require("../middleware/auth")
 const {admin,viewer,editor} = require("../middleware/roles")
-const { uploadImages , resizeImages  ,makePost ,makeMember, makeSponsor, makePostImages, updatePost, updateMember, deletePost, deleteMember, deleteSponsor, getPostTag} = require("../controllers/uploadController")
+const { uploadImages , resizeImages  ,makePost ,makeMember, makeSponsor, makePostImages, updatePost, updateMember, deletePost, deleteMember, deleteSponsor} = require("../controllers/uploadController")
 
 
 
@@ -19,8 +19,6 @@ router.put('/editPost/:id',AuthMiddleware,viewer, updatePost);
 router.post('/addPostImages', AuthMiddleware, viewer, uploadImages, (req, res, next) => {
     resizeImages(req, res, next, 'post');
 }, makePostImages);
-
-router.get('/getPostTag', AuthMiddleware, viewer, getPostTag);
 
 router.delete('/deletePost/:id',AuthMiddleware,viewer,deletePost);
 

@@ -4,7 +4,7 @@ import LanguageContext from '../hooks/LanguageContext';
 
 
 
-function MemberCard(props) {
+function Eurobot_Member_Card(props) {
 
 
   const { language, setLanguage } = useContext(LanguageContext);
@@ -26,20 +26,20 @@ function MemberCard(props) {
           return "Μηχανολόγων Μηχανικών"
         }
       }
-      else if(props.school === "CSD"){
+      else if(props.school === "EE"){
         if(language === "english") {
-          return "Computer Scientist"
+          return "Electrical Engineering"
         }
         else if(language === "greek") {
-          return "Τμήμα Επιστήμης Υπολογιστών"
+          return "Ηλεκτρολόγων Μηχανικών"
         }
       }
-      else if(props.school === "AGRO"){
+      else if(props.school === "CE"){
         if(language === "english") {
-          return "Agricultural scientist"
+          return "Software Engineering"
         }
         else if(language === "greek"){
-          return "Επιστήμη Γεωπονίας"
+          return "Τμήμα Μηχανικών Πληροφορικής"
         }
       }
       else if(props.school === "other"){
@@ -50,28 +50,19 @@ function MemberCard(props) {
           return "Εξωτερικός Συνεργάτης"
         }
       }
+      else if(props.school === "CSD"){
+        return "CSD"
+      }
   }
-  const date = props.subscription_date
-  const subscription_date = date.substring(0,4)
+
   const role = props.role
   const fullname = props.fullname
 
-  const end_date = () => {
-      if (!props.end_date) {
-        return "Current";
-      } else {
-        const date = props.end_date
-        const end_date = date.substring(0,4)
-        return end_date
-      }
-    }
-
-
   const image = () => {
       if (props.image === undefined) {
-        return "Media/stock_image_man.png";
+        return "Media/about.jpg";
       } else {
-        return "Uploads/members/" + props.image;
+        return "/Uploads/members/" + props.image;
       }
     };
 
@@ -81,18 +72,12 @@ function MemberCard(props) {
           <div className='members-photo' style={{ backgroundImage: `url(${image()})` }}>
             <div className='members-body'>
               <h3 className='members-title'>{fullname}</h3>
-              {role === "President" && language === "english" && <p className='members-role'>President</p>}
-              {role === "Treasurer" && language === "english" && <p className='members-role'>Treasurer</p>}
-              {role === "Secretary" && language === "english" && <p className='members-role'>Secretary</p>}
-              {role === "President" && language === "greek" && <p className='members-role'>Πρόεδρος</p>}
-              {role === "Treasurer" && language === "greek" && <p className='members-role'>Ταμίας</p>}
-              {role === "Secretary" && language === "greek" && <p className='members-role'>Γραμματέας</p>}
+              <p className="members-role">{role}</p>
               <p className='members-school'>{school()}</p>
-              <p className='members-date'>{subscription_date} - {end_date()}</p>
               </div>
           </div>
         </div>
   );
 }
 
-export default MemberCard;
+export default Eurobot_Member_Card;

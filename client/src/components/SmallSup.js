@@ -27,6 +27,7 @@ function SmallSup(){
             name:'get3d',
             link:'https://get3d.gr/en/ ',
             img:'Media/support/get_3d.png'
+
         },
         {
             name:'o3',
@@ -43,6 +44,16 @@ function SmallSup(){
             link:'https://csrl.hmu.gr/',
             img:'Media/support/CSRL_Logo.png'
         },
+        {
+          name:'mechatron',
+          link:'https://mechatron.eu/',
+          img:'Media/support/mechatron.png'
+        },
+        {
+          name:'solidworks',
+          link:'https://www.solidworks.com/',
+          img:'Media/support/solidworks.jpg'
+        }
       ]
 
     const suppCar = <Carousel

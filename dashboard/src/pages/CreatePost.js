@@ -4,7 +4,9 @@ import Button from "react-bootstrap/esm/Button"
 import Form from "react-bootstrap/Form"
 import SpinnerButton from "../components/SpinnerButton"
 import AlertBox from "../components/AlertBox"
+import SuccessBox from "../components/SuccessBox"
 import "./CreatePost.css"
+
 
 
 function CreatePost() {
@@ -22,6 +24,8 @@ function CreatePost() {
     const [buttonState, setButtonState] = useState(<Button variant="primary" type="submit">Submit</Button>);
     const [errorMessage, setErrorMessage] = useState(false);
     const [alertState, setAlertState] = useState(null);
+    const [successState, setSuccessState] = useState(SuccessBox("Post"));
+    const [successMessage, setSuccessMessage] = useState(false);
 
 
     // useEffect for loading button
@@ -40,12 +44,27 @@ function CreatePost() {
     useEffect(() => {
         if(errorMessage === true) {
             setButtonState(null);
+            setSuccessState(null);
             setAlertState(AlertBox("Post"));
         }
-        else {
+        else if(errorMessage === false) {
             setAlertState(null);
         }
     }, [errorMessage]);
+
+
+    // useEffect for Success Box
+    useEffect(() => {
+        if(successMessage === true) {
+            setButtonState(null);
+            setAlertState(null);
+            setSuccessState(SuccessBox("Post"));
+        }
+        else if(successMessage === false) {
+            setSuccessState(null);
+        }
+    }, [successMessage]);
+
 
 
     const handleLanguage = (e) => {
@@ -109,10 +128,11 @@ function CreatePost() {
             console.log(res)
             console.log(res.status)
             setErrorMessage(false);
-            // window.location.reload();
+            setSuccessMessage(true);
         })
         .catch((err) => {
             console.log(err)
+            setSuccessMessage(false);
             setErrorMessage(true);
         })
 
@@ -152,6 +172,7 @@ function CreatePost() {
                 </Form.Group>
                 <div className="space"/>
                 {buttonState}
+                {successState}
                 {alertState}
             </Form>
         </>

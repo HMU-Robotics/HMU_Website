@@ -4,6 +4,8 @@ import Button from "react-bootstrap/esm/Button"
 import axios from "axios"
 import SpinnerButton from "../components/SpinnerButton"
 import AlertBox from "../components/AlertBox"
+import SuccessBox from "../components/SuccessBox"
+
 
 
 function CreateSponsor () {
@@ -17,6 +19,8 @@ function CreateSponsor () {
     const [buttonState, setButtonState] = useState(<Button variant="primary" type="submit">Submit</Button>);
     const [errorMessage, setErrorMessage] = useState(false);
     const [alertState, setAlertState] = useState(null);
+    const [successState, setSuccessState] = useState(SuccessBox("Sponsor"));
+    const [successMessage, setSuccessMessage] = useState(false);
 
     // useEffect for loading button
     useEffect(() => {
@@ -39,6 +43,19 @@ function CreateSponsor () {
             setAlertState(null);
         }
     }, [errorMessage]);
+
+
+    // useEffect for Success Box
+    useEffect(() => {
+        if(successMessage === true) {
+            setButtonState(null);
+            setAlertState(null);
+            setSuccessState(SuccessBox("Post"));
+        }
+        else if(successMessage === false) {
+            setSuccessState(null);
+        }
+    }, [successMessage]);
 
 
     const handleSponsorName = (e) => {
@@ -80,10 +97,11 @@ function CreateSponsor () {
             console.log(res)
             console.log(res.status)
             setErrorMessage(false);
-            // window.location.reload();
+            setSuccessMessage(true);
         })
         .catch((err) => {
             console.log(err)
+            setSuccessMessage(false);
             setErrorMessage(true);
         })
         
@@ -117,6 +135,7 @@ function CreateSponsor () {
                     <Form.Control type="file"/>
                 </Form.Group>
                 {buttonState}
+                {successState}
                 {alertState}
             </Form>
         </>

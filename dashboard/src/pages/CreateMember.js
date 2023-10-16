@@ -4,6 +4,7 @@ import Button from "react-bootstrap/esm/Button"
 import axios from "axios"
 import SpinnerButton from "../components/SpinnerButton"
 import AlertBox from "../components/AlertBox"
+import SuccessBox from "../components/SuccessBox"
 
 
 function CreateMember (){
@@ -21,6 +22,8 @@ function CreateMember (){
     const [buttonState, setButtonState] = useState(<Button variant="primary" type="submit">Submit</Button>);
     const [errorMessage, setErrorMessage] = useState(false);
     const [alertState, setAlertState] = useState(null);
+    const [successState, setSuccessState] = useState(SuccessBox("Member"));
+    const [successMessage, setSuccessMessage] = useState(false);
 
 
     // useEffect for loading button
@@ -44,6 +47,20 @@ function CreateMember (){
             setAlertState(null);
         }
     }, [errorMessage])
+
+
+
+    // useEffect for Success Box
+    useEffect(() => {
+        if(successMessage === true) {
+            setButtonState(null);
+            setAlertState(null);
+            setSuccessState(SuccessBox("Member"));
+        }
+        else if(successMessage === false) {
+            setSuccessState(null);
+        }
+    }, [successMessage]);
 
 
     const handleFullNameEnglish = (e) => {
@@ -104,10 +121,11 @@ function CreateMember (){
             console.log(res)
             console.log(res.status)
             setErrorMessage(false);
-            // window.location.reload();
+            setSuccessMessage(true);
         })
         .catch((err) => {
             console.log(err)
+            setSuccessMessage(false);
             setErrorMessage(true);
         })
 
@@ -138,8 +156,8 @@ function CreateMember (){
                 <Form.Select className="school" onChange={handleSchool}>
                     <option value="ECE">Ηλεκτρολόγων Μηχ. Μηχ. Υπολογιστών</option>
                     <option value="MECH">Μηχανολόγων Μηχανικών</option>
-                    <option value="EE">Ηλεκτρολόγων Μηχανικών</option>
-                    <option value="CE">Μηχανικοί Υπολογιστών</option>
+                    <option value="CSD">Τμήμα Επιστήμης Υπολογιστών</option>
+                    <option value="AGRO">Τμήμα Γεωπονίας</option>
                     <option value="other">Εξωτερικοί Συνεργάτες</option>
                 </Form.Select>
                 <Form.Group className="subcription_date" onChange={handleSubscriptionDate}>
@@ -156,6 +174,7 @@ function CreateMember (){
                     <Form.Control type="file"/>
                 </Form.Group>
                 {buttonState}
+                {successState}
                 {alertState}
             </Form>
         </>
