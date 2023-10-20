@@ -13,7 +13,8 @@ function Supporters() {
             hero:'Ο HERO είναι ένας μη κερδοσκοπικός οργανισμός που στόχο έχει την σωστή ανάπτυξη και εξάπλωση της Εκπαιδευτικής Ρομποτικής και του STEAM στην Ελλάδα.',
             csrl: 'Το Εργαστήριο Συστημάτων Ελέγχου & Ρομποτικής (CSRL), μια συνεργασία του Τμήματος Ηλεκτρολόγων Μηχανικών & Μηχανικών Υπολογιστών και του Τμήματος Μηχανολόγων Μηχανικών της Σχολής Μηχανικών του Ελληνικού Μεσογειακού Πανεπιστημίου (HMU).',
             mechatron:'Η Mechatron συνδυάζει τη Μηχανολογία, την Ηλεκτρολογία και την Ηλεκτρονική Μηχανική και την Επιστήμη Υπολογιστών για να παρέχει λύσεις ηλιακής ενέργειας στις πιο δύσκολες βιομηχανικές καταστάσεις.',
-            solidworks:'Το SOLIDWORKS χρησιμοποιείται από εκατομμύρια σχεδιαστές και μηχανικούς σε εκατοντάδες χιλιάδες εταιρείες. Είναι ένα από τα πιο δημοφιλή λογισμικά τρισδιάστατου σχεδιασμού στην αγορά.'
+            solidworks:'Το SOLIDWORKS χρησιμοποιείται από εκατομμύρια σχεδιαστές και μηχανικούς σε εκατοντάδες χιλιάδες εταιρείες. Είναι ένα από τα πιο δημοφιλή λογισμικά τρισδιάστατου σχεδιασμού στην αγορά.',
+            veneris: 'Η VENERIS DECO δραστηριοποιείται στην κατασκευή επίπλων και εδρεύει στο Ηράκλειο Κρήτης με μια επιτυχημένη πορεία, πάντα με σεβασμό στις επιθυμίες των πελατών'
         }
 
 
@@ -23,16 +24,18 @@ function Supporters() {
             hero:'HERO is a non-profit organization whose goal is the proper development and spread of Educational Robotics and STEAM in Greece.',
             csrl:'The Control Systems & Robotics Laboratory (CSRL), a collaboration of the Department of Electrical & Computer Engineering and the Department of Mechanical Engineering of the School of Engineering of the Hellenic Mediterranean University (HMU',
             mechatron:'Mechatron brings together Mechanical Engineering, Electrical and Electronic Engineering, and Computer Science to provide solar energy solutions to the most challenging industrial situations.',
-            solidworks:'SOLIDWORKS is used by millions of designers and engineers at hundreds of thousands of companies. It’s one of the most popular design and engineering software on the market.'
+            solidworks:'SOLIDWORKS is used by millions of designers and engineers at hundreds of thousands of companies. It’s one of the most popular design and engineering software on the market.',
+            veneris: 'VENERIS DECO is active in the manufacturing of furniture, and is based in Heraklion, Crete, with a successful course, always with respect to the clients’ wishes'
         }   
 
         const img = {
             get3d:'Media/support/get_3d.png',
             o3:'Media/support/o3.png',
             hero:'Media/support/hero.png',
-            csrl:'Media/support/CSRL_Logo.png',
-            mechatron:'Media/support/mechatron.png',
-            solidworks:'Media/support/solidworks.jpg'
+            csrl:'Media/support/CSRL.png',
+            mechatron:'Media/support/mechatron_1.png',
+            solidworks:'Media/support/solidworks.png',
+            veneris:'Media/support/VENERIS.png'
         }
 
         const links = {
@@ -41,10 +44,11 @@ function Supporters() {
             hero:'https://www.he-ro.gr/ ',
             csrl:'https://csrl.hmu.gr/',
             mechatron:'https://mechatron.eu/',
-            solidworks:'https://www.solidworks.com/'
+            solidworks:'https://www.solidworks.com/',
+            veneris:'https://venerisdeco.gr/'
         }
 
-        const id = ['get3d','o3','hero','csrl','mechatron','solidworks']
+        const id = ['get3d','o3','hero','csrl','mechatron','solidworks','veneris']
 
         if(language === "greek"){
             return(
@@ -56,6 +60,7 @@ function Supporters() {
                         <SupportCard text={text_gr.o3} img={img.o3} link={links.o3} id={id[1]}/>
                         <SupportCard text={text_gr.mechatron} img={img.mechatron} link={links.mechatron} id={id[4]}/>
                         <SupportCard text={text_gr.solidworks} img={img.solidworks} link={links.solidworks} id={id[5]}/>
+                        <SupportCard text={text_gr.veneris} img={img.veneris} link={links.veneris} id={id[6]}/>
                         <h2 className="support-title">Υποστηρικτές</h2>
                         <SupportCard text={text_gr.hero} img={img.hero} link={links.hero} id={id[2]}/>
                         <SupportCard text={text_gr.csrl} img={img.csrl} link={links.csrl} id={id[3]}/>
@@ -74,6 +79,7 @@ function Supporters() {
                         <SupportCard text={text_eng.o3} img={img.o3} link={links.o3} id={id[1]}/>
                         <SupportCard text={text_eng.mechatron} img={img.mechatron} link={links.mechatron} id={id[4]}/>
                         <SupportCard text={text_eng.solidworks} img={img.solidworks} link={links.solidworks} id={id[5]}/>
+                        <SupportCard text={text_eng.veneris} img={img.veneris} link={links.veneris} id={id[6]}/>
                         <h2 className="support-title">Supporters</h2>
                         <SupportCard text={text_eng.hero} img={img.hero} link={links.hero} id={id[2]}/>
                         <SupportCard text={text_eng.csrl} img={img.csrl} link={links.csrl} id={id[3]}/>

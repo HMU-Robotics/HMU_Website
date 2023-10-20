@@ -30,10 +30,14 @@
   }
   
   .about-content {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
     width: 100%;
     padding: 0 2rem;
     padding-top: 1rem;
     text-align: center;
+    justify-content: center;
   }
   
   .about-heading {
@@ -50,6 +54,32 @@
     color: #ccc;
     font-size: 1.2rem;
     line-height: 1.5;
+  }
+
+
+  .join-us-button {
+    background: #262880;
+    color: #ffffff;
+    height: 4em;
+    margin-top: 2em;
+    width: 15em;
+    font-size: 16px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    align-self: center;
+    cursor: pointer;
+    transition: background-color 0.1s ease, transform 0.1s ease-in-out, box-shadow 0.3s ease;
+  }
+  
+  
+  .join-us-button:hover {
+    background-color: #1C0C3C;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .join-us-button:active {
+    transform: scale(0.95);
   }
   
   @media only screen and (min-width: 1100px) {

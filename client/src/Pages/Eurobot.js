@@ -37,7 +37,7 @@ function Eurobot(){
                         <h2 className="about-heading eurobot-hero-title">Συμμετοχή 2024</h2>
                         <p className="about-text eurobot-hero-text">{text_gr.text_hero}</p>
                         <p className="about-text eurobot-hero-text">{text_gr.text_hero_2}</p>
-                        <button className="about-button eurobot-hero-btn" ><a href="https://www.eurobot.org/" className="eurobot-hero-btn">Eurobot</a></button>
+                        <button className="eurobot-hero-btn" ><a href="https://www.eurobot.org/" className="eurobot-hero-btn">Eurobot</a></button>
                     </div>
                 </div>
             <div className="about-container eurobot-container">

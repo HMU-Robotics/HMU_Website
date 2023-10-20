@@ -26,7 +26,7 @@ function SmallSup(){
         {
             name:'get3d',
             link:'https://get3d.gr/en/ ',
-            img:'Media/support/get_3d.png'
+            img:'Media/support/GET_3D.png'
 
         },
         {
@@ -37,22 +37,27 @@ function SmallSup(){
         {
             name:'hero',
             link:'https://www.he-ro.gr/',
-            img:'Media/support/hero.png'
+            img:'Media/support/HERO.png'
         },
         {
             name:'csrl',
             link:'https://csrl.hmu.gr/',
-            img:'Media/support/CSRL_Logo.png'
+            img:'Media/support/CSRL.png'
         },
         {
           name:'mechatron',
           link:'https://mechatron.eu/',
-          img:'Media/support/mechatron.png'
+          img:'Media/support/mechatron_1.png'
         },
         {
           name:'solidworks',
           link:'https://www.solidworks.com/',
-          img:'Media/support/solidworks.jpg'
+          img:'Media/support/solidworks.png'
+        },
+        {
+          name:'Veneris',
+          link:'https://venerisdeco.gr/',
+          img:'Media/support/VENERIS.png'
         }
       ]
 

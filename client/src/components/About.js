@@ -4,7 +4,13 @@ import "./About.css";
 
 function About() {
 
+  const formLink = "https://docs.google.com/forms/d/e/1FAIpQLSe5IbOJ_oVSadgP7PxPXeg-NXbUVIOtFxJoxzkjj9UGWx-Cng/viewform?usp=sf_link"
+
   const {language, setLanguage} = useContext(LanguageContext);
+  
+  const handleButtonClick = () => {
+    window.open(formLink)
+}
 
   // Greek
   if(language === "greek"){
@@ -17,7 +23,9 @@ function About() {
           <div className="about-content">
             <h2 className="about-heading">Welcome to our Team</h2>
             <p className="about-text">
-            Η Λέσχη Ρομποτικής του ΕΛΜΕΠΑ είναι μια φοιτητική ομάδα που δίνει στα μέλη της την ευκαιρία να γνωρίσουν τους κλάδους που απαρτίζουν τη Ρομποτική. Μέσω workshop, project και διαγωνισμών, τα μέλη μας διευρύνουν τις γνώσεις του πάνω στη Ρομποτική, αλληλεπιδρώντας ταυτόχρονα με συμφοιτητές του που μοιράζονται το ίδιο πάθος με αυτούς.          </p>
+            Η Λέσχη Ρομποτικής του ΕΛΜΕΠΑ είναι μια φοιτητική ομάδα που δίνει στα μέλη της την ευκαιρία να γνωρίσουν τους κλάδους που απαρτίζουν τη Ρομποτική. Μέσω workshop, project και διαγωνισμών, τα μέλη μας διευρύνουν τις γνώσεις του πάνω στη Ρομποτική, αλληλεπιδρώντας ταυτόχρονα με συμφοιτητές του που μοιράζονται το ίδιο πάθος με αυτούς.          
+            </p>
+            <button onClick={handleButtonClick} className="join-us-button">Εγγραφή</button>
           </div>
         </div>
         <div className="about-section about-section-2">
@@ -45,7 +53,9 @@ function About() {
           <div className="about-content">
             <h2 className="about-heading">Welcome to our Team</h2>
             <p className="about-text">
-            The HMU Robotics Club is a student group that gives its members the opportunity to get to know the branches that make up Robotics. Through workshops, projects and competitions, our members expand their knowledge on Robotics, while interacting with fellow students who share the same passion as them.</p>
+            The HMU Robotics Club is a student group that gives its members the opportunity to get to know the branches that make up Robotics. Through workshops, projects and competitions, our members expand their knowledge on Robotics, while interacting with fellow students who share the same passion as them.
+            </p>
+            <button onClick={handleButtonClick} className="join-us-button">Join us!</button>
           </div>
         </div>
         <div className="about-section about-section-2">
