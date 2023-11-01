@@ -7,6 +7,12 @@ function Eurobot(){
 
         const {language, setLanguage} = useContext(LanguageContext);
 
+        const formLink = "https://www.eurobot.org/"
+
+        const handleButtonClick = () => {
+            window.open(formLink)
+        }
+
         const text_gr = {
             text_hero:"Με χαρά σας ανακοινώνουμε ότι η ομάδα μας θα πάρει μέρος στον διαγωνισμό Eurobot 2024",
             text_hero_2:"Αυτήν την στιγμή βρισκόμαστε στην version 2.0 του ρομπότ, σκοπός της οποίας είναι να λειτουργήσει ως μία πλατφόρμα στην οποία πάνω θα δοκιμαστούν η κίνηση του ρομπότ, η ανίχνευση και αποφυγή εμποδίων(με χρήση lidar) καθώς και ο εντοπισμός του ρομπότ στον χώρο (localization) με την χρήση κάμερας(opencv + ArUco)",
@@ -37,7 +43,7 @@ function Eurobot(){
                         <h2 className="about-heading eurobot-hero-title">Συμμετοχή 2024</h2>
                         <p className="about-text eurobot-hero-text">{text_gr.text_hero}</p>
                         <p className="about-text eurobot-hero-text">{text_gr.text_hero_2}</p>
-                        <button className="eurobot-hero-btn" ><a href="https://www.eurobot.org/" className="eurobot-hero-btn">Eurobot</a></button>
+                        <button className="eurobot-hero-btn" onClick={handleButtonClick}>Eurobot</button>
                     </div>
                 </div>
             <div className="about-container eurobot-container">
@@ -83,7 +89,7 @@ function Eurobot(){
                                 <h2 className="about-heading eurobot-hero-title">Eurobots 2024</h2>
                                 <p className="about-text eurobot-hero-text">{text_eng.text_hero}</p>
                                 <p className="about-text eurobot-hero-text">{text_eng.text_hero_2}</p>
-                                <button className="about-button eurobot-hero-btn" ><a href="https://www.eurobot.org/" className="eurobot-hero-btn">Eurobot</a></button>
+                                <button className="eurobot-hero-btn" onClick={handleButtonClick}>Eurobot</button>
                             </div>
                         </div>
                     <div className="about-container eurobot-container">

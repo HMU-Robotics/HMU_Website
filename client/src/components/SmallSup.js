@@ -26,7 +26,7 @@ function SmallSup(){
         {
             name:'get3d',
             link:'https://get3d.gr/en/ ',
-            img:'Media/support/GET_3D.png'
+            img:'Media/support/get_3d.png'
 
         },
         {
@@ -37,7 +37,7 @@ function SmallSup(){
         {
             name:'hero',
             link:'https://www.he-ro.gr/',
-            img:'Media/support/HERO.png'
+            img:'Media/support/hero.png'
         },
         {
             name:'csrl',

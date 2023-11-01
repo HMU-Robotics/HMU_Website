@@ -65,8 +65,12 @@
 .eurobot-hero-btn{
     background: none;
     border-radius: 10px;
-    height: 2em;
-    width: auto;
+    height: 4em;
+    margin-top: 2em;
+    align-self: center;
+    width: 15em;
+    font-size: 16px;
+    padding: 10px 20px;
     color: white;
     border-color: white;
     transition:ease-in-out 0.2s;
