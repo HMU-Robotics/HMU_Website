@@ -47,12 +47,14 @@ function MemberGridEuro(props) {
     switch(th){
       case "eurobots1" : return "Programming"
       case "eurobots2" : return "Programming"
-      case "th20079" : return "Programming"
+      case "eurobot3" : return "Programming"
+      case "th20079" : return "Programming Lead"
       case "th20550" : return "Team leader, Mechanical"
-      case "th6209": return "Programming lead"
+      case "th6209": return "Programming Lead"
       case "th6295" : return "Electronics, Management"
       case "tm20288" : return "Mechanical"
       case "tp4658" : return "Programming"
+      case "ΓΦ20154" : return "Social Media Manager"
       default :  return "Eurobots"
     }
   }
@@ -65,7 +67,7 @@ function MemberGridEuro(props) {
           <Grid2 container spacing={4} columns={12} display="flex" alignItems="center">
           {memberData && memberData.Item ? (
             <>
-            {memberData.Item.filter((member) => ["Eurobots","President","Treasurer","Secretary"].includes(member.role)).map((member, i) => (
+            {memberData.Item.filter((member) => ["Eurobots","President","Treasurer","Secretary","eurobots"].includes(member.role)).map((member, i) => (
               <div className="member-grid">
                 <Grid2 xs={12} sm={6} md={4} lg={3} key={i}>
                   <Suspense fallback={<div>Loading...</div>}>

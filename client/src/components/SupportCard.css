@@ -42,7 +42,7 @@
         text-align: center;
         margin-left: 1em;
         margin-right: 1em;
-        margin-top: 1em; /* Adjust the margin as needed */
+        margin-top: 1em; 
     }
 
     @media (max-width: 600px) {
@@ -50,9 +50,22 @@
             display: none;
         }
 
-        .support-img {
-            max-width: 5.5em; /* Adjust the max-width as needed */
-            height: 6em; /* Adjust the height as needed */
+        .support-img{
+            width: auto;
+            height: auto; 
+            transition: all .2s ease-in-out;
+        }
+
+        .support-img:hover{
+            transform: scale(1.2);
+        }
+        .support-card{
+            height: 120px;
+            display: flex;
+            background-color: transparent;
+            border-radius: none;
+            box-shadow: none;
+            margin-bottom: 1em;
         }
     }
   }
