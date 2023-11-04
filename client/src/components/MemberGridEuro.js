@@ -23,11 +23,11 @@ function MemberGridEuro(props) {
        .then((response) => {
          setIsLoading(false);
          setMemberData(response);
-         console.log(`https://robotics-club.hmu.gr:443/api/members/find/all`);
-         console.log(response)
+        //  console.log(`https://robotics-club.hmu.gr:443/api/members/find/all`);
+        //  console.log(response)
        })
        .catch((error) => {
-         console.log(error);
+        //  console.log(error);
          setIsLoading(true);
      })
    }, []);
@@ -43,7 +43,7 @@ function MemberGridEuro(props) {
 
 
    const role_picker = (th) => {
-    console.log(th)
+    // console.log(th)
     switch(th){
       case "eurobots1" : return "Programming"
       case "eurobots2" : return "Programming"

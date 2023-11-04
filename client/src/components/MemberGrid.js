@@ -22,11 +22,11 @@ function MemberGrid(props) {
        .then((response) => {
          setIsLoading(false);
          setMemberData(response);
-         console.log(`https://robotics-club.hmu.gr:443/api/members/find/all`);
-         console.log(response)
+        //  console.log(`https://robotics-club.hmu.gr:443/api/members/find/all`);
+        //  console.log(response)
        })
        .catch((error) => {
-         console.log(error);
+        //  console.log(error);
          setIsLoading(true);
      })
    }, []);

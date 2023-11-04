@@ -16,11 +16,11 @@ function News(props){
         .then((res) => res.json())
         .then((response) => {
           setData(response);
-          console.log(`https://robotics-club.hmu.gr:443/api/posts/find/all/${lang}`);
-          console.log(response)
+          // console.log(`https://robotics-club.hmu.gr:443/api/posts/find/all/${lang}`);
+          // console.log(response)
         })
         .catch((error) => {
-          console.log(error);
+          // console.log(error);
       })
     }, [language]);
 
