@@ -59,6 +59,15 @@ function MemberGridEuro(props) {
     }
   }
 
+
+  const image = () => {
+    if (props.image === undefined) {
+      return "Media/stock_image_man.png";
+    } else {
+      return "Uploads/members/" + props.image;
+    }
+  };
+
     return (
       <>
         {language === "english" && <h2 className="coordination-box-title">Team Members</h2>}
@@ -74,7 +83,7 @@ function MemberGridEuro(props) {
                     <MemberCard
                       key={i}
                       fullname={member?.[fullname]}
-                      image={member?.images[0]?.image_url}
+                      image={image()}
                       role={role_picker(member?.academic_id)}
                     />
                   </Suspense>
