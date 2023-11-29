@@ -60,13 +60,6 @@ function MemberGridEuro(props) {
   }
 
 
-  const image = () => {
-    if (props.image === undefined) {
-      return "Media/stock_image_man.png";
-    } else {
-      return "Uploads/members/" + props.image;
-    }
-  };
 
     return (
       <>
@@ -83,7 +76,7 @@ function MemberGridEuro(props) {
                     <MemberCard
                       key={i}
                       fullname={member?.[fullname]}
-                      image={image()}
+                      image={member?.images[0]?.image_url}
                       role={role_picker(member?.academic_id)}
                     />
                   </Suspense>

@@ -30,16 +30,6 @@ function SmallSup(){
 
         },
         {
-            name:'o3',
-            link:'https://www.o3.gr/',
-            img:'Media/support/o3.png'
-        },
-        {
-            name:'hero',
-            link:'https://www.he-ro.gr/',
-            img:'Media/support/hero.png'
-        },
-        {
             name:'csrl',
             link:'https://csrl.hmu.gr/',
             img:'Media/support/CSRL.png'

@@ -60,7 +60,7 @@ function Eurobot_Member_Card(props) {
 
   const image = () => {
       if (props.image === undefined) {
-        return "Media/about.jpg";
+        return "Media/stock_image_man.png";
       } else {
         return "/Uploads/members/" + props.image;
       }
